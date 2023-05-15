@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BookDAO {
 
-    public List<BookDTO> book_select();
+    public List<BookDTO> book_list(PageDTO dto);
 
     public void book_insert(BookDTO book);
 
@@ -17,5 +17,7 @@ public interface BookDAO {
     public int total_selling();
 
     public int day_per_count();
+
+    public int BookListCount();
 
 }

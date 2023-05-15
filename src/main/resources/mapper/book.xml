@@ -18,6 +18,16 @@
 
 <mapper namespace="BookDto">
     <select id="book_all" resultType="BookDto">
-        select * from final.book
+        <![CDATA[
+		select * from
+			(select b.*, row_number()
+			   over(order by book_no desc) rnum from book b) as 'b.*r'
+			   	  where rnum >= #{startNo} and rnum <= #{endNo}
+	    ]]>
     </select>
+
+    <select id="book_cnt" resultType="int">
+        select count(*) from book
+    </select>
+
 </mapper>

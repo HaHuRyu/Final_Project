@@ -13,8 +13,8 @@ public class BookDAOImpl implements BookDAO{
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public List<BookDTO> book_select() {
-        return this.sqlSession.selectList("book_all");
+    public List<BookDTO> book_list(PageDTO dto) {
+        return this.sqlSession.selectList("book_all", dto);
     }
 
     @Override
@@ -45,6 +45,11 @@ public class BookDAOImpl implements BookDAO{
     @Override
     public int day_per_count() {
         return 0;
+    }
+
+    @Override
+    public int BookListCount() {
+        return this.sqlSession.selectOne("book_cnt");
     }
 
 }
