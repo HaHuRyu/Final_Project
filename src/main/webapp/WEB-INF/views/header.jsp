@@ -71,7 +71,7 @@
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Board</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="board" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="#"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
+                            <li><a href="user_gall.go"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
                             <li><a href="#"><i class="ri-list-check-2"></i>Qna 게시판</a></li>
                         </ul>
                     </li>
