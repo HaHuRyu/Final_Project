@@ -51,7 +51,7 @@
                             <li><a href="admin-dashboard.jsp"><i class="ri-dashboard-line"></i>Dashboard</a></li>
                             <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>Category Lists</a></li>
                             <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
-                            <li><a href="admin-books.jsp"><i class="ri-book-2-line"></i>Books</a></li>
+                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>Books</a></li>
                             <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                     </li>
