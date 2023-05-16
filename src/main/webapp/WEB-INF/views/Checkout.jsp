@@ -552,6 +552,7 @@
                               <div class="iq-card-body">
                                  <ul class="list-inline p-0 m-0">
                                     <li class="checkout-product">
+                                       <!-- 하나 -->
                                        <div class="row align-items-center">
                                           <div class="col-sm-2">
                                              <span class="checkout-product-img">
@@ -587,6 +588,7 @@
                                              </div>
                                           </div>
                                        </div>
+                                       <!-- 끝 -->
                                     </li>
                                     <li class="checkout-product">
                                        <div class="row align-items-center">
