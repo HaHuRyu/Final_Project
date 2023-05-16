@@ -46,12 +46,14 @@
                                  </li>
                                  <li class="search-menu-opt">
                                     <div class="iq-search-bar search-book d-flex align-items-center">
-                                       <form action="#" class="searchbox">
-                                          <input type="text" class="text search-input" placeholder="search here...">
-                                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                       <form action="used_board_search.go" class="searchbox">
+                                          <input type="text" class="text search-input" placeholder="키워드를 입력하세요">
+                                          <a class="search-link" href="used_board_search.go"><i class="ri-search-line"></i></a>
                                        </form>
-                                       <button type="submit" class="btn btn-primary search-data ml-2">Search</button>
+                                       <input type="button" onclick="location.href='used_board_search.go'" class="btn btn-primary search-data ml-2">Search</input>
                                     </div>
+                                    <input align="right" type="button" onclick="location.href='seller_add.go'" class="btn btn-primary search-data ml-2">글 등록</input>
+
                                  </li>
                               </ul>
                            </div> 
@@ -97,7 +99,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-sm-6 col-md-4 col-lg-3">
+                             <%-- <div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
                                     <div class="iq-card-body p-0">
                                        <div class="d-flex align-items-center">
@@ -502,7 +504,7 @@
                                        </div>
                                     </div>
                                  </div>
-                              </div>
+                              </div>--%>
                            </div>
                         </div>
                      </div>
