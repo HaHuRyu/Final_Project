@@ -42,17 +42,11 @@
     <!-- 카테고리 쿼리문 -->
     <!-- 카테고리 리스트 조회 -->
     <select id="category_all" resultType="CategoryDto" parameterType="pageDto">
-        <![CDATA[
-		SELECT a.*
-        FROM (
-            SELECT b.*, ROW_NUMBER() OVER (ORDER BY category_no DESC) AS rnum FROM category b
-        ) AS a
-        WHERE rnum >= #{startNo} AND rnum <= #{endNo};
-	    ]]>
+        select * from final.category
     </select>
     <!-- 카테고리 리스트 갯수 조회(페이징) -->
     <select id="category_cnt" resultType="int">
-        select count(*) from category
+        select count(*) from final.category
     </select>
 
 </mapper>
