@@ -17,17 +17,47 @@
 -->
 
 <mapper namespace="BookDto">
-    <select id="book_all" resultType="BookDto">
+
+    <!-- 도서 쿼리문 -->
+    <!-- 도서 리스트 조회 -->
+    <select id="book_all" resultType="BookDto" parameterType="pageDto">
         <![CDATA[
-		select * from
-			(select b.*, row_number()
-			   over(order by book_no desc) rnum from book b) as 'b.*r'
-			   	  where rnum >= #{startNo} and rnum <= #{endNo}
+		SELECT a.*
+        FROM (
+            SELECT b.*, ROW_NUMBER() OVER (ORDER BY book_no DESC) AS rnum FROM book b
+        ) AS a
+        WHERE rnum >= #{startNo} AND rnum <= #{endNo};
 	    ]]>
     </select>
-
+    <!-- 도서 리스트 갯수 조회(페이징) -->
     <select id="book_cnt" resultType="int">
         select count(*) from book
+    </select>
+
+    <!-- 도서 상세 조회 -->
+    <select id="book_cont" resultType="BookDto" parameterType="int">
+        SELECT b.*, c.category
+        FROM book b
+        JOIN category c ON b.category_no = c.category_no
+        WHERE book_no = #{no};
+    </select>
+
+
+
+    <!-- 카테고리 쿼리문 -->
+    <!-- 카테고리 리스트 조회 -->
+    <select id="category_all" resultType="CategoryDto" parameterType="pageDto">
+        <![CDATA[
+		SELECT a.*
+        FROM (
+            SELECT b.*, ROW_NUMBER() OVER (ORDER BY category_no DESC) AS rnum FROM category b
+        ) AS a
+        WHERE rnum >= #{startNo} AND rnum <= #{endNo};
+	    ]]>
+    </select>
+    <!-- 카테고리 리스트 갯수 조회(페이징) -->
+    <select id="category_cnt" resultType="int">
+        select count(*) from category
     </select>
 
 </mapper>

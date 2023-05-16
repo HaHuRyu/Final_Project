@@ -14,5 +14,6 @@ public class BookDTO {
     private String book_author;
     private int book_amount;
     private int ISBN;
+    private String category_name;
 
 }

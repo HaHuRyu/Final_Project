@@ -18,6 +18,11 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
+    public BookDTO book_cont(int no) {
+        return this.sqlSession.selectOne("book_cont", no);
+    }
+
+    @Override
     public void book_insert(BookDTO book) {
 
     }
@@ -50,6 +55,17 @@ public class BookDAOImpl implements BookDAO{
     @Override
     public int BookListCount() {
         return this.sqlSession.selectOne("book_cnt");
+    }
+
+    @Override
+    public int CategoryCount() {
+        return this.sqlSession.selectOne("category_cnt");
+
+    }
+
+    @Override
+    public List<CategoryDTO> category_list(PageDTO dto) {
+        return this.sqlSession.selectOne("category_all");
     }
 
 }
