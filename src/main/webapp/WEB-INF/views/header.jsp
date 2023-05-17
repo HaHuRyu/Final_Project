@@ -67,7 +67,7 @@
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                             <li><a href="<%=request.getContextPath()%>/profile.go"><i class="las la-id-card-alt"></i>User Profile</a></li>
-                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
+                            <li><a href="<%=request.getContextPath() %>/user_modify.go"><i class="las la-edit"></i>User Edit</a></li>
                             <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
                         </ul>
                     </li>
@@ -100,7 +100,7 @@
                                     <li><a href="ui-breadcrumb.jsp"><i class="las la-bars"></i>Breadcrumb</a></li>
                                     <li><a href="ui-buttons.jsp"><i class="las la-tablet"></i>Buttons</a></li>
                                     <li><a href="ui-cards.jsp"><i class="las la-credit-card"></i>Cards</a></li>
-                                    <li><a href="ui-carouseㄴl.jsp"><i class="las la-film"></i>Carousel</a></li>
+                                    <li><a href="ui-carousel.jsp"><i class="las la-film"></i>Carousel</a></li>
                                     <li><a href="ui-embed-video.jsp"><i class="las la-video"></i>Video</a></li>
                                     <li><a href="ui-grid.jsp"><i class="las la-border-all"></i>Grid</a></li>
                                     <li><a href="ui-images.jsp"><i class="las la-images"></i>Images</a></li>
@@ -193,7 +193,7 @@
                                         class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                 <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
                                     <li><a href="sign-in.jsp"><i class="las la-sign-in-alt"></i>Login</a></li>
-                                    <li><a href="sign-up.jsp"><i class="ri-login-circle-line"></i>Register</a></li>
+                                    <li><a href="#"><i class="ri-login-circle-line"></i>Register</a></li>
                                     <li><a href="pages-recoverpw.jsp"><i class="ri-record-mail-line"></i>Recover
                                         Password</a></li>
                                     <li><a href="pages-confirm-mail.jsp"><i class="ri-file-code-line"></i>Confirm
