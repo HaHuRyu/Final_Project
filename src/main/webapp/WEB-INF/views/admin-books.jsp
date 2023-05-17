@@ -49,7 +49,7 @@
                                 class="ripple rippleEffect"></span><i
                                 class="las la-home iq-arrow-left"></i><span>Shop</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="dashboard" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
+                        <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <li><a href="home.jsp"><i class="las la-house-damage"></i>Home Page</a></li>
                             <li><a href=""><i class="ri-function-line"></i>Category Page</a></li>
                             <li><a href="book-page.jsp"><i class="ri-book-line"></i>Book Page</a></li>
@@ -62,7 +62,7 @@
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <ul id="admin" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
                             <li><a href="admin-dashboard.jsp"><i class="ri-dashboard-line"></i>Dashboard</a></li>
                             <li><a href="<%=request.getContextPath()%>/category_list.go"><i class="ri-list-check-2"></i>Category Lists</a></li>
                             <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
@@ -668,7 +668,7 @@
                                 </tr>
                                 </thead>
                                 <c:set var="Book_list" value="${BookList}"/>
-                                <c:set var="paging" value="${Paging }"/>
+
 
                                 <tbody>
                                 <c:forEach items="${Book_list}" var="book_dto">
@@ -690,7 +690,7 @@
                                                    title="" data-original-title="Edit" href="admin-add-book.jsp"><i
                                                         class="ri-pencil-line"></i></a>
                                                 <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                   title="" data-original-title="Delete" href="<%=request.getContextPath()%>/book_delete.go?num=${book_dto.book_no}"><i
+                                                   title="" data-original-title="Delete" href="<%=request.getContextPath()%>/book_delete.go?book_no=${book_dto.book_no}"><i
                                                         class="ri-delete-bin-line"></i></a>
                                             </div>
                                         </td>

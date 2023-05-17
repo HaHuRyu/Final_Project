@@ -540,21 +540,25 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Add Categories</h4>
+                              <h4 class="card-title">카테고리 등록</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <form action="admin-category.jsp">
+                           <form action="<%=request.getContextPath()%>/category_insert_ok.go" method="post">
                               <div class="form-group">
-                                 <label>Category Name:</label>
-                                 <input type="text" class="form-control">
+                                 <label for="category_no">카테고리 No:</label>
+                                 <input id="category_no" name="category_no" type="text" class="form-control">
                               </div>
                               <div class="form-group">
-                                 <label>Category Description:</label>
-                                 <textarea class="form-control" rows="4"></textarea>
+                                 <label for="category_name">카테고리명:</label>
+                                 <input id="category_name" name="category_name" type="text" class="form-control">
                               </div>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                              <button type="reset" class="btn btn-danger">Reset</button>
+                              <div class="form-group">
+                                 <label for="category_detail">상세설명:</label>
+                                 <textarea id="category_detail" name="category_detail" class="form-control" rows="4"></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-primary">등록</button>
+                              <button type="reset" class="btn btn-danger">다시작성</button>
                            </form>
                         </div>
                      </div>

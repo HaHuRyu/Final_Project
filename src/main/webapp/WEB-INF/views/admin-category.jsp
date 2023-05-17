@@ -627,10 +627,10 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Category Lists</h4>
+                                <h4 class="card-title">카테고리 목록</h4>
                             </div>
                             <div class="iq-card-header-toolbar d-flex align-items-center">
-                                <a href="admin-add-category.jsp" class="btn btn-primary">Add New Category</a>
+                                <a href="category_insert.go" class="btn btn-primary">카테고리 등록</a>
                             </div>
                         </div>
                         <div class="iq-card-body">
@@ -640,22 +640,19 @@
                                     <tr>
                                         <th width="5%">No</th>
                                         <th width="20%">카테고리명</th>
+                                        <th width="65%">상세설명</th>
                                         <th width="10%">수정/삭제</th>
                                     </tr>
                                     </thead>
                                     <c:set var="category_list" value="${Category_list}"/>
-                                    <c:set var="paging" value="${Paging }"/>
+
                                     <tbody>
                                     <c:forEach items="${category_list}" var="category_dto">
                                         <tr>
                                             <td>${category_dto.category_no}</td>
                                             <td>${category_dto.category}</td>
                                             <td>
-                                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Sed
-                                                    rhoncus non elit a scelerisque. Etiam feugiat luctus est, vel
-                                                    commodo
-                                                    odio rhoncus sit amet</p>
+                                                <p class="mb-0">${category_dto.category_content}</p>
                                             </td>
                                             <td>
                                                 <div class="flex align-items-center list-user-action">
@@ -664,7 +661,7 @@
                                                        href="admin-add-category.jsp"><i
                                                             class="ri-pencil-line"></i></a>
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                       title="" data-original-title="Delete" href="#"><i
+                                                       title="" data-original-title="Delete" href="<%=request.getContextPath()%>/category_delete.go?category_no=${category_dto.category_no}"><i
                                                             class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>

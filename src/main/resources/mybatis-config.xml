@@ -9,7 +9,6 @@
     <typeAliases>
         <typeAlias type="com.spring.model.UserDTO" alias="UserDTO"/>
         <typeAlias type="com.spring.model.BookDTO" alias="BookDto"/>
-        <typeAlias type="com.spring.model.PageDTO" alias="PageDto" />
         <typeAlias type="com.spring.model.CategoryDTO" alias="CategoryDto" />
     </typeAliases>
 
