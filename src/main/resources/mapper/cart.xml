@@ -20,4 +20,8 @@
     <select id="basketFindByUserNo" parameterType="int" resultType="BasketDTO">
         select * from final.basket where user_no = #{value}
     </select>
+
+    <update id="basketUpdateQuantity" parameterType="BasketDTO">
+        update final.basket set book_amount = #{book_amount} where user_no = #{user_no} and book_no = #{book_no}
+    </update>
 </mapper>

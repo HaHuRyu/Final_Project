@@ -62,13 +62,6 @@ public class BookController {
         return "book-page";
     }
 
-    //도서 상세정보가 필요한 기능 참조용
-    @RequestMapping("book_cont_ref.go")
-    public void book_cont_ref(@RequestParam("book_no") int num, HttpServletRequest request, Model model){
-        BookDTO dto = this.dao.book_cont(num);
-        model.addAttribute("Book_cont", dto);
-
-    }
 
 //    카테고리
     @RequestMapping("category_list.go")

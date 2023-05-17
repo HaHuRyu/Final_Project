@@ -7,4 +7,6 @@ public class BasketDTO {
     int basket_no;
     int user_no;
     int book_no;
+    int book_amount;
+    int one_price;
 }
