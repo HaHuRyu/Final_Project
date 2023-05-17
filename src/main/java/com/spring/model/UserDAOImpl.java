@@ -13,8 +13,9 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public void save(UserDTO user) {
+    public int save(UserDTO user) {
 
+       return this.sqlSession.insert("add" , user);
     }
 
     @Override
@@ -37,8 +38,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(UserDTO user) {
+    public int update(UserDTO user) {
 
+        return this.sqlSession.update("add" , user);
     }
 
     @Override

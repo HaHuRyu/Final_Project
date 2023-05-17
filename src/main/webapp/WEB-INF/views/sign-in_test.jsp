@@ -37,18 +37,18 @@
 	                              <p class="text-center text-white">Enter your email address and password to access admin panel.</p>
 	                              <form class="mt-4 form-text" action="<%=request.getContextPath()%>/login_ok.go" method="post">
 	                                  <div class="form-group">
-	                                      <label for="exampleInputEmail1">ID</label>
+	                                      <%--@declare id="exampleinputemail1"--%><label for="exampleInputEmail1">ID</label>
 	                                      <input type="text" class="form-control mb-0" name="user_id" placeholder="Enter id">
 	                                  </div>
 	                                  <div class="form-group">
-	                                      <label for="exampleInputPassword1">Password</label>
+	                                      <%--@declare id="exampleinputpassword1"--%><label for="exampleInputPassword1">Password</label>
 	                                      <a href="#" class="float-right text-dark">Forgot password?</a>
 	                                      <input type="password" class="form-control mb-0" name="user_pwd" placeholder="Password">
 	                                  </div>
 	 
 	                                  <div class="sign-info text-center">
 	                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">Sign in</button>
-	                                      <span class="text-dark dark-color d-inline-block line-height-2">Don't have an account? <a href="*" class="text-white">Sign up</a></span>
+	                                      <span class="text-dark dark-color d-inline-block line-height-2">Don't have an account? <a href="<%=request.getContextPath() %>/signup.go" class="text-white">Sign up</a></span>
 	                                  </div>
 	                              </form>
 	                          </div>
