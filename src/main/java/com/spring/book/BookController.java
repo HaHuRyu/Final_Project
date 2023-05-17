@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -60,6 +63,26 @@ public class BookController {
         model.addAttribute("Book_cont", dto);
 
         return "book-page";
+    }
+
+    // 도서 삭제
+    @RequestMapping("book_delete.go")
+    public void book_delete(@RequestParam("book-no") int num, HttpServletResponse response) throws IOException {
+        int result = this.dao.book_delete(num);
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        if (result > 0) {
+            out.println("<script>");
+            out.println("alert('삭제되었습니다.')");
+            out.println("location.href='book_list.go'");
+            out.println("</script>");
+        }else{
+            out.println("<script>");
+            out.println("alert('삭제가 실패하였습니다.')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
     }
 
 

@@ -672,6 +672,7 @@
 
                                 <tbody>
                                 <c:forEach items="${Book_list}" var="book_dto">
+
                                     <tr>
                                         <td>${book_dto.book_no}</td>
                                         <td><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book_dto.book_image}" alt=""></td>
@@ -689,7 +690,7 @@
                                                    title="" data-original-title="Edit" href="admin-add-book.jsp"><i
                                                         class="ri-pencil-line"></i></a>
                                                 <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                   title="" data-original-title="Delete" href="#"><i
+                                                   title="" data-original-title="Delete" href="<%=request.getContextPath()%>/book_delete.go?num=${book_dto.book_no}"><i
                                                         class="ri-delete-bin-line"></i></a>
                                             </div>
                                         </td>

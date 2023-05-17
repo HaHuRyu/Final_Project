@@ -12,7 +12,7 @@ public interface BookDAO {
 
     public int book_modify(BookDTO book);
 
-    public void book_delete();
+    public int book_delete(int num);
 
     public int book_status(int status);
 

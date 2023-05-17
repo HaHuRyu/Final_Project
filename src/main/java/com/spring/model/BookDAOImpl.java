@@ -33,8 +33,9 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public void book_delete() {
-
+    public int book_delete(int num) {
+        int result = this.sqlSession.delete("book_del", num);
+        return result;
     }
 
     @Override
