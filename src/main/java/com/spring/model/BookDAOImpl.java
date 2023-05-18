@@ -64,7 +64,7 @@ public class BookDAOImpl implements BookDAO{
 
     @Override
     public CategoryDTO category_one(int num) {
-        return this.sqlSession.selectOne("category_one");
+        return this.sqlSession.selectOne("category_one", num);
     }
 
     @Override

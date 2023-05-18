@@ -119,8 +119,8 @@ public class BookController {
     }
 
     @RequestMapping("category_modify.go")
-    public String category_modify(@RequestParam("category_no") int num, Model model) {
-        CategoryDTO dto = this.dao.category_one(num);
+    public String category_modify(@RequestParam("category_no") int num, Model model, CategoryDTO dto) {
+        dto = this.dao.category_one(num);
         model.addAttribute("Category_DTO", dto);
         return "admin-modify-category";
     }
