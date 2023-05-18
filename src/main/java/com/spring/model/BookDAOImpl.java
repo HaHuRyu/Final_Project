@@ -59,8 +59,13 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
+    public CategoryDTO category_one(int num) {
+        return this.sqlSession.selectOne("category_one");
+    }
+
+    @Override
     public int category_modify(int no, CategoryDTO dto) {
-        return 0;
+        return this.sqlSession.update("category_modify");
     }
 
     @Override
@@ -72,6 +77,7 @@ public class BookDAOImpl implements BookDAO{
     public int category_delete(int no) {
         return this.sqlSession.delete("category_del",no);
     }
+
 
 
 }

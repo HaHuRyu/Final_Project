@@ -122,6 +122,13 @@ public class BookController {
         }
     }
 
+    @RequestMapping("category_modify.go")
+    public String category_modify(@RequestParam("category_no") int num, HttpServletRequest request, Model model) {
+        CategoryDTO dto = this.dao.category_one(num);
+        model.addAttribute("Category_DTO", dto);
+        return "admin-modify-category";
+    }
+
     @RequestMapping("category_delete.go")
     public void category_delete(@RequestParam("category_no") int num, HttpServletResponse response) throws IOException {
         int result = this.dao.category_delete(num);

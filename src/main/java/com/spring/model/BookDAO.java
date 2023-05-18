@@ -24,6 +24,8 @@ public interface BookDAO {
 
     public int category_delete(int no);
 
+    public CategoryDTO category_one(int num);
+
     public int category_modify(int no, CategoryDTO dto);
 
     public int category_insert(CategoryDTO dto);

@@ -34,8 +34,6 @@
         WHERE book_no = #{no}
     </select>
 
-
-
     <!-- 도서 삭제 -->
     <delete id="book_del" parameterType="int">
         delete from book where book_no = #{value}
@@ -54,9 +52,19 @@
         delete from category where category_no = #{value}
     </delete>
 
+    <!--카테고리 추가-->
     <insert id="category_add" parameterType="CategoryDto">
         insert into category values(#{category_no},#{category},#{category_content})
     </insert>
 
+    <!--카테고리 하나의값-->
+    <select id="category_one" parameterType="int">
+        select * from category where category_no = #{value}
+    </select>
+
+    <!--카테고리 수정-->
+    <update id="category_modify" parameterType="CategoryDto">
+        update category set category_no = #{category_no}, category = #{category}, category_content = #{category_content}
+    </update>
 
 </mapper>

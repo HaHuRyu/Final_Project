@@ -658,10 +658,10 @@
                                                 <div class="flex align-items-center list-user-action">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
                                                        title="" data-original-title="Edit"
-                                                       href="admin-add-category.jsp"><i
+                                                       href="category_modify.go?category_no=${category_dto.category_no}"><i
                                                             class="ri-pencil-line"></i></a>
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                       title="" data-original-title="Delete" href="<%=request.getContextPath()%>/category_delete.go?category_no=${category_dto.category_no}"><i
+                                                       title="" data-original-title="Delete" href="category_delete.go?category_no=${category_dto.category_no}"><i
                                                             class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>
