@@ -12,6 +12,8 @@ public class BookDAOImpl implements BookDAO{
     @Autowired
     private SqlSessionTemplate sqlSession;
 
+
+    // 도서
     @Override
     public List<BookDTO> book_list() {
         return this.sqlSession.selectList("book_all");
@@ -53,6 +55,8 @@ public class BookDAOImpl implements BookDAO{
         return 0;
     };
 
+    
+    // 카테고리
     @Override
     public List<CategoryDTO> category_list() {
         return this.sqlSession.selectList("category_all");

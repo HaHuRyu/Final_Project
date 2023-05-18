@@ -58,8 +58,8 @@
     </insert>
 
     <!--카테고리 하나의값-->
-    <select id="category_one" parameterType="int">
-        select * from category where category_no = #{value}
+    <select id="category_one" parameterType="int" resultType="CategoryDto">
+        select * from category where category_no = #{num}
     </select>
 
     <!--카테고리 수정-->
