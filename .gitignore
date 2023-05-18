@@ -19,5 +19,4 @@ buildNumber.properties
 /target/
 *.class
 /.metadata/
-/config/
 /src/main/resources/config/
