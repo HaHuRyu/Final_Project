@@ -2,7 +2,7 @@ package com.spring.model;
 
 public interface UserDAO {
 
-    public void save(UserDTO user);
+    public int save(UserDTO user);
 
     public UserDTO findByUsername(String username);
 
@@ -11,7 +11,7 @@ public interface UserDAO {
 
     public UserDTO findByConfirmationToken(String confirmationToken);
 
-    public void update(UserDTO user);
+    public int update(UserDTO user);
 
     public void delete(UserDAO user);
 

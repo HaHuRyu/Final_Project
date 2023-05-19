@@ -44,6 +44,7 @@ public class BookController {
         return "book-page";
     }
 
+
     // 도서 등록
     @RequestMapping("book_insert.go")
     public String book_insert() {
@@ -74,6 +75,7 @@ public class BookController {
             out.println("</script>");
         }
     }
+
 
 
 //    카테고리

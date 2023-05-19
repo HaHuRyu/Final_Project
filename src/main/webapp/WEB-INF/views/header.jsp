@@ -1,6 +1,12 @@
+<%@ page import="com.spring.model.UserDAO" %>
+<%@ page import="com.spring.model.UserDTO" %>
+<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
+<%@ page import="com.spring.model.UserDAOImpl" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <%--
   Created by IntelliJ IDEA.
   User: ll001
@@ -39,7 +45,7 @@
                             <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
                             <li><a href="book-page.jsp"><i class="ri-book-line"></i>Book Page</a></li>
                             <li><a href="book-pdf.jsp"><i class="ri-file-pdf-line"></i>Book PDF</a></li>
-                            <li><a href="Checkout.jsp"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
+                            <li><a href="<%=request.getContextPath()%>/basket.go"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
                             <li><a href="wishlist.jsp"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                     </li>
@@ -60,8 +66,8 @@
                                 class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
-                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
-                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
+                            <li><a href="<%=request.getContextPath()%>/profile.go"><i class="las la-id-card-alt"></i>User Profile</a></li>
+                            <li><a href="<%=request.getContextPath() %>/user_modify.go"><i class="las la-edit"></i>User Edit</a></li>
                             <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
                         </ul>
                     </li>
@@ -94,7 +100,7 @@
                                     <li><a href="ui-breadcrumb.jsp"><i class="las la-bars"></i>Breadcrumb</a></li>
                                     <li><a href="ui-buttons.jsp"><i class="las la-tablet"></i>Buttons</a></li>
                                     <li><a href="ui-cards.jsp"><i class="las la-credit-card"></i>Cards</a></li>
-                                    <li><a href="ui-carouseㄴl.jsp"><i class="las la-film"></i>Carousel</a></li>
+                                    <li><a href="ui-carousel.jsp"><i class="las la-film"></i>Carousel</a></li>
                                     <li><a href="ui-embed-video.jsp"><i class="las la-video"></i>Video</a></li>
                                     <li><a href="ui-grid.jsp"><i class="las la-border-all"></i>Grid</a></li>
                                     <li><a href="ui-images.jsp"><i class="las la-images"></i>Images</a></li>
@@ -187,7 +193,7 @@
                                         class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                 <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
                                     <li><a href="sign-in.jsp"><i class="las la-sign-in-alt"></i>Login</a></li>
-                                    <li><a href="sign-up.jsp"><i class="ri-login-circle-line"></i>Register</a></li>
+                                    <li><a href="#"><i class="ri-login-circle-line"></i>Register</a></li>
                                     <li><a href="pages-recoverpw.jsp"><i class="ri-record-mail-line"></i>Recover
                                         Password</a></li>
                                     <li><a href="pages-confirm-mail.jsp"><i class="ri-file-code-line"></i>Confirm
@@ -279,12 +285,8 @@
                     </div>
                 </div>
                 <div class="navbar-breadcrumb">
-                    <h5 class="mb-0">Shop</h5>
+                    <h5 class="mb-0"></h5>
                     <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Home Page</li>
-                        </ul>
                     </nav>
                 </div>
                 <div class="iq-search-bar">
@@ -462,9 +464,10 @@
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 toggle-cart-info">
                                         <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">All Carts<small
+                                            <h5 class="mb-0 text-white">장바구니<small
                                                     class="badge  badge-light float-right pt-1">4</small></h5>
                                         </div>
+                                        <!-- for문 start -->
                                         <a href="#" class="iq-sub-card">
                                             <div class="media align-items-center">
                                                 <div class="">
@@ -479,6 +482,7 @@
                                                         class="ri-close-fill"></i></div>
                                             </div>
                                         </a>
+                                        <!-- for문 end -->
                                         <a href="#" class="iq-sub-card">
                                             <div class="media align-items-center">
                                                 <div class="">
@@ -522,9 +526,7 @@
                                             </div>
                                         </a>
                                         <div class="d-flex align-items-center text-center p-3">
-                                            <a class="btn btn-primary mr-2 iq-sign-btn" href="#" role="button">View
-                                                Cart</a>
-                                            <a class="btn btn-primary iq-sign-btn" href="#" role="button">Shop now</a>
+                                            <a class="btn btn-primary mr-2 iq-sign-btn" href="<%=request.getContextPath()%>/basket.go" role="button">View Cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -545,13 +547,14 @@
                         <% } else { %>
                         <!-- 로그인 상태  -->
                         <li class="line-height pt-3">
-                            <a href="<%=request.getContextPath()%>/test.go"
+                            <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
+                                <!-- 이미지 수정 예정 -->
                                 <img src="${path}/resources/images/user/1.jpg" class="img-fluid rounded-circle mr-3"
                                      alt="user">
                                 <div class="caption">
-                                    <h6 class="mb-1 line-height">Barry Tech</h6>
-                                    <p class="mb-0 text-primary">$20.32</p>
+                                    <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
+                                    <p class="mb-0 text-primary"><%=session.getAttribute("UserMoney")%>원</p>
                                 </div>
                             </a>
 
@@ -562,7 +565,7 @@
                                             <h5 class="mb-0 text-white line-height">Hello Barry Tech</h5>
                                             <span class="text-white font-size-12">Available</span>
                                         </div>
-                                        <a href="profile.jsp" class="iq-sub-card iq-bg-primary-hover">
+                                        <a href="<%=request.getContextPath()%>/profile.go" class="iq-sub-card iq-bg-primary-hover">
                                             <div class="media align-items-center">
                                                 <div class="rounded iq-card-icon iq-bg-primary">
                                                     <i class="ri-file-user-line"></i>
@@ -607,7 +610,7 @@
                                             </div>
                                         </a>
                                         <div class="d-inline-block w-100 text-center p-3">
-                                            <a class="bg-primary iq-sign-btn" href="sign-in.jsp" role="button">Sign
+                                            <a class="bg-primary iq-sign-btn" href="<%=request.getContextPath()%>/logout.go" role="button">Sign
                                                 out<i class="ri-login-box-line ml-2"></i></a>
                                         </div>
                                     </div>
