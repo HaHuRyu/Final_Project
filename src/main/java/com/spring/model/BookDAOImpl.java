@@ -11,6 +11,7 @@ public class BookDAOImpl implements BookDAO{
 
     private final SqlSessionTemplate sqlSession;
 
+    @Autowired
     public BookDAOImpl(SqlSessionTemplate sqlSession) {
         this.sqlSession = sqlSession;
     }
@@ -78,6 +79,16 @@ public class BookDAOImpl implements BookDAO{
     @Override
     public int category_insert(CategoryDTO dto) {
         return this.sqlSession.insert("category_add",dto);
+    }
+
+    @Override
+    public int category_insert_NoChk(int no) {
+        return this.sqlSession.selectOne("category_NoChk", no);
+    }
+
+    @Override
+    public int category_insert_NameChk(String name) {
+        return this.sqlSession.selectOne("category_NameChk", name);
     }
 
     @Override

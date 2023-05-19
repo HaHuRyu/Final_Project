@@ -29,4 +29,8 @@ public interface BookDAO {
     public int category_modify(CategoryDTO dto);
 
     public int category_insert(CategoryDTO dto);
+
+    public int category_insert_NoChk(int no);
+
+    public int category_insert_NameChk(String name);
 }

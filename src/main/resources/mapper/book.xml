@@ -66,5 +66,14 @@
     <update id="category_modify" parameterType="CategoryDto">
         update category set category = #{category}, category_content = #{category_content} where category_no = #{category_no}
     </update>
+    
+    <select id="category_NoChk" parameterType="int">
+        select count(*) from category where category_no = #{value}
+    </select>
+    
+    <select id="category_NameChk" parameterType="String">
+        select count(*) from category where category = #{value}
+    </select>
+            
 
 </mapper>
