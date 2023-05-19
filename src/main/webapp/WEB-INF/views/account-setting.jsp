@@ -75,7 +75,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>

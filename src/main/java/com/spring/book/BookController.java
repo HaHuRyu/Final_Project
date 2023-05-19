@@ -127,10 +127,28 @@ public class BookController {
     
     //아직 수정안됨
     @RequestMapping("category_modify_ok.go")
-    public String category_modify_ok(@RequestParam("category_no") int num, Model model) {
-        CategoryDTO dto = this.dao.category_one(num);
-        model.addAttribute("Category_DTO", dto);
-        return "admin-modify-category";
+    public void category_modify_ok(@RequestParam("category_no") int no, @RequestParam("category_name") String Category, @RequestParam("category_detail") String detail, CategoryDTO dto, HttpServletResponse response) throws IOException {
+        dto.setCategory_no(no);
+        dto.setCategory(Category);
+        dto.setCategory_content(detail);
+
+        int result = this.dao.category_modify(dto);
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        if (result > 0) {
+            out.println("<script>");
+            out.println("alert('수정 되었습니다.')");
+            out.println("location.href='category_list.go'");
+            out.println("</script>");
+        }else{
+            out.println("<script>");
+            out.println("alert('수정이 실패하였습니다.')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
+
     }
 
     @RequestMapping("category_delete.go")

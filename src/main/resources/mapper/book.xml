@@ -64,7 +64,7 @@
 
     <!--카테고리 수정-->
     <update id="category_modify" parameterType="CategoryDto">
-        update category set category_no = #{category_no}, category = #{category}, category_content = #{category_content}
+        update category set category = #{category}, category_content = #{category_content} where category_no = #{category_no}
     </update>
 
 </mapper>

@@ -26,7 +26,7 @@ public interface BookDAO {
 
     public CategoryDTO category_one(int num);
 
-    public int category_modify(int no, CategoryDTO dto);
+    public int category_modify(CategoryDTO dto);
 
     public int category_insert(CategoryDTO dto);
 }

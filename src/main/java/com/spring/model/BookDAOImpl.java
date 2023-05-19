@@ -9,8 +9,11 @@ import java.util.List;
 @Repository
 public class BookDAOImpl implements BookDAO{
 
-    @Autowired
-    private SqlSessionTemplate sqlSession;
+    private final SqlSessionTemplate sqlSession;
+
+    public BookDAOImpl(SqlSessionTemplate sqlSession) {
+        this.sqlSession = sqlSession;
+    }
 
 
     // 도서
@@ -68,8 +71,8 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public int category_modify(int no, CategoryDTO dto) {
-        return this.sqlSession.update("category_modify");
+    public int category_modify(CategoryDTO dto) {
+        return this.sqlSession.update("category_modify", dto);
     }
 
     @Override

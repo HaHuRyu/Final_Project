@@ -75,7 +75,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li class="active"><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li class="active"><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -576,15 +576,15 @@
                            <table id="user-list-table" class="table table-striped table-bordered mt-4" role="grid" aria-describedby="user-list-page-info">
                              <thead>
                                  <tr>
-                                    <th>Profile</th>
-                                    <th>Name</th>
-                                    <th>Contact</th>
-                                    <th>Email</th>
-                                    <th>Country</th>
-                                    <th>Status</th>
-                                    <th>Company</th>
-                                    <th>Join Date</th>
-                                    <th>Action</th>
+                                    <th>프로필</th>
+                                    <th>아이디</th>
+                                    <th>이름</th>
+                                    <th>연락처</th>
+                                    <th>이메일</th>
+                                    <th>주소</th>
+                                    <th>직업</th>
+                                    <th>가입일</th>
+                                    <th>액션</th>
                                  </tr>
                              </thead>
                              <tbody>

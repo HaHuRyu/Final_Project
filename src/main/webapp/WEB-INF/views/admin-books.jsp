@@ -67,7 +67,7 @@
                             <li><a href="<%=request.getContextPath()%>/category_list.go"><i class="ri-list-check-2"></i>Category Lists</a></li>
                             <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
                             <li class="active" ><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>Books</a></li>
-                            <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                            <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                     </li>
                     <li>

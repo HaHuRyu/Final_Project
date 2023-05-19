@@ -76,7 +76,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -547,7 +547,7 @@
                            <form action="<%=request.getContextPath()%>/category_modify_ok.go" method="post">
                               <div class="form-group">
                                  <label for="category_no">카테고리 No:</label>
-                                 <input id="category_no" name="category_no" type="text" class="form-control" value="${Category_DTO.category_no}">
+                                 <input id="category_no" name="category_no" type="text" class="form-control" value="${Category_DTO.category_no}" readonly>
                               </div>
                               <div class="form-group">
                                  <label for="category_name">카테고리명:</label>
