@@ -586,7 +586,7 @@
                                                       </div>
                                                    </div>
                                                    <div class="col-sm-2">
-                                                      <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
+                                                      <a href="<%=request.getContextPath()%>/basket_delete.go?bookNo=${book.book_no}" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
                                                    </div>
                                                 </div>
                                              </div>

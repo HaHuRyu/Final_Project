@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface BasketService {
     List<BasketDTO> basketList(int userNo);
-
+    List<BookDTO> bookList(int userNo);
 
     void updateQuantity(BasketDTO basket);
 }

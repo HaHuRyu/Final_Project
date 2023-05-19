@@ -1,6 +1,12 @@
 package com.spring.model;
 
+import java.util.List;
+
 public interface UserDAO {
+
+    public List<UserDTO> findAll();
+
+    public int allCount();
 
     public int save(UserDTO user);
 

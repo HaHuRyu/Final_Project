@@ -46,7 +46,7 @@
                             <li><a href="book-page.jsp"><i class="ri-book-line"></i>Book Page</a></li>
                             <li><a href="book-pdf.jsp"><i class="ri-file-pdf-line"></i>Book PDF</a></li>
                             <li><a href="<%=request.getContextPath()%>/basket.go"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
-                            <li><a href="wishlist.jsp"><i class="ri-heart-line"></i>wishlist</a></li>
+                            <li><a href="<%=request.getContextPath()%>/wish.go"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                     </li>
                     <li>
@@ -467,64 +467,26 @@
                                             <h5 class="mb-0 text-white">장바구니<small
                                                     class="badge  badge-light float-right pt-1">4</small></h5>
                                         </div>
-                                        <!-- for문 start -->
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${path}/resources/images/cart/01.jpg"
-                                                         alt="">
+                                        <c:forEach var="BookDTO" items="${sessionScope.BookList}">
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="rounded" src="${path}/resources/images/browse-books/${BookDTO.book_image}"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">${BookDTO.book_title}</h6>
+                                                        <p class="mb-0">${BookDTO.book_price}원</p>
+                                                    </div>
+
+                                                    <div class="float-right font-size-24 text-danger">
+                                                        <i class="ri-close-fill" onclick="location.href='basket_header_delete.go?bookNo=${BookDTO.book_no}'"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Night People book</h6>
-                                                    <p class="mb-0">$32</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i
-                                                        class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
-                                        <!-- for문 end -->
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${path}/resources/images/cart/02.jpg"
-                                                         alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">The Sin Eater Book</h6>
-                                                    <p class="mb-0">$40</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i
-                                                        class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${path}/resources/images/cart/03.jpg"
-                                                         alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">the Orange Tree</h6>
-                                                    <p class="mb-0">$30</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i
-                                                        class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${path}/resources/images/cart/04.jpg"
-                                                         alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Harsh Reality book</h6>
-                                                    <p class="mb-0">$25</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i
-                                                        class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
+                                            </a>
+
+                                        </c:forEach>
+
                                         <div class="d-flex align-items-center text-center p-3">
                                             <a class="btn btn-primary mr-2 iq-sign-btn" href="<%=request.getContextPath()%>/basket.go" role="button">View Cart</a>
                                         </div>

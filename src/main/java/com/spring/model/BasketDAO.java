@@ -11,4 +11,12 @@ public interface BasketDAO {
     public void deleteByuserNoandBookNo(BasketDTO basket);
 
     public void updateQuantity(BasketDTO basket);
+
+    public void delete(BasketDTO basketDTO);
+
+    public void insert(BasketDTO basketDTO);
+
+    public BasketDTO findByBookNo(BasketDTO basketDTO);
+
+    public void updateSequence(BasketDTO basketDTO);
 }

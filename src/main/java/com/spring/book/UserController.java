@@ -8,13 +8,17 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.spring.model.BasketDTO;
+import com.spring.model.BookDTO;
 import com.spring.model.UserDAO;
 import com.spring.model.UserDTO;
+import com.spring.service.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -29,6 +33,9 @@ import org.springframework.web.multipart.MultipartRequest;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    BasketService basketService;
 
     @Autowired
     public UserDAO userDAO;
@@ -122,6 +129,11 @@ public class UserController {
                     session.setAttribute("UserJob", dto.getUser_job());
                     session.setAttribute("UserIntro", dto.getUser_intro());
                     session.setAttribute("UserImg", dto.getUser_img());
+
+                    session.setAttribute("BasketList", basketService.basketList(dto.getUser_no()));
+                    session.setAttribute("BookList", basketService.bookList(dto.getUser_no()));
+
+
 
 
                     out.println("<script>");

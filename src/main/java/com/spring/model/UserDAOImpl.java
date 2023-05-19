@@ -4,6 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserDAOImpl implements UserDAO {
 
@@ -11,6 +13,15 @@ public class UserDAOImpl implements UserDAO {
     private SqlSessionTemplate sqlSession;
 
 
+    @Override
+    public List<UserDTO> findAll() {
+        return this.sqlSession.selectList("contAll");
+    }
+
+    @Override
+    public int allCount() {
+        return this.sqlSession.selectOne("contAllCount");
+    }
 
     @Override
     public int save(UserDTO user) {
