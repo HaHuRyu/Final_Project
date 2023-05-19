@@ -39,28 +39,28 @@
                            <form action="admin-books.jsp">
                               <div class="form-group">
                                  <label>책 제목:</label>
-                                 <input type="text" class="form-control"  id="title">
+                                 <input onkeyup="delayedGetList()" type="text" class="form-control" name="title">
                               </div>
 
                               <div class="form-group">
                                  <label>책 저자:</label>
-                                 <input type="text" class="form-control" id="author">
+                                 <input type="text" class="form-control" name="author">
                               </div>
                               <div class="form-group">
                                  <label>책 이미지:</label>
                                  <div class="custom-file">
-                                    <input type="text" class="form-control" id="img">
+                                    <input type="text" class="form-control" name="img">
                                  </div>
                               </div>
 
                               <div class="form-group">
                                  <label>책 가격:</label>
-                                 <input type="text" class="form-control">
+                                 <input type="text" class="form-control" name="price">
                               </div>
 
                               <div class="form-group">
                                  <label>책 소개글:</label>
-                                 <textarea class="form-control" rows="4" id="cont"></textarea>
+                                 <textarea class="form-control" rows="4" name="cont"></textarea>
                               </div>
                               <button type="submit" class="btn btn-primary">등록</button>
                               <button type="reset" class="btn btn-danger">다시 작성</button>
@@ -94,6 +94,8 @@
       <!-- color-customizer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script type="text/javascript" src="${path}/resources/js/seller-add.js"></script>
       <script src="${path}/resources/js/jquery.min.js"></script>
       <script src="${path}/resources/js/popper.min.js"></script>
       <script src="${path}/resources/js/bootstrap.min.js"></script>

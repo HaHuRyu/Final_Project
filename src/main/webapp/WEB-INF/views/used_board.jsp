@@ -50,9 +50,12 @@
                                           <input type="text" class="text search-input" placeholder="키워드를 입력하세요">
                                           <a class="search-link" href="used_board_search.go"><i class="ri-search-line"></i></a>
                                        </form>
-                                       <input type="button" onclick="location.href='used_board_search.go'" class="btn btn-primary search-data ml-2">Search</input>
+                                       <input type="button" onclick="location.href='used_board_search.go'" class="btn btn-primary search-data ml-2" value="검색"/>
                                     </div>
-                                    <input align="right" type="button" onclick="location.href='seller_add.go'" class="btn btn-primary search-data ml-2">글 등록</input>
+                                    <div style="float:right;">
+                                    <input align="right" type="button" onclick="location.href='seller_add.go'" class="btn btn-primary search-data ml-2" value="글 등록"/>
+
+                                    </div>
 
                                  </li>
                               </ul>
