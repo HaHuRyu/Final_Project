@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="${path}/resources/css/responsive.css">
 </head>
 <body class="sidebar-main-active right-column-fixed">
+<c:set value="${user}" var="dto" />
 <!-- loader Start -->
 <div id="loading">
   <div id="loading-center">
@@ -536,7 +537,7 @@
   </div>
   <!-- TOP Nav Bar END -->
 
-  <!-- Page Content  -->
+  <!-- 회원정보 수정  -->
   <div id="content-page" class="content-page">
     <div class="container-fluid">
       <div class="row">
@@ -552,95 +553,112 @@
                     </div>
                   </div>
                   <div class="iq-card-body">
-                    <form>
+                    <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/modify.ok.go">
                       <div class="form-group row align-items-center">
                         <div class="col-md-12">
                         </div>
                       </div>
                       <div class=" row align-items-center">
                         <div class="form-group col-sm-6">
-                          <label for="fname">이름:</label>
-                          <input type="text" class="form-control" id="fname" placeholder="Name">
+                          <label for="user_name">이름:</label>
+                          <input class="form-control" name="name" id="user_name" value="${dto.user_name}" readonly>
                         </div>
                         <div class="form-group col-sm-6">
-                          <label for="lname">Last Name:</label>
-                          <input type="text" class="form-control" id="lname" value="Tech">
+                          <label for="user_email">이메일:</label>
+                          <input class="form-control" id="user_email" name="email" value="${dto.user_email}">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label for="uname">User Name:</label>
-                          <input type="text" class="form-control" id="uname" value="Barry@01">
+                          <label for="user_id">아이디:</label>
+                          <input class="form-control" id="user_id" name="id" value="${dto.user_id}">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label for="cname">City:</label>
-                          <input type="text" class="form-control" id="cname" value="Atlanta">
+                          <label for="user_password">비밀번호:</label>
+                          <input class="form-control" id="user_password" name="pwd" value="${dto.user_pwd}">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label class="d-block">Gender:</label>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input" checked="">
-                            <label class="custom-control-label" for="customRadio6"> Male </label>
-                          </div>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio7"> Female </label>
-                          </div>
+                          <label for="user_nickname">닉네임:</label>
+                          <input class="form-control" id="user_nickname" name="nickname" value="${dto.user_nickname}">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label for="dob">Date Of Birth:</label>
-                          <input  class="form-control" id="dob" value="1984-01-24">
+                          <label for="user_phone">전화번호:</label>
+                          <input class="form-control" id="user_phone" name="phone" value="${dto.user_phone}">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label>Marital Status:</label>
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected="">Single</option>
-                            <option>Married</option>
-                            <option>Widowed</option>
-                            <option>Divorced</option>
-                            <option>Separated </option>
+                          <label for="user_job">직업:</label>
+                          <input class="form-control" id="user_job" name="job" value="${dto.user_job}">
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="user_addr">주소:</label>
+                          <input class="form-control" id="user_addr" name="addr" value="${dto.user_addr}">
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="user_intro">소개글:</label>
+                          <textarea class="form-control" id="user_intro" name="intro" >${dto.user_intro}</textarea>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="img">프로필:</label>
+                          <input type="file" class="btn btn-outline-success" id="img" name="image">
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label>관심분야1</label>
+                          <select name="cate1" class="form-control" id="exampleFormControlSelect4">
+                            <option value="0">소설</option>
+                            <option value="100">요리</option>
+                            <option value="200">경제</option>
+                            <option value="300">정치/사회</option>
+                            <option value="400">자기개발</option>
+                            <option value="500">컴퓨터/IT</option>
+                            <option value="600">잡지</option>
+                            <option value="700">참고서</option>
+                            <option value="800">여행</option>
+                            <option value="900">만화</option>
                           </select>
                         </div>
                         <div class="form-group col-sm-6">
-                          <label>Age:</label>
-                          <select class="form-control" id="exampleFormControlSelect2">
-                            <option>12-18</option>
-                            <option>19-32</option>
-                            <option selected="">33-45</option>
-                            <option>46-62</option>
-                            <option>63 > </option>
+                          <label>관심분야2</label>
+                          <select name="cate2" class="form-control" id="exampleFormControlSelect5">
+                            <option value="0">소설</option>
+                            <option value="100">요리</option>
+                            <option value="200">경제</option>
+                            <option value="300">정치/사회</option>
+                            <option value="400">자기개발</option>
+                            <option value="500">컴퓨터/IT</option>
+                            <option value="600">잡지</option>
+                            <option value="700">참고서</option>
+                            <option value="800">여행</option>
+                            <option value="900">만화</option>
                           </select>
+                          <script>
+                            // 중복 선택 방지
+                            const cate1 = document.querySelector("[name='cate1']");
+                            const cate2 = document.querySelector("[name='cate2']");
+                            cate1.addEventListener('change', function() {
+                              const selectedValue = this.value;
+                              const options = document.querySelectorAll('#exampleFormControlSelect5 option');
+                              options.forEach(function(option) {
+                                option.disabled = (option.value === selectedValue);
+                              });
+                            });
+                            cate2.addEventListener('change', function() {
+                              const selectedValue = this.value;
+                              const options = document.querySelectorAll('#exampleFormControlSelect4 option');
+                              options.forEach(function(option) {
+                                option.disabled = (option.value === selectedValue);
+                              });
+                            });
+                          </script>
                         </div>
-                        <div class="form-group col-sm-6">
-                          <label>Country:</label>
-                          <select class="form-control" id="exampleFormControlSelect3">
-                            <option>Caneda</option>
-                            <option>Noida</option>
-                            <option selected="">USA</option>
-                            <option>India</option>
-                            <option>Africa</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label>State:</label>
-                          <select class="form-control" id="exampleFormControlSelect4">
-                            <option>California</option>
-                            <option>Florida</option>
-                            <option selected="">Georgia</option>
-                            <option>Connecticut</option>
-                            <option>Louisiana</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-sm-12">
-                          <label>Address:</label>
-                          <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">
-37 Cardinal Lane
-Petersburg, VA 23803
-United States of America
-Zip Code: 85001
-                                          </textarea>
-                        </div>
+                        <input type="hidden" name="money" value="0">
+                        <input type="hidden" name="approve" value="0">
+                        <input type="hidden" name="number" value="${dto.user_no}">
+                        <input type="hidden" name="birth" value="${dto.user_birth}">
+                      <button type="submit" class="btn btn-primary mr-2">정보수정</button>
+                      <button type="reset" class="btn btn-primary mr-2">다시작성</button>
+                        <input type="button" value="회원탈퇴" class="btn iq-bg-danger"
+                               onclick="if(confirm('정말로 탈퇴하시겠습니까?')) {
+                                       location.href='user.delete.go?user_no=${dto.user_no}'
+                                       }else { return; }">
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
                     </form>
                   </div>
                 </div>

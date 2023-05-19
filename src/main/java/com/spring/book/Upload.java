@@ -19,7 +19,7 @@ public class Upload {
 		boolean isUpload = false;
 		
 		String uploadPath =
-			"C:\\Users\\Ace\\Documents\\GitHub\\Final_Project\\src\\main\\webapp\\resources\\images\\user_profile_image";
+			"Final_Project\\src\\main\\webapp\\resources\\images\\user_profile_image";
 		
 		Calendar cal = Calendar.getInstance();
 		
@@ -71,9 +71,9 @@ public class Upload {
 				
 				try {
 					File origin = 
-							new File(homedir+"/"+saveFileName);
+							new File(saveFileName);
 
-					imgDir = homedir+"/"+saveFileName;
+					imgDir = saveFileName;
 					// transferTo() : 파일 데이터를 지정한 폴더로
 					//                실제 저장시키는 메서드.
 					mFile.transferTo(origin);

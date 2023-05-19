@@ -40,13 +40,22 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public int update(UserDTO user) {
 
-        return this.sqlSession.update("add" , user);
+        return this.sqlSession.update("modi" , user);
     }
 
     @Override
-    public void delete(UserDAO user) {
+    public int delete(int no) {
+
+        return this.sqlSession.delete("delete",no);
 
     }
+
+    @Override
+    public void sequence(int no) {
+        this.sqlSession.update("seq",no);
+
+    }
+
 
     @Override
     public void deleteByUsername(String username) {

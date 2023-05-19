@@ -67,7 +67,7 @@
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                             <li><a href="<%=request.getContextPath()%>/profile.go"><i class="las la-id-card-alt"></i>User Profile</a></li>
-                            <li><a href="<%=request.getContextPath() %>/user_modify.go"><i class="las la-edit"></i>User Edit</a></li>
+                            <li><a href="<%=request.getContextPath() %>/user_modify.go"><i class="las la-edit"></i>회원정보 관리</a></li>
                             <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
                         </ul>
                     </li>

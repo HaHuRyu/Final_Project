@@ -88,15 +88,52 @@
                                       <label>관심분야1</label>
                                       <select name="category1" class="form-control" id="exampleFormControlSelect4">
                                           <option value="0">소설</option>
-                                          <option value="100">공상과학</option>
+                                          <option value="100">요리</option>
+                                          <option value="200">경제</option>
+                                          <option value="300">정치/사회</option>
+                                          <option value="400">자기개발</option>
+                                          <option value="500">컴퓨터/IT</option>
+                                          <option value="600">잡지</option>
+                                          <option value="700">참고서</option>
+                                          <option value="800">여행</option>
+                                          <option value="900">만화</option>
                                       </select>
                                       </div>
                                       <div class="form-group col-sm-6">
                                           <label>관심분야2</label>
-                                          <select name="category2" class="form-control" id="exampleFormControlSelect4">
+                                          <select name="category2" class="form-control" id="exampleFormControlSelect5">
                                               <option value="0">소설</option>
-                                              <option value="100">공상과학</option>
+                                              <option value="100">요리</option>
+                                              <option value="200">경제</option>
+                                              <option value="300">정치/사회</option>
+                                              <option value="400">자기개발</option>
+                                              <option value="500">컴퓨터/IT</option>
+                                              <option value="600">잡지</option>
+                                              <option value="700">참고서</option>
+                                              <option value="800">여행</option>
+                                              <option value="900">만화</option>
                                           </select>
+
+                                          <script>
+                                              // 중복 선택 방지
+                                              const cate1 = document.querySelector("[name='category1']");
+                                              const cate2 = document.querySelector("[name='category2']");
+                                              cate1.addEventListener('change', function() {
+                                                  const selectedValue = this.value;
+                                                  const options = document.querySelectorAll('#exampleFormControlSelect5 option');
+                                                  options.forEach(function(option) {
+                                                      option.disabled = (option.value === selectedValue);
+                                                  });
+                                              });
+                                              cate2.addEventListener('change', function() {
+                                                  const selectedValue = this.value;
+                                                  const options = document.querySelectorAll('#exampleFormControlSelect4 option');
+                                                  options.forEach(function(option) {
+                                                      option.disabled = (option.value === selectedValue);
+                                                  });
+                                              });
+                                          </script>
+
                                       </div>
                                       <input type="hidden" name="user_money" value="0">
                                       <input type="hidden" name="user_approve" value="0">

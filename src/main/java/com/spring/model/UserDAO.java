@@ -1,5 +1,6 @@
 package com.spring.model;
 
+
 public interface UserDAO {
 
     public int save(UserDTO user);
@@ -13,7 +14,11 @@ public interface UserDAO {
 
     public int update(UserDTO user);
 
-    public void delete(UserDAO user);
+    public int delete(int user);
+
+    public void sequence(int no);
+
+
 
     public void deleteByUsername(String username);
 

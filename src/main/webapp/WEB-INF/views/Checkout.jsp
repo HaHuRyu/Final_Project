@@ -667,43 +667,43 @@
                                     <div class="row mt-3">
                                        <div class="col-md-6">
                                           <div class="form-group">
-                                             <label>Full Name: *</label> 
+                                             <label>Full Name: *</label>
                                              <input type="text" class="form-control" name="fname" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Mobile Number: *</label> 
+                                          <div class="form-group">
+                                             <label>Mobile Number: *</label>
                                              <input type="text" class="form-control" name="mno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Flat, House No: *</label> 
+                                          <div class="form-group">
+                                             <label>Flat, House No: *</label>
                                              <input type="text" class="form-control" name="houseno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Landmark e.g. near apollo hospital:: *</label> 
+                                          <div class="form-group">
+                                             <label>Landmark e.g. near apollo hospital:: *</label>
                                              <input type="text" class="form-control" name="landmark" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Town/City: *</label> 
+                                          <div class="form-group">
+                                             <label>Town/City: *</label>
                                              <input type="text" class="form-control" name="city" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Pincode: *</label> 
+                                          <div class="form-group">
+                                             <label>Pincode: *</label>
                                              <input type="text" class="form-control" name="pincode" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>State: *</label> 
+                                          <div class="form-group">
+                                             <label>State: *</label>
                                              <input type="text" class="form-control" name="state" required="">
                                           </div>
                                        </div>
