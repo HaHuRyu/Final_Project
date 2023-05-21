@@ -14,19 +14,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Map;
 
+
 @RestController
-public class KakaoApiController {
+public class AladinApiController {
 
-    private final String key = "258d58f60b33a7aad3db9df0b77c5674";
-    private final String url = "https://dapi.kakao.com/v3/search/book";
+    @RequestMapping("aladinApi.go")
+    @GetMapping("/aladinSearch")
+    public Map Search(@RequestParam String isbn) {
 
-
-    /**
-     * 카카오 검색용 API
-     */
-    @RequestMapping("KakaoApi.go")
-    @GetMapping("/search")
-    public Map Search(@RequestParam String query) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -39,15 +34,18 @@ public class KakaoApiController {
         httpHeaders.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         httpHeaders.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 
-        httpHeaders.set("Authorization", "KakaoAK " + key);
 
         HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
 
         URI targetUrl = UriComponentsBuilder
-                .fromUriString(url)
-                .queryParam("query", query)
+                .fromUriString("https://www.aladin.co.kr/ttb/api/ItemLookUp.aspx")
+                .queryParam("ttbkey", "ttbdlwjdgml45671143001")
+                .queryParam("itemIdType", "ISBN")
+                .queryParam("ItemId", isbn)
+                .queryParam("output", "js")
+                .queryParam("Version", "20131101")
+                .queryParam("OptResult", "ebookList,usedList,reviewList")
                 .build()
-                .encode(StandardCharsets.UTF_8)
                 .toUri();
 
         ResponseEntity<Map> result = restTemplate.exchange(targetUrl, HttpMethod.GET, httpEntity, Map.class);
@@ -55,4 +53,5 @@ public class KakaoApiController {
 
         return result.getBody();
     }
+
 }
