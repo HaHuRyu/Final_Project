@@ -153,14 +153,17 @@
                            <div class="iq-header-title">
                               <h4 class="card-title mb-0"> Money</h4>
                            </div>
-                        </div> 
-                        <div class="iq-card-body">
-                                    <h6>내 잔액 :</h6>
-                                    <div class="iq-progress-bar-linear d-inline-block mt-1 w-50">
-                                          <span>    ${sessionScope.UserMoney}</span>
-                                       <div><input type="button" class="btn btn-primary mr-2" value="충전" onclick="location.href='payment.go'" ></div>
-                                    </div>
                         </div>
+                        <div class="iq-card-body">
+                           <h6 class="d-inline-block">내 잔액:</h6>
+                           <div class="d-inline-block w-50 text-center">
+                              <span>${sessionScope.UserMoney}</span>
+                           </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <div class="d-inline-block">
+                              <input type="button" class="btn btn-primary mr-2" value="충전" onclick="location.href='payment.go'">
+                           </div>
+                        </div>
+
                      </div>
                   </div>
                   <div class="col-12 col-md-12 col-lg-8">
