@@ -16,4 +16,12 @@
     <select id="orderList" parameterType="int" resultType="OrderDTO">
         select * from final.order where user_no=#{value} order by order_no desc
     </select>
+
+    <select id="allCount" resultType="int">
+        select count(*) from final.order
+    </select>
+    
+    <select id="totalSales" resultType="int">
+        select sum(order_price) from final.order
+    </select>
 </mapper>

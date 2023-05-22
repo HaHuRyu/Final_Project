@@ -1,9 +1,6 @@
 package com.spring.book;
 
-import com.spring.model.BookDAO;
-import com.spring.model.BookDTO;
-import com.spring.model.CategoryDTO;
-import com.spring.model.UserDAO;
+import com.spring.model.*;
 import com.spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +21,14 @@ public class BookController {
     private final BookService bookService;
     private final BookDAO dao;
     private final UserDAO userDAO;
+    private final OrderDAO orderDAO;
 
     @Autowired
-    public BookController(BookService bookService, BookDAO dao, UserDAO userDAO) {
+    public BookController(BookService bookService, BookDAO dao, UserDAO userDAO, OrderDAO orderDAO) {
         this.bookService = bookService;
         this.dao = dao;
         this.userDAO = userDAO;
+        this.orderDAO = orderDAO;
     }
 
     //    도서 관련
@@ -220,7 +219,11 @@ public class BookController {
     @RequestMapping("admin_dashboard.go")
     public String Admin_dashboard(Model model){
         int book_count = this.dao.book_count();
-        /*int user_count = this.userDAO;*/
+        int user_count = this.userDAO.allCount();
+        int order_count = this.orderDAO.allCount();
+        int order_sale = this.orderDAO.totalSales();
+
+        model.addAttribute("book_count",book_count).addAttribute("user_count", user_count).addAttribute("order_count", order_count).addAttribute("order_sale", order_sale);
 
         return "admin-dashboard";
     }

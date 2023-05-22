@@ -18,6 +18,16 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public int allCount() {
+        return this.sqlSession.selectOne("allCount");
+    }
+
+    @Override
+    public int totalSales() {
+        return this.sqlSession.selectOne("totalSales");
+    }
+
+    @Override
     public List<OrderDTO> getList(int user_no) {
         return this.sqlSession.selectList("orderList", user_no);
     }

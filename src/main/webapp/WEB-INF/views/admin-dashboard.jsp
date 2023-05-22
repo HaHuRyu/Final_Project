@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -546,8 +547,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-primary"><i class="ri-user-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">5000</span></h2>
-                                 <h5 class="">Users</h5>
+                                 <h2 class="mb-0"><span class="counter">${user_count}</span></h2>
+                                 <h5 class="">총 회원 수</h5>
                               </div>
                            </div>
                         </div>
@@ -559,8 +560,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-danger"><i class="ri-book-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">4.8</span>k</h2>
-                                 <h5 class="">Books</h5>
+                                 <h2 class="mb-0"><span class="counter">${book_count}</span></h2>
+                                 <h5 class="">총 도서 수</h5>
                               </div>
                            </div>
                         </div>
@@ -572,8 +573,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-warning"><i class="ri-shopping-cart-2-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">1.2</span>k</h2>
-                                 <h5 class="">Sale</h5>
+                                 <h2 class="mb-0"><span class="counter"> <fmt:formatNumber value="${order_sale}" pattern="#,###"/></span>원</h2>
+                                 <h5 class="">판매액</h5>
                               </div>
                            </div>
                         </div>
@@ -585,8 +586,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-info"><i class="ri-radar-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">690</span></h2>
-                                 <h5 class="">Orders</h5>
+                                 <h2 class="mb-0"><span class="counter">${order_count}</span></h2>
+                                 <h5 class="">주문수</h5>
                               </div>
                            </div>
                         </div>
@@ -604,6 +605,7 @@
                         </div>
                      </div>
                   </div>
+
                   <div class="col-md-4">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
@@ -861,5 +863,66 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+
+      <script>
+         if (jQuery('#iq-sale-chart').length) {
+            var options = {
+               series: [{
+                  name: 'Net Profit',
+                  data: [99, 55, 57, 56, 61, 58, 63]
+               }],
+               chart: {
+                  type: 'bar'
+               },
+               colors: ['#0dd6b8'],
+               plotOptions: {
+                  bar: {
+                     horizontal: false,
+                     columnWidth: '45%',
+                     endingShape: 'rounded'
+                  },
+               },
+               dataLabels: {
+                  enabled: false
+               },
+               stroke: {
+                  show: true,
+                  width: 2,
+                  colors: ['transparent']
+               },
+               xaxis: {
+                  categories: ['일', '월', '화', '수', '목', '금', '토'],
+               },
+               yaxis: {
+                  title: {
+                     text: ''
+                  },
+                  labels: {
+                     offsetX: -20,
+                     offsetY: 0
+                  },
+               },
+               grid: {
+                  padding: {
+                     left: -5,
+                     right: 0
+                  }
+               },
+               fill: {
+                  opacity: 1
+               },
+               tooltip: {
+                  y: {
+                     formatter: function (val) {
+                        return "$ " + val + " thousands"
+                     }
+                  }
+               }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#iq-sale-chart"), options);
+            chart.render();
+         }
+      </script>
    </body>
 </html>
