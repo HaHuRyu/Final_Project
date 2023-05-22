@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BookDAOImpl implements BookDAO{
@@ -16,6 +17,11 @@ public class BookDAOImpl implements BookDAO{
         this.sqlSession = sqlSession;
     }
 
+
+    @Override
+    public int book_count() {
+        return this.sqlSession.selectOne("book_count");
+    }
 
     // 도서
     @Override
@@ -72,8 +78,8 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public int category_modify(CategoryDTO dto) {
-        return this.sqlSession.update("category_modify", dto);
+    public int category_modify(Map< String, Object> category) {
+        return this.sqlSession.update("category_modify", category);
     }
 
     @Override
@@ -82,12 +88,12 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public int category_insert_NoChk(int no) {
+    public int category_NoChk(int no) {
         return this.sqlSession.selectOne("category_NoChk", no);
     }
 
     @Override
-    public int category_insert_NameChk(String name) {
+    public int category_NameChk(String name) {
         return this.sqlSession.selectOne("category_NameChk", name);
     }
 

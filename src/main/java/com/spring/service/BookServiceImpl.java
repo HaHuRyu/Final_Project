@@ -31,15 +31,26 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public int category_update_chk(int no) {
-        return 0;
-    }
-
-    @Override
     public int category_insert_chk(int no, String name) {
 
-        int no_result = this.bookDAO.category_insert_NoChk(no);
-        int name_result = this.bookDAO.category_insert_NameChk(name);
+        int no_result = this.bookDAO.category_NoChk(no);
+        int name_result = this.bookDAO.category_NameChk(name);
+
+        if(no_result > 0){
+            return 1;
+        }else if(name_result > 0){
+            return 2;
+        }else {
+            return 0;
+        }
+    }
+
+
+    @Override
+    public int category_modify_chk(int ex_no, int no, String ex_name, String name) {
+
+        int no_result = (no == ex_no) ? 0 : this.bookDAO.category_NoChk(no);
+        int name_result = (name.equals(ex_name)) ? 0 : this.bookDAO.category_NameChk(name);
 
         if(no_result > 0){
             return 1;

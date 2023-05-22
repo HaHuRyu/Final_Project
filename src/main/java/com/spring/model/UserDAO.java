@@ -1,5 +1,8 @@
 package com.spring.model;
 
+import java.util.List;
+import java.util.Map;
+
 public interface UserDAO {
 
     public int save(UserDTO user);
@@ -30,4 +33,7 @@ public interface UserDAO {
     public boolean existsByConfirmationToken(String confirmationToken);
 
     public long count();
+
+    //유저 리스트
+    public List<Map<String, Object>> findAll();
 }

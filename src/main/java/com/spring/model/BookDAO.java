@@ -1,8 +1,11 @@
 package com.spring.model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookDAO {
+
+    public int book_count();
 
     public List<BookDTO> book_list();
 
@@ -26,11 +29,12 @@ public interface BookDAO {
 
     public CategoryDTO category_one(int num);
 
-    public int category_modify(CategoryDTO dto);
+    public int category_modify(Map< String, Object> category);
 
     public int category_insert(CategoryDTO dto);
 
-    public int category_insert_NoChk(int no);
+    public int category_NoChk(int no);
 
-    public int category_insert_NameChk(String name);
+    public int category_NameChk(String name);
+
 }

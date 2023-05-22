@@ -547,10 +547,12 @@
                            <form action="<%=request.getContextPath()%>/category_modify_ok.go" method="post">
                               <div class="form-group">
                                  <label for="category_no">카테고리 No:</label>
-                                 <input id="category_no" name="category_no" type="text" class="form-control" value="${Category_DTO.category_no}" readonly>
+                                 <input type="hidden" name="ex_no" value="${Category_DTO.category_no}">
+                                 <input id="category_no" name="category_no" type="text" class="form-control" value="${Category_DTO.category_no}">
                               </div>
                               <div class="form-group">
                                  <label for="category_name">카테고리명:</label>
+                                 <input type="hidden" name="ex_name" value="${Category_DTO.category}">
                                  <input id="category_name" name="category_name" type="text" class="form-control" value="${Category_DTO.category}">
                               </div>
                               <div class="form-group">
