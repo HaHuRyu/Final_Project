@@ -696,7 +696,7 @@
                                           <div class="modal-footer">
                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                                              <c:if test="${totalPrice > sessionScope.UserMoney}">
-                                                <button type="button" class="btn btn-danger">충전하기</button>
+                                                <button type="button" class="btn btn-danger" onclick="location.href='<%=request.getContextPath()%>/payment.go'">충전하기</button>
                                              </c:if>
                                              <c:if test="${totalPrice <= sessionScope.UserMoney}">
                                                 <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/pay.go?bp=${totalPrice}'">결제하기</button>
