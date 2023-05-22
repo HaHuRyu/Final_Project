@@ -697,32 +697,17 @@
                               <table class="table mb-0 table-borderless">
                                  <thead>
                                     <tr>
-                                       <th scope="col">Client</th>
-                                       <th scope="col">Date</th>
-                                       <th scope="col">Invoice</th>
-                                       <th scope="col">Amount</th>
-                                       <th scope="col">atatus</th>
-                                       <th scope="col">Action</th>
+                                       <th scope="col">주문자명</th>
+                                       <th scope="col">주문날짜</th>
+                                       <th scope="col">주문번호</th>
+                                       <th scope="col">주문금액</th>
+                                       <th scope="col">상태</th>
+                                       <th scope="col"></th>
 
                                     </tr>
                                  </thead>
                                  <tbody>
-                                    <tr>
-                                       <td>Ira Membrit</td>
-                                       <td>18/10/2019</td>
-                                       <td>20156</td>
-                                       <td>$1500</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Copy</td>
-                                    </tr>
-                                    <tr>
-                                       <td>Pete Sariya</td>
-                                       <td>26/10/2019</td>
-                                       <td>7859</td>
-                                       <td>$2000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Send Email</td>
-                                    </tr>
+
                                     <tr>
                                        <td>Cliff Hanger</td>
                                        <td>18/11/2019</td>
@@ -739,14 +724,7 @@
                                        <td><div class="badge badge-pill badge-success">Paid</div></td>
                                        <td>Copy</td>
                                     </tr>
-                                    <tr>
-                                       <td>Anna Mull</td>
-                                       <td>24/12/2019</td>
-                                       <td>568569</td>
-                                       <td>$10000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Send Email</td>
-                                    </tr>
+
                                  </tbody>
                               </table>
                            </div>
