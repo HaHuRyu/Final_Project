@@ -8,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -398,5 +400,42 @@ public class UserController {
 
 
     }
+
+    @RequestMapping("payment.go")
+        public String payment(HttpSession session){
+
+        return "payment";
+        }
+
+        @RequestMapping("charge.go")
+    public void charge(UserDTO dto ,HttpServletResponse response, HttpServletRequest request,HttpSession session) throws IOException {
+
+        int money = Integer.parseInt(request.getParameter("charge"));
+        int userno = Integer.parseInt(session.getAttribute("UserNo").toString());
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_no", userno);
+        map.put("money", money);
+
+        int check = this.userDAO.plusPayment(map);
+
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+
+            if (check > 0) {
+                session.setAttribute("UserMoney",userDAO.findByUserId((String)session.getAttribute("UserId")).getUser_money());
+                out.println("<script>");
+                out.println("alert('충전 성공')");
+                out.println("location.href='home.go'");
+                out.println("</script>");
+            } else {
+                out.println("<script>");
+                out.println("alert('충전 실패')");
+                out.println("history.back()");
+                out.println("</script>");
+            }
+
+        }
+
 }
 

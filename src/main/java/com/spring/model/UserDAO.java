@@ -1,6 +1,8 @@
 package com.spring.model;
 
 
+import java.util.Map;
+
 public interface UserDAO {
 
     public int save(UserDTO user);
@@ -20,6 +22,8 @@ public interface UserDAO {
 
 
 
+
+
     public void deleteByUsername(String username);
 
     public void deleteByEmail(String email);
@@ -35,4 +39,6 @@ public interface UserDAO {
     public boolean existsByConfirmationToken(String confirmationToken);
 
     public long count();
+
+    int plusPayment(Map<String, Integer> map);
 }

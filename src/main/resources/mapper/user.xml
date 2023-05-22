@@ -47,4 +47,10 @@
 				where user_no > #{no}
     </update>
 
+
+    <update id="pluspayment" parameterType="Map">
+        update final.user set user_money = user_money + #{money} where user_no = #{user_no}
+    </update>
+
+
 </mapper>

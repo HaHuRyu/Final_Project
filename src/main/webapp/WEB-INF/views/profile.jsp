@@ -151,52 +151,15 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0"> 무엇을 채울지 아직 미정</h4>
+                              <h4 class="card-title mb-0"> Money</h4>
                            </div>
                         </div> 
                         <div class="iq-card-body">
-                           <ul class="list-inline p-0 mb-0">
-                              <li>
-                                 <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h6>Biography</h6>
+                                    <h6>내 잔액 :</h6>
                                     <div class="iq-progress-bar-linear d-inline-block mt-1 w-50">
-                                       <div class="iq-progress-bar iq-bg-primary">
-                                          <span class="bg-primary" data-percent="70"></span>
-                                       </div>
+                                          <span>    ${sessionScope.UserMoney}</span>
+                                       <div><input type="button" class="btn btn-primary mr-2" value="충전" onclick="location.href='payment.go'" ></div>
                                     </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h6>Horror</h6>
-                                    <div class="iq-progress-bar-linear d-inline-block mt-1 w-50">
-                                       <div class="iq-progress-bar iq-bg-danger">
-                                          <span class="bg-danger" data-percent="50"></span>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <h6>Comic Book</h6>
-                                    <div class="iq-progress-bar-linear d-inline-block mt-1 w-50">
-                                       <div class="iq-progress-bar iq-bg-info">
-                                          <span class="bg-info" data-percent="65"></span>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h6>Adventure</h6>
-                                    <div class="iq-progress-bar-linear d-inline-block mt-1 w-50">
-                                       <div class="iq-progress-bar iq-bg-success">
-                                          <span class="bg-success" data-percent="85"></span>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
                         </div>
                      </div>
                   </div>

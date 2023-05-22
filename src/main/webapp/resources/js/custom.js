@@ -646,12 +646,19 @@ Index Of Script
         jQuery(document).ready(function(){
             jQuery('#place-order').click(function(){
                 jQuery('#cart').removeClass('show');
+                jQuery('#address').removeClass('show');
+                jQuery('#payment').addClass('show');
+                jQuery('#price-details').addClass('show');
+            });
+
+           /* jQuery('#place-order').click(function(){
+                jQuery('#cart').removeClass('show');
                 jQuery('#address').addClass('show');
             });
             jQuery('#deliver-address').click(function(){
                 jQuery('#address').removeClass('show');
                 jQuery('#payment').addClass('show');
-            });
+            });*/
         });
 
          /*---------------------------------------------------------------------

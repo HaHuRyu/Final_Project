@@ -4,6 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 @Repository
 public class UserDAOImpl implements UserDAO {
 
@@ -57,6 +59,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
 
+
     @Override
     public void deleteByUsername(String username) {
 
@@ -95,5 +98,10 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public long count() {
         return 0;
+    }
+
+    @Override
+    public int plusPayment(Map<String, Integer> map) {
+        return this.sqlSession.update("pluspayment", map);
     }
 }
