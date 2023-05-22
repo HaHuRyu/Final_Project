@@ -19,5 +19,6 @@ public class BookDTO {
     // 장바구니 출력을 위한 변수 선언 (태우)
     private int book_basketAmount;
     private int book_basketPrice;
+    private String book_date;
 
 }

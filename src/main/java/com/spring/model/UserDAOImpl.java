@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,15 @@ public class UserDAOImpl implements UserDAO {
     private SqlSessionTemplate sqlSession;
 
 
+    @Override
+    public List<UserDTO> findAll() {
+        return this.sqlSession.selectList("contAll");
+    }
+
+    @Override
+    public int allCount() {
+        return this.sqlSession.selectOne("contAllCount");
+    }
 
     @Override
     public int save(UserDTO user) {
@@ -43,13 +53,23 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public int update(UserDTO user) {
 
-        return this.sqlSession.update("add" , user);
+        return this.sqlSession.update("modi" , user);
     }
 
     @Override
-    public void delete(UserDAO user) {
+    public int delete(int no) {
+
+        return this.sqlSession.delete("delete",no);
 
     }
+
+    @Override
+    public void sequence(int no) {
+        this.sqlSession.update("seq",no);
+
+    }
+
+
 
     @Override
     public void deleteByUsername(String username) {
@@ -92,7 +112,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<Map<String, Object>> findAll() {
-        return this.sqlSession.selectList("user_list");
+    public void minusPayment(Map<String, Integer> map) {
+        this.sqlSession.update("minuspayment", map);
+    }
+
+    @Override
+    public int plusPayment(Map<String, Integer> map) {
+        return this.sqlSession.update("pluspayment", map);
     }
 }

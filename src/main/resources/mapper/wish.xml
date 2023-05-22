@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="WishDAO">
+    <select id="wishFindByUserNo" parameterType="int" resultType="WishDTO">
+        select * from final.dibs where user_no = #{value}
+   </select>
+
+    <delete id="wishDelete" parameterType="WishDTO">
+        delete from final.dibs where user_no = #{user_no} and book_no = #{book_no}
+    </delete>
+
+
+
+</mapper>

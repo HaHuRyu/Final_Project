@@ -1,3 +1,8 @@
+<%@ page import="com.spring.model.BookDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.spring.model.BasketDTO" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -20,13 +25,10 @@
   <!-- Responsive CSS -->
   <link rel="stylesheet" href="${path}/resources/css/responsive.css">
 </head>
-<body class="sidebar-main-active right-column-fixed">
-<c:set value="${user}" var="dto" />
+<body>
+
 <!-- loader Start -->
-<div id="loading">
-  <div id="loading-center">
-  </div>
-</div>
+
 <!-- loader END -->
 <!-- Wrapper Start -->
 <div class="wrapper">
@@ -50,14 +52,14 @@
     <div id="sidebar-scrollbar">
       <nav class="iq-sidebar-menu">
         <ul id="iq-sidebar-toggle" class="iq-menu">
-          <li>
-            <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Shop</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-            <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+          <li class="active active-menu">
+            <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Shop</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+            <ul id="dashboard" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
               <li><a href="home.jsp"><i class="las la-house-damage"></i>Home Page</a></li>
               <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
               <li><a href="book-page.jsp"><i class="ri-book-line"></i>Book Page</a></li>
               <li><a href="book-pdf.jsp"><i class="ri-file-pdf-line"></i>Book PDF</a></li>
-              <li><a href="Checkout.jsp"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
+              <li class="active"><a href="Checkout.jsp"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
               <li><a href="wishlist.jsp"><i class="ri-heart-line"></i>wishlist</a></li>
             </ul>
           </li>
@@ -70,11 +72,11 @@
               <li><a href="admin-books.jsp"><i class="ri-book-2-line"></i>Books</a></li>
             </ul>
           </li>
-          <li class="active active-menu">
-            <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-            <ul id="userinfo" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle" style="">
+          <li>
+            <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+            <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
               <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
-              <li class="active"><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
+              <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
               <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
               <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
             </ul>
@@ -176,6 +178,7 @@
                   <li><a href="pages-error.jsp"><i class="ri-error-warning-line"></i>Error 404</a></li>
                   <li><a href="pages-error-500.jsp"><i class="ri-error-warning-line"></i>Error 500</a></li>
                   <li><a href="pages-pricing.jsp"><i class="ri-price-tag-line"></i>Pricing</a></li>
+                  <li><a href="pages-pricing-one.jsp"><i class="ri-price-tag-2-line"></i>Pricing 1</a></li>
                   <li><a href="pages-maintenance.jsp"><i class="ri-archive-line"></i>Maintenance</a></li>
                   <li><a href="pages-comingsoon.jsp"><i class="ri-mastercard-line"></i>Coming Soon</a></li>
                   <li><a href="pages-faq.jsp"><i class="ri-compasses-line"></i>Faq</a></li>
@@ -236,11 +239,11 @@
           </div>
         </div>
         <div class="navbar-breadcrumb">
-          <h5 class="mb-0">User Edit</h5>
+          <h5 class="mb-0">Checkout</h5>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Edit</li>
+              <li class="breadcrumb-item active" aria-current="page">Checkout</li>
             </ul>
           </nav>
         </div>
@@ -266,7 +269,7 @@
             </li>
             <li class="nav-item nav-icon">
               <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                <i class="ri-notification-2-fill"></i>
+                <i class="ri-notification-2-line"></i>
                 <span class="bg-primary dots"></span>
               </a>
               <div class="iq-sub-dropdown">
@@ -329,8 +332,8 @@
             </li>
             <li class="nav-item nav-icon dropdown">
               <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span class="bg-primary count-mail"></span>
+                <i class="ri-mail-line"></i>
+                <span class="bg-primary dots"></span>
               </a>
               <div class="iq-sub-dropdown">
                 <div class="iq-card shadow-none m-0">
@@ -536,249 +539,117 @@
     </div>
   </div>
   <!-- TOP Nav Bar END -->
-
-  <!-- 회원정보 수정  -->
+  <!-- Page Content  -->
   <div id="content-page" class="content-page">
-    <div class="container-fluid">
+    <div class="container-fluid checkout-content">
       <div class="row">
-        </div>
-        <div class="col-lg-12">
-          <div class="iq-edit-list-data">
-            <div class="tab-content">
-              <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">회원정보 수정</h4>
+        <div id="cart" class="card-block show p-0 col-12">
+          <div class="row align-item-center">
+            <div class="col-lg-8">
+              <div class="iq-card">
+                <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
+                  <div class="iq-header-title">
+                    <h4 class="card-title">Shopping Cart</h4>
+                  </div>
+                </div>
+                <div class="iq-card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <img src="${path}/resources/images/booking/cart.png" alt="" height="40" width="50">
+                      <span>US Unlocked Debit Card 12XX XXXX XXXX 0000</span>
+                    </div>
+                    <span>${sessionScope.UserId}</span>
+                    <span>${sessionScope.UserName}</span>
+                  </div>
+                  <form class="mt-3" method="post" action="<%=request.getContextPath() %>/charge.go">
+                    <div class="d-flex align-items-center">
+                      <span>충전 금액 </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select class="form-control" id="selectuserrole" name="charge" style="width: 200px">
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="15000">15000</option>
+                        <option value="20000">20000</option>
+                        <option value="25000">25000</option>
+                        <option value="30000">30000</option>
+                        <option value="35000">35000</option>
+                        <option value="40000">40000</option>
+                        <option value="45000">45000</option>
+                        <option value="50000">50000</option>
+                      </select><label for="selectuserrole">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <button type="submit" class="btn btn-primary">충전</button>
+                    </div>
+                  </form>
+                  <hr>
+                  <div class="card-lists">
+                    <div class="form-group">
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="credit" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="credit"> 신용 / 체크 카드</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="netbaking" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="netbaking">무통장입금</label>
+                      </div>
                     </div>
                   </div>
-                  <div class="iq-card-body">
-                    <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/modify.ok.go">
-                      <div class="form-group row align-items-center">
-                        <div class="col-md-12">
-                        </div>
-                      </div>
-                      <div class=" row align-items-center">
-                        <div class="form-group col-sm-6">
-                          <label for="user_name">이름:</label>
-                          <input class="form-control" name="name" id="user_name" value="${dto.user_name}" readonly>
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_email">이메일:</label>
-                          <input class="form-control" id="user_email" name="email" value="${dto.user_email}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_id">아이디:</label>
-                          <input class="form-control" id="user_id" name="id" value="${dto.user_id}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_password">비밀번호:</label>
-                          <input class="form-control" id="user_password" name="pwd" value="${dto.user_pwd}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_nickname">닉네임:</label>
-                          <input class="form-control" id="user_nickname" name="nickname" value="${dto.user_nickname}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_phone">전화번호:</label>
-                          <input class="form-control" id="user_phone" name="phone" value="${dto.user_phone}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_job">직업:</label>
-                          <input class="form-control" id="user_job" name="job" value="${dto.user_job}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_addr">주소:</label>
-                          <input class="form-control" id="user_addr" name="addr" value="${dto.user_addr}">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="user_intro">소개글:</label>
-                          <textarea class="form-control" id="user_intro" name="intro" >${dto.user_intro}</textarea>
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label for="img">프로필:</label>
-                          <input type="file" class="btn btn-outline-success" id="img" name="image">
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label>관심분야1</label>
-                          <select name="cate1" class="form-control" id="exampleFormControlSelect4">
-                            <option value="0">소설</option>
-                            <option value="100">요리</option>
-                            <option value="200">경제</option>
-                            <option value="300">정치/사회</option>
-                            <option value="400">자기개발</option>
-                            <option value="500">컴퓨터/IT</option>
-                            <option value="600">잡지</option>
-                            <option value="700">참고서</option>
-                            <option value="800">여행</option>
-                            <option value="900">만화</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-sm-6">
-                          <label>관심분야2</label>
-                          <select name="cate2" class="form-control" id="exampleFormControlSelect5">
-                            <option value="0">소설</option>
-                            <option value="100">요리</option>
-                            <option value="200">경제</option>
-                            <option value="300">정치/사회</option>
-                            <option value="400">자기개발</option>
-                            <option value="500">컴퓨터/IT</option>
-                            <option value="600">잡지</option>
-                            <option value="700">참고서</option>
-                            <option value="800">여행</option>
-                            <option value="900">만화</option>
-                          </select>
-                          <script>
-                            // 중복 선택 방지
-                            const cate1 = document.querySelector("[name='cate1']");
-                            const cate2 = document.querySelector("[name='cate2']");
-                            cate1.addEventListener('change', function() {
-                              const selectedValue = this.value;
-                              const options = document.querySelectorAll('#exampleFormControlSelect5 option');
-                              options.forEach(function(option) {
-                                option.disabled = (option.value === selectedValue);
-                              });
-                            });
-                            cate2.addEventListener('change', function() {
-                              const selectedValue = this.value;
-                              const options = document.querySelectorAll('#exampleFormControlSelect4 option');
-                              options.forEach(function(option) {
-                                option.disabled = (option.value === selectedValue);
-                              });
-                            });
-                          </script>
-                        </div>
-                        <input type="hidden" name="money" value="0">
-                        <input type="hidden" name="approve" value="0">
-                        <input type="hidden" name="number" value="${dto.user_no}">
-                        <input type="hidden" name="birth" value="${dto.user_birth}">
-                      <button type="submit" class="btn btn-primary mr-2">정보수정</button>
-                      <button type="reset" class="btn btn-primary mr-2">다시작성</button>
-                        <input type="button" value="회원탈퇴" class="btn iq-bg-danger"
-                               onclick="if(confirm('정말로 탈퇴하시겠습니까?')) {
-                                       location.href='user.delete.go?user_no=${dto.user_no}'
-                                       }else { return; }">
-                      </div>
-                    </form>
+                  <hr>
+                  <div class="add-card">
+                    <a href="#"><span><i class="ri-add-box-line mr-2 font-size-18"></i>Add Gift Card</span></a>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Change Password</h4>
+            </div>
+            <div class="col-lg-4">
+              <div class="iq-card">
+                <div class="iq-card-body">
+                  <p>Options</p>
+                  <div class="d-flex justify-content-between">
+                    <span>Coupons</span>
+                    <span><a href="#"><strong>미보유</strong></a></span>
+                  </div>
+                  <hr>
+                  <p><b>Price Details</b></p>
+                  <c:set var="totalPrice" value="0" />
+                  <c:forEach var="book" items="${bookList}">
+                    <div class="d-flex justify-content-between mb-1">
+                      <span>${book.book_title} &nbsp; ${book.book_basketAmount}권</span>
+                      <span>${book.book_basketPrice}원</span>
                     </div>
+
+                    <c:set var="totalPrice" value="${totalPrice + book.book_basketPrice}" />
+                  </c:forEach>
+
+
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <span class="text-dark"><strong>Total</strong></span>
+                    <span class="text-dark"><strong>${totalPrice}원</strong></span>
                   </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="cpass">Current Password:</label>
-                        <a href="javascripe:void();" class="float-right">Forgot Password</a>
-                        <input type="Password" class="form-control" id="cpass" value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="npass">New Password:</label>
-                        <input type="Password" class="form-control" id="npass" value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="vpass">Verify Password:</label>
-                        <input type="Password" class="form-control" id="vpass" value="">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
+                  <a id="place-order" class="btn btn-primary d-block mt-3 next">Place order</a>
                 </div>
               </div>
-              <div class="tab-pane fade" id="emailandsms" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Email and SMS</h4>
-                    </div>
-                  </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group row align-items-center">
-                        <label class="col-8 col-md-3" for="emailnotification">Email Notification:</label>
-                        <div class="col-4 col-md-9 custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                          <label class="custom-control-label" for="emailnotification"></label>
-                        </div>
+              <div class="iq-card ">
+                <div class="card-body iq-card-body p-0 iq-checkout-policy">
+                  <ul class="p-0 m-0">
+                    <li class="d-flex align-items-center">
+                      <div class="iq-checkout-icon">
+                        <i class="ri-checkbox-line"></i>
                       </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-8 col-md-3" for="smsnotification">SMS Notification:</label>
-                        <div class="col-4 col-md-9 custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                          <label class="custom-control-label" for="smsnotification"></label>
-                        </div>
+                      <h6>Security policy (Safe and Secure Payment.)</h6>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <div class="iq-checkout-icon">
+                        <i class="ri-truck-line"></i>
                       </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-md-3" for="npass">When To Email</label>
-                        <div class="col-md-9">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email01">
-                            <label class="custom-control-label" for="email01">You have new notifications.</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email02">
-                            <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                            <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
-                          </div>
-                        </div>
+                      <h6>Delivery policy (Home Delivery.)</h6>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <div class="iq-checkout-icon">
+                        <i class="ri-arrow-go-back-line"></i>
                       </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                        <div class="col-md-9">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email04">
-                            <label class="custom-control-label" for="email04"> Upon new order.</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email05">
-                            <label class="custom-control-label" for="email05"> New membership approval</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                            <label class="custom-control-label" for="email06"> Member registration</label>
-                          </div>
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="manage-contact" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Manage Contact</h4>
-                    </div>
-                  </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="cno">Contact Number:</label>
-                        <input type="text" class="form-control" id="cno" value="001 2536 123 458">
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" value="Barryjone@demo.com">
-                      </div>
-                      <div class="form-group">
-                        <label for="url">Url:</label>
-                        <input type="text" class="form-control" id="url" value="https://getbootstrap.com">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
+                      <h6>Return policy (Easy Retyrn.)</h6>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -809,32 +680,34 @@
 <!-- color-customizer -->
 <div class="iq-colorbox color-fix">
   <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-  <div class="clearfix color-picker">
-    <h3 class="iq-font-black">Booksto Awesome Color</h3>
-    <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-    <ul class="iq-colorselect clearfix">
-      <li class="color-1 iq-colormark" data-style="color-1"></li>
-      <li class="color-2" data-style="iq-color-2"></li>
-      <li class="color-3" data-style="iq-color-3"></li>
-      <li class="color-4" data-style="iq-color-4"></li>
-      <li class="color-5" data-style="iq-color-5"></li>
-      <li class="color-6" data-style="iq-color-6"></li>
-      <li class="color-7" data-style="iq-color-7"></li>
-      <li class="color-8" data-style="iq-color-8"></li>
-      <li class="color-9" data-style="iq-color-9"></li>
-      <li class="color-10" data-style="iq-color-10"></li>
-      <li class="color-11" data-style="iq-color-11"></li>
-      <li class="color-12" data-style="iq-color-12"></li>
-      <li class="color-13" data-style="iq-color-13"></li>
-      <li class="color-14" data-style="iq-color-14"></li>
-      <li class="color-15" data-style="iq-color-15"></li>
-      <li class="color-16" data-style="iq-color-16"></li>
-      <li class="color-17" data-style="iq-color-17"></li>
-      <li class="color-18" data-style="iq-color-18"></li>
-      <li class="color-19" data-style="iq-color-19"></li>
-      <li class="color-20" data-style="iq-color-20"></li>
-    </ul>
-    <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
+  <div id="right-sidebar-scrollbar" class="iq-colorbox-inner">
+    <div class="clearfix color-picker">
+      <h3 class="iq-font-black">Booksto Awesome Color</h3>
+      <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
+      <ul class="iq-colorselect clearfix">
+        <li class="color-1 iq-colormark" data-style="color-1"></li>
+        <li class="color-2" data-style="iq-color-2"></li>
+        <li class="color-3" data-style="iq-color-3"></li>
+        <li class="color-4" data-style="iq-color-4"></li>
+        <li class="color-5" data-style="iq-color-5"></li>
+        <li class="color-6" data-style="iq-color-6"></li>
+        <li class="color-7" data-style="iq-color-7"></li>
+        <li class="color-8" data-style="iq-color-8"></li>
+        <li class="color-9" data-style="iq-color-9"></li>
+        <li class="color-10" data-style="iq-color-10"></li>
+        <li class="color-11" data-style="iq-color-11"></li>
+        <li class="color-12" data-style="iq-color-12"></li>
+        <li class="color-13" data-style="iq-color-13"></li>
+        <li class="color-14" data-style="iq-color-14"></li>
+        <li class="color-15" data-style="iq-color-15"></li>
+        <li class="color-16" data-style="iq-color-16"></li>
+        <li class="color-17" data-style="iq-color-17"></li>
+        <li class="color-18" data-style="iq-color-18"></li>
+        <li class="color-19" data-style="iq-color-19"></li>
+        <li class="color-20" data-style="iq-color-20"></li>
+      </ul>
+      <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
+    </div>
   </div>
 </div>
 <!-- color-customizer END -->
@@ -878,11 +751,35 @@
 <script src="${path}/resources/js/maps.js"></script>
 <!-- am worldLow JavaScript -->
 <script src="${path}/resources/js/worldLow.js"></script>
+<!-- Raphael-min JavaScript -->
+<script src="${path}/resources/js/raphael-min.js"></script>
+<!-- Morris JavaScript -->
+<script src="${path}/resources/js/morris.js"></script>
+<!-- Morris min JavaScript -->
+<script src="${path}/resources/js/morris.min.js"></script>
+<!-- Flatpicker Js -->
+<script src="${path}/resources/js/flatpickr.js"></script>
 <!-- Style Customizer -->
 <script src="${path}/resources/js/style-customizer.js"></script>
 <!-- Chart Custom JavaScript -->
 <script src="${path}/resources/js/chart-custom.js"></script>
 <!-- Custom JavaScript -->
 <script src="${path}/resources/js/custom.js"></script>
+<script>
+  function incrementQuantity(bookNo, quantity) {
+    const su = 'plus'
+    updateQuantityOnServer(bookNo, quantity, su);
+  }
+
+  function decrementQuantity(bookNo, quantity) {
+    const su = 'minus'
+    updateQuantityOnServer(bookNo, quantity, su);
+  }
+
+
+  function updateQuantityOnServer(bookNo, quantity, su) {
+    location.href="updateQuantity.go?bookNo="+bookNo+"&quantity="+quantity+"&su="+su+"";
+  }
+</script>
 </body>
 </html>

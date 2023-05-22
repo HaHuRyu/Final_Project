@@ -24,4 +24,31 @@
     <update id="basketUpdateQuantity" parameterType="BasketDTO">
         update final.basket set book_amount = #{book_amount} where user_no = #{user_no} and book_no = #{book_no}
     </update>
+
+    <delete id="basketDelete" parameterType="BasketDTO">
+        delete from final.basket where user_no = #{user_no} and book_no = #{book_no}
+    </delete>
+
+    <insert id="basketInsert" parameterType="BasketDTO">
+        <selectKey resultType="int" keyProperty="basket_no" order="BEFORE">
+            select count(*) from basket
+        </selectKey>
+        insert into final.basket values(#{basket_no}+1,#{book_no}, #{user_no}, #{book_amount},0)
+    </insert>
+
+    <select id="basketFindByBookNo" parameterType="BasketDTO" resultType="BasketDTO">
+        select * from final.basket where user_no = #{user_no} and book_no = #{book_no}
+    </select>
+
+    <update id="basketUpdateSequence" parameterType="BasketDTO">
+        update final.basket set basket_no = basket_no - 1 where basket_no > #{basket_no}
+    </update>
+
+    <select id="CountBasket" parameterType="int" resultType="int">
+        select count(*) from final.basket where user_no = #{value}
+    </select>
+
+    <delete id="basketDeleteByUserNo" parameterType="int">
+        delete from final.basket where user_no = #{value}
+    </delete>
 </mapper>

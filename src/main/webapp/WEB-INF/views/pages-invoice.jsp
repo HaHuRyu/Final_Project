@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -552,8 +553,8 @@
                               </div>
                               <div class="col-sm-12">
                                  <hr class="mt-3">
-                                 <h5 class="mb-0">Hello, Barry Techs</h5>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                 <h5 class="mb-0">주문해주셔서 감사합니다!</h5>
+                                 <p> 배달까지는 수일이 걸릴 수 있으며 주문내역에서 상시 확인이 가능합니다.</p>
                               </div>
                            </div>
                            <div class="row">
@@ -564,31 +565,33 @@
                                           <tr>
                                              <th scope="col">Order Date</th>
                                              <th scope="col">Order Status</th>
-                                             <th scope="col">Order ID</th>
+                                             <th scope="col">Order img</th>
+                                             <th scope="col">Order Amount</th>
                                              <th scope="col">Billing Address</th>
-                                             <th scope="col">Shipping Address</th>
                                           </tr>
                                        </thead>
                                        <tbody>
+                                       <c:forEach var="book" items="${bookdto}">
                                           <tr>
-                                             <td>Jan 17, 2016</td>
-                                             <td><span class="badge badge-danger">Unpaid</span></td>
-                                             <td>250028</td>
+                                             <td>${book.book_date}</td>
+                                             <td><span class="badge badge-danger">결제 완료 </span></td>
                                              <td>
-                                                <p class="mb-0">PO Box 16122 Collins Street West<br>Victoria 8007 Australia<br>
-                                                   Phone: +123 456 7890<br>
-                                                   Email: demo@Booksto.com<br>
-                                                   Web: www.Booksto.com
-                                                </p>
+                                                <span class="checkout-product-img">
+                                                <img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt="">
+                                                </span>
                                              </td>
                                              <td>
-                                                <p class="mb-0">PO Box 16122 Collins Street West<br>Victoria 8007 Australia<br>
-                                                   Phone: +123 456 7890<br>
-                                                   Email: demo@Booksto.com<br>
-                                                   Web: www.Booksto.com
+                                                <p class="mb-0"><strong>${book.book_basketAmount}</strong></p>
+                                             </td>
+                                             <td>
+                                                <p class="mb-0">${sessionScope.UserAddr}<br>
+                                                   Phone: ${sessionScope.UserPhone}<br>
+                                                   Email: ${sessionScope.UserEmail}<br>
+                                                   Web: www.finalproject.com
                                                 </p>
                                              </td>
                                           </tr>
+                                       </c:forEach>
                                        </tbody>
                                     </table>
                                  </div>
@@ -597,95 +600,35 @@
                            <div class="row">
                               <div class="col-sm-12">
                                  <h5>Order Summary</h5>
-                                 <div class="table-responsive-sm">
-                                    <table class="table table-striped">
-                                       <thead>
-                                          <tr>
-                                             <th class="text-center" scope="col">#</th>
-                                             <th scope="col">Item</th>
-                                             <th class="text-center" scope="col">Quantity</th>
-                                             <th class="text-center" scope="col">Price</th>
-                                             <th class="text-center" scope="col">Totals</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                          <tr>
-                                             <th class="text-center" scope="row">1</th>
-                                             <td>
-                                                <h6 class="mb-0">Web Design</h6>
-                                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </td>
-                                             <td class="text-center">5</td>
-                                             <td class="text-center">$120.00</td>
-                                             <td class="text-center"><b>$2,880.00</b></td>
-                                          </tr>
-                                          <tr>
-                                             <th class="text-center" scope="row">2</th>
-                                             <td>
-                                                <h6 class="mb-0">Web Design</h6>
-                                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </td>
-                                             <td class="text-center">5</td>
-                                             <td class="text-center">$120.00</td>
-                                             <td class="text-center"><b>$2,880.00</b></td>
-                                          </tr>
-                                          <tr>
-                                             <th class="text-center" scope="row">3</th>
-                                             <td>
-                                                <h6 class="mb-0">Web Design</h6>
-                                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </td>
-                                             <td class="text-center">5</td>
-                                             <td class="text-center">$120.00</td>
-                                             <td class="text-center"><b>$2,880.00</b></td>
-                                          </tr>
-                                          <tr>
-                                             <th class="text-center" scope="row">4</th>
-                                             <td>
-                                                <h6 class="mb-0">Web Design</h6>
-                                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                             </td>
-                                             <td class="text-center">5</td>
-                                             <td class="text-center">$120.00</td>
-                                             <td class="text-center"><b>$2,880.00</b></td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
-                                 </div>
+
                                  <h5 class="mt-5">Order Details</h5>
                                  <div class="table-responsive-sm">
                                     <table class="table table-striped">
                                        <thead>
                                           <tr>
-                                             <th scope="col">Bank</th>
-                                             <th scope="col">.Acc.No</th>
-                                             <th scope="col">Due Date</th>
-                                             <th scope="col">Sub-total</th>
-                                             <th scope="col">Discount</th>
-                                             <th scope="col">Total</th>
+                                             <th scope="col">Book</th>
+                                             <th scope="col">1 Price</th>
+                                             <th scope="col">Amount</th>
+                                             <th scope="col">all-price</th>
                                           </tr>
                                        </thead>
                                        <tbody>
+                                       <c:forEach var="book" items="${bookdto}">
                                           <tr>
-                                             <th scope="row">Threadneedle St</th>
-                                             <td>12333456789</td>
-                                             <td>12 November 2019</td>
-                                             <td>$4597.50</td>
-                                             <td>10%</td>
-                                             <td><b>$4137.75 USD</b></td>
+                                             <td> ${book.book_title}</td>
+                                             <td> <fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</td>
+                                             <td> ${book.book_basketAmount}</td>
+                                             <td> <fmt:formatNumber value="${book.book_basketAmount * book.book_price}" pattern="#,###" />&#8361;</td>
                                           </tr>
+                                       </c:forEach>
                                        </tbody>
                                     </table>
+
                                  </div>
                               </div>
                               <div class="col-sm-6"></div>
                               <div class="col-sm-6 text-right">
-                                 <button type="button" class="btn text-primary btn-link mr-3"><i class="ri-printer-line"></i> Download Print</button>
-                                 <button type="button" class="btn btn-primary">Submit</button>
-                              </div>
-                              <div class="col-sm-12 mt-5">
-                                 <b class="text-danger">Notes:</b>
-                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                 <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/order.go'">주문내역 가기</button>
                               </div>
                            </div>
                         </div>

@@ -36,6 +36,13 @@
 
 
 
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
 		<!-- 스프링 commons-fileupload 첨부파일 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

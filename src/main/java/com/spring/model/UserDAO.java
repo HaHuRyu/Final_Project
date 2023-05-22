@@ -1,9 +1,14 @@
 package com.spring.model;
 
+
 import java.util.List;
 import java.util.Map;
 
 public interface UserDAO {
+
+    public List<UserDTO> findAll();
+
+    public int allCount();
 
     public int save(UserDTO user);
 
@@ -16,7 +21,13 @@ public interface UserDAO {
 
     public int update(UserDTO user);
 
-    public void delete(UserDAO user);
+    public int delete(int user);
+
+    public void sequence(int no);
+
+
+
+
 
     public void deleteByUsername(String username);
 
@@ -34,6 +45,9 @@ public interface UserDAO {
 
     public long count();
 
-    //유저 리스트
-    public List<Map<String, Object>> findAll();
+
+    public void minusPayment(Map<String,Integer> map);
+
+    int plusPayment(Map<String, Integer> map);
+
 }

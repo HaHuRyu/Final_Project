@@ -76,7 +76,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -237,11 +237,11 @@
                      </div>
                   </div>
                   <div class="navbar-breadcrumb">
-                     <h5 class="mb-0">Wishlist</h5>
+                     <h5 class="mb-0">OrderList</h5>
                      <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
                            <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                           <li class="breadcrumb-item active" aria-current="page">OrderList</li>
                         </ul>
                      </nav>
                   </div>
@@ -545,18 +545,17 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Wishlist</h4>
+                              <h4 class="card-title">OrderList</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
                            <ul class="list-inline p-0 m-0">
-                              <c:forEach var="book" items="${bookList}">
+                              <c:forEach var="book" items="${bookDTOList}">
                                  <li class="checkout-product">
                                  <div class="row align-items-center">
                                     <div class="col-sm-3 col-lg-2">
                                        <div class="row align-items-center">
                                           <div class="col-sm-3">
-                                             <a href="<%=request.getContextPath()%>/wish_delete.go?bookNo=${book.book_no}" class="badge badge-danger"><i class="ri-close-fill"></i></a>
                                           </div>
                                           <div class="col-sm-9">
                                              <span class="checkout-product-img">
@@ -579,6 +578,7 @@
                                           <div class="col-sm-8">
                                              <div class="row align-items-center mt-2">
                                                 <div class="col-sm-7 col-lg-6">
+                                                   <p> ${book.book_basketAmount}</p>
                                                    <!--
                                                    <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
                                                    <input type="text" id="quantity" value="0">
@@ -591,7 +591,7 @@
                                              </div>
                                           </div>
                                           <div class="col-sm-4">
-                                             <a href="<%=request.getContextPath()%>/wish_move-basket.go?bookNo=${book.book_no}"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
+                                             <p> ${book.book_date}</p>
                                           </div>
                                        </div>
                                     </div>

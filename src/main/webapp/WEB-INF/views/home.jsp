@@ -861,4 +861,5 @@
          <script src="${path}/resources/js/chart-custom.js"></script>
          <!-- Custom JavaScript -->
          <script src="${path}/resources/js/custom.js"></script>
+         <script src="${path}/resources/js/ajax.js"></script>
          <%@ include file="footer.jsp"%>
