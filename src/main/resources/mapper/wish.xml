@@ -14,8 +14,9 @@
    </select>
 
     <delete id="wishDelete" parameterType="WishDTO">
-        delete from final.dibs where user_no = #{userNo} and book_no = #{book_no}
+        delete from final.dibs where user_no = #{user_no} and book_no = #{book_no}
     </delete>
+
 
 
 </mapper>

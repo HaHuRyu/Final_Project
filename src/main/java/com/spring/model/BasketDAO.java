@@ -19,4 +19,8 @@ public interface BasketDAO {
     public BasketDTO findByBookNo(BasketDTO basketDTO);
 
     public void updateSequence(BasketDTO basketDTO);
+
+    public int countBasket(int user_no);
+
+    void deleteByUserNo(int userNo);
 }

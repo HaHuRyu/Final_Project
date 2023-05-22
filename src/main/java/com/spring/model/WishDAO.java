@@ -15,4 +15,6 @@ public interface WishDAO {
     public WishDTO findByBookNo(WishDTO WishDTO);
 
     public void updateSequence(WishDTO WishDTO);
+
+
 }

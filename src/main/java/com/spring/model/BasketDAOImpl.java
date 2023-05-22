@@ -52,5 +52,15 @@ public class BasketDAOImpl implements BasketDAO {
         this.sqlSession.update("basketUpdateSequence", basketDTO);
     }
 
+    @Override
+    public int countBasket(int user_no) {
+        return this.sqlSession.selectOne("CountBasket", user_no);
+    }
+
+    @Override
+    public void deleteByUserNo(int userNo) {
+        this.sqlSession.delete("basketDeleteByUserNo", userNo);
+    }
+
 
 }

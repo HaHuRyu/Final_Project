@@ -118,6 +118,7 @@ public class BasketController {
 
             session.setAttribute("BasketList", basketService.basketList(userNo));
             session.setAttribute("BookList", basketService.bookList(userNo));
+            session.setAttribute("countBasket", basketDAO.countBasket(userNo));
 
             return "redirect:basket.go";
         }
@@ -150,6 +151,7 @@ public class BasketController {
 
             session.setAttribute("BasketList", basketService.basketList(userNo));
             session.setAttribute("BookList", basketService.bookList(userNo));
+            session.setAttribute("countBasket", basketDAO.countBasket(userNo));
 
             return "redirect:basket.go";
         }
@@ -180,6 +182,7 @@ public class BasketController {
 
             session.setAttribute("BasketList", basketService.basketList(userNo));
             session.setAttribute("BookList", basketService.bookList(userNo));
+            session.setAttribute("countBasket", basketDAO.countBasket(userNo));
 
             out.println("<script>");
             out.println("history.back();");
@@ -224,6 +227,7 @@ public class BasketController {
 
             session.setAttribute("BasketList", basketService.basketList(userNo));
             session.setAttribute("BookList", basketService.bookList(userNo));
+            session.setAttribute("countBasket", basketDAO.countBasket(userNo));
 
             return null;
         }

@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <%--
@@ -458,16 +459,17 @@
                         <li class="nav-item nav-icon dropdown">
                             <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                                 <i class="ri-shopping-cart-2-line"></i>
-                                <span class="badge badge-danger count-cart rounded-circle">4</span>
+                                <span class="badge badge-danger count-cart rounded-circle">${sessionScope.countBasket}</span>
                             </a>
                             <div class="iq-sub-dropdown">
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 toggle-cart-info">
                                         <div class="bg-primary p-3">
                                             <h5 class="mb-0 text-white">장바구니<small
-                                                    class="badge  badge-light float-right pt-1">4</small></h5>
+                                                    class="badge  badge-light float-right pt-1">${sessionScope.countBasket}</small></h5>
                                         </div>
-                                        <c:forEach var="BookDTO" items="${sessionScope.BookList}">
+                                        <c:forEach var="BookDTO" items="${sessionScope.BookList}" varStatus="status">
+                                            <c:if test="${status.index < 4}">
                                             <a href="#" class="iq-sub-card">
                                                 <div class="media align-items-center">
                                                     <div class="">
@@ -476,7 +478,7 @@
                                                     </div>
                                                     <div class="media-body ml-3">
                                                         <h6 class="mb-0 ">${BookDTO.book_title}</h6>
-                                                        <p class="mb-0">${BookDTO.book_price}원</p>
+                                                        <p class="mb-0"><fmt:formatNumber value="${BookDTO.book_price}" pattern="#,###" />&#8361;</p>
                                                     </div>
 
                                                     <div class="float-right font-size-24 text-danger">
@@ -484,7 +486,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-
+                                            </c:if>
                                         </c:forEach>
 
                                         <div class="d-flex align-items-center text-center p-3">
@@ -516,7 +518,8 @@
                                      alt="user">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
-                                    <p class="mb-0 text-primary"><%=session.getAttribute("UserMoney")%>원</p>
+                                    <p class="mb-0 text-primary"><fmt:formatNumber value="${sessionScope.UserMoney}" pattern="#,###" />&#8361;</p>
+
                                 </div>
                             </a>
 

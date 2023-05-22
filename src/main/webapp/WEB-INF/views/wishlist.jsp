@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -569,7 +570,7 @@
                                           <h5>${book.book_title}</h5>
                                           <p class="text-success">In stock</p>
                                           <div class="price">
-                                             <h5>${book.book_price}</h5>
+                                             <h5><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -585,12 +586,12 @@
                                                    -->
                                                 </div>
                                                 <div class="col-sm-5 col-lg-6">
-                                                   <span class="product-price">${book.book_price}</span>
+                                                   <span class="product-price"><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</span>
                                                 </div>
                                              </div>
                                           </div>
                                           <div class="col-sm-4">
-                                             <a href="#"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
+                                             <a href="<%=request.getContextPath()%>/wish_move-basket.go?bookNo=${book.book_no}"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
                                           </div>
                                        </div>
                                     </div>

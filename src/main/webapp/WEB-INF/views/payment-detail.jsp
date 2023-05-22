@@ -21,7 +21,7 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
    </head>
-   <body class="sidebar-main-active right-column-fixed">
+   <body>
       <!-- loader Start -->
       <div id="loading">
          <div id="loading-center">
@@ -50,18 +50,18 @@
             <div id="sidebar-scrollbar">
                <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
-                     <li>
-                        <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Shop</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                     <li class="active active-menu">
+                        <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Shop</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="dashboard" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
                            <li><a href="home.jsp"><i class="las la-house-damage"></i>Home Page</a></li>
                            <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
                            <li><a href="book-page.jsp"><i class="ri-book-line"></i>Book Page</a></li>
                            <li><a href="book-pdf.jsp"><i class="ri-file-pdf-line"></i>Book PDF</a></li>
                            <li><a href="Checkout.jsp"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
-                          <li><a href="wishlist.jsp"><i class="ri-heart-line"></i>wishlist</a></li>
+                           <li class="active"><a href="wishlist.jsp"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                      </li>
-                     <li>
+                      <li>
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="admin-dashboard.jsp"><i class="ri-dashboard-line"></i>Dashboard</a></li>
@@ -154,9 +154,9 @@
                            </li>
                         </ul>
                      </li>
-                     <li class="active active-menu">
-                        <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="las la-file-alt iq-arrow-left"></i><span>Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="pages" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
+                     <li>
+                        <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-file-alt iq-arrow-left"></i><span>Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li>
                               <a href="#authentication" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                               <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
@@ -167,15 +167,16 @@
                                  <li><a href="pages-lock-screen.jsp"><i class="ri-lock-line"></i>Lock Screen</a></li>
                               </ul>
                            </li>
-                           <li class="active active-menu">
-                              <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="ri-pantone-line"></i><span>Extra Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                              <ul id="extra-pages" class="iq-submenu collapse show" data-parent="#pages">
+                           <li>
+                              <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Extra Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                              <ul id="extra-pages" class="iq-submenu collapse" data-parent="#pages">
                                  <li><a href="pages-timeline.jsp"><i class="ri-map-pin-time-line"></i>Timeline</a></li>
-                                 <li class="active"><a href="pages-invoice.jsp"><i class="ri-question-answer-line"></i>Invoice</a></li>
+                                 <li><a href="pages-invoice.jsp"><i class="ri-question-answer-line"></i>Invoice</a></li>
                                  <li><a href="blank-page.jsp"><i class="ri-invision-line"></i>Blank Page</a></li>
                                  <li><a href="pages-error.jsp"><i class="ri-error-warning-line"></i>Error 404</a></li>
                                  <li><a href="pages-error-500.jsp"><i class="ri-error-warning-line"></i>Error 500</a></li>
                                  <li><a href="pages-pricing.jsp"><i class="ri-price-tag-line"></i>Pricing</a></li>
+                                 <li><a href="pages-pricing-one.jsp"><i class="ri-price-tag-2-line"></i>Pricing 1</a></li>
                                  <li><a href="pages-maintenance.jsp"><i class="ri-archive-line"></i>Maintenance</a></li>
                                  <li><a href="pages-comingsoon.jsp"><i class="ri-mastercard-line"></i>Coming Soon</a></li>
                                  <li><a href="pages-faq.jsp"><i class="ri-compasses-line"></i>Faq</a></li>
@@ -236,11 +237,11 @@
                      </div>
                   </div>
                   <div class="navbar-breadcrumb">
-                     <h5 class="mb-0">Invoice</h5>
+                     <h5 class="mb-0">OrderList</h5>
                      <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
                            <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">Invoice</li>
+                           <li class="breadcrumb-item active" aria-current="page">OrderList</li>
                         </ul>
                      </nav>
                   </div>
@@ -255,7 +256,7 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav ml-auto navbar-list">
-                        <li class="nav-item nav-icon search-content">
+                       <li class="nav-item nav-icon search-content">
                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                               <i class="ri-search-line"></i>
                            </a>
@@ -266,7 +267,7 @@
                         </li>
                         <li class="nav-item nav-icon">
                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                           <i class="ri-notification-2-fill"></i>
+                           <i class="ri-notification-2-line"></i>
                            <span class="bg-primary dots"></span>
                            </a>
                            <div class="iq-sub-dropdown">
@@ -329,8 +330,8 @@
                         </li>
                         <li class="nav-item nav-icon dropdown">
                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                           <i class="fa fa-envelope" aria-hidden="true"></i>
-                           <span class="bg-primary count-mail"></span>
+                           <i class="ri-mail-line"></i>
+                           <span class="bg-primary dots"></span>
                            </a>
                            <div class="iq-sub-dropdown">
                               <div class="iq-card shadow-none m-0">
@@ -536,101 +537,68 @@
             </div>
          </div>
          <!-- TOP Nav Bar END -->
-         
          <!-- Page Content  -->
          <div id="content-page" class="content-page">
-            <div class="container-fluid">
+            <div class="container-fluid checkout-content">
                <div class="row">
                   <div class="col-sm-12">
                      <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">OrderList</h4>
+                           </div>
+                        </div>
                         <div class="iq-card-body">
-                           <div class="row">
-                              <div class="col-lg-6">
-                                 <img src="${path}/resources/images/logo.png" class="img-fluid avatar-100" alt="">
-                              </div>
-                              <div class="col-lg-6 align-self-center">
-                                 <h4 class="mb-0 float-right">Invoice</h4>
-                              </div>
-                              <div class="col-sm-12">
-                                 <hr class="mt-3">
-                                 <h5 class="mb-0">주문해주셔서 감사합니다!</h5>
-                                 <p> 배달까지는 수일이 걸릴 수 있으며 주문내역에서 상시 확인이 가능합니다.</p>
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-lg-12">
-                                 <div class="table-responsive-sm">
-                                    <table class="table">
-                                       <thead>
-                                          <tr>
-                                             <th scope="col">Order Date</th>
-                                             <th scope="col">Order Status</th>
-                                             <th scope="col">Order img</th>
-                                             <th scope="col">Order Amount</th>
-                                             <th scope="col">Billing Address</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                       <c:forEach var="book" items="${bookdto}">
-                                          <tr>
-                                             <td>${book.book_date}</td>
-                                             <td><span class="badge badge-danger">결제 완료 </span></td>
-                                             <td>
-                                                <span class="checkout-product-img">
-                                                <img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt="">
-                                                </span>
-                                             </td>
-                                             <td>
-                                                <p class="mb-0"><strong>${book.book_basketAmount}</strong></p>
-                                             </td>
-                                             <td>
-                                                <p class="mb-0">${sessionScope.UserAddr}<br>
-                                                   Phone: ${sessionScope.UserPhone}<br>
-                                                   Email: ${sessionScope.UserEmail}<br>
-                                                   Web: www.finalproject.com
-                                                </p>
-                                             </td>
-                                          </tr>
-                                       </c:forEach>
-                                       </tbody>
-                                    </table>
+                           <ul class="list-inline p-0 m-0">
+                              <c:forEach var="book" items="${bookDTOList}">
+                                 <li class="checkout-product">
+                                 <div class="row align-items-center">
+                                    <div class="col-sm-3 col-lg-2">
+                                       <div class="row align-items-center">
+                                          <div class="col-sm-3">
+                                          </div>
+                                          <div class="col-sm-9">
+                                             <span class="checkout-product-img">
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt=""></a>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-3 col-lg-4">
+                                       <div class="checkout-product-details">
+                                          <h5>${book.book_title}</h5>
+                                          <p class="text-success">In stock</p>
+                                          <div class="price">
+                                             <h5><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</h5>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6">
+                                       <div class="row">
+                                          <div class="col-sm-8">
+                                             <div class="row align-items-center mt-2">
+                                                <div class="col-sm-7 col-lg-6">
+                                                   <p> ${book.book_basketAmount}</p>
+                                                   <!--
+                                                   <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
+                                                   <input type="text" id="quantity" value="0">
+                                                   <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
+                                                   -->
+                                                </div>
+                                                <div class="col-sm-5 col-lg-6">
+                                                   <span class="product-price"><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                             <p> ${book.book_date}</p>
+                                          </div>
+                                       </div>
+                                    </div>
                                  </div>
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-sm-12">
-                                 <h5>Order Summary</h5>
-
-                                 <h5 class="mt-5">Order Details</h5>
-                                 <div class="table-responsive-sm">
-                                    <table class="table table-striped">
-                                       <thead>
-                                          <tr>
-                                             <th scope="col">Book</th>
-                                             <th scope="col">1 Price</th>
-                                             <th scope="col">Amount</th>
-                                             <th scope="col">all-price</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                       <c:forEach var="book" items="${bookdto}">
-                                          <tr>
-                                             <td> ${book.book_title}</td>
-                                             <td> <fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</td>
-                                             <td> ${book.book_basketAmount}</td>
-                                             <td> <fmt:formatNumber value="${book.book_basketAmount * book.book_price}" pattern="#,###" />&#8361;</td>
-                                          </tr>
-                                       </c:forEach>
-                                       </tbody>
-                                    </table>
-
-                                 </div>
-                              </div>
-                              <div class="col-sm-6"></div>
-                              <div class="col-sm-6 text-right">
-                                 <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/order.go'">주문내역 가기</button>
-                              </div>
-                           </div>
+                              </li>
+                              </c:forEach>
+                           </ul>
                         </div>
                      </div>
                   </div>
@@ -639,7 +607,7 @@
          </div>
       </div>
       <!-- Wrapper END -->
-       <!-- Footer -->
+      <!-- Footer -->
       <footer class="iq-footer">
          <div class="container-fluid">
             <div class="row">
@@ -657,37 +625,39 @@
       </footer>
       <!-- Footer END -->
       <!-- color-customizer -->
-       <div class="iq-colorbox color-fix">
-           <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-           <div class="clearfix color-picker">
+      <div class="iq-colorbox color-fix">
+         <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
+         <div id="right-sidebar-scrollbar" class="iq-colorbox-inner">
+            <div class="clearfix color-picker">
                <h3 class="iq-font-black">Booksto Awesome Color</h3>
                <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
                <ul class="iq-colorselect clearfix">
-                   <li class="color-1 iq-colormark" data-style="color-1"></li>
-                   <li class="color-2" data-style="iq-color-2"></li>
-                   <li class="color-3" data-style="iq-color-3"></li>
-                   <li class="color-4" data-style="iq-color-4"></li>
-                   <li class="color-5" data-style="iq-color-5"></li>
-                   <li class="color-6" data-style="iq-color-6"></li>
-                   <li class="color-7" data-style="iq-color-7"></li>
-                   <li class="color-8" data-style="iq-color-8"></li>
-                   <li class="color-9" data-style="iq-color-9"></li>
-                   <li class="color-10" data-style="iq-color-10"></li>
-                   <li class="color-11" data-style="iq-color-11"></li>
-                   <li class="color-12" data-style="iq-color-12"></li>
-                   <li class="color-13" data-style="iq-color-13"></li>
-                   <li class="color-14" data-style="iq-color-14"></li>
-                   <li class="color-15" data-style="iq-color-15"></li>
-                   <li class="color-16" data-style="iq-color-16"></li>
-                   <li class="color-17" data-style="iq-color-17"></li>
-                   <li class="color-18" data-style="iq-color-18"></li>
-                   <li class="color-19" data-style="iq-color-19"></li>
-                   <li class="color-20" data-style="iq-color-20"></li>
+                  <li class="color-1 iq-colormark" data-style="color-1"></li>
+                  <li class="color-2" data-style="iq-color-2"></li>
+                  <li class="color-3" data-style="iq-color-3"></li>
+                  <li class="color-4" data-style="iq-color-4"></li>
+                  <li class="color-5" data-style="iq-color-5"></li>
+                  <li class="color-6" data-style="iq-color-6"></li>
+                  <li class="color-7" data-style="iq-color-7"></li>
+                  <li class="color-8" data-style="iq-color-8"></li>
+                  <li class="color-9" data-style="iq-color-9"></li>
+                  <li class="color-10" data-style="iq-color-10"></li>
+                  <li class="color-11" data-style="iq-color-11"></li>
+                  <li class="color-12" data-style="iq-color-12"></li>
+                  <li class="color-13" data-style="iq-color-13"></li>
+                  <li class="color-14" data-style="iq-color-14"></li>
+                  <li class="color-15" data-style="iq-color-15"></li>
+                  <li class="color-16" data-style="iq-color-16"></li>
+                  <li class="color-17" data-style="iq-color-17"></li>
+                  <li class="color-18" data-style="iq-color-18"></li>
+                  <li class="color-19" data-style="iq-color-19"></li>
+                  <li class="color-20" data-style="iq-color-20"></li>
                </ul>
                <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-           </div>
-       </div>
-       <!-- color-customizer END -->
+            </div>
+         </div>
+      </div>
+      <!-- color-customizer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="${path}/resources/js/jquery.min.js"></script>
@@ -728,6 +698,14 @@
       <script src="${path}/resources/js/maps.js"></script>
       <!-- am worldLow JavaScript -->
       <script src="${path}/resources/js/worldLow.js"></script>
+      <!-- Raphael-min JavaScript -->
+      <script src="${path}/resources/js/raphael-min.js"></script>
+      <!-- Morris JavaScript -->
+      <script src="${path}/resources/js/morris.js"></script>
+      <!-- Morris min JavaScript -->
+      <script src="${path}/resources/js/morris.min.js"></script>
+      <!-- Flatpicker Js -->
+      <script src="${path}/resources/js/flatpickr.js"></script>
       <!-- Style Customizer -->
       <script src="${path}/resources/js/style-customizer.js"></script>
       <!-- Chart Custom JavaScript -->

@@ -19,7 +19,7 @@ public class Upload {
 		boolean isUpload = false;
 		
 		String uploadPath =
-			"C:\\Users\\Ace\\Documents\\GitHub\\Final_Project\\src\\main\\webapp\\resources\\images\\user_profile_image";
+			"C:\\Users\\conne\\OneDrive\\문서\\GitHub\\Final_project\\src\\main\\webapp\\resources\\images\\user_profile_image";
 		
 		Calendar cal = Calendar.getInstance();
 		

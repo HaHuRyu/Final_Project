@@ -1,6 +1,7 @@
 package com.spring.model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserDAO {
 
@@ -36,4 +37,7 @@ public interface UserDAO {
     public boolean existsByConfirmationToken(String confirmationToken);
 
     public long count();
+
+    public void minusPayment(Map<String,Integer> map);
+
 }

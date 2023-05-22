@@ -38,4 +38,7 @@
         select count(*) from final.user
     </select>
 
+    <update id="minuspayment" parameterType="Map">
+        update final.user set user_money = user_money - #{bp} where user_no = #{user_no}
+    </update>
 </mapper>

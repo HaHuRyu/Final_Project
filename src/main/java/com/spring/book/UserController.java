@@ -1,23 +1,17 @@
 package com.spring.book;
 
 
-import java.io.File;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.spring.model.BasketDTO;
-import com.spring.model.BookDTO;
-import com.spring.model.UserDAO;
-import com.spring.model.UserDTO;
+import com.spring.model.*;
 import com.spring.service.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +36,12 @@ public class UserController {
 
     @Autowired
     private Upload upload;
+
+    @Autowired
+    private BasketDAO basketDAO;
+
+    @Autowired
+    private OrderDAO orderDAO;
 
     @RequestMapping("home.go")
     public String home() {
@@ -130,9 +130,10 @@ public class UserController {
                     session.setAttribute("UserIntro", dto.getUser_intro());
                     session.setAttribute("UserImg", dto.getUser_img());
 
+
                     session.setAttribute("BasketList", basketService.basketList(dto.getUser_no()));
                     session.setAttribute("BookList", basketService.bookList(dto.getUser_no()));
-
+                    session.setAttribute("countBasket", basketDAO.countBasket(dto.getUser_no()));
 
 
 
@@ -290,6 +291,55 @@ public class UserController {
         }
 
 
+    }
+
+    @RequestMapping("pay.go")
+    public String pay(HttpSession session, Model model, HttpServletRequest request) throws IOException {
+
+
+        List<BasketDTO> basketDTOList = (List<BasketDTO>) session.getAttribute("BasketList");
+        List<BookDTO> bookDTOList = (List<BookDTO>) session.getAttribute("BookList");
+
+        int count = Integer.parseInt(session.getAttribute("countBasket").toString());
+
+        for(int i = 0; i < count; i++){
+            OrderDTO orderDTO = new OrderDTO();
+            orderDTO.setOrder_amount(bookDTOList.get(i).getBook_basketAmount());
+            orderDTO.setBook_no(bookDTOList.get(i).getBook_no());
+            orderDTO.setUser_no(Integer.parseInt(session.getAttribute("UserNo").toString()));
+            orderDTO.setOrder_price(bookDTOList.get(i).getBook_price());
+            orderDAO.save(orderDTO);
+        }
+
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = dateFormat.format(currentDate);
+        for (int i = 0; i < bookDTOList.size(); i++){
+            BookDTO bookDTO = bookDTOList.get(i);
+            bookDTO.setBook_date(formattedDate);
+            bookDTOList.set(i, bookDTO);
+        }
+
+
+
+        Map<String ,Integer> map = new HashMap<>();
+        map.put("user_no", Integer.parseInt(session.getAttribute("UserNo").toString()));
+        map.put("bp", Integer.parseInt(request.getParameter("bp")));
+
+        userDAO.minusPayment(map);
+        basketDAO.deleteByUserNo(Integer.parseInt(session.getAttribute("UserNo").toString()));
+
+        model.addAttribute("bookdto", bookDTOList).addAttribute("basketdto", basketDTOList);
+
+
+        session.setAttribute("UserMoney",userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
+        session.setAttribute("BasketList", basketService.basketList(Integer.parseInt(session.getAttribute("UserNo").toString())));
+        session.setAttribute("BookList", basketService.bookList(Integer.parseInt(session.getAttribute("UserNo").toString())));
+        session.setAttribute("countBasket", basketDAO.countBasket(Integer.parseInt(session.getAttribute("UserNo").toString())));
+
+
+
+        return "pages-invoice";
     }
 }
 

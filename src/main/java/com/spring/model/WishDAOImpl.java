@@ -50,4 +50,6 @@ public class WishDAOImpl implements WishDAO {
     public void updateSequence(WishDTO WishDTO) {
 
     }
+
+
 }
