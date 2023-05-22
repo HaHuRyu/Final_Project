@@ -39,28 +39,56 @@
                            <form action="admin-books.jsp">
                               <div class="form-group">
                                  <label>책 제목:</label>
-                                 <input onkeyup="delayedGetList()" type="text" class="form-control" name="title">
+                                 <input type="text" class="form-control" id="book_title" onclick="openModal()">
                               </div>
+
+                              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">
+                                 <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <h5 class="modal-title">Modal title</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                             <span aria-hidden="true">&times;</span>
+                                          </button>
+                                       </div>
+                                       <div class="modal-body">
+                                          <div>
+                                             <h4>책 제목을 입력해주세요.</h4>
+                                             <input type="text" class="form-control" name="title" onkeyup="delayedGetList()" >
+                                          </div>
+
+                                          <div id="apititle">
+
+                                          </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
 
                               <div class="form-group">
                                  <label>책 저자:</label>
-                                 <input type="text" class="form-control" name="author">
+                                 <input type="text" class="form-control" id="author" name="authors">
                               </div>
                               <div class="form-group">
                                  <label>책 이미지:</label>
                                  <div class="custom-file">
-                                    <input type="text" class="form-control" name="img">
+                                    <input type="text" class="form-control" id="img" name="imgs">
                                  </div>
                               </div>
 
                               <div class="form-group">
                                  <label>책 가격:</label>
-                                 <input type="text" class="form-control" name="price">
+                                 <input type="text" class="form-control" id="price" name="prices">
                               </div>
 
                               <div class="form-group">
                                  <label>책 소개글:</label>
-                                 <textarea class="form-control" rows="4" name="cont"></textarea>
+                                 <textarea class="form-control" rows="4" id="cont" name="conts"></textarea>
                               </div>
                               <button type="submit" class="btn btn-primary">등록</button>
                               <button type="reset" class="btn btn-danger">다시 작성</button>
@@ -150,5 +178,25 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+
+         <script>
+            function openModal() {
+               $('#myModal').modal('show');
+            }
+
+            function openValue(element) {
+               var aptitle = $(element).find("td").attr("data-value");
+               var aauthor = $(element).find("td").attr("data-value2");
+               var aimg = $(element).find("td").attr("data-value3");
+               var aprice = $(element).find("td").attr("data-value4");
+               var acont = $(element).find("td").attr("data-value5");
+               $("#book_title").val(aptitle);
+               $("#author").val(aauthor);
+               $("#img").val(aimg);
+               $("#price").val(aprice);
+               $("#cont").val(acont);
+            }
+
+         </script>
    </body>
 </html>
