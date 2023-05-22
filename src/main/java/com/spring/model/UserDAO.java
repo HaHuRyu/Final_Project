@@ -1,5 +1,6 @@
 package com.spring.model;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,13 @@ public interface UserDAO {
 
     public int update(UserDTO user);
 
-    public void delete(UserDAO user);
+    public int delete(int user);
+
+    public void sequence(int no);
+
+
+
+
 
     public void deleteByUsername(String username);
 
@@ -38,6 +45,9 @@ public interface UserDAO {
 
     public long count();
 
+
     public void minusPayment(Map<String,Integer> map);
+
+    int plusPayment(Map<String, Integer> map);
 
 }

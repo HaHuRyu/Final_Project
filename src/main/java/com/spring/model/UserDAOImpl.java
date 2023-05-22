@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -52,13 +53,23 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public int update(UserDTO user) {
 
-        return this.sqlSession.update("add" , user);
+        return this.sqlSession.update("modi" , user);
     }
 
     @Override
-    public void delete(UserDAO user) {
+    public int delete(int no) {
+
+        return this.sqlSession.delete("delete",no);
 
     }
+
+    @Override
+    public void sequence(int no) {
+        this.sqlSession.update("seq",no);
+
+    }
+
+
 
     @Override
     public void deleteByUsername(String username) {
@@ -102,6 +113,11 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void minusPayment(Map<String, Integer> map) {
-         this.sqlSession.update("minuspayment" , map);
+        this.sqlSession.update("minuspayment", map);
+    }
+
+    @Override
+    public int plusPayment(Map<String, Integer> map) {
+        return this.sqlSession.update("pluspayment", map);
     }
 }
