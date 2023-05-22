@@ -55,11 +55,11 @@
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="admin-dashboard.jsp"><i class="ri-dashboard-line"></i>Dashboard</a></li>
-                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>Category Lists</a></li>
+                            <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
+                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
                             <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
-                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>Books</a></li>
-                            <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
+                            <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
                         </ul>
                     </li>
                     <li>

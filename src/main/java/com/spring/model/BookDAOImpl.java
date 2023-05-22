@@ -5,16 +5,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BookDAOImpl implements BookDAO{
 
+    private final SqlSessionTemplate sqlSession;
+
     @Autowired
-    private SqlSessionTemplate sqlSession;
+    public BookDAOImpl(SqlSessionTemplate sqlSession) {
+        this.sqlSession = sqlSession;
+    }
+
 
     @Override
-    public List<BookDTO> book_list(PageDTO dto) {
-        return this.sqlSession.selectList("book_all", dto);
+    public int book_count() {
+        return this.sqlSession.selectOne("book_count");
+    }
+
+    // 도서
+    @Override
+    public List<BookDTO> book_list() {
+        return this.sqlSession.selectList("book_all");
     }
 
     @Override
@@ -33,8 +45,9 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public void book_delete() {
-
+    public int book_delete(int num) {
+        int result = this.sqlSession.delete("book_del", num);
+        return result;
     }
 
     @Override
@@ -50,22 +63,45 @@ public class BookDAOImpl implements BookDAO{
     @Override
     public int day_per_count() {
         return 0;
+    };
+
+    
+    // 카테고리
+    @Override
+    public List<CategoryDTO> category_list() {
+        return this.sqlSession.selectList("category_all");
     }
 
     @Override
-    public int BookListCount() {
-        return this.sqlSession.selectOne("book_cnt");
+    public CategoryDTO category_one(int num) {
+        return this.sqlSession.selectOne("category_one", num);
     }
 
     @Override
-    public int CategoryCount() {
-        return this.sqlSession.selectOne("category_cnt");
-
+    public int category_modify(Map< String, Object> category) {
+        return this.sqlSession.update("category_modify", category);
     }
 
     @Override
-    public List<CategoryDTO> category_list(PageDTO dto) {
-        return this.sqlSession.selectOne("category_all");
+    public int category_insert(CategoryDTO dto) {
+        return this.sqlSession.insert("category_add",dto);
     }
+
+    @Override
+    public int category_NoChk(int no) {
+        return this.sqlSession.selectOne("category_NoChk", no);
+    }
+
+    @Override
+    public int category_NameChk(String name) {
+        return this.sqlSession.selectOne("category_NameChk", name);
+    }
+
+    @Override
+    public int category_delete(int no) {
+        return this.sqlSession.delete("category_del",no);
+    }
+
+
 
 }

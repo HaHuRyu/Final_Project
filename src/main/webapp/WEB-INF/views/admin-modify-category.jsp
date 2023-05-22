@@ -65,9 +65,9 @@
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Admin</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="admin" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
                            <li><a href="admin-dashboard.jsp"><i class="las la-house-damage"></i>Dashboard</a></li>
-                           <li><a href="admin-category.jsp"><i class="ri-function-line"></i>Books Category</a></li>
+                           <li class="active"><a href="admin-category.jsp"><i class="ri-function-line"></i>Books Category</a></li>
                            <li><a href="admin-author.jsp"><i class="ri-book-line"></i>Author</a></li>
-                           <li class="active"><a href="admin-books.jsp"><i class="ri-file-pdf-line"></i>Books</a></li>
+                           <li><a href="admin-books.jsp"><i class="ri-file-pdf-line"></i>Books</a></li>
                         </ul>
                      </li>
                      <li>
@@ -540,71 +540,27 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Add Books</h4>
+                              <h4 class="card-title">카테고리 등록</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <form action="admin-books.jsp">
+                           <form action="<%=request.getContextPath()%>/category_modify_ok.go" method="post">
                               <div class="form-group">
-                                 <label>Book Name:</label>
-                                 <input type="text" class="form-control">
+                                 <label for="category_no">카테고리 No:</label>
+                                 <input type="hidden" name="ex_no" value="${Category_DTO.category_no}">
+                                 <input id="category_no" name="category_no" type="text" class="form-control" value="${Category_DTO.category_no}">
                               </div>
                               <div class="form-group">
-                                 <label>Book Category:</label>
-                                 <select class="form-control" id="exampleFormControlSelect1">
-                                    <option selected="" disabled="">Book Category</option>
-                                    <option>General Books</option>
-                                    <option>History Books</option>
-                                    <option>Horror Story</option>
-                                    <option>Arts Books</option>
-                                    <option>Film & Photography</option>
-                                    <option>Business & Economics</option>
-                                    <option>Comics & Mangas</option>
-                                    <option>Computers & Internet</option>
-                                    <option> Sports</option>
-                                    <option> Travel & Tourism</option>
-                                 </select>
+                                 <label for="category_name">카테고리명:</label>
+                                 <input type="hidden" name="ex_name" value="${Category_DTO.category}">
+                                 <input id="category_name" name="category_name" type="text" class="form-control" value="${Category_DTO.category}">
                               </div>
                               <div class="form-group">
-                                 <label>Book Author:</label>
-                                 <select class="form-control" id="exampleFormControlSelect2">
-                                    <option selected="" disabled="">Book Author</option>
-                                    <option>Jhone Steben</option>
-                                    <option>John Klok</option>
-                                    <option>Ichae Semos</option>
-                                    <option>Jules Boutin</option>
-                                    <option>Kusti Franti</option>
-                                    <option>David King</option>
-                                    <option>Henry Jurk</option>
-                                    <option>Attilio Marzi</option>
-                                    <option>Argele Intili</option>
-                                    <option>Attilio Marzi</option>
-                                 </select>
+                                 <label for="category_detail">상세설명:</label>
+                                 <textarea id="category_detail" name="category_detail" class="form-control" rows="4">${Category_DTO.category_content}</textarea>
                               </div>
-                              <div class="form-group">
-                                 <label>Book Image:</label>
-                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" accept="image/png, image/jpeg">
-                                    <label class="custom-file-label">Choose file</label>
-                                 </div>
-                              </div>
-                              <div class="form-group">
-                                 <label>Book pdf:</label>
-                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" accept="application/pdf, application/vnd.ms-excel">
-                                    <label class="custom-file-label">Choose file</label>
-                                 </div>
-                              </div>
-                              <div class="form-group">
-                                 <label>Book Price:</label>
-                                 <input type="text" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                 <label>Book Description:</label>
-                                 <textarea class="form-control" rows="4"></textarea>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                              <button type="reset" class="btn btn-danger">Reset</button>
+                              <button type="submit" class="btn btn-primary">등록</button>
+                              <button type="reset" class="btn btn-danger">다시작성</button>
                            </form>
                         </div>
                      </div>

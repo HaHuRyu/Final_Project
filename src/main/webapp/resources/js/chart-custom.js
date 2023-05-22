@@ -2921,7 +2921,7 @@ if (jQuery("#apex-column").length) {
 		colors: ["#0dd6b8", "#1ee2ac", "#ff7750"],
 		series: [{
 			name: "Net Profit",
-			data: [44, 55, 57, 56, 61, 58]
+			data: [99, 99, 99, 56, 61, 58]
 		}, {
 			name: "Revenue",
 			data: [76, 85, 101, 98, 87, 105]

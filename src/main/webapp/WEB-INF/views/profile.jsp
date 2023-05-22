@@ -28,7 +28,6 @@
       </div>
       <!-- loader END -->
 
-
       <%@ include file="header.jsp" %>
 
          <!-- Page Content  -->

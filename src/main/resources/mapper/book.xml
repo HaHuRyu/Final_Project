@@ -19,19 +19,15 @@
 <mapper namespace="BookDto">
 
     <!-- 도서 쿼리문 -->
-    <!-- 도서 리스트 조회 -->
-    <select id="book_all" resultType="BookDto" parameterType="pageDto">
-        <![CDATA[
-		SELECT a.*
-        FROM (
-            SELECT b.*, ROW_NUMBER() OVER (ORDER BY book_no DESC) AS rnum FROM book b
-        ) AS a
-        WHERE rnum >= #{startNo} AND rnum <= #{endNo};
-	    ]]>
-    </select>
-    <!-- 도서 리스트 갯수 조회(페이징) -->
-    <select id="book_cnt" resultType="int">
+    <!--도서 총 갯수-->
+    <select id="book_count" resultType="int">
         select count(*) from book
+    </select>
+
+    <!-- 도서 리스트 조회 -->
+    <select id="book_all" resultType="BookDto">
+    
+        select * from final.book;
     </select>
 
     <!-- 도서 상세 조회 -->
@@ -39,25 +35,50 @@
         SELECT b.*, c.category
         FROM book b
         JOIN category c ON b.category_no = c.category_no
-        WHERE book_no = #{no};
+        WHERE book_no = #{no}
     </select>
 
+    <!-- 도서 삭제 -->
+    <delete id="book_del" parameterType="int">
+        delete from book where book_no = #{value}
+    </delete>
 
 
     <!-- 카테고리 쿼리문 -->
     <!-- 카테고리 리스트 조회 -->
-    <select id="category_all" resultType="CategoryDto" parameterType="pageDto">
-        <![CDATA[
-		SELECT a.*
-        FROM (
-            SELECT b.*, ROW_NUMBER() OVER (ORDER BY category_no DESC) AS rnum FROM category b
-        ) AS a
-        WHERE rnum >= #{startNo} AND rnum <= #{endNo};
-	    ]]>
+    <select id="category_all" resultType="CategoryDto">
+        select * from final.category
     </select>
-    <!-- 카테고리 리스트 갯수 조회(페이징) -->
-    <select id="category_cnt" resultType="int">
-        select count(*) from category
+
+    <!-- 카테고리 제거 -->
+    <delete id="category_del" parameterType="int">
+        delete from category where category_no = #{value}
+    </delete>
+
+    <!--카테고리 추가-->
+    <insert id="category_add" parameterType="CategoryDto">
+        insert into category values(#{category_no},#{category},#{category_content})
+    </insert>
+
+    <!--카테고리 하나의값-->
+    <select id="category_one" parameterType="int" resultType="CategoryDto">
+        select * from category where category_no = #{category_one}
     </select>
+
+    <!--카테고리 수정-->
+    <update id="category_modify" parameterType="map">
+        update category set category_no = #{category_no}, category = #{category_name}, category_content = #{category_content} where category_no = #{ex_no}
+    </update>
+
+    <!--카테고리 No 중복체크-->
+    <select id="category_NoChk" parameterType="int" resultType="int">
+        select count(*) from category where category_no = #{value}
+    </select>
+
+    <!--카테고리 Name 중복체크-->
+    <select id="category_NameChk" parameterType="String" resultType="int">
+        select count(*) from category where category = #{value}
+    </select>
+            
 
 </mapper>
