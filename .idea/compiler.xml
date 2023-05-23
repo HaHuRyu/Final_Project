@@ -10,9 +10,6 @@
         <module name="Final_project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Final_project" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
