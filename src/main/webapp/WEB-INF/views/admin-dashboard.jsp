@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -597,7 +598,7 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Daily Sales</h4>
+                              <h4 class="card-title mb-0">하루당 매출</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
@@ -655,7 +656,7 @@
                   <div class="col-md-4">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                            <div class="iq-card-body">
-                              <h4 class="text-uppercase text-black mb-0">Session(Now)</h4>
+                              <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                               <div class="d-flex justify-content-between align-items-center">
                                  <div class="font-size-80 text-black">12</div>
                                  <div class="text-left">
@@ -675,7 +676,7 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Open Invoices</h4>
+                              <h4 class="card-title">주문 내역</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">
                               <div class="dropdown">
@@ -702,28 +703,19 @@
                                        <th scope="col">주문번호</th>
                                        <th scope="col">주문금액</th>
                                        <th scope="col">상태</th>
-                                       <th scope="col"></th>
 
                                     </tr>
                                  </thead>
                                  <tbody>
-
+                                    <c:forEach var="orderListDTO" items="${allList}">
                                     <tr>
-                                       <td>Cliff Hanger</td>
-                                       <td>18/11/2019</td>
-                                       <td>6396</td>
-                                       <td>$2500</td>
-                                       <td><div class="badge badge-pill badge-danger">Past Due</div></td>
-                                       <td>Before Due</td>
+                                       <td>${orderListDTO.user_name}</td>
+                                       <td>${fn:substring(orderListDTO.order_date, 0, 10)}</td>
+                                       <td>${orderListDTO.order_set}</td>
+                                       <td><fmt:formatNumber value="${orderListDTO.total_order_price}" groupingUsed="true" />원 </td>
+                                       <td><div class="badge badge-pill badge-success">결제완료</div></td>
                                     </tr>
-                                    <tr>
-                                       <td>Terry Aki</td>
-                                       <td>14/12/2019</td>
-                                       <td>7854</td>
-                                       <td>$5000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Copy</td>
-                                    </tr>
+                                    </c:forEach>
 
                                  </tbody>
                               </table>
@@ -846,8 +838,8 @@
          if (jQuery('#iq-sale-chart').length) {
             var options = {
                series: [{
-                  name: 'Net Profit',
-                  data: [99, 55, 57, 56, 61, 58, 63]
+                  name: '총매출',
+                  data: [${daily_sales.get('Monday')}, ${daily_sales.get('Tuesday')}, ${daily_sales.get('Wendsday')}, ${daily_sales.get('Thursday')}, ${daily_sales.get('Friday')}, ${daily_sales.get('Saturday')}, ${daily_sales.get('Sunday')}]
                }],
                chart: {
                   type: 'bar'
@@ -869,7 +861,7 @@
                   colors: ['transparent']
                },
                xaxis: {
-                  categories: ['일', '월', '화', '수', '목', '금', '토'],
+                  categories: ['월', '화', '수', '목', '금', '토', '일'],
                },
                yaxis: {
                   title: {
@@ -892,7 +884,7 @@
                tooltip: {
                   y: {
                      formatter: function (val) {
-                        return "$ " + val + " thousands"
+                        return "&#8361;" + val + ""
                      }
                   }
                }

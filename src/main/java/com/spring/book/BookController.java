@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -218,12 +219,35 @@ public class BookController {
 
     @RequestMapping("admin_dashboard.go")
     public String Admin_dashboard(Model model){
+
         int book_count = this.dao.book_count();
         int user_count = this.userDAO.allCount();
         int order_count = this.orderDAO.allCount();
         int order_sale = this.orderDAO.totalSales();
 
-        model.addAttribute("book_count",book_count).addAttribute("user_count", user_count).addAttribute("order_count", order_count).addAttribute("order_sale", order_sale);
+        Map<String, Map<String, Object>> daily_salesMap = this.orderDAO.dailysales();
+        Map<String, Object> daily_sales = new HashMap<>();
+
+        for (Map.Entry<String, Map<String, Object>> entry : daily_salesMap.entrySet()) {
+            String key = entry.getKey();
+            Map<String, Object> valueMap = entry.getValue();
+
+            String day = (String) valueMap.get("dayName");
+            BigDecimal countBigDecimal = (BigDecimal) valueMap.get("sale_count");
+            Long count = (countBigDecimal != null) ? countBigDecimal.longValue() : null;
+            daily_sales.put(day, count);
+
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+        List<OrderListDTO> allList = this.orderDAO.allList();
+
+        model.addAttribute("book_count",book_count)
+                .addAttribute("user_count", user_count)
+                .addAttribute("order_count", order_count)
+                .addAttribute("order_sale", order_sale)
+                .addAttribute("daily_sales",daily_sales)
+                .addAttribute("allList", allList);
 
         return "admin-dashboard";
     }
