@@ -65,21 +65,25 @@
                      <div class="iq-card">
                         <div class="iq-card-body">
                            <div class="row">
-                              <div class="col-sm-6 col-md-4 col-lg-3">
-                                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
-                                    <div class="iq-card-body p-0">
-                                       <div class="d-flex align-items-center">
-                                          <div class="col-6 p-0 position-relative image-overlap-shadow">
-                                             <a href="javascript:void();"><img class="img-fluid rounded w-100" src="${path}/resources/images/search-book/01.jpg" alt=""></a>
-                                             <div class="view-book">
-                                                <a href="book-page.jsp" class="btn btn-sm btn-white">View Book</a>
+                              <c:set var="list" value="${List}"/>
+                              <c:forEach items="#{list}" var="dto">
+                                 <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
+                                       <div class="iq-card-body p-0">
+                                          <div class="d-flex align-items-center">
+                                             <div class="col-6 p-0 position-relative image-overlap-shadow">
+                                                <a href="javascript:void();"><img class="img-fluid rounded w-100"
+                                                                                  src="${dto.seller_file}"
+                                                                                  alt=""></a>
+                                                <div class="view-book">
+                                                   <a href="book_page.go?seller_no=${dto.seller_no}" class="btn btn-sm btn-white">View Book</a>
+                                                </div>
                                              </div>
-                                          </div>
-                                          <div class="col-6">
-                                             <div class="mb-2">
-                                                <h6 class="mb-1">A Hunger knut book</h6>
-                                                <p class="font-size-13 line-height mb-1">Gurt Mistrioty</p>
-                                                <div class="d-block">
+                                             <div class="col-6">
+                                                <div class="mb-2">
+                                                   <h6 class="mb-1">${dto.seller_title}</h6>
+                                                   <p class="font-size-13 line-height mb-1">${dto.seller_author}</p>
+                                                   <div class="d-block">
                                                    <span class="font-size-13 text-warning">
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
@@ -87,22 +91,25 @@
                                                       <i class="fa fa-star"></i>
                                                       <i class="fa fa-star"></i>
                                                    </span>
+                                                   </div>
                                                 </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-                                                <span class="pr-1 old-price">$99</span>
-                                                <h6><b>$89</b></h6>
-                                             </div>
-                                             <div class="iq-product-action">
-                                                <a href="javascript:void();"><i class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                <a href="javascript:void();" class="ml-2"><i class="ri-heart-fill text-danger"></i></a>
+                                                <div class="price d-flex align-items-center">
+                                                   <span class="pr-1 old-price">20000원</span>
+                                                   <h6><b>${dto.seller_price}원</b></h6>
+                                                </div>
+                                                <div class="iq-product-action">
+                                                   <a href="javascript:void();"><i
+                                                           class="ri-shopping-cart-2-fill text-primary"></i></a>
+                                                   <a href="javascript:void();" class="ml-2"><i
+                                                           class="ri-heart-fill text-danger"></i></a>
+                                                </div>
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                             <%-- <div class="col-sm-6 col-md-4 col-lg-3">
+                              </c:forEach>
+                             <%--<div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
                                     <div class="iq-card-body p-0">
                                        <div class="d-flex align-items-center">
@@ -138,7 +145,8 @@
                                        </div>
                                     </div>
                                  </div>
-                              </div>
+                              </div>--%>
+                              <%--
                               <div class="col-sm-6 col-md-4 col-lg-3">
                                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
                                     <div class="iq-card-body p-0">

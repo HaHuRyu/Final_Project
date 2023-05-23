@@ -8,9 +8,13 @@ public class UsedDTO {
 
     private String seller_title;
 
+    private String seller_author;
+
     private String seller_cont;
 
     private String seller_file;
+
+    private String seller_price;
 
     private String seller_hit;
 
@@ -42,6 +46,14 @@ public class UsedDTO {
         this.seller_title = seller_title;
     }
 
+    public String getSeller_author() {
+        return seller_author;
+    }
+
+    public void setSeller_author(String seller_author) {
+        this.seller_author = seller_author;
+    }
+
     public String getSeller_cont() {
         return seller_cont;
     }
@@ -56,6 +68,14 @@ public class UsedDTO {
 
     public void setSeller_file(String seller_file) {
         this.seller_file = seller_file;
+    }
+
+    public String getSeller_price() {
+        return seller_price;
+    }
+
+    public void setSeller_price(String seller_price) {
+        this.seller_price = seller_price;
     }
 
     public String getSeller_hit() {

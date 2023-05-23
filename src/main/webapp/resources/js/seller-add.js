@@ -82,30 +82,27 @@ $(function () {
                         for (var i = 0; i < results.length; i++) {
                             var cr = results[i];
                             var title = data.documents[i].title;
+                            var cont = data.documents[i].contents.substring(0,50)
 
                             console.log("title >>> " + title);
                             table += "<table onclick='openValue(this)'>";
-                            table += "<tr>";
-                            table += "<th> 책 제목 </th>";
-                            table += "<td data-value='" + title + "'>" + title + "</td>";
-                            table += "</tr>";
-                            table += "<tr>";
-                            table += "<th> 저자 </th>";
-                            table += "<td data-value2='" + data.documents[i].authors + "'>" + data.documents[i].authors + "</td>";
-                            table += "</tr>";
-                            table += "<tr>";
-                            table += "<th> 책 표지 </th>";
-                            table += "<td data-value3='" + cr + "'>" + cr + "</td>";
-                            table += "</tr>";
-                            table += "<tr>";
-                            table += "<th> 책 가격 </th>";
-                            table += "<td data-value4='" + data.documents[i].price + "'>" + data.documents[i].price + "</td>";
-                            table += "</tr>";
-                            table += "<tr>";
-                            table += "<th> 책 소개글 </th>";
-                            table += "<td data-value5='" + data.documents[i].cotents + "'>" + data.documents[i].contents + "</td>";
-                            table += "</tr>";
+                            table += "<tr>"
+                            table += "<td rowspan='5' style='width: 15%; height: 30%;' data-img='" + cr + "'><img src='"+cr+"' style='width:100%; height:100%;'></td>";
+                            table += "</tr>"
+                            table += "<tr>"
+                            table += "<td data-title='" + title + "'>&nbsp;&nbsp;" + title + "</td>";
+                            table += "</tr>"
+                            table += "<tr>"
+                            table += "<td data-author='" + data.documents[i].authors + "'>&nbsp;&nbsp;" + data.documents[i].authors + "</td>";
+                            table += "</tr>"
+                            table += "<tr>"
+                            table += "<td data-price='" + data.documents[i].price + "'>&nbsp;&nbsp;" + data.documents[i].price + "원</td>";
+                            table += "</tr>"
+                            table += "<tr>"
+                            table += "<td data-content='" + data.documents[i].contents + "'>&nbsp;&nbsp;" + cont + "...</td>";
+                            table += "</tr>"
                             table += "</table>";
+                            table += "<br><br>";
 
                             console.log("link >>> " + cr);
                         }

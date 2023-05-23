@@ -36,65 +36,64 @@
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <form action="admin-books.jsp">
+                           <form method="post" action="book_add.go">
                               <div class="form-group">
+                                 <input type="hidden" name="user_no" value="1">
                                  <label>책 제목:</label>
-                                 <input type="text" class="form-control" id="book_title" onclick="openModal()">
+                                 <input type="text" class="form-control" name="seller_title" id="book_title" onclick="openModal()" autocomplete="off">
                               </div>
-
-                              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">
-                                 <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <h5 class="modal-title">Modal title</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                             <span aria-hidden="true">&times;</span>
-                                          </button>
-                                       </div>
-                                       <div class="modal-body">
-                                          <div>
-                                             <h4>책 제목을 입력해주세요.</h4>
-                                             <input type="text" class="form-control" name="title" onkeyup="delayedGetList()" >
-                                          </div>
-
-                                          <div id="apititle">
-
-                                          </div>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-
 
                               <div class="form-group">
                                  <label>책 저자:</label>
-                                 <input type="text" class="form-control" id="author" name="authors">
+                                 <input type="text" class="form-control" id="author" name="seller_author">
                               </div>
                               <div class="form-group">
                                  <label>책 이미지:</label>
                                  <div class="custom-file">
-                                    <input type="text" class="form-control" id="img" name="imgs">
+                                    <input type="text" class="form-control" id="img" name="seller_file">
                                  </div>
                               </div>
 
                               <div class="form-group">
                                  <label>책 가격:</label>
-                                 <input type="text" class="form-control" id="price" name="prices">
+                                 <input type="text" class="form-control" id="price" name="seller_price">
                               </div>
 
                               <div class="form-group">
                                  <label>책 소개글:</label>
-                                 <textarea class="form-control" rows="4" id="cont" name="conts"></textarea>
+                                 <textarea class="form-control" rows="4" id="cont" name="seller_cont"></textarea>
                               </div>
                               <button type="submit" class="btn btn-primary">등록</button>
                               <button type="reset" class="btn btn-danger">다시 작성</button>
                            </form>
                         </div>
                      </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- modal -->
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div>
+                     <h4>책 제목을 입력해주세요.</h4>
+                     <input type="text" class="form-control" name="title" style="width: 85%; display: inline-block;" onkeyup="$('#apititle').empty();">
+                     <button type="button" class="btn btn-primary" onclick="delayedGetList()" style=" width:14%; height: 45px;  display: inline-block;">검색</button>
+                  </div>
+                  <br>
+
+                  <div id="apititle">
+
                   </div>
                </div>
             </div>
@@ -185,11 +184,17 @@
             }
 
             function openValue(element) {
-               var aptitle = $(element).find("td").attr("data-value");
-               var aauthor = $(element).find("td").attr("data-value2");
-               var aimg = $(element).find("td").attr("data-value3");
-               var aprice = $(element).find("td").attr("data-value4");
-               var acont = $(element).find("td").attr("data-value5");
+               var rowData = $(element).find("td");
+
+               var aimg = rowData.eq(0).data("img");
+               var aptitle = rowData.eq(1).data("title");
+               var aauthor = rowData.eq(2).data("author");
+               var aprice = rowData.eq(3).data("price");
+               var acont = rowData.eq(4).data("content");
+
+               console.log("acont >>> " + aptitle);
+               console.log("acont >>> " + acont);
+
                $("#book_title").val(aptitle);
                $("#author").val(aauthor);
                $("#img").val(aimg);

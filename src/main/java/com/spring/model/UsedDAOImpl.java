@@ -17,4 +17,15 @@ public class UsedDAOImpl implements UsedDAO{
     public List<UsedDTO> usedList() {
         return this.sqlSession.selectList("all");
     }
+
+    @Override
+    public int usedInsert(UsedDTO dto) {
+        return this.sqlSession.insert("add", dto);
+
+    }
+
+    @Override
+    public UsedDTO usedBookPage(int no){
+        return this.sqlSession.selectOne("pick", no);
+    }
 }
