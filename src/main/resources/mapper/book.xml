@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	DTD(Document Type Definition)
+	- 작성한 문서가 어떤 문서인지에 대해서 정의해 놓은 것.
+    - 하나의 시스템 내에서 사용할 XML 데이터의 구조를 정의하여
+            유효성을 점검 시 사용하는 태그.
+ -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 패키지명을 포함해서 DAO 인터페이스 이름으로
+          작성하는 것이 관례임.
+     namespace 명은 mapper 들을 구분하는데 식별자로 사용이 됨.
+-->
+
+<mapper namespace="BookDto">
+
+    <!-- 도서 쿼리문 -->
+    <!--도서 총 갯수-->
+    <select id="book_count" resultType="int">
+        select count(*) from book
+    </select>
+
+    <!-- 도서 리스트 조회 -->
+    <select id="book_all" resultType="BookDto">
+    
+        select * from final.book;
+    </select>
+
+    <!-- 도서 상세 조회 -->
+    <select id="book_cont" resultType="BookDto" parameterType="int">
+        SELECT b.*, c.category
+        FROM book b
+        JOIN category c ON b.category_no = c.category_no
+        WHERE book_no = #{no}
+    </select>
+
+    <!-- 도서 삭제 -->
+    <delete id="book_del" parameterType="int">
+        delete from book where book_no = #{value}
+    </delete>
+
+
+    <!-- 카테고리 쿼리문 -->
+    <!-- 카테고리 리스트 조회 -->
+    <select id="category_all" resultType="CategoryDto">
+        select * from final.category
+    </select>
+
+    <!-- 카테고리 제거 -->
+    <delete id="category_del" parameterType="int">
+        delete from category where category_no = #{value}
+    </delete>
+
+    <!--카테고리 추가-->
+    <insert id="category_add" parameterType="CategoryDto">
+        insert into category values(#{category_no},#{category},#{category_content})
+    </insert>
+
+    <!--카테고리 하나의값-->
+    <select id="category_one" parameterType="int" resultType="CategoryDto">
+        select * from category where category_no = #{category_one}
+    </select>
+
+    <!--카테고리 수정-->
+    <update id="category_modify" parameterType="map">
+        update category set category_no = #{category_no}, category = #{category_name}, category_content = #{category_content} where category_no = #{ex_no}
+    </update>
+
+    <!--카테고리 No 중복체크-->
+    <select id="category_NoChk" parameterType="int" resultType="int">
+        select count(*) from category where category_no = #{value}
+    </select>
+
+    <!--카테고리 Name 중복체크-->
+    <select id="category_NameChk" parameterType="String" resultType="int">
+        select count(*) from category where category = #{value}
+    </select>
+            
+
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	DTD(Document Type Definition)
+	- 작성한 문서가 어떤 문서인지에 대해서 정의해 놓은 것.
+    - 하나의 시스템 내에서 사용할 XML 데이터의 구조를 정의하여
+            유효성을 점검 시 사용하는 태그.
+ -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 패키지명을 포함해서 DAO 인터페이스 이름으로
+          작성하는 것이 관례임.
+     namespace 명은 mapper 들을 구분하는데 식별자로 사용이 됨.
+-->
+
+<mapper namespace="BasketDAO">
+    <select id="basketFindByUserNo" parameterType="int" resultType="BasketDTO">
+        select * from final.basket where user_no = #{value}
+    </select>
+
+    <update id="basketUpdateQuantity" parameterType="BasketDTO">
+        update final.basket set book_amount = #{book_amount} where user_no = #{user_no} and book_no = #{book_no}
+    </update>
+
+    <delete id="basketDelete" parameterType="BasketDTO">
+        delete from final.basket where user_no = #{user_no} and book_no = #{book_no}
+    </delete>
+
+    <insert id="basketInsert" parameterType="BasketDTO">
+        <selectKey resultType="int" keyProperty="basket_no" order="BEFORE">
+            select count(*) from basket
+        </selectKey>
+        insert into final.basket values(#{basket_no}+1,#{book_no}, #{user_no}, #{book_amount},0)
+    </insert>
+
+    <select id="basketFindByBookNo" parameterType="BasketDTO" resultType="BasketDTO">
+        select * from final.basket where user_no = #{user_no} and book_no = #{book_no}
+    </select>
+
+    <update id="basketUpdateSequence" parameterType="BasketDTO">
+        update final.basket set basket_no = basket_no - 1 where basket_no > #{basket_no}
+    </update>
+
+    <select id="CountBasket" parameterType="int" resultType="int">
+        select count(*) from final.basket where user_no = #{value}
+    </select>
+
+    <delete id="basketDeleteByUserNo" parameterType="int">
+        delete from final.basket where user_no = #{value}
+    </delete>
+</mapper>

@@ -9,6 +9,11 @@
     <typeAliases>
         <typeAlias type="com.spring.model.UserDTO" alias="UserDTO"/>
         <typeAlias type="com.spring.model.UsedDTO" alias="UsedDTO"/>
+        <typeAlias type="com.spring.model.BasketDTO" alias="BasketDTO"/>
+        <typeAlias type="com.spring.model.BookDTO" alias="BookDto"/>
+        <typeAlias type="com.spring.model.CategoryDTO" alias="CategoryDto" />
+        <typeAlias type="com.spring.model.WishDTO" alias="WishDTO"/>
+        <typeAlias type="com.spring.model.OrderDTO" alias="OrderDTO"/>
     </typeAliases>
 
 </configuration>

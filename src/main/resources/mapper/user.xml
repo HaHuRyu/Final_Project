@@ -20,4 +20,49 @@
     <select id="contOne" parameterType="String" resultType="UserDTO">
         select * from final.user where user_id = #{value}
     </select>
+
+
+    <insert id="add" parameterType="UserDto">
+        <selectKey resultType="int" keyProperty="user_no" order="BEFORE">
+            select max(user_no) from user
+        </selectKey>
+        INSERT INTO final.user(user_no,user_id,user_pwd,user_name,user_nickname,user_email,user_phone,user_birth,user_approve,user_money,category_no,category_no2,user_img,user_job,user_intro,user_addr)
+        VALUES (#{user_no}+1, #{user_id}, #{user_pwd}, #{user_name}, #{user_nickname}, #{user_email}, #{user_phone}, now(), '0', 0, #{category_no}, #{category_no2},#{user_img}, #{user_job}, #{user_intro}, #{user_addr})
+    </insert>
+
+
+    <select id="contAll" resultType="UserDTO">
+        select * from final.user
+    </select>
+
+    <select id="contAllCount" resultType="int">
+        select count(*) from final.user
+    </select>
+
+    <update id="minuspayment" parameterType="Map">
+        update final.user set user_money = user_money - #{bp} where user_no = #{user_no}
+    </update>
+
+
+    <update id="modi" parameterType="UserDto">
+        update final.user set user_id = #{user_id}, user_pwd = #{user_pwd}, user_nickname=#{user_nickname}, user_email=#{user_email},
+        user_phone=#{user_phone}, user_birth=now(),category_no = #{category_no},
+        category_no2=#{category_no2}, user_img = #{user_img}, user_job=#{user_job}, user_intro=#{user_intro}, user_addr=#{user_addr}
+        where user_no = #{user_no}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+        delete from user where user_no = #{no}
+    </delete>
+
+    <update id="seq" parameterType="int">
+			update final.user set user_no = user_no - 1
+				where user_no > #{no}
+    </update>
+
+
+    <update id="pluspayment" parameterType="Map">
+        update final.user set user_money = user_money + #{money} where user_no = #{user_no}
+    </update>
+
 </mapper>

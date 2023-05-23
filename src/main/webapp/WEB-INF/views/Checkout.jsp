@@ -1,6 +1,10 @@
+<%@ page import="com.spring.model.BookDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.spring.model.BasketDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -21,11 +25,9 @@
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
    </head>
    <body>
+
       <!-- loader Start -->
-      <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div>
+
       <!-- loader END -->
       <!-- Wrapper Start -->
       <div class="wrapper">
@@ -75,7 +77,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -551,117 +553,47 @@
                               </div>
                               <div class="iq-card-body">
                                  <ul class="list-inline p-0 m-0">
-                                    <li class="checkout-product">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-2">
+                                    <!-- 하나 -->
+
+                                    <c:forEach var="book" items="${bookList}">
+                                       <li class="checkout-product">
+                                          <div class="row align-items-center">
+                                             <div class="col-sm-2">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/01.jpg" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt=""></a>
                                              </span>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <div class="checkout-product-details">
-                                                <h5>The Raze night book</h5>
-                                                <p class="text-success">In stock</p>
-                                                <div class="price">
-                                                   <h5>$180.00</h5>
-                                                </div>
                                              </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                             <div class="row">
-                                                <div class="col-sm-10">
-                                                   <div class="row align-items-center mt-2">
-                                                      <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                      </div>
-                                                      <div class="col-sm-5 col-md-6">
-                                                         <span class="product-price">$180.00</span>
-                                                      </div>
+                                             <div class="col-sm-4">
+                                                <div class="checkout-product-details">
+                                                   <h5>${book.book_title}</h5>
+                                                   <p class="text-success">In stock</p>
+                                                   <div class="price">
+                                                      <h5><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</h5>
                                                    </div>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                   <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                </div>
                                              </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li class="checkout-product">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/02.jpg" alt=""></a>
-                                             </span>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <div class="checkout-product-details">
-                                                <h5>Harsh Reality book</h5>
-                                                <p class="text-success">In stock</p>
-                                                <div class="price">
-                                                   <h5>$250.00</h5>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                             <div class="row">
-                                                <div class="col-sm-10">
-                                                   <div class="row align-items-center mt-2">
-                                                      <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                      </div>
-                                                      <div class="col-sm-5 col-md-6">
-                                                         <span class="product-price">$250.00</span>
+                                             <div class="col-sm-6">
+                                                <div class="row">
+                                                   <div class="col-sm-10">
+                                                      <div class="row align-items-center mt-2">
+                                                         <div class="col-sm-7 col-md-6">
+                                                            <button type="button" class="fa fa-minus qty-btn" id="btn-minus" onclick="decrementQuantity(${book.book_no},${book.book_basketAmount})"></button>
+                                                            <input type="text" id="quantity" value="${book.book_basketAmount}">
+                                                            <button type="button" class="fa fa-plus qty-btn" id="btn-plus" onclick="incrementQuantity(${book.book_no},${book.book_basketAmount})"></button>
+                                                         </div>
+                                                         <div class="col-sm-5 col-md-6">
+                                                            <span class="product-price"><fmt:formatNumber value="${book.book_basketPrice}" pattern="#,###" />&#8361;</span>
+                                                         </div>
                                                       </div>
                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                   <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li class="checkout-product">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-2">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/03.jpg" alt=""></a>
-                                             </span>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <div class="checkout-product-details">
-                                                <h5>The House in the Fog</h5>
-                                                <p class="text-success">In stock</p>
-                                                <div class="price">
-                                                   <h5>$399.00</h5>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                             <div class="row">
-                                                <div class="col-sm-10">
-                                                   <div class="row align-items-center mt-2">
-                                                      <div class="col-sm-7 col-md-6">
-                                                         <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                         <input type="text" id="quantity" value="0">
-                                                         <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                      </div>
-                                                      <div class="col-sm-5 col-md-6">
-                                                         <span class="product-price">$399.00</span>
-                                                      </div>
+                                                   <div class="col-sm-2">
+                                                      <a href="<%=request.getContextPath()%>/basket_delete.go?bookNo=${book.book_no}" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
                                                    </div>
                                                 </div>
-                                                <div class="col-sm-2">
-                                                   <a href="javascript:void();" class="text-dark font-size-20"><i class="ri-delete-bin-7-fill"></i></a>
-                                                </div>
                                              </div>
                                           </div>
-                                       </div>
-                                    </li>
+                                       </li>
+                                    </c:forEach>
                                  </ul>
                               </div>
                            </div>
@@ -672,36 +604,108 @@
                                  <p>Options</p>
                                  <div class="d-flex justify-content-between">
                                     <span>Coupons</span>
-                                    <span><a href="#"><strong>Apply</strong></a></span>
+                                    <span><a href="#"><strong>미보유</strong></a></span>
                                  </div>
                                  <hr>
                                  <p><b>Price Details</b></p>
-                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>Total MRP</span>
-                                    <span>$829</span>
-                                 </div>
-                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>Bag Discount</span>
-                                    <span class="text-success">-20$</span>
-                                 </div>
-                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>Estimated Tax</span>
-                                    <span>$15</span>
-                                 </div>
-                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>EMI Eligibility</span>
-                                    <span><a href="#">Details</a></span>
-                                 </div>
-                                 <div class="d-flex justify-content-between">
-                                    <span>Delivery Charges</span>
-                                    <span class="text-success">Free</span>
-                                 </div>
+                                 <c:set var="totalPrice" value="0" />
+                                 <c:forEach var="book" items="${bookList}">
+                                    <div class="d-flex justify-content-between mb-1">
+                                       <span><strong>${book.book_title}</strong> &nbsp; ${book.book_basketAmount}권</span>
+                                        <span> <fmt:formatNumber value="${book.book_basketPrice}" pattern="#,###" />&#8361;</span>
+                                    </div>
+
+                                    <c:set var="totalPrice" value="${totalPrice + book.book_basketPrice}" />
+                                 </c:forEach>
+
+
                                  <hr>
                                  <div class="d-flex justify-content-between">
                                     <span class="text-dark"><strong>Total</strong></span>
-                                    <span class="text-dark"><strong>$824</strong></span>
+                                    <span class="text-dark"><strong>  <fmt:formatNumber value="${totalPrice}" pattern="#,###" />&#8361;</strong></span>
                                  </div>
-                                 <a id="place-order" href="javascript:void();" class="btn btn-primary d-block mt-3 next">Place order</a>
+                                 <!-- Extra large modal -->
+                                 <br>
+                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Place Order</button>
+                                 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"   aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <h5 class="modal-title">Modal title</h5>
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                             </button>
+                                          </div>
+                                          <div class="modal-body">
+                                             <div class="iq-card">
+                                                <div class="iq-card-body">
+                                                   <p>Options</p>
+                                                   <div class="d-flex justify-content-between">
+                                                      <span>Coupons</span>
+                                                      <span><a href="#"><strong>미보유</strong></a></span>
+                                                   </div>
+                                                   <hr>
+                                                   <p><b>Price Details</b></p>
+                                                   <c:set var="totalPrice" value="0" />
+                                                   <c:forEach var="book" items="${bookList}">
+                                                      <div class="d-flex justify-content-between mb-1">
+                                                         <span>${book.book_title} &nbsp; ${book.book_basketAmount}권</span>
+                                                         <span> <fmt:formatNumber value="${book.book_basketPrice}" pattern="#,###" />&#8361;</span>
+                                                      </div>
+
+                                                      <c:set var="totalPrice" value="${totalPrice + book.book_basketPrice}" />
+                                                   </c:forEach>
+
+
+                                                   <hr>
+                                                   <div class="d-flex justify-content-between">
+                                                      <span class="text-dark"><strong>Total</strong></span>
+                                                      <span class="text-dark"><strong>  <fmt:formatNumber value="${totalPrice}" pattern="#,###" />&#8361;</strong></span>
+                                                   </div>
+                                                   <hr>
+                                                   <div class="d-flex justify-content-between">
+                                                      <span class="text-dark"><strong>현재 잔액</strong></span>
+                                                      <span class="text-dark"><strong>  <fmt:formatNumber value="${sessionScope.UserMoney}" pattern="#,###" />&#8361;</strong></span>
+                                                   </div>
+                                                      <c:if test="${totalPrice <= sessionScope.UserMoney}">
+                                                   <div class="d-flex justify-content-between">
+                                                      <span class="text-dark"><strong>주문 금액</strong></span>
+                                                      <span class="text-danger"><strong>  <fmt:formatNumber value="-${totalPrice}" pattern="#,###" />&#8361;</strong></span>
+                                                   </div>
+                                                      </c:if>
+
+                                                   <c:if test="${totalPrice > sessionScope.UserMoney}">
+                                                      <br>
+                                                   <div class="d-flex justify-content-between">
+                                                      <span class="text-dark"><strong>부족한 잔액</strong></span>
+                                                      <span class="text-danger"><strong>  <fmt:formatNumber value="-${totalPrice - sessionScope.UserMoney}" pattern="#,###" />&#8361;</strong></span>
+                                                   </div>
+                                                   </c:if>
+                                                   <c:if test="${totalPrice <= sessionScope.UserMoney}">
+                                                      <hr>
+                                                      <div class="d-flex justify-content-between">
+                                                         <span class="text-dark"><strong>결제 후 잔액</strong></span>
+                                                         <span class="text-info"><strong>  <fmt:formatNumber value="${sessionScope.UserMoney - totalPrice }" pattern="#,###" />&#8361;</strong></span>
+                                                      </div>
+                                                   </c:if>
+
+                                                </div>
+                                             </div>
+                                             <p>Modal body text goes here.</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                             <c:if test="${totalPrice > sessionScope.UserMoney}">
+                                                <button type="button" class="btn btn-danger">충전하기</button>
+                                             </c:if>
+                                             <c:if test="${totalPrice <= sessionScope.UserMoney}">
+                                                <button type="button" class="btn btn-primary" onclick="location.href='<%=request.getContextPath()%>/pay.go?bp=${totalPrice}'">결제하기</button>
+                                             </c:if>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <%--<a id="place-order" href="javascript:void();" class="btn btn-primary d-block mt-3 next">Place order</a>--%>
                               </div>
                            </div>
                            <div class="iq-card ">
@@ -745,43 +749,43 @@
                                     <div class="row mt-3">
                                        <div class="col-md-6">
                                           <div class="form-group">
-                                             <label>Full Name: *</label> 
+                                             <label>Full Name: *</label>
                                              <input type="text" class="form-control" name="fname" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Mobile Number: *</label> 
+                                          <div class="form-group">
+                                             <label>Mobile Number: *</label>
                                              <input type="text" class="form-control" name="mno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Flat, House No: *</label> 
+                                          <div class="form-group">
+                                             <label>Flat, House No: *</label>
                                              <input type="text" class="form-control" name="houseno" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Landmark e.g. near apollo hospital:: *</label> 
+                                          <div class="form-group">
+                                             <label>Landmark e.g. near apollo hospital:: *</label>
                                              <input type="text" class="form-control" name="landmark" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Town/City: *</label> 
+                                          <div class="form-group">
+                                             <label>Town/City: *</label>
                                              <input type="text" class="form-control" name="city" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>Pincode: *</label> 
+                                          <div class="form-group">
+                                             <label>Pincode: *</label>
                                              <input type="text" class="form-control" name="pincode" required="">
                                           </div>
                                        </div>
                                        <div class="col-md-6">
-                                          <div class="form-group"> 
-                                             <label>State: *</label> 
+                                          <div class="form-group">
+                                             <label>State: *</label>
                                              <input type="text" class="form-control" name="state" required="">
                                           </div>
                                        </div>
@@ -841,7 +845,7 @@
                                     <div class="d-flex align-items-center">
                                        <span>Enter CVV: </span>
                                        <div class="cvv-input ml-3 mr-3">
-                                          <input type="text" class="form-control" required=""> 
+                                          <input type="text" class="form-control" required="">
                                        </div>
                                        <button type="submit" class="btn btn-primary">Continue</button>
                                     </div>
@@ -1006,5 +1010,21 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+      <script>
+         function incrementQuantity(bookNo, quantity) {
+            const su = 'plus'
+            updateQuantityOnServer(bookNo, quantity, su);
+         }
+
+         function decrementQuantity(bookNo, quantity) {
+            const su = 'minus'
+            updateQuantityOnServer(bookNo, quantity, su);
+         }
+
+
+         function updateQuantityOnServer(bookNo, quantity, su) {
+            location.href="updateQuantity.go?bookNo="+bookNo+"&quantity="+quantity+"&su="+su+"";
+         }
+      </script>
    </body>
 </html>

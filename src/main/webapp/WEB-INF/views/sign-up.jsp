@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
-<html lang="en">
+<div lang="en">
    <head>
+
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,54 +21,257 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
    </head>
-   <body>
+   <div>
+   <%@ include file="header.jsp" %>
       <!-- loader Start -->
       <div id="loading">
          <div id="loading-center">
          </div>
       </div>
       <!-- loader END -->
-        <!-- Sign in Start -->
-        <section class="sign-in-page">
-            <div class="container p-0">
-                <div class="row no-gutters height-self-center">
-                  <div class="col-sm-12 align-self-center page-content rounded">
-                    <div class="row m-0">
-                      <div class="col-sm-12 sign-in-page-data">
-                          <div class="sign-in-from bg-primary rounded">
-                              <h3 class="mb-0 text-center text-white">Sign Up</h3>
-                              <p class="text-center text-white">Enter your email address and password to access admin panel.</p>
-                              <form class="mt-4 form-text">
-                                  <div class="form-group">
-                                      <label for="exampleInputEmail1">Your Full Name</label>
-                                      <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name">
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="exampleInputEmail2">Email address</label>
-                                      <input type="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email">
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
-                                  </div>
-                                  <div class="d-inline-block w-100">
-                                      <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
-                                          <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                          <label class="custom-control-label" for="customCheck1">I accept <a href="#" class="text-light">Terms and Conditions</a></label>
+        <!-- 회원가입 -->
+   <div id="content-page" class="content-page">
+      <div class="col-lg-12">
+          <div class="iq-edit-list-data">
+              <div class="tab-content">
+                  <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                      <div class="iq-card">
+                          <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                  <h4 class="card-title">회원가입</h4>
+                              </div>
+                          </div>
+                          <div class="iq-card-body">
+                              <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/insert.ok.go">
+                                  <div class=" row align-items-center">
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_name">이름:</label>
+                                          <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name">
                                       </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_email">이메일:</label>
+                                          <input type="email" class="form-control" id="user_email" name="user_email" placeholder="E-mail">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_id">아이디:</label>
+                                          <input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_pwd">비밀번호:</label>
+                                          <input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="Password">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_nickname">닉네임:</label>
+                                          <input type="text" class="form-control" id="user_nickname" name="user_nickname" placeholder="Nick Name">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_phone">전화번호:</label>
+                                          <input type="text" class="form-control" id="user_phone" name="user_phone" placeholder="Phone">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_job">직업:</label>
+                                          <input type="text" class="form-control" id="user_job" name="user_job" placeholder="Job">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_addr">주소:</label>
+                                          <input type="text" class="form-control" id="user_addr" name="user_addr" placeholder="Address">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="user_intro">소개글:</label>
+                                          <textarea class="form-control" id="user_intro" name="user_intro" placeholder="Intro"></textarea>
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label for="img">프로필:</label>
+                                          <input type="file" class="btn btn-outline-success" id="img" name="img">
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                      <label>관심분야1</label>
+                                      <select name="category1" class="form-control" id="exampleFormControlSelect4">
+                                          <option value="0">소설</option>
+                                          <option value="100">요리</option>
+                                          <option value="200">경제</option>
+                                          <option value="300">정치/사회</option>
+                                          <option value="400">자기개발</option>
+                                          <option value="500">컴퓨터/IT</option>
+                                          <option value="600">잡지</option>
+                                          <option value="700">참고서</option>
+                                          <option value="800">여행</option>
+                                          <option value="900">만화</option>
+                                      </select>
+                                      </div>
+                                      <div class="form-group col-sm-6">
+                                          <label>관심분야2</label>
+                                          <select name="category2" class="form-control" id="exampleFormControlSelect5">
+                                              <option value="0">소설</option>
+                                              <option value="100">요리</option>
+                                              <option value="200">경제</option>
+                                              <option value="300">정치/사회</option>
+                                              <option value="400">자기개발</option>
+                                              <option value="500">컴퓨터/IT</option>
+                                              <option value="600">잡지</option>
+                                              <option value="700">참고서</option>
+                                              <option value="800">여행</option>
+                                              <option value="900">만화</option>
+                                          </select>
+
+                                          <script>
+                                              // 중복 선택 방지
+                                              const cate1 = document.querySelector("[name='category1']");
+                                              const cate2 = document.querySelector("[name='category2']");
+                                              cate1.addEventListener('change', function() {
+                                                  const selectedValue = this.value;
+                                                  const options = document.querySelectorAll('#exampleFormControlSelect5 option');
+                                                  options.forEach(function(option) {
+                                                      option.disabled = (option.value === selectedValue);
+                                                  });
+                                              });
+                                              cate2.addEventListener('change', function() {
+                                                  const selectedValue = this.value;
+                                                  const options = document.querySelectorAll('#exampleFormControlSelect4 option');
+                                                  options.forEach(function(option) {
+                                                      option.disabled = (option.value === selectedValue);
+                                                  });
+                                              });
+                                          </script>
+
+                                      </div>
+                                      <input type="hidden" name="user_money" value="0">
+                                      <input type="hidden" name="user_approve" value="0">
+                                      <input type="hidden" name="user_number" value="5">
+                                      <input type="hidden" name="user_birth" value="2023/05/17">
                                   </div>
-                                  <div class="sign-info text-center">
-                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">Sign Up</button>
-                                      <span class="text-dark d-inline-block line-height-2">Already Have Account ? <a href="sign-in.jsp" class="text-white">Log In</a></span>
-                                  </div>
+                                  <button type="submit" class="btn btn-primary mr-2">회원가입</button>
+                                  <button type="reset" class="btn iq-bg-danger">다시작성</button>
                               </form>
                           </div>
                       </div>
-                    </div>
                   </div>
-                </div>
-            </div>
-        </section>
+                  <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+                      <div class="iq-card">
+                          <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                  <h4 class="card-title">Change Password</h4>
+                              </div>
+                          </div>
+                          <div class="iq-card-body">
+                              <form>
+                                  <div class="form-group">
+                                      <label for="cpass">Current Password:</label>
+                                      <a href="javascripe:void();" class="float-right">Forgot Password</a>
+                                      <input type="Password" class="form-control" id="cpass" value="">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="npass">New Password:</label>
+                                      <input type="Password" class="form-control" id="npass" value="">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="vpass">Verify Password:</label>
+                                      <input type="Password" class="form-control" id="vpass" value="">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                  <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+                      <div class="iq-card">
+                          <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                  <h4 class="card-title">Email and SMS</h4>
+                              </div>
+                          </div>
+                          <div class="iq-card-body">
+                              <form>
+                                  <div class="form-group row align-items-center">
+                                      <label class="col-8 col-md-3" for="emailnotification">Email Notification:</label>
+                                      <div class="col-4 col-md-9 custom-control custom-switch">
+                                          <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
+                                          <label class="custom-control-label" for="emailnotification"></label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row align-items-center">
+                                      <label class="col-8 col-md-3" for="smsnotification">SMS Notification:</label>
+                                      <div class="col-4 col-md-9 custom-control custom-switch">
+                                          <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
+                                          <label class="custom-control-label" for="smsnotification"></label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row align-items-center">
+                                      <label class="col-md-3" for="npass">When To Email</label>
+                                      <div class="col-md-9">
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email01">
+                                              <label class="custom-control-label" for="email01">You have new notifications.</label>
+                                          </div>
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email02">
+                                              <label class="custom-control-label" for="email02">You're sent a direct message</label>
+                                          </div>
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email03" checked="">
+                                              <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row align-items-center">
+                                      <label class="col-md-3" for="npass">When To Escalate Emails</label>
+                                      <div class="col-md-9">
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email04">
+                                              <label class="custom-control-label" for="email04"> Upon new order.</label>
+                                          </div>
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email05">
+                                              <label class="custom-control-label" for="email05"> New membership approval</label>
+                                          </div>
+                                          <div class="custom-control custom-checkbox">
+                                              <input type="checkbox" class="custom-control-input" id="email06" checked="">
+                                              <label class="custom-control-label" for="email06"> Member registration</label>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                  <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="manage-contact" role="tabpanel">
+                      <div class="iq-card">
+                          <div class="iq-card-header d-flex justify-content-between">
+                              <div class="iq-header-title">
+                                  <h4 class="card-title">Manage Contact</h4>
+                              </div>
+                          </div>
+                          <div class="iq-card-body">
+                              <form>
+                                  <div class="form-group">
+                                      <label for="cno">Contact Number:</label>
+                                      <input type="text" class="form-control" id="cno" value="001 2536 123 458">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="email">Email:</label>
+                                      <input type="text" class="form-control" id="email" value="Barryjone@demo.com">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="url">Url:</label>
+                                      <input type="text" class="form-control" id="url" value="https://getbootstrap.com">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                  <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+   </div>
         <!-- Sign in END -->
          <!-- color-customizer -->
        <div class="iq-colorbox color-fix">
@@ -135,5 +339,4 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
-   </body>
-</html>
+<%@ include file="footer.jsp"%>
