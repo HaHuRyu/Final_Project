@@ -79,6 +79,10 @@
     <select id="category_NameChk" parameterType="String" resultType="int">
         select count(*) from category where category = #{value}
     </select>
-            
+
+    <!-- 카테고리 북 리스트 가져오기 -->
+    <select id="booklist_cate" parameterType="int" resultType="BookDto">
+        select * from final.book where category_no = #{value}
+    </select>
 
 </mapper>

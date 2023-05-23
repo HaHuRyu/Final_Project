@@ -38,17 +38,17 @@ public class WishDAOImpl implements WishDAO {
 
     @Override
     public void insert(WishDTO WishDTO) {
-
+        this.sqlSession.insert("wishInsert", WishDTO);
     }
 
     @Override
     public WishDTO findByBookNo(WishDTO WishDTO) {
-        return null;
+        return this.sqlSession.selectOne("wishFindByBookNo", WishDTO);
     }
 
     @Override
     public void updateSequence(WishDTO WishDTO) {
-
+        this.sqlSession.update("wishUpdateSequence", WishDTO);
     }
 
 

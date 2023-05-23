@@ -10,10 +10,14 @@
 
 <mapper namespace="OrderDao">
     <insert id="orderInsert" parameterType="OrderDTO">
-        insert into final.order values(default,#{user_no},#{book_no},#{order_price},now(),#{order_amount})
+        insert into final.order values(default,#{user_no},#{book_no},#{order_price},now(),#{order_amount},#{order_set})
     </insert>
 
     <select id="orderList" parameterType="int" resultType="OrderDTO">
         select * from final.order where user_no=#{value} order by order_no desc
+    </select>
+
+    <select id="orderSet" resultType="int">
+        select max(order_set) from final.order
     </select>
 </mapper>

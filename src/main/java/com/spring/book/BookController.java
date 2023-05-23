@@ -49,8 +49,9 @@ public class BookController {
     @RequestMapping("book_content.go")
     public String book_content(@RequestParam("book_no") int num, Model model) {
         BookDTO dto = this.dao.book_cont(num);
-        model.addAttribute("Book_cont", dto);
+        List<BookDTO> bookDTOList = this.dao.booklist_cate(dto.getCategory_no());
 
+        model.addAttribute("Book_cont", dto).addAttribute("BookList", bookDTOList);
         return "book-page";
     }
 
@@ -224,6 +225,8 @@ public class BookController {
 
         return "admin-dashboard";
     }
+
+
 
 }
 

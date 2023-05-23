@@ -83,6 +83,7 @@ public class WishController {
             wishDTO.setUser_no(userNo);
             wishDTO.setBook_no(bookNo);
             wishDAO.delete(wishDTO);
+            wishDAO.updateSequence(wishDTO);
             out.println("<script>");
             out.println("location.href='wish.go'");
             out.println("</script>");
@@ -133,4 +134,42 @@ public class WishController {
         }
     }
 
+    @RequestMapping("wish_add.go")
+    public void wish_go(HttpServletResponse response, HttpSession session, @RequestParam("bookNo")int bookNo) throws IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        if (session.getAttribute("UserId") == null) {
+            out.println("<script>");
+            out.println("alert('로그인이 필요합니다.');");
+            out.println("location.href='login.go'");
+            out.println("</script>");
+            out.close();
+        }else{
+            int userNo = Integer.parseInt(session.getAttribute("UserNo").toString());
+            WishDTO wishDTO = new WishDTO();
+            wishDTO.setUser_no(userNo);
+            wishDTO.setBook_no(bookNo);
+
+            if(wishDAO.findByBookNo(wishDTO) != null) {
+                out.println("<script>");
+                out.println("alert('이미 위시리스트에 담긴 책입니다.');");
+                out.println("history.back();");
+                out.println("</script>");
+                out.close();
+            }else {
+                wishDAO.insert(wishDTO);
+
+                out.println("<script>");
+                out.println("alert('위시리스트 추가 완료');");
+                out.println("location.href='wish.go'");
+                out.println("</script>");
+                out.close();
+            }
+
+
+        }
+
+
+    }
 }

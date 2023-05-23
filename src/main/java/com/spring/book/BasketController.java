@@ -228,7 +228,11 @@ public class BasketController {
             session.setAttribute("BasketList", basketService.basketList(userNo));
             session.setAttribute("BookList", basketService.bookList(userNo));
             session.setAttribute("countBasket", basketDAO.countBasket(userNo));
-
+            out.println("<script>");
+            out.println("alert('장바구니 담기 성공');");
+            out.println("history.back();");
+            out.println("</script>");
+            out.close();
             return null;
         }
     }

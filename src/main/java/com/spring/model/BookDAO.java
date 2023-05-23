@@ -37,4 +37,6 @@ public interface BookDAO {
 
     public int category_NameChk(String name);
 
+    public List<BookDTO> booklist_cate(int category_no);
+
 }

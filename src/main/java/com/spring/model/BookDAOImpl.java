@@ -97,11 +97,16 @@ public class BookDAOImpl implements BookDAO{
         return this.sqlSession.selectOne("category_NameChk", name);
     }
 
+
+
     @Override
     public int category_delete(int no) {
         return this.sqlSession.delete("category_del",no);
     }
 
-
+    @Override
+    public List<BookDTO> booklist_cate(int category_no) {
+        return this.sqlSession.selectList("booklist_cate", category_no);
+    }
 
 }

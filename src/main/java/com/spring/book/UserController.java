@@ -31,6 +31,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +50,8 @@ public class UserController {
     @Autowired
     public UserDAO userDAO;
 
+    @Autowired
+    public BookDAO bookDAO;
 
     @Autowired
     private Upload upload;
@@ -59,8 +62,42 @@ public class UserController {
     @Autowired
     private OrderDAO orderDAO;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Locale locale, Model model,HttpSession session) {
+
+        if(session.getAttribute("UserCate1") != null){
+            int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
+            int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
+
+            List<BookDTO> list = bookDAO.booklist_cate(cate1);
+            List<BookDTO> list2 = bookDAO.booklist_cate(cate2);
+            CategoryDTO categoryDTO1 = bookDAO.category_one(cate1);
+            CategoryDTO categoryDTO2 = bookDAO.category_one(cate2);
+
+            model.addAttribute("catelist1", list).addAttribute("catelist2",list2);
+            model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
+        }
+
+
+        return "home";
+    }
+
     @RequestMapping("home.go")
-    public String home() {
+    public String home(HttpSession session, Model model) {
+
+        if(session.getAttribute("UserCate1") != null){
+            int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
+            int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
+
+            List<BookDTO> list = bookDAO.booklist_cate(cate1);
+            List<BookDTO> list2 = bookDAO.booklist_cate(cate2);
+            CategoryDTO categoryDTO1 = bookDAO.category_one(cate1);
+            CategoryDTO categoryDTO2 = bookDAO.category_one(cate2);
+
+            model.addAttribute("catelist1", list).addAttribute("catelist2",list2);
+            model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
+        }
+
         return "home";
     }
 
@@ -92,44 +129,18 @@ public class UserController {
                 if (dbPwd.equals(pwd)) {
                     HttpSession session = request.getSession();
 
-                    if (dto.getCategory_no().equals("0")) {
-                        session.setAttribute("UserCate1", "소설");
-                    } else if (dto.getCategory_no().equals("100")) {
-                        session.setAttribute("UserCate1", "요리");
-                    } else if (dto.getCategory_no().equals("200")) {
-                        session.setAttribute("UserCate1", "경제");
-                    } else if (dto.getCategory_no().equals("300")) {
-                        session.setAttribute("UserCate1", "정치/사회");
-                    } else if (dto.getCategory_no().equals("400")) {
-                        session.setAttribute("UserCate1", "컴퓨터/IT");
-                    } else if (dto.getCategory_no().equals("500")) {
-                        session.setAttribute("UserCate1", "잡지");
-                    } else if (dto.getCategory_no().equals("600")) {
-                        session.setAttribute("UserCate1", "참고서");
-                    } else if (dto.getCategory_no().equals("700")) {
-                        session.setAttribute("UserCate1", "여행");
-                    } else if (dto.getCategory_no().equals("800")) {
-                        session.setAttribute("UserCate1", "만화");
-                    }
+                    List<CategoryDTO> clist = bookDAO.category_list();
 
-                    if (dto.getCategory_no2().equals("0")) {
-                        session.setAttribute("UserCate2", "소설");
-                    } else if (dto.getCategory_no2().equals("100")) {
-                        session.setAttribute("UserCate2", "요리");
-                    } else if (dto.getCategory_no2().equals("200")) {
-                        session.setAttribute("UserCate2", "경제");
-                    } else if (dto.getCategory_no2().equals("300")) {
-                        session.setAttribute("UserCate2", "정치/사회");
-                    } else if (dto.getCategory_no2().equals("400")) {
-                        session.setAttribute("UserCate2", "컴퓨터/IT");
-                    } else if (dto.getCategory_no2().equals("500")) {
-                        session.setAttribute("UserCate2", "잡지");
-                    } else if (dto.getCategory_no2().equals("600")) {
-                        session.setAttribute("UserCate2", "참고서");
-                    } else if (dto.getCategory_no2().equals("700")) {
-                        session.setAttribute("UserCate2", "여행");
-                    } else if (dto.getCategory_no2().equals("800")) {
-                        session.setAttribute("UserCate2", "만화");
+                    int category1 = Integer.parseInt(dto.getCategory_no());
+                    int category2 = Integer.parseInt(dto.getCategory_no2());
+
+                    for(CategoryDTO cdto : clist) {
+                        if(cdto.getCategory_no() == category1) {
+                            session.setAttribute("UserCate1", cdto.getCategory_no());
+                        }
+                        if(cdto.getCategory_no() == category2) {
+                            session.setAttribute("UserCate2", cdto.getCategory_no());
+                        }
                     }
 
                     session.setAttribute("UserNo", dto.getUser_no());
@@ -181,7 +192,13 @@ public class UserController {
     }
 
     @RequestMapping("signup.go")
-    public String insert() {
+    public String insert(Model model) {
+        List<CategoryDTO> list = bookDAO.category_list();
+        System.out.println(list.get(0).getCategory_no());
+        System.out.println(list.get(0).getCategory_content());
+        System.out.println(list.get(1).getCategory_no());
+        System.out.println(list.get(1).getCategory_content());
+        model.addAttribute("category", list);
         return "sign-up";
     }
 
@@ -434,6 +451,8 @@ public class UserController {
         List<BookDTO> bookDTOList = (List<BookDTO>) session.getAttribute("BookList");
 
         int count = Integer.parseInt(session.getAttribute("countBasket").toString());
+        int last_set = orderDAO.get_order_set() + 1;
+        System.out.println("last_set : " + last_set);
 
         for(int i = 0; i < count; i++){
             OrderDTO orderDTO = new OrderDTO();
@@ -441,6 +460,7 @@ public class UserController {
             orderDTO.setBook_no(bookDTOList.get(i).getBook_no());
             orderDTO.setUser_no(Integer.parseInt(session.getAttribute("UserNo").toString()));
             orderDTO.setOrder_price(bookDTOList.get(i).getBook_price());
+            orderDTO.setOrder_set(last_set);
             orderDAO.save(orderDTO);
         }
 
