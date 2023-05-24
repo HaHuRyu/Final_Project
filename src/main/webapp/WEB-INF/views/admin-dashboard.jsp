@@ -658,7 +658,7 @@
                            <div class="iq-card-body">
                               <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                               <div class="d-flex justify-content-between align-items-center">
-                                 <div class="font-size-80 text-black">${total_session}</div>
+                                 <div class="font-size-80 text-black"><span id="onlineUsers">0</span></div>
                                  <div class="text-left">
                                     <p class="m-0 text-uppercase font-size-12">1 Hours Ago</p>
                                     <div class="mb-1 text-black">1500<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>3.25%</span></div>
@@ -801,6 +801,23 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+      <!-- SockJS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+      <!-- Stomp -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+      <script>
+         var socket = new SockJS('/websocket');
+         var stompClient = Stomp.over(socket);
+
+         stompClient.connect({}, function(frame) {
+            stompClient.subscribe('/connected', function(data) {
+               var count = JSON.parse(data.body).count;
+               document.getElementById('onlineUsers').innerText = count;
+            });
+
+            stompClient.send("/app/connected", {}, "");
+         });
+      </script>
 
       <script>
          if (jQuery('#iq-sale-chart').length) {

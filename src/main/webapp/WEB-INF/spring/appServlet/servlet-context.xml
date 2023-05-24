@@ -21,10 +21,23 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<beans:property name="mappings">
+			<beans:props>
+				<beans:prop key="/websocket">myWebSocketHandler</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
 
-	
+	<beans:bean id="myWebSocketHandler" class="com.spring.MyWebSocketHandler" />
+
+	<beans:bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
+		<beans:property name="maxSessionIdleTimeout" value="60000"/>
+	</beans:bean>
+
+
 	<context:component-scan base-package="com.spring" />
-	
-	
-	
+
+
+
 </beans:beans>
