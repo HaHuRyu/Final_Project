@@ -220,9 +220,13 @@ public class BookController {
     @RequestMapping("admin_dashboard.go")
     public String Admin_dashboard(Model model){
 
+        // 총 도서수
         int book_count = this.dao.book_count();
+        // 총 회원수
         int user_count = this.userDAO.allCount();
+        // 총 주문수
         int order_count = this.orderDAO.allCount();
+        // 총 매출
         int order_sale = this.orderDAO.totalSales();
 
         Map<String, Map<String, Object>> daily_salesMap = this.orderDAO.dailysales();
@@ -237,17 +241,25 @@ public class BookController {
             Long count = (countBigDecimal != null) ? countBigDecimal.longValue() : null;
             daily_sales.put(day, count);
 
-            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
         }
-
+        
+        //일별 매출 불러오기
         List<OrderListDTO> allList = this.orderDAO.allList();
+        
+        //한달 매출 300만원 기준 현재까지의 달성 퍼센트
+        int percentSale = this.orderDAO.percentSale();
+
+        int totalSession = this.userDAO.totalSession();
+        System.out.println("total >>> " + totalSession);
 
         model.addAttribute("book_count",book_count)
                 .addAttribute("user_count", user_count)
                 .addAttribute("order_count", order_count)
                 .addAttribute("order_sale", order_sale)
                 .addAttribute("daily_sales",daily_sales)
-                .addAttribute("allList", allList);
+                .addAttribute("allList", allList)
+                .addAttribute("total_session", totalSession)
+                .addAttribute("percentSale", percentSale);
 
         return "admin-dashboard";
     }

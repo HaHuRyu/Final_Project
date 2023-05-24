@@ -15,4 +15,6 @@ public interface OrderDAO {
     List<OrderDTO> getList(int userNo);
 
     List<OrderListDTO> allList();
+
+    int percentSale();
 }

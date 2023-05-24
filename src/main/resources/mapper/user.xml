@@ -65,4 +65,9 @@
         update final.user set user_money = user_money + #{money} where user_no = #{user_no}
     </update>
 
+    <select id="totalsession" resultType="int">
+        SELECT count(*) FROM information_schema.processlist WHERE db = 'final' AND user&lt;&gt;'system user'
+    </select>
+
+
 </mapper>

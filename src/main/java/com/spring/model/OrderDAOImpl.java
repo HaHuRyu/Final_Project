@@ -42,4 +42,9 @@ public class OrderDAOImpl implements OrderDAO {
     public List<OrderListDTO> allList() {
         return this.sqlSession.selectList("orderAllList");
     }
+
+    @Override
+    public int percentSale() {
+        return this.sqlSession.selectOne("percentSale");
+    }
 }

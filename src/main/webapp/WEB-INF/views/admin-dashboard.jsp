@@ -611,40 +611,40 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Summary</h4>
+                              <h4 class="card-title mb-0">매출 요약</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
                            <ul class="list-inline p-0 mb-0">
                               <li>
                                  <div class="iq-details mb-2">
-                                    <span class="title">Income</span>
-                                    <div class="percentage float-right text-primary">95 <span>%</span></div>
+                                    <span class="title">총매출</span>
+                                    <div class="percentage float-right text-primary"><fmt:formatNumber value="${percentSale}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-primary">
-                                          <span class="bg-primary" data-percent="90"></span>
+                                          <span class="bg-primary" data-percent="<fmt:formatNumber value="${percentSale}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div>                                       
                               </li>
                               <li>
                                  <div class="iq-details mb-2">
-                                    <span class="title">Profit</span>
-                                    <div class="percentage float-right text-warning">72 <span>%</span></div>
+                                    <span class="title">순수익</span>
+                                    <div class="percentage float-right text-warning"><fmt:formatNumber value="${percentSale * 0.7}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-warning">
-                                          <span class="bg-warning" data-percent="75"></span>
+                                          <span class="bg-warning" data-percent="<fmt:formatNumber value="${percentSale * 0.7}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div>
                               </li>
                               <li>
                                 <div class="iq-details mb-2">
-                                    <span class="title">Expenses</span>
-                                    <div class="percentage float-right text-info">75 <span>%</span></div>
+                                    <span class="title">경비</span>
+                                    <div class="percentage float-right text-info"><fmt:formatNumber value="${percentSale * 0.3}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-info">
-                                          <span class="bg-info" data-percent="65"></span>
+                                          <span class="bg-info" data-percent="<fmt:formatNumber value="${percentSale * 0.3}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div> 
@@ -658,7 +658,7 @@
                            <div class="iq-card-body">
                               <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                               <div class="d-flex justify-content-between align-items-center">
-                                 <div class="font-size-80 text-black">12</div>
+                                 <div class="font-size-80 text-black">${total_session}</div>
                                  <div class="text-left">
                                     <p class="m-0 text-uppercase font-size-12">1 Hours Ago</p>
                                     <div class="mb-1 text-black">1500<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>3.25%</span></div>
@@ -745,40 +745,8 @@
          </div>
       </footer>
       <!-- Footer END -->
-      <!-- color-customizer -->
-      <div class="iq-colorbox color-fix">
-         <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-         <div id="right-sidebar-scrollbar" class="iq-colorbox-inner">
-            <div class="clearfix color-picker">
-               <h3 class="iq-font-black">Booksto Awesome Color</h3>
-               <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-               <ul class="iq-colorselect clearfix">
-                  <li class="color-1 iq-colormark" data-style="color-1"></li>
-                  <li class="color-2" data-style="iq-color-2"></li>
-                  <li class="color-3" data-style="iq-color-3"></li>
-                  <li class="color-4" data-style="iq-color-4"></li>
-                  <li class="color-5" data-style="iq-color-5"></li>
-                  <li class="color-6" data-style="iq-color-6"></li>
-                  <li class="color-7" data-style="iq-color-7"></li>
-                  <li class="color-8" data-style="iq-color-8"></li>
-                  <li class="color-9" data-style="iq-color-9"></li>
-                  <li class="color-10" data-style="iq-color-10"></li>
-                  <li class="color-11" data-style="iq-color-11"></li>
-                  <li class="color-12" data-style="iq-color-12"></li>
-                  <li class="color-13" data-style="iq-color-13"></li>
-                  <li class="color-14" data-style="iq-color-14"></li>
-                  <li class="color-15" data-style="iq-color-15"></li>
-                  <li class="color-16" data-style="iq-color-16"></li>
-                  <li class="color-17" data-style="iq-color-17"></li>
-                  <li class="color-18" data-style="iq-color-18"></li>
-                  <li class="color-19" data-style="iq-color-19"></li>
-                  <li class="color-20" data-style="iq-color-20"></li>
-               </ul>
-               <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-            </div>
-         </div>
-      </div>
-      <!-- color-customizer END -->
+
+
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="${path}/resources/js/jquery.min.js"></script>
