@@ -30,14 +30,14 @@
         YEAR(order_date) = YEAR(CURRENT_DATE) AND
         MONTH(order_date) = MONTH(CURRENT_DATE)
         GROUP BY
-        YEAR(order_date), MONTH(order_date);
+        YEAR(order_date), MONTH(order_date)
     </select>
 
     <select id="dailySales" resultType="map">
         SELECT DAYNAME(order_date) AS dayName, SUM(order_price * order_amount) AS sale_count
         FROM final.order
         WHERE order_date >= DATE_SUB(DATE(NOW()), INTERVAL WEEKDAY(NOW()) DAY)
-        GROUP BY DAYNAME(order_date);
+        GROUP BY DAYNAME(order_date)
     </select>
 
     <select id="orderAllList" resultType="OrderListDTO">
