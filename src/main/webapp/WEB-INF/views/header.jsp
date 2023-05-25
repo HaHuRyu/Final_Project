@@ -312,74 +312,9 @@
                                 <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                             </form>
                         </li>
-                        <li class="nav-item nav-icon">
-                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                                <i class="ri-notification-2-line"></i>
-                                <span class="bg-primary dots"></span>
-                            </a>
-                            <div class="iq-sub-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">All Notifications<small
-                                                    class="badge  badge-light float-right pt-1">4</small></h5>
-                                        </div>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/01.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Emma Watson Barry</h6>
-                                                    <small class="float-right font-size-12">Just Now</small>
-                                                    <p class="mb-0">95 MB</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/02.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">New customer is join</h6>
-                                                    <small class="float-right font-size-12">5 days ago</small>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/03.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Two customer is left</h6>
-                                                    <small class="float-right font-size-12">2 days ago</small>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/04.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">New Mail from Fenny</h6>
-                                                    <small class="float-right font-size-12">3 days ago</small>
-                                                    <p class="mb-0">Cyst Barry</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+
+
+                        <!-- 채팅부분 -->
                         <li class="nav-item nav-icon dropdown">
                             <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                                 <i class="ri-mail-line"></i>
@@ -390,72 +325,39 @@
                                     <div class="iq-card-body p-0 ">
                                         <div class="bg-primary p-3">
                                             <h5 class="mb-0 text-white">All Messages<small
-                                                    class="badge  badge-light float-right pt-1">5</small></h5>
+                                                    class="badge  badge-light float-right pt-1">${sessionScope.chatList.size()}</small></h5>
                                         </div>
-                                        <a href="#" class="iq-sub-card">
+
+                                    <c:forEach var="chat" items="${sessionScope.chatList}">
+                                        <a href="javascript:void(0);" onclick="openNewWindow()" class="iq-sub-card">
                                             <div class="media align-items-center">
                                                 <div class="">
                                                     <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/01.jpg" alt="">
+                                                         src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'">
                                                 </div>
                                                 <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Barry Emma Watson</h6>
-                                                    <small class="float-left font-size-12">13 Jun</small>
+                                                    <h6 class="mb-0 ">${chat.other_nickName}</h6>
+                                                    <small class="float-left font-size-12">${chat.last_chat}</small>
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/02.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Lorem Ipsum Watson</h6>
-                                                    <small class="float-left font-size-12">20 Apr</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/03.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Why do we use it?</h6>
-                                                    <small class="float-left font-size-12">30 Jun</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/04.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Variations Passages</h6>
-                                                    <small class="float-left font-size-12">12 Sep</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user/05.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Lorem Ipsum generators</h6>
-                                                    <small class="float-left font-size-12">5 Dec</small>
-                                                </div>
-                                            </div>
-                                        </a>
+
+                                        <script>
+                                            function openNewWindow() {
+                                                var url = "<%=request.getContextPath()%>/chat.go?receiveNo=${chat.other_user}";
+                                                var windowName = "채팅창";
+                                                var windowFeatures = "width=500,height=708,toolbar=no,location=no,directories=no,status=no,menubar=no,resizable=no";
+                                                window.open(url, windowName, windowFeatures);
+                                            }
+                                        </script>
+                                    </c:forEach>
+
                                     </div>
                                 </div>
                             </div>
                         </li>
+
+                        <!-- 채팅부분 end -->
                         <li class="nav-item nav-icon dropdown">
                             <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                                 <i class="ri-shopping-cart-2-line"></i>
@@ -514,8 +416,9 @@
                             <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
                                 <!-- 이미지 수정 예정 -->
-                                <img src="${path}/resources/images/user/1.jpg" class="img-fluid rounded-circle mr-3"
-                                     alt="user">
+
+                                <img src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'" class="img-fluid rounded-circle mr-3"
+                                      alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
                                     <p class="mb-0 text-primary"><fmt:formatNumber value="${sessionScope.UserMoney}" pattern="#,###" />&#8361;</p>

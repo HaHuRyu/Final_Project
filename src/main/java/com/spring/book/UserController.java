@@ -62,6 +62,9 @@ public class UserController {
     @Autowired
     private OrderDAO orderDAO;
 
+    @Autowired
+    private ChatDAO chatDAO;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model,HttpSession session) {
 
@@ -161,6 +164,15 @@ public class UserController {
                     session.setAttribute("BasketList", basketService.basketList(dto.getUser_no()));
                     session.setAttribute("BookList", basketService.bookList(dto.getUser_no()));
                     session.setAttribute("countBasket", basketDAO.countBasket(dto.getUser_no()));
+
+                    // 채팅 세션 등록
+                    List<ChatListDTO> chatList = chatDAO.getChatList(dto.getUser_no());
+
+                    for(ChatListDTO chatListDTO : chatList) {
+                        chatListDTO.setOther_nickName(userDAO.findByUserNo(chatListDTO.getOther_user()).getUser_nickname());
+                        chatListDTO.setOther_img(userDAO.findByUserNo(chatListDTO.getOther_user()).getUser_img());
+                    }
+                    session.setAttribute("chatList", chatList);
 
 
 
@@ -531,6 +543,9 @@ public class UserController {
             }
 
         }
+
+
+
 
 }
 

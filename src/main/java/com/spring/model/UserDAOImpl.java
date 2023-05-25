@@ -120,4 +120,9 @@ public class UserDAOImpl implements UserDAO {
     public int plusPayment(Map<String, Integer> map) {
         return this.sqlSession.update("pluspayment", map);
     }
+
+    @Override
+    public UserDTO findByUserNo(int user_no) {
+        return this.sqlSession.selectOne("findByUserNo", user_no);
+    }
 }

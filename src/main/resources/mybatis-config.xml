@@ -14,6 +14,8 @@
         <typeAlias type="com.spring.model.CategoryDTO" alias="CategoryDto" />
         <typeAlias type="com.spring.model.WishDTO" alias="WishDTO"/>
         <typeAlias type="com.spring.model.OrderDTO" alias="OrderDTO"/>
+        <typeAlias type="com.spring.model.ChatDTO" alias="ChatDTO"/>
+        <typeAlias type="com.spring.model.ChatListDTO" alias="ChatListDTO"/>
     </typeAliases>
 
 </configuration>

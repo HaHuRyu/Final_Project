@@ -583,10 +583,23 @@
                                        </div>
                                        <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">${dto.seller_cont}</span>
                                        <div class="text-primary mb-4">저자 <span class="text-body">${dto.seller_author}</span></div>
-                                       <div class="mb-4 d-flex align-items-center">                                       
-                                          <a href="#" class="btn btn-primary view-more mr-2">장바구니에 담기</a>
-                                          <a href="book-pdf.jsp" class="btn btn-primary view-more mr-2">판매자와 채팅</a>
+                                       <div class="mb-4 d-flex align-items-center">
+                                          <c:if test="${dto.user_no != sessionScope.UserNo}">
+                                           <a href="javascript:void(0);" onclick="openNewWindow()" class="btn btn-primary view-more mr-2">판매자와 채팅</a>
+                                          </c:if>
+                                          <c:if test="${dto.user_no == sessionScope.UserNo}">
+                                           <a href="#" class="btn btn-primary view-more mr-2">수정하기</a>
+                                          </c:if>
                                        </div>
+
+                                       <script>
+                                          function openNewWindow() {
+                                             var url = "<%=request.getContextPath()%>/chat.go?receiveNo=${dto.user_no}";
+                                             var windowName = "채팅창";
+                                             var windowFeatures = "width=500,height=708,toolbar=no,location=no,directories=no,status=no,menubar=no,resizable=no";
+                                             window.open(url, windowName, windowFeatures);
+                                          }
+                                       </script>
                                        <div class="mb-3">
                                           <a href="#" class="text-body text-center"><span class="avatar-30 rounded-circle bg-primary d-inline-block mr-2"><i class="ri-heart-fill"></i></span><span>Add to Wishlist</span></a>
                                        </div>

@@ -50,4 +50,5 @@ public interface UserDAO {
 
     int plusPayment(Map<String, Integer> map);
 
+    UserDTO findByUserNo(int user_no);
 }

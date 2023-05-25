@@ -92,7 +92,7 @@
                               <h4 class="card-title mb-0">${sessionScope.UserName}님을 위한 ${categoryDTO1.category} 분야를 모아봤어요!</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <a href="category.jsp" class="btn btn-sm btn-primary view-more"></a>
+                              <a href="category.jsp" class="btn btn-sm btn-primary view-more">View More</a>
                            </div>
                         </div>
                         <div class="iq-card-body similar-contens">

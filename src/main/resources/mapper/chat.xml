@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	DTD(Document Type Definition)
+	- 작성한 문서가 어떤 문서인지에 대해서 정의해 놓은 것.
+    - 하나의 시스템 내에서 사용할 XML 데이터의 구조를 정의하여
+            유효성을 점검 시 사용하는 태그.
+ -->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 패키지명을 포함해서 DAO 인터페이스 이름으로
+          작성하는 것이 관례임.
+     namespace 명은 mapper 들을 구분하는데 식별자로 사용이 됨.
+-->
+
+<mapper namespace="ChatDAO">
+    <select id="getChat" parameterType="ChatDTO" resultType="ChatDTO">
+        SELECT * FROM final.chat WHERE user_no = ${user_no} AND user_no2 = ${user_no2}
+        UNION
+        SELECT * FROM final.chat WHERE user_no = ${user_no2} AND user_no2 = ${user_no} order by chat_no
+    </select>
+
+    <insert id="newChat" parameterType="ChatDTO">
+        <selectKey keyProperty="chat_no" resultType="int" order="BEFORE">
+            select max(chat_no) from final.chat
+        </selectKey>
+        INSERT INTO final.chat (chat_no,user_no, user_no2, chat_cont) VALUES (#{chat_no}+1,#{user_no}, #{user_no2}, #{chat_cont})
+    </insert>
+
+    <select id="getChatList" parameterType="int" resultType="ChatListDTO">
+        SELECT DISTINCT
+        CASE WHEN user_no = ${value} THEN user_no2 ELSE user_no END AS other_user,
+        chat_cont AS last_chat
+        FROM
+        final.chat
+        WHERE
+        (user_no = ${value} OR user_no2 = ${value})
+        AND chat_no IN (
+        SELECT MAX(chat_no)
+        FROM final.chat
+        WHERE (user_no = ${value} OR user_no2 = ${value})
+        GROUP BY CASE WHEN user_no = ${value} THEN user_no2 ELSE user_no END
+        );
+    </select>
+
+    <delete id="deleteChat" parameterType="map">
+        DELETE FROM final.chat WHERE (user_no = ${user_no2} AND user_no2 = ${user_no}) OR (user_no = ${user_no} AND user_no2 = ${user_no2})
+    </delete>
+</mapper>
