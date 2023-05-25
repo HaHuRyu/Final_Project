@@ -182,6 +182,7 @@ public class UserController {
 
     @RequestMapping("signup.go")
     public String insert() {
+
         return "sign-up";
     }
 
@@ -252,11 +253,17 @@ public class UserController {
         PrintWriter out = response.getWriter();
 
         if (check > 0) {
+            if (nickname.equals(user.getUser_id())) {
+                out.println("<script>");
+                out.println("alert('이미 같은 닉네임이 존재합니다.')");
+                out.println("history.back()");
+                out.println("</script>");
+            }
             out.println("<script>");
             out.println("alert('회원가입 성공')");
             out.println("location.href='home.go'");
             out.println("</script>");
-        } else {
+        } else{
             out.println("<script>");
             out.println("alert('회원가입 실패')");
             out.println("history.back()");
