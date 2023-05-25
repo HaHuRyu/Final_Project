@@ -72,7 +72,14 @@
 
 
     <select id="totalsession" resultType="int">
-        SELECT count(*) FROM information_schema.processlist WHERE db = 'final' AND user&lt;&gt;'system user'
+        SELECT COUNT(*)
+        FROM
+        (SELECT (id - @prev) as diff, time - @prev_time as time_diff, @prev := id, @prev_time := time
+        FROM information_schema.processlist,
+        (SELECT @prev := 0, @prev_time := 0) v
+        WHERE db = 'final'
+        ORDER BY id) t
+        WHERE diff = 1 or time_diff = 0 or time_diff = 1
     </select>
 
 

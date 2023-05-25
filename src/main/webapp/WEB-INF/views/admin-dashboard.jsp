@@ -658,14 +658,14 @@
                            <div class="iq-card-body">
                               <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                               <div class="d-flex justify-content-between align-items-center">
-                                 <div class="font-size-80 text-black"><span id="counter">0</span></div>
+                                 <div class="font-size-80 text-black"><span id="counter">${total_session}</span></div>
                                  <div class="text-left">
-                                    <p class="m-0 text-uppercase font-size-12">1 Hours Ago</p>
-                                    <div class="mb-1 text-black">1500<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>3.25%</span></div>
-                                    <p class="m-0 text-uppercase font-size-12">1 Day Ago</p>
-                                    <div class="mb-1 text-black">1890<span class="text-success"><i class="ri-arrow-down-s-fill"></i>1.00%</span></div>
-                                    <p class="m-0 text-uppercase font-size-12">1 Week Ago</p>
-                                    <div class="text-black">1260<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>9.87%</span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="mb-1 text-black"><span class="text-danger"></span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="mb-1 text-black"><span class="text-success"></span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="text-black"><span class="text-danger"></span></div>
                                  </div>
                               </div>
                               <div id="wave-chart-7"></div>
@@ -801,29 +801,7 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
-      <!-- SockJS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-      <script>
-         let socket = new WebSocket({server});
 
-         socket.onopen = function(event) {
-            console.log("연결 성공");
-         };
-
-         socket.onmessage = function(event) {
-            let connectionCount = parseInt(event.data);
-            console.log("현재 접속자 수: " + connectionCount);
-         };
-
-         socket.onclose = function(event) {
-            console.log("연결 종료");
-         };
-
-         window.addEventListener("beforeunload", function(event) {
-            socket.close();
-         });
-      </script>
       <script>
          if (jQuery('#iq-sale-chart').length) {
             var options = {
