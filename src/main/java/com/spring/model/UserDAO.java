@@ -49,6 +49,8 @@ public interface UserDAO {
     public void minusPayment(Map<String,Integer> map);
 
     int plusPayment(Map<String, Integer> map);
+    
+    int totalSession();
 
     UserDTO findByUserNo(int user_no);
 }

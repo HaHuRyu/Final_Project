@@ -1,9 +1,6 @@
 package com.spring.book;
 
-import com.spring.model.BookDAO;
-import com.spring.model.BookDTO;
-import com.spring.model.CategoryDTO;
-import com.spring.model.UserDAO;
+import com.spring.model.*;
 import com.spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +22,14 @@ public class BookController {
     private final BookService bookService;
     private final BookDAO dao;
     private final UserDAO userDAO;
+    private final OrderDAO orderDAO;
 
     @Autowired
-    public BookController(BookService bookService, BookDAO dao, UserDAO userDAO) {
+    public BookController(BookService bookService, BookDAO dao, UserDAO userDAO, OrderDAO orderDAO) {
         this.bookService = bookService;
         this.dao = dao;
         this.userDAO = userDAO;
+        this.orderDAO = orderDAO;
     }
 
     //    도서 관련
@@ -220,8 +220,47 @@ public class BookController {
 
     @RequestMapping("admin_dashboard.go")
     public String Admin_dashboard(Model model){
+
+        // 총 도서수
         int book_count = this.dao.book_count();
-        /*int user_count = this.userDAO;*/
+        // 총 회원수
+        int user_count = this.userDAO.allCount();
+        // 총 주문수
+        int order_count = this.orderDAO.allCount();
+        // 총 매출
+        int order_sale = this.orderDAO.totalSales();
+
+        Map<String, Map<String, Object>> daily_salesMap = this.orderDAO.dailysales();
+        Map<String, Object> daily_sales = new HashMap<>();
+
+        for (Map.Entry<String, Map<String, Object>> entry : daily_salesMap.entrySet()) {
+            String key = entry.getKey();
+            Map<String, Object> valueMap = entry.getValue();
+
+            String day = (String) valueMap.get("dayName");
+            BigDecimal countBigDecimal = (BigDecimal) valueMap.get("sale_count");
+            Long count = (countBigDecimal != null) ? countBigDecimal.longValue() : null;
+            daily_sales.put(day, count);
+
+        }
+        
+        //일별 매출 불러오기
+        List<OrderListDTO> allList = this.orderDAO.allList();
+        
+        //한달 매출 300만원 기준 현재까지의 달성 퍼센트
+        int percentSale = this.orderDAO.percentSale();
+
+        int totalSession = this.userDAO.totalSession();
+        System.out.println("total >>> " + totalSession);
+
+        model.addAttribute("book_count",book_count)
+                .addAttribute("user_count", user_count)
+                .addAttribute("order_count", order_count)
+                .addAttribute("order_sale", order_sale)
+                .addAttribute("daily_sales",daily_sales)
+                .addAttribute("allList", allList)
+                .addAttribute("total_session", totalSession)
+                .addAttribute("percentSale", percentSale);
 
         return "admin-dashboard";
     }

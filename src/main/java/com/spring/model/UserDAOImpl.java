@@ -122,7 +122,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+
     public UserDTO findByUserNo(int user_no) {
         return this.sqlSession.selectOne("findByUserNo", user_no);
+    }
+    @Override
+
+    public int totalSession() {
+        return this.sqlSession.selectOne("totalsession");
     }
 }
