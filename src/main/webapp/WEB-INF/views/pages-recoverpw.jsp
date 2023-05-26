@@ -35,17 +35,22 @@
                     <div class="row m-0">
                       <div class="col-sm-12 sign-in-page-data">
                           <div class="sign-in-from bg-primary rounded">
-                                <h3 class="mb-0 text-white">Reset Password</h3>
-                                <p class="text-white">Enter your email address and we'll send you an email with instructions to reset your password.</p>
-                                <form action="sign-in.jsp" class="mt-4 form-text">
+                                <h3 class="mb-0 text-white">비밀번호 찾기</h3>
+                                <p class="text-white">가입하신 아이디와 이메일을 작성해주세요.</p>
+                                <form action="#" class="mt-4 form-text">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email">
+                                        <label for="user_id">아이디</label>
+                                        <input type="text" class="form-control mb-0" id="user_id" name="user_id" placeholder="ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_email">이메일</label>
+                                        <input type="email" class="form-control mb-0" id="user_email" name="user_email" placeholder="E-MAIL">
                                     </div>
                                     <div class="d-inline-block w-100">
-                                        <button type="submit" class="btn btn-white">Reset Password</button>
+                                        <button type="button" id="findBtn" class="btn btn-white">비밀번호 찾기</button>
                                     </div>
                                 </form>
+
                           </div>
                         </div>
                     </div>
@@ -54,38 +59,7 @@
             </div>
         </section>
         <!-- Sign in END -->
-         <!-- color-customizer -->
-       <div class="iq-colorbox color-fix">
-           <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-           <div class="clearfix color-picker">
-               <h3 class="iq-font-black">Booksto Awesome Color</h3>
-               <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-               <ul class="iq-colorselect clearfix">
-                   <li class="color-1 iq-colormark" data-style="color-1"></li>
-                   <li class="color-2" data-style="iq-color-2"></li>
-                   <li class="color-3" data-style="iq-color-3"></li>
-                   <li class="color-4" data-style="iq-color-4"></li>
-                   <li class="color-5" data-style="iq-color-5"></li>
-                   <li class="color-6" data-style="iq-color-6"></li>
-                   <li class="color-7" data-style="iq-color-7"></li>
-                   <li class="color-8" data-style="iq-color-8"></li>
-                   <li class="color-9" data-style="iq-color-9"></li>
-                   <li class="color-10" data-style="iq-color-10"></li>
-                   <li class="color-11" data-style="iq-color-11"></li>
-                   <li class="color-12" data-style="iq-color-12"></li>
-                   <li class="color-13" data-style="iq-color-13"></li>
-                   <li class="color-14" data-style="iq-color-14"></li>
-                   <li class="color-15" data-style="iq-color-15"></li>
-                   <li class="color-16" data-style="iq-color-16"></li>
-                   <li class="color-17" data-style="iq-color-17"></li>
-                   <li class="color-18" data-style="iq-color-18"></li>
-                   <li class="color-19" data-style="iq-color-19"></li>
-                   <li class="color-20" data-style="iq-color-20"></li>
-               </ul>
-               <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-           </div>
-       </div>
-       <!-- color-customizer END -->
+
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="${path}/resources/js/jquery.min.js"></script>
@@ -132,5 +106,26 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+      <!--비밀번호 찾기 AJAX-->
+      <script src="${path}/resources/js/ajax.js"></script>
+      <script>
+          $(function(){
+              $("#findBtn").click(function(){
+            console.log(  $("#user_id").val());
+
+                  $.ajax({
+                      url : "find_pwd_ok.go",
+                      type : "POST",
+                      data : {
+                          user_id : $("#user_id").val(),
+                          user_email : $("#user_email").val()
+                      },
+                      success : function(result) {
+                          alert(result);
+                      },
+                  })
+              });
+          });
+      </script>
    </body>
 </html>

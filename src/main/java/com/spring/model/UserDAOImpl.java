@@ -40,6 +40,12 @@ public class UserDAOImpl implements UserDAO {
     public UserDTO findByUserId(String userid){
         return this.sqlSession.selectOne("contOne", userid);
     }
+
+    @Override
+    public String idCheck(String userid) {
+        return this.sqlSession.selectOne("eqId", userid);
+    }
+
     @Override
     public UserDTO findByEmail(String email) {
         return null;
@@ -54,6 +60,11 @@ public class UserDAOImpl implements UserDAO {
     public int update(UserDTO user) {
 
         return this.sqlSession.update("modi" , user);
+    }
+
+    @Override
+    public int updatePwd(UserDTO user) {
+        return this.sqlSession.update("mod_pwd", user);
     }
 
     @Override

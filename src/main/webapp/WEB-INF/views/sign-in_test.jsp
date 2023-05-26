@@ -33,22 +33,22 @@
 	                    <div class="row m-0">
 	                      <div class="col-sm-12 sign-in-page-data">
 	                          <div class="sign-in-from bg-primary rounded">
-	                              <h3 class="mb-0 text-center text-white">Sign in</h3>
-	                              <p class="text-center text-white">Enter your email address and password to access admin panel.</p>
+	                              <h3 class="mb-0 text-center text-white">로그인</h3>
+	                              <p class="text-center text-white">아이디와 비밀번호를 입력해주세요.</p>
 	                              <form class="mt-4 form-text" action="<%=request.getContextPath()%>/login_ok.go" method="post">
 	                                  <div class="form-group">
-	                                      <%--@declare id="exampleinputemail1"--%><label for="exampleInputEmail1">ID</label>
-	                                      <input type="text" class="form-control mb-0" name="user_id" placeholder="Enter id">
+	                                      <%--@declare id="exampleinputemail1"--%><label for="exampleInputEmail1">아이디</label>
+	                                      <input type="text" class="form-control mb-0" name="user_id" placeholder="ID">
 	                                  </div>
 	                                  <div class="form-group">
-	                                      <%--@declare id="exampleinputpassword1"--%><label for="exampleInputPassword1">Password</label>
-	                                      <a href="#" class="float-right text-dark">Forgot password?</a>
+	                                      <%--@declare id="exampleinputpassword1"--%><label for="exampleInputPassword1">비밀번호</label>
+	                                      <a href="find_pwd.go" class="float-right text-dark">비밀번호를 잊으셨나요?</a>
 	                                      <input type="password" class="form-control mb-0" name="user_pwd" placeholder="Password">
 	                                  </div>
 	 
 	                                  <div class="sign-info text-center">
-	                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">Sign in</button>
-	                                      <span class="text-dark dark-color d-inline-block line-height-2">Don't have an account? <a href="<%=request.getContextPath() %>/signup.go" class="text-white">Sign up</a></span>
+	                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">회원가입</button>
+	                                      <span class="text-dark dark-color d-inline-block line-height-2">회원이 아니신가요? <a href="<%=request.getContextPath() %>/signup.go" class="text-white">가입하기</a></span>
 	                                  </div>
 	                              </form>
 	                          </div>
