@@ -533,6 +533,17 @@ public class UserController {
 
     }
 
+    @RequestMapping("find_id.go")
+    public String findIdPage() {
+        return "pages-recoverid";
+    }
+
+    @RequestMapping("find_id_ok.go")
+    public void findIdPOST(@ModelAttribute UserDTO user_dto, HttpServletResponse response) throws Exception {
+
+        userService.findId(response, user_dto);
+
+    }
     @RequestMapping("find_pwd.go")
     public String findPwPage() {
         return "pages-recoverpw";

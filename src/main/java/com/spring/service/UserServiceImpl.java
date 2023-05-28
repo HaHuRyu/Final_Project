@@ -2,14 +2,22 @@ package com.spring.service;
 
 import com.spring.model.UserDAO;
 import com.spring.model.UserDTO;
+import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.Properties;
 
 @Service
 @Component
@@ -47,8 +55,8 @@ public class UserServiceImpl implements UserService{
             msg += "<h1>임시 비밀번호 안내</h1><br><br>";
             msg += "<p>안녕하세요,</p><br>";
             msg += String.format("<p>임시 비밀번호: <b>%s</b></p>", Temp) + "<br>";
-            msg += "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p>";
-            msg += "<p>감사합니다.</p>";
+            msg += "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p><br>";
+            msg += "<p>감사합니다.</p><br>";
             msg += "<p>[책방]</p>";
 
         }
@@ -58,19 +66,19 @@ public class UserServiceImpl implements UserService{
 
         try {
             HtmlEmail email = new HtmlEmail();
-            email.setDebug(true);
-            email.setCharset(charSet);
-            email.setSSL(true);
-            email.setSslSmtpPort("465");
             email.setHostName(hostSMTP);
-            email.setSmtpPort(465); //네이버 이용시 587
-            email.setAuthentication(hostSMTPid, hostSMTPpwd);
-            email.setTLS(true);
-            email.addTo(mail, charSet);
-            email.setFrom(fromEmail, fromName, charSet);
+            email.setSmtpPort(465);
+            email.setAuthenticator(new DefaultAuthenticator(hostSMTPid, hostSMTPpwd)); // 발신자 이메일 주소와 비밀번호 입력
+            email.setSSLOnConnect(true);
+            email.setCharset(charSet);
+
+            email.setFrom(fromEmail, fromName);
+            email.addTo(mail);
             email.setSubject(subject);
             email.setHtmlMsg(msg);
+
             email.send();
+
 
         } catch (Exception e) {
 

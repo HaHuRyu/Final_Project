@@ -38,6 +38,7 @@
 	                              <form class="mt-4 form-text" action="<%=request.getContextPath()%>/login_ok.go" method="post">
 	                                  <div class="form-group">
 	                                      <%--@declare id="exampleinputemail1"--%><label for="exampleInputEmail1">아이디</label>
+                                              <a href="find_id.go" class="float-right text-dark">아이디를 잊으셨나요?</a>
 	                                      <input type="text" class="form-control mb-0" name="user_id" placeholder="ID">
 	                                  </div>
 	                                  <div class="form-group">
