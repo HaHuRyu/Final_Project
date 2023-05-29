@@ -120,4 +120,5 @@ public class UserDAOImpl implements UserDAO {
     public int plusPayment(Map<String, Integer> map) {
         return this.sqlSession.update("pluspayment", map);
     }
+
 }

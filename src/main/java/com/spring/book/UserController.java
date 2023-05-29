@@ -1,7 +1,6 @@
 package com.spring.book;
 
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -40,7 +39,6 @@ import org.springframework.web.multipart.MultipartRequest;
 
 @Controller
 public class UserController {
-
 
 
     @Autowired
@@ -152,7 +150,6 @@ public class UserController {
                     session.setAttribute("countBasket", basketDAO.countBasket(dto.getUser_no()));
 
 
-
                     out.println("<script>");
                     out.println("alert('로그인 성공');");
                     out.println("location.href='home.go';");
@@ -253,17 +250,11 @@ public class UserController {
         PrintWriter out = response.getWriter();
 
         if (check > 0) {
-            if (nickname.equals(user.getUser_id())) {
-                out.println("<script>");
-                out.println("alert('이미 같은 닉네임이 존재합니다.')");
-                out.println("history.back()");
-                out.println("</script>");
-            }
             out.println("<script>");
             out.println("alert('회원가입 성공')");
             out.println("location.href='home.go'");
             out.println("</script>");
-        } else{
+        } else {
             out.println("<script>");
             out.println("alert('회원가입 실패')");
             out.println("history.back()");
@@ -271,8 +262,9 @@ public class UserController {
         }
     }
 
+
     @RequestMapping("user_modify.go")
-    public String modify(HttpSession session,HttpServletResponse response , Model model) throws IOException {
+    public String modify(HttpSession session, HttpServletResponse response, Model model) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -288,7 +280,7 @@ public class UserController {
         } else {
             userId = (String) session.getAttribute("UserId");
             UserDTO userDTO = userDAO.findByUserId(userId);
-            model.addAttribute("user",userDTO );
+            model.addAttribute("user", userDTO);
         }
 
 
@@ -297,7 +289,7 @@ public class UserController {
 
     @RequestMapping("modify.ok.go")
     public void modifyOk(HttpServletResponse response,
-                         MultipartHttpServletRequest Request, HttpServletRequest request) throws IOException{
+                         MultipartHttpServletRequest Request, HttpServletRequest request) throws IOException {
 
         System.out.println("Start");
 
@@ -375,7 +367,7 @@ public class UserController {
     }
 
     @RequestMapping("user.delete.go")
-    public void delete(@RequestParam("user_no")int user_no, HttpServletResponse response)throws IOException {
+    public void delete(@RequestParam("user_no") int user_no, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
 
@@ -398,9 +390,6 @@ public class UserController {
             out.println("</script>");
         }
     }
-
-
-
 
 
     @RequestMapping("logout.go")
@@ -442,7 +431,7 @@ public class UserController {
 
         int count = Integer.parseInt(session.getAttribute("countBasket").toString());
 
-        for(int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             OrderDTO orderDTO = new OrderDTO();
             orderDTO.setOrder_amount(bookDTOList.get(i).getBook_basketAmount());
             orderDTO.setBook_no(bookDTOList.get(i).getBook_no());
@@ -454,15 +443,14 @@ public class UserController {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = dateFormat.format(currentDate);
-        for (int i = 0; i < bookDTOList.size(); i++){
+        for (int i = 0; i < bookDTOList.size(); i++) {
             BookDTO bookDTO = bookDTOList.get(i);
             bookDTO.setBook_date(formattedDate);
             bookDTOList.set(i, bookDTO);
         }
 
 
-
-        Map<String ,Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         map.put("user_no", Integer.parseInt(session.getAttribute("UserNo").toString()));
         map.put("bp", Integer.parseInt(request.getParameter("bp")));
 
@@ -472,25 +460,24 @@ public class UserController {
         model.addAttribute("bookdto", bookDTOList).addAttribute("basketdto", basketDTOList);
 
 
-        session.setAttribute("UserMoney",userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
+        session.setAttribute("UserMoney", userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
         session.setAttribute("BasketList", basketService.basketList(Integer.parseInt(session.getAttribute("UserNo").toString())));
         session.setAttribute("BookList", basketService.bookList(Integer.parseInt(session.getAttribute("UserNo").toString())));
         session.setAttribute("countBasket", basketDAO.countBasket(Integer.parseInt(session.getAttribute("UserNo").toString())));
-
 
 
         return "pages-invoice";
     }
 
     @RequestMapping("payment.go")
-        public String payment(HttpSession session){
+    public String payment(HttpSession session) {
 
         return "payment";
-        }
+    }
 
 
     @RequestMapping("charge.go")
-    public void charge(UserDTO dto ,HttpServletResponse response, HttpServletRequest request,HttpSession session) throws IOException {
+    public void charge(UserDTO dto, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
 
         int money = Integer.parseInt(request.getParameter("charge"));
         int userno = Integer.parseInt(session.getAttribute("UserNo").toString());
@@ -501,23 +488,56 @@ public class UserController {
 
         int check = this.userDAO.plusPayment(map);
 
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = response.getWriter();
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
-            if (check > 0) {
-                session.setAttribute("UserMoney",userDAO.findByUserId((String)session.getAttribute("UserId")).getUser_money());
-                out.println("<script>");
-                out.println("alert('충전 성공')");
-                out.println("location.href='home.go'");
-                out.println("</script>");
-            } else {
-                out.println("<script>");
-                out.println("alert('충전 실패')");
-                out.println("history.back()");
-                out.println("</script>");
-            }
-
+        if (check > 0) {
+            session.setAttribute("UserMoney", userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
+            out.println("<script>");
+            out.println("alert('충전 성공')");
+            out.println("location.href='home.go'");
+            out.println("</script>");
+        } else {
+            out.println("<script>");
+            out.println("alert('충전 실패')");
+            out.println("history.back()");
+            out.println("</script>");
         }
 
+    }
+
+    @RequestMapping("user.join.chk.go")
+    public void nickname(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        String id = request.getParameter("paramId");
+
+        int result = 0;
+
+
+        if (this.userDAO.findByUserId(id) == null) {
+            System.out.println("Action 내부) 사용 가능한 아이디입니다.");
+            result = 1;
+            out.println(result + "");
+        } else {
+            UserDTO dto = this.userDAO.findByUserId(id);
+
+            if (id.equals(dto.getUser_id())) {
+                System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
+                result = -1;
+                out.println(result + "");
+            }else {
+                System.out.println("Action 내부) 사용 가능한 아이디입니다.");
+                result = 1;
+                out.println(result + "");
+            }
+        }
+
+    }
 }
+
+
+
 
