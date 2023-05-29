@@ -1,4 +1,4 @@
-<%@ page import="com.spring.model.UserDAO" %>
+f<%@ page import="com.spring.model.UserDAO" %>
 <%@ page import="com.spring.model.UserDTO" %>
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
 <%@ page import="com.spring.model.UserDAOImpl" %>
@@ -280,7 +280,7 @@
                         <a href="home.jsp" class="header-logo">
                             <img src="${path}/resources/images/logo.png" class="img-fluid rounded-normal" alt="">
                             <div class="logo-title">
-                                <span class="text-primary text-uppercase">Booksto</span>
+                                <span class="text-primary text-uppercase">파이널</span>
                             </div>
                         </a>
                     </div>
@@ -291,9 +291,9 @@
                     </nav>
                 </div>
                 <div class="iq-search-bar">
-                    <form action="#" class="searchbox">
+                    <form action="<%=request.getContextPath()%>/search.go" class="searchbox">
                         <input type="text" class="text search-input" placeholder="Search Here...">
-                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                        <a class="search-link" href="#" onclick="this.closest('form').submit(); return false;"><i class="ri-search-line"></i></a>
                     </form>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"

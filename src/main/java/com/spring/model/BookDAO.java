@@ -39,4 +39,6 @@ public interface BookDAO {
 
     public List<BookDTO> booklist_cate(int category_no);
 
+    public List<BookDTO> book_searchList(String query);
+
 }
