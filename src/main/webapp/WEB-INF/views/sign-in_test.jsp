@@ -48,7 +48,7 @@
 	                                  </div>
 	 
 	                                  <div class="sign-info text-center">
-	                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">회원가입</button>
+	                                      <button type="submit" class="btn btn-white d-block w-100 mb-2">로그인</button>
 	                                      <span class="text-dark dark-color d-inline-block line-height-2">회원이 아니신가요? <a href="<%=request.getContextPath() %>/signup.go" class="text-white">가입하기</a></span>
 	                                  </div>
 	                              </form>

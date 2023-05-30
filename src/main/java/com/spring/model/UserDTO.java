@@ -15,7 +15,9 @@ public class UserDTO {
     private String user_approve;
     private int user_money;
     private String category_no;
+    private String category_name1;
     private String category_no2;
+    private String category_name2;
     private String user_job;
     private String user_intro;
     private String user_img;

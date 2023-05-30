@@ -590,21 +590,21 @@
                              </thead>
                               <c:set var="list" value="${user_list}" />
                              <tbody>
-                             <c:forEach var="user_map" items="${list}">
+                             <c:forEach var="user_dto" items="${list}">
                                  <tr>
-                                    <td class="text-center"><img class="rounded img-fluid avatar-40" src="${path}/resources/images/user_profile_image2023-5-17/${user_dto.user_img}" alt="profile"></td>
-                                    <td>${user_map.user_id}</td>
-                                    <td>${user_map.user_name}</td>
-                                    <td>${user_map.user_phone}</td>
+                                    <td class="text-center"><img class="rounded img-fluid avatar-40" src="${path}/resources/images/user_profile_image/${user_dto.user_img}" alt="profile"></td>
+                                    <td>${user_dto.user_id}</td>
+                                    <td>${user_dto.user_name}</td>
+                                    <td>${user_dto.user_phone}</td>
 <%--                                    <td><span class="badge iq-bg-primary">Active</span></td>--%>
-                                    <td>${user_map.user_email}</td>
-                                    <td>${user_map.user_addr}</td>
-                                    <td>${user_map.category_name1}, ${user_map.category_name2}</td>
-                                    <td>${fn:substring(user_map.user_birth,0,10)}</td>
+                                    <td>${user_dto.user_email}</td>
+                                    <td>${user_dto.user_addr}</td>
+                                    <td>${user_dto.category_name1}, ${user_dto.category_name2}</td>
+                                    <td>${fn:substring(user_dto.user_birth,0,10)}</td>
                                     <td>
                                        <div class="flex align-items-center list-user-action">
-                                          <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="#"><i class="ri-pencil-line"></i></a>
-                                          <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                          <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="user_modify.go?userID=${user_dto.user_id}"><i class="ri-pencil-line"></i></a>
+                                          <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="user.delete.go?user_no=${user_dto.user_no}"><i class="ri-delete-bin-line"></i></a>
                                        </div>
                                     </td>
                                  </tr>

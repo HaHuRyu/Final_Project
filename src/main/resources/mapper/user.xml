@@ -38,7 +38,7 @@
 
     <!--User List-->
     <select id="contAll" resultType="UserDTO">
-        select * from final.user
+        select b.* , c.category as category_name1, c1.category as category_name2 from user b join category c on b.category_no = c.category_no join category c1 on b.category_no2 = c1.category_no
     </select>
 
     <!--총 User 수-->

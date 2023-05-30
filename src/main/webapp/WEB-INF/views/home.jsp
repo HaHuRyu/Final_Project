@@ -2,7 +2,6 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -62,19 +61,23 @@
                                     class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
-                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
-                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
-                            <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
-                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>도서 목록</a>
-                            </li>
-                            <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
-                        </ul>
-                    </li>
+
+                    <!-- 세션에 저장된 사용자 아이디 가져오기 -->
+                    <c:set var="userId" value="${sessionScope.UserId}"/>
+                    <c:if test="${userId == 'admin'}">
+                        <li>
+                            <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
+                                    class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
+                                <li><a href="category_list.go"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
+                                <li><a href="book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
+                                <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
+                            </ul>
+                        </li>
+                    </c:if>
+
                     <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i
@@ -306,10 +309,9 @@
                     </nav>
                 </div>
                 <div class="iq-search-bar">
-                    <form action="<%=request.getContextPath()%>/search.go" method="post" class="searchbox">
-                        <input type="text" class="text search-input" name="query" placeholder="검색">
-                        <a class="search-link" href="#" onclick="this.closest('form').submit(); return false;"><i
-                                class="ri-search-line"></i></a>
+                    <form action="<%=request.getContextPath()%>/search.go" class="searchbox">
+                        <input type="text" class="text search-input" name="query" placeholder="검색어를 입력해주세요.">
+                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                     </form>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"

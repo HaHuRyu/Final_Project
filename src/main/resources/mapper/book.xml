@@ -89,8 +89,8 @@
         SELECT b.*, c.category
         FROM book b
         JOIN category c ON b.category_no = c.category_no
-        WHERE b.book_title LIKE #{'%'+value+'%'}
-        OR b.book_author LIKE #{'%'+value+'%'}
-        OR c.category LIKE #{'%'+value+'%'}
+        WHERE b.book_title LIKE CONCAT('%', #{param}, '%')
+        OR b.book_author LIKE CONCAT('%', #{param}, '%')
+        OR c.category LIKE CONCAT('%', #{param}, '%')
     </select>
 </mapper>

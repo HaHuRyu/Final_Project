@@ -288,7 +288,7 @@ public class UserController {
     }
 
     @RequestMapping("user_modify.go")
-    public String modify(HttpSession session, HttpServletResponse response, Model model) throws IOException {
+    public String modify(HttpSession session, HttpServletRequest request ,HttpServletResponse response, Model model) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -301,7 +301,11 @@ public class UserController {
             out.println("</script>");
             out.close();
             return null;
-        } else {
+        } else if(session.getAttribute("UserId").equals("admin")) {
+            userId = request.getParameter("userID");
+            UserDTO userDTO = userDAO.findByUserId(userId);
+            model.addAttribute("user", userDTO);
+        }else {
             userId = (String) session.getAttribute("UserId");
             UserDTO userDTO = userDAO.findByUserId(userId);
             model.addAttribute("user", userDTO);
@@ -554,6 +558,16 @@ public class UserController {
 
         userService.findPwd(response, user_dto);
 
+    }
+
+    @RequestMapping("user_list.go")
+    public String userList(Model model) {
+
+        List<UserDTO> list = this.userDAO.findAll();
+
+        model.addAttribute("user_list", list);
+
+        return "admin-user-list";
     }
 }
 
