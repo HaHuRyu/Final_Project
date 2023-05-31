@@ -67,7 +67,7 @@
 
     <!--카테고리 수정-->
     <update id="category_modify" parameterType="map">
-        update category set category_no = #{category_no}, category = #{category_name}, category_content = #{category_content} where category_no = #{ex_no}
+        update category set category= #{category_name}, category_content = #{category_content} where category_no = #{ex_no}
     </update>
 
     <!--카테고리 No 중복체크-->
@@ -85,4 +85,12 @@
         select * from final.book where category_no = #{value}
     </select>
 
+    <select id="search_book" parameterType="String" resultType="BookDto">
+        SELECT b.*, c.category
+        FROM book b
+        JOIN category c ON b.category_no = c.category_no
+        WHERE b.book_title LIKE CONCAT('%', #{param}, '%')
+        OR b.book_author LIKE CONCAT('%', #{param}, '%')
+        OR c.category LIKE CONCAT('%', #{param}, '%')
+    </select>
 </mapper>

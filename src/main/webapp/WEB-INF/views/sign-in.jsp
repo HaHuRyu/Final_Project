@@ -44,7 +44,7 @@
                                   </div>
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Password</label>
-                                      <a href="#" class="float-right text-dark">Forgot password?</a>
+                                      <a href="#" class="float-right text-dark">비밀번호를 잊으셨나요?</a>
                                       <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
                                   </div>
                                   <div class="d-inline-block w-100">

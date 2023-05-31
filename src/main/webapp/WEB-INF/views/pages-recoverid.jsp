@@ -35,19 +35,19 @@
                     <div class="row m-0">
                       <div class="col-sm-12 sign-in-page-data">
                           <div class="sign-in-from bg-primary rounded">
-                                <h3 class="mb-0 text-white">비밀번호 찾기</h3>
+                                <h3 class="mb-0 text-white">아이디 찾기</h3>
                                 <p class="text-white">가입하신 아이디와 이메일을 작성해주세요.</p>
                                 <form action="#" class="mt-4 form-text">
                                     <div class="form-group">
-                                        <label for="user_id">아이디</label>
-                                        <input type="text" class="form-control mb-0" id="user_id" name="user_id" placeholder="ID">
+                                        <label for="user_name">이름</label>
+                                        <input type="text" class="form-control mb-0" id="user_name" name="user_name" placeholder="ID">
                                     </div>
                                     <div class="form-group">
                                         <label for="user_email">이메일</label>
                                         <input type="email" class="form-control mb-0" id="user_email" name="user_email" placeholder="E-MAIL">
                                     </div>
                                     <div class="d-inline-block w-100">
-                                        <button type="button" id="findBtn" class="btn btn-white">비밀번호 찾기</button>
+                                        <button type="button" id="findBtn" class="btn btn-white">아이디 찾기</button>
                                     </div>
                                 </form>
 
@@ -114,10 +114,10 @@
             console.log(  $("#user_id").val());
 
                   $.ajax({
-                      url : "find_pwd_ok.go",
+                      url : "find_id_ok.go",
                       type : "POST",
                       data : {
-                          user_id : $("#user_id").val(),
+                          user_id : $("#user_name").val(),
                           user_email : $("#user_email").val()
                       },
                       success : function(result) {

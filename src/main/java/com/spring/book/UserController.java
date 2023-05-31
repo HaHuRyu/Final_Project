@@ -1,7 +1,6 @@
 package com.spring.book;
 
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -22,9 +21,11 @@ import com.spring.model.UserDAO;
 
 import com.spring.model.UserDTO;
 
+import com.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class UserController {
-
 
 
     @Autowired
@@ -57,10 +57,13 @@ public class UserController {
     @Autowired
     private ChatDAO chatDAO;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model,HttpSession session) {
+    @Autowired
+    private UserService userService;
 
-        if(session.getAttribute("UserCate1") != null){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Locale locale, Model model, HttpSession session) {
+
+        if (session.getAttribute("UserCate1") != null) {
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
             int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
 
@@ -69,8 +72,8 @@ public class UserController {
             CategoryDTO categoryDTO1 = bookDAO.category_one(cate1);
             CategoryDTO categoryDTO2 = bookDAO.category_one(cate2);
 
-            model.addAttribute("catelist1", list).addAttribute("catelist2",list2);
-            model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
+            model.addAttribute("catelist1", list).addAttribute("catelist2", list2);
+            model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
 
         BookDTO bookDTO = bookDAO.book_cont(199);
@@ -82,7 +85,7 @@ public class UserController {
     @RequestMapping("home.go")
     public String home(HttpSession session, Model model) {
 
-        if(session.getAttribute("UserCate1") != null){
+        if (session.getAttribute("UserCate1") != null) {
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
             int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
 
@@ -91,8 +94,8 @@ public class UserController {
             CategoryDTO categoryDTO1 = bookDAO.category_one(cate1);
             CategoryDTO categoryDTO2 = bookDAO.category_one(cate2);
 
-            model.addAttribute("catelist1", list).addAttribute("catelist2",list2);
-            model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
+            model.addAttribute("catelist1", list).addAttribute("catelist2", list2);
+            model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
 
         BookDTO bookDTO = bookDAO.book_cont(199);
@@ -134,11 +137,11 @@ public class UserController {
                     int category1 = Integer.parseInt(dto.getCategory_no());
                     int category2 = Integer.parseInt(dto.getCategory_no2());
 
-                    for(CategoryDTO cdto : clist) {
-                        if(cdto.getCategory_no() == category1) {
+                    for (CategoryDTO cdto : clist) {
+                        if (cdto.getCategory_no() == category1) {
                             session.setAttribute("UserCate1", cdto.getCategory_no());
                         }
-                        if(cdto.getCategory_no() == category2) {
+                        if (cdto.getCategory_no() == category2) {
                             session.setAttribute("UserCate2", cdto.getCategory_no());
                         }
                     }
@@ -165,12 +168,11 @@ public class UserController {
                     // 채팅 세션 등록
                     List<ChatListDTO> chatList = chatDAO.getChatList(dto.getUser_no());
 
-                    for(ChatListDTO chatListDTO : chatList) {
+                    for (ChatListDTO chatListDTO : chatList) {
                         chatListDTO.setOther_nickName(userDAO.findByUserNo(chatListDTO.getOther_user()).getUser_nickname());
                         chatListDTO.setOther_img(userDAO.findByUserNo(chatListDTO.getOther_user()).getUser_img());
                     }
                     session.setAttribute("chatList", chatList);
-
 
 
                     out.println("<script>");
@@ -291,7 +293,7 @@ public class UserController {
     }
 
     @RequestMapping("user_modify.go")
-    public String modify(HttpSession session,HttpServletResponse response , Model model) throws IOException {
+    public String modify(HttpSession session, HttpServletRequest request ,HttpServletResponse response, Model model) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -304,10 +306,14 @@ public class UserController {
             out.println("</script>");
             out.close();
             return null;
-        } else {
+        } else if(session.getAttribute("UserId").equals("admin")) {
+            userId = request.getParameter("userID");
+            UserDTO userDTO = userDAO.findByUserId(userId);
+            model.addAttribute("user", userDTO);
+        }else {
             userId = (String) session.getAttribute("UserId");
             UserDTO userDTO = userDAO.findByUserId(userId);
-            model.addAttribute("user",userDTO );
+            model.addAttribute("user", userDTO);
         }
 
 
@@ -316,7 +322,7 @@ public class UserController {
 
     @RequestMapping("modify.ok.go")
     public void modifyOk(HttpServletResponse response,
-                         MultipartHttpServletRequest Request, HttpServletRequest request) throws IOException{
+                         MultipartHttpServletRequest Request, HttpServletRequest request) throws IOException {
 
         System.out.println("Start");
 
@@ -394,7 +400,7 @@ public class UserController {
     }
 
     @RequestMapping("user.delete.go")
-    public void delete(@RequestParam("user_no")int user_no, HttpServletResponse response)throws IOException {
+    public void delete(@RequestParam("user_no") int user_no, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
 
@@ -417,9 +423,6 @@ public class UserController {
             out.println("</script>");
         }
     }
-
-
-
 
 
     @RequestMapping("logout.go")
@@ -463,7 +466,7 @@ public class UserController {
         int last_set = orderDAO.get_order_set() + 1;
         System.out.println("last_set : " + last_set);
 
-        for(int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             OrderDTO orderDTO = new OrderDTO();
             orderDTO.setOrder_amount(bookDTOList.get(i).getBook_basketAmount());
             orderDTO.setBook_no(bookDTOList.get(i).getBook_no());
@@ -476,15 +479,14 @@ public class UserController {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = dateFormat.format(currentDate);
-        for (int i = 0; i < bookDTOList.size(); i++){
+        for (int i = 0; i < bookDTOList.size(); i++) {
             BookDTO bookDTO = bookDTOList.get(i);
             bookDTO.setBook_date(formattedDate);
             bookDTOList.set(i, bookDTO);
         }
 
 
-
-        Map<String ,Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         map.put("user_no", Integer.parseInt(session.getAttribute("UserNo").toString()));
         map.put("bp", Integer.parseInt(request.getParameter("bp")));
 
@@ -494,25 +496,24 @@ public class UserController {
         model.addAttribute("bookdto", bookDTOList).addAttribute("basketdto", basketDTOList);
 
 
-        session.setAttribute("UserMoney",userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
+        session.setAttribute("UserMoney", userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
         session.setAttribute("BasketList", basketService.basketList(Integer.parseInt(session.getAttribute("UserNo").toString())));
         session.setAttribute("BookList", basketService.bookList(Integer.parseInt(session.getAttribute("UserNo").toString())));
         session.setAttribute("countBasket", basketDAO.countBasket(Integer.parseInt(session.getAttribute("UserNo").toString())));
-
 
 
         return "pages-invoice";
     }
 
     @RequestMapping("payment.go")
-        public String payment(HttpSession session){
+    public String payment(HttpSession session) {
 
         return "payment";
-        }
+    }
 
 
     @RequestMapping("charge.go")
-    public void charge(UserDTO dto ,HttpServletResponse response, HttpServletRequest request,HttpSession session) throws IOException {
+    public void charge(UserDTO dto, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
 
         int money = Integer.parseInt(request.getParameter("charge"));
         int userno = Integer.parseInt(session.getAttribute("UserNo").toString());
@@ -523,26 +524,55 @@ public class UserController {
 
         int check = this.userDAO.plusPayment(map);
 
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = response.getWriter();
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
-            if (check > 0) {
-                session.setAttribute("UserMoney",userDAO.findByUserId((String)session.getAttribute("UserId")).getUser_money());
-                out.println("<script>");
-                out.println("alert('충전 성공')");
-                out.println("location.href='home.go'");
-                out.println("</script>");
-            } else {
-                out.println("<script>");
-                out.println("alert('충전 실패')");
-                out.println("history.back()");
-                out.println("</script>");
-            }
-
+        if (check > 0) {
+            session.setAttribute("UserMoney", userDAO.findByUserId((String) session.getAttribute("UserId")).getUser_money());
+            out.println("<script>");
+            out.println("alert('충전 성공')");
+            out.println("location.href='home.go'");
+            out.println("</script>");
+        } else {
+            out.println("<script>");
+            out.println("alert('충전 실패')");
+            out.println("history.back()");
+            out.println("</script>");
         }
 
+    }
 
+    @RequestMapping("find_id.go")
+    public String findIdPage() {
+        return "pages-recoverid";
+    }
 
+    @RequestMapping("find_id_ok.go")
+    public void findIdPOST(@ModelAttribute UserDTO user_dto, HttpServletResponse response) throws Exception {
 
+        userService.findId(response, user_dto);
+
+    }
+    @RequestMapping("find_pwd.go")
+    public String findPwPage() {
+        return "pages-recoverpw";
+    }
+
+    @RequestMapping("find_pwd_ok.go")
+    public void findPwPOST(@ModelAttribute UserDTO user_dto, HttpServletResponse response) throws Exception {
+
+        userService.findPwd(response, user_dto);
+
+    }
+
+    @RequestMapping("user_list.go")
+    public String userList(Model model) {
+
+        List<UserDTO> list = this.userDAO.findAll();
+
+        model.addAttribute("user_list", list);
+
+        return "admin-user-list";
+    }
 }
 

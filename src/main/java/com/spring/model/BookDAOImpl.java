@@ -109,4 +109,9 @@ public class BookDAOImpl implements BookDAO{
         return this.sqlSession.selectList("booklist_cate", category_no);
     }
 
+    @Override
+    public List<BookDTO> book_searchList(String query) {
+        return this.sqlSession.selectList("search_book", query);
+    }
+
 }
