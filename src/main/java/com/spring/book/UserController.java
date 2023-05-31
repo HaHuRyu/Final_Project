@@ -76,6 +76,8 @@ public class UserController {
             model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
 
+        BookDTO bookDTO = bookDAO.book_cont(199);
+        model.addAttribute("bookDTO",bookDTO);
 
         return "home";
     }
@@ -95,6 +97,9 @@ public class UserController {
             model.addAttribute("catelist1", list).addAttribute("catelist2", list2);
             model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
+
+        BookDTO bookDTO = bookDAO.book_cont(199);
+        model.addAttribute("bookDTO",bookDTO);
 
         return "home";
     }
