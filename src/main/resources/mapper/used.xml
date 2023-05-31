@@ -17,16 +17,47 @@
 -->
 
 <mapper namespace="UsedDAO">
-    <select id="all" resultType="UsedDTO">
-        select * from final.seller order by seller_no desc
+
+    <select id="count" resultType="int">
+        select count(*) from final.seller
     </select>
 
-    <insert id="userBookAdd" parameterType="UsedDTO">
-        INSERT INTO final.seller(user_no, seller_title, seller_author, seller_cont, seller_file, seller_price, seller_date)
-        VALUES (#{user_no}, #{seller_title}, #{seller_author}, #{seller_cont}, #{seller_file}, #{seller_price}, NOW());
+    <select id="all" resultType="UsedDTO" parameterType="PageDTO">
+        <![CDATA[
+                    SELECT *
+            FROM (
+                     SELECT b.*, ROW_NUMBER() OVER(ORDER BY seller_no DESC) rnum
+                     FROM final.seller b
+                 ) AS temp
+            WHERE rnum >= #{startNo} AND rnum <= #{endNo};
+	    ]]>
+    </select>
+
+    <insert id="selleradd" parameterType="UsedDTO">
+        INSERT INTO final.seller(user_no, seller_title, seller_author, seller_cont, seller_file, book_cost, seller_price, seller_date)
+        VALUES (#{user_no}, #{seller_title}, #{seller_author}, #{seller_cont}, #{seller_file}, #{book_cost}, #{seller_price}, NOW());
     </insert>
 
     <select id="pick" parameterType="int" resultType="UsedDTO">
         select * from seller where seller_no = #{no}
     </select>
+
+    <update id="minususedmoney" parameterType="Map">
+        update final.user set user_money = user_money - (select seller_price from final.seller where seller_no = #{sell_no}) where user_no = #{user_no}
+    </update>
+
+    <update id="plususedmoney" parameterType="Map">
+        update final.user set user_money = user_money + #{price} where user_no = (select user_no from final.seller where seller_no = #{sell_no})
+    </update>
+
+    <insert id="sellorderadd" parameterType="Map">
+        INSERT INTO final.sellorder (user_no, sell_order_price, sell_order_date, sell_order_title, sell_order_img)
+        SELECT #{user_no}, seller_price, NOW(), seller_title, seller_file
+        FROM final.seller
+        WHERE seller_no = #{sell_no};
+    </insert>
+
+    <delete id="sellerdelete" parameterType="int">
+        delete from final.seller where seller_no = #{no}
+    </delete>
 </mapper>
