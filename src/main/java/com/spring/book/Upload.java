@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class Upload {
 
 	String imgDir = null;
+	String saveFileName = null;
 
 	public boolean fileUpload(MultipartHttpServletRequest mRequest) {
 		
@@ -62,7 +63,7 @@ public class Upload {
 			}
 			
 			// 실제 파일을 만들어 보자.
-			String saveFileName = originalFileName;
+			saveFileName = originalFileName;
 			
 			if(!saveFileName.equals("")) {
 				saveFileName = 
@@ -93,6 +94,6 @@ public class Upload {
 	}
 
 	public String getImg(){
-		return this.imgDir;
+		return this.saveFileName;
 	}
 }
