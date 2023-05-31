@@ -21,9 +21,11 @@
         select * from final.seller order by seller_no desc
     </select>
 
-    <insert id="add" parameterType="UsedDTO">
-        INSERT INTO final.seller(user_no, seller_title, seller_author, seller_cont, seller_file, seller_price, seller_date)
-        VALUES (#{user_no}, #{seller_title}, #{seller_author}, #{seller_cont}, #{seller_file}, #{seller_price}, NOW());
+
+
+    <insert id="selleradd" parameterType="UsedDTO">
+        INSERT INTO final.seller(user_no, seller_title, seller_author, seller_cont, seller_file, book_cost, seller_price, seller_date)
+        VALUES (#{user_no}, #{seller_title}, #{seller_author}, #{seller_cont}, #{seller_file}, #{book_cost}, #{seller_price}, NOW());
     </insert>
 
     <select id="pick" parameterType="int" resultType="UsedDTO">
