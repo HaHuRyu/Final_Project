@@ -69,13 +69,13 @@
 
             <div class="iq-card">
                <div class="iq-card-body">
-                  <div class="row" align="center">
+                  <div class="row">
                      <c:set var="list" value="${List}"/>
                      <c:forEach items="#{list}" var="dto" varStatus="loop">
                         <div class="col-sm-6 col-md-4 col-lg-3">
                            <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
                               <div class="iq-card-body p-0">
-                                 <div class="d-flex align-items-center" style="height: 186.51px;">
+                                 <div class="d-flex align-items-center" <%--style="height: 186.51px;"--%>>
                                     <a href="book_page.go?seller_no=${dto.seller_no}"><img class="img-fluid rounded w-100"
                                                                                            src="${dto.seller_file}"
                                                                                            alt="">
@@ -120,7 +120,8 @@
 
          <c:set var="paging" value="${Paging }" />
          <%-- 페이징 처리 출력 부분 --%>
-         <div>
+         <div class="col-lg-12" align="center">
+            <div></div>
             <nav aria-label="Search results pages">
                <ul class="pagination">
                   <c:if test="${paging.page > paging.block }">
