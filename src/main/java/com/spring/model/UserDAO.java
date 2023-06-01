@@ -16,11 +16,15 @@ public interface UserDAO {
 
     public UserDTO findByUserId(String userid);
 
+    String idCheck(String userid);
+
     public UserDTO findByEmail(String email);
 
     public UserDTO findByConfirmationToken(String confirmationToken);
 
     public int update(UserDTO user);
+
+    int updatePwd(UserDTO user);
 
     public int delete(int user);
 

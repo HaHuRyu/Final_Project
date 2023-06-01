@@ -675,7 +675,14 @@
 
                                     <tr>
                                         <td>${book_dto.book_no}</td>
-                                        <td><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book_dto.book_image}" alt=""></td>
+                                        <td>
+                                        <c:if test="${book_dto.book_image.substring(0,5) == 'https'}">
+                                           <img class="img-fluid rounded" src="${book_dto.book_image}" alt="">
+                                        </c:if>
+                                        <c:if test="${book_dto.book_image.substring(0,5) != 'https'}">
+                                            <img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book_dto.book_image}" alt="">
+                                        </c:if>
+                                        </td>
                                         <td>${book_dto.book_title}</td>
                                         <td>${book_dto.category_no}</td>
                                         <td>${book_dto.book_author}</td>
