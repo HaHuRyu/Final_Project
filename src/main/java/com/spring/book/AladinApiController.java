@@ -75,12 +75,12 @@ public class AladinApiController {
 
             Elements element = doc.select("#CoverMainImage");
 
+
             String elementHtml = element.toString(); // element를 문자열로 변환
             int srcStartIndex = elementHtml.indexOf("src=\"") + 5; // src 속성 시작 위치
             int srcEndIndex = elementHtml.indexOf("\"", srcStartIndex); // src 속성 종료 위치
             String srcValue = elementHtml.substring(srcStartIndex, srcEndIndex); // src 속성값 추출
 
-            System.out.println("srcValue >>> " + srcValue);
 
             linkValue = srcValue;
 
