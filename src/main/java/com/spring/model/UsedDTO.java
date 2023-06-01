@@ -1,6 +1,7 @@
 package com.spring.model;
 
-public class UsedDTO {
+public class
+UsedDTO {
 
     private int seller_no;
 

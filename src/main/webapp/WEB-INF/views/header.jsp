@@ -40,11 +40,9 @@
                                 class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>Category Page</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
-                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
-                            <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
-                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
-                            <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
+                            <c:forEach items="${sessionScope.categoryy}" var="dto">
+                            <li><a href="search.go?query=${dto.category}"><i class="ri-dashboard-line"></i>${dto.category}</a></li>
+                            </c:forEach>
                         </ul>
 
                     </li>
@@ -228,9 +226,8 @@
                         <li class="line-height pt-3">
                             <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
-
-                                <c:set var="encodedFileName" value="${fn:replace(sessionScope.UserImg,' ','%20')}" />
-                                <img src="${path}/resources/images/user_profile_image/${encodedFileName}" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
+                                <%String UserImg = (String)session.getAttribute("UserImg"); %>
+                                <img src="${path}/resources/images/user_profile_image/<%=java.net.URLEncoder.encode(UserImg,"UTF-8")%>" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
                                       alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>

@@ -5,9 +5,15 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Iterator;
 
+import com.sun.jdi.request.VMDeathRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class Upload {
@@ -64,6 +70,10 @@ public class Upload {
 			
 			// 실제 파일을 만들어 보자.
 			saveFileName = originalFileName;
+			if(containsKoreanCharacters(saveFileName)) {
+				saveFileName = convertToEnglish(saveFileName);
+			}
+
 			
 			if(!saveFileName.equals("")) {
 				saveFileName = 
@@ -96,4 +106,36 @@ public class Upload {
 	public String getImg(){
 		return this.saveFileName;
 	}
+
+	public String convertToEnglish(String saveFileName) {
+		boolean containsKorean = containsKoreanCharacters(saveFileName);
+
+		if (containsKorean) {
+			String randomFileName = generateRandomEnglishFileName(saveFileName);
+			return randomFileName;
+		} else {
+			return saveFileName;
+		}
+	}
+
+	public boolean containsKoreanCharacters(String text) {
+		for (char character : text.toCharArray()) {
+			if (Character.UnicodeBlock.of(character) == Character.UnicodeBlock.HANGUL_SYLLABLES
+					|| Character.UnicodeBlock.of(character) == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO
+					|| Character.UnicodeBlock.of(character) == Character.UnicodeBlock.HANGUL_JAMO) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public  String generateRandomEnglishFileName(String korean) {
+		String abc = "";
+		int dotIndex = korean.lastIndexOf('.');
+		if (dotIndex >= 0 && dotIndex < korean.length() - 1) {
+			abc = korean.substring(dotIndex);
+		}
+		return "koreanfile"+abc;
+	}
+
 }

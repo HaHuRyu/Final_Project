@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import com.spring.model.UserDAO;
 
 import com.spring.model.UserDTO;
 
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,8 +61,14 @@ public class UserController {
     @Autowired
     private ChatDAO chatDAO;
 
+    @Autowired
+    private WishDAO wishDAO;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model,HttpSession session) {
+
+        List<CategoryDTO> Clist = bookDAO.category_list();
+        session.setAttribute("categoryy", Clist);
 
         if(session.getAttribute("UserCate1") != null){
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
@@ -76,7 +84,7 @@ public class UserController {
         }
 
         BookDTO bookDTO = bookDAO.book_cont(199);
-        model.addAttribute("bookDTO",bookDTO);
+        model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
 
         return "home";
     }
@@ -84,6 +92,8 @@ public class UserController {
     @RequestMapping("home.go")
     public String home(HttpSession session, Model model) {
 
+        List<CategoryDTO> Clist = bookDAO.category_list();
+        session.setAttribute("categoryy", Clist);
         if(session.getAttribute("UserCate1") != null){
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
             int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
@@ -98,12 +108,10 @@ public class UserController {
         }
 
         BookDTO bookDTO = bookDAO.book_cont(199);
-        model.addAttribute("bookDTO",bookDTO);
+        model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
 
         if(session.getAttribute("UserImg") != null){
             System.out.println("img =" + session.getAttribute("UserImg").toString());
-            System.out.println("name = " + session.getAttribute("UserName").toString());
-            System.out.println("한글이 깨질까요?");
         }
 
         return "home";
@@ -145,9 +153,11 @@ public class UserController {
                     for(CategoryDTO cdto : clist) {
                         if(cdto.getCategory_no() == category1) {
                             session.setAttribute("UserCate1", cdto.getCategory_no());
+                            session.setAttribute("UserCate1Name", cdto.getCategory());
                         }
                         if(cdto.getCategory_no() == category2) {
                             session.setAttribute("UserCate2", cdto.getCategory_no());
+                            session.setAttribute("UserCate2Name", cdto.getCategory());
                         }
                     }
 
@@ -164,6 +174,11 @@ public class UserController {
                     session.setAttribute("UserJob",dto.getUser_job());
                     session.setAttribute("UserIntro",dto.getUser_intro());
                     session.setAttribute("UserImg",dto.getUser_img());
+
+                    if(dto.getUser_img() != null) {
+                        String userImgEncoded = URLEncoder.encode(dto.getUser_img(), StandardCharsets.UTF_8); // 파일명을 UTF-8로 URL 인코딩
+                        session.setAttribute("UserImgEncoded", userImgEncoded);
+                    }
 
 
                     session.setAttribute("BasketList", basketService.basketList(dto.getUser_no()));
@@ -433,7 +448,7 @@ public class UserController {
     @RequestMapping("logout.go")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "home";
+        return "redirect:home.go";
     }
 
     @RequestMapping("profile.go")
@@ -451,8 +466,23 @@ public class UserController {
             out.close();
             return null;
         } else {
-            userDAO.findByUserId((String) session.getAttribute("UserId"));
-            model.addAttribute("dto", userDAO.findByUserId((String) session.getAttribute("UserId")));
+            UserDTO udto = userDAO.findByUserId((String) session.getAttribute("UserId"));
+            List<OrderDTO> olist = orderDAO.getList(udto.getUser_no());
+            List<BookDTO> bookDTOList1 = bookDAO.booklist_cate(Integer.parseInt(udto.getCategory_no()));
+            List<BookDTO> bookDTOList2 = bookDAO.booklist_cate(Integer.parseInt(udto.getCategory_no2()));
+            List<WishDTO> wlist = wishDAO.findByuserNo(udto.getUser_no());
+            List<BookDTO> wishlist = new ArrayList<BookDTO>();
+            List<BookDTO> orderlist = new ArrayList<BookDTO>();
+            for(WishDTO wishDTO : wlist ){
+                wishlist.add(bookDAO.book_cont(wishDTO.getBook_no()));
+            }
+            for(OrderDTO orderDTO : olist){
+                orderlist.add(bookDAO.book_cont(orderDTO.getBook_no()));
+            }
+
+
+            model.addAttribute("dto", userDAO.findByUserId((String) session.getAttribute("UserId"))).addAttribute("olist", orderlist)
+                    .addAttribute("bookDTOList1", bookDTOList1).addAttribute("bookDTOList2", bookDTOList2).addAttribute("wlist", wishlist);
             return "profile";
         }
 
