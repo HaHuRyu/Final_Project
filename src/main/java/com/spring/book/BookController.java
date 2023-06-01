@@ -38,7 +38,6 @@ public class BookController {
     @RequestMapping("book_list.go")
     public String book_list(Model model) {
 
-
         // 페이지에 해당하는 게시물을 가져오는 메서드 호출
         List<BookDTO> list = this.dao.book_list();
 
@@ -60,12 +59,17 @@ public class BookController {
 
     // 도서 등록
     @RequestMapping("admin_add_book.go")
-    public String book_insert() {
+    public String book_insert(Model model) {
+
+        List<CategoryDTO> list = this.dao.category_list();
+
+        model.addAttribute("CategoryList", list);
+
         return "admin-add-book";
     }
 
     @RequestMapping("admin-add_book_ok.go")
-    public String book_insert_ok(BookDTO dto, HttpServletResponse response,@RequestParam("seller_file") String file) throws IOException {
+    public String book_insert_ok(BookDTO dto, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
 
@@ -114,8 +118,6 @@ public class BookController {
     @RequestMapping("category_list.go")
     public String category_list(Model model) {
 
-
-        // 페이지에 해당하는 게시물을 가져오는 메서드 호출
         List<CategoryDTO> list = this.dao.category_list();
 
         model.addAttribute("Category_list", list);

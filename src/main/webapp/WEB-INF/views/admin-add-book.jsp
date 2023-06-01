@@ -5,96 +5,116 @@
 <!doctype html>
 <html lang="en">
 <head>
-   <!-- Required meta tags -->
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
-   <!-- Favicon -->
-   <link rel="shortcut icon" href="${path}/resources/images/favicon.ico" />
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
-   <link rel="stylesheet" href="${path}/resources/css/dataTables.bootstrap4.min.css">
-   <!-- Typography CSS -->
-   <link rel="stylesheet" href="${path}/resources/css/typography.css">
-   <!-- Style CSS -->
-   <link rel="stylesheet" href="${path}/resources/css/style.css">
-   <!-- Responsive CSS -->
-   <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${path}/resources/images/favicon.ico"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${path}/resources/css/dataTables.bootstrap4.min.css">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+    <!-- Body Font -->
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <body>
-<c:if test="${sessionScope.UserId.equals('admin')}">
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <!-- TOP Nav Bar END -->
 <!-- Page Content  -->
+<c:if test="${sessionScope.UserId.equals('admin')}">
 <div id="content-page" class="content-page">
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-sm-12">
-            <div class="iq-card">
-               <div class="iq-card-header d-flex justify-content-between">
-                  <div class="iq-header-title">
-                     <h4 class="card-title">Add Books</h4>
-                  </div>
-               </div>
-               <div class="iq-card-body">
-                  <form method="post" action="admin_add_book_ok.go">
-
-                     <div class="form-group">
-                        <label>카테고리</label>
-                     </div>
-
-                     <div class="form-group">
-                        <label>책 제목:</label>
-                        <input type="text" class="form-control" name="book_title" id="book_title" onclick="openModal()" autocomplete="off" readonly>
-                     </div>
-
-                     <div class="form-group">
-                        <label>책 저자:</label>
-                        <input type="text" class="form-control" id="author" name="book_author" readonly>
-                     </div>
-                     <div class="form-group">
-                        <label>책 이미지:</label>
-                        <div class="custom-file">
-                           <input type="text" class="form-control" id="img" name="book_image" readonly>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                            <h4 class="card-title">도서 등록</h4>
                         </div>
-                     </div>
+                    </div>
+                    <div class="iq-card-body">
+                        <form method="post" action="admin-add_book_ok.go">
 
-                     <div class="form-group">
-                        <label>상품 가격:</label>
-                        <input type="text" class="form-control" id="cost" name="book_price" readonly>
-                     </div>
+                            <div class="form-group">
+                                <label>카테고리:</label>
+                                <select name="category_no">
+                                    <c:forEach var="cate" items="${CategoryList}">
+                                        <option value="${cate.category_no}">${cate.category}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>책 제목:</label>
+                                <input type="text" class="form-control" name="book_title" id="book_title"
+                                       onclick="openModal()" autocomplete="off" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label>책 저자:</label>
+                                <input type="text" class="form-control" id="author" name="book_author" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>책 이미지:</label>
+                                <div class="custom-file">
+                                    <input type="text" class="form-control" id="img" name="book_image" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>새상품 원가:</label>
+                                <input type="text" class="form-control" id="cost" name="book_price" readonly>
+                            </div>
 
 
-     </div>
-         </div>
-      </div>
-   </div>
+                            <div class="form-group">
+                                <label>책 소개글:</label>
+                                <textarea class="form-control" rows="4" id="cont" name="book_intro" readonly></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">등록</button>
+                            <button type="reset" class="btn btn-danger">다시 작성</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- modal -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">
-   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title">책 제목을 입력해주세요.</h5>
-         </div>
-         <div class="modal-body">
-            <div>
-               <input type="text" class="form-control" id="search-textbox" name="title" style="width: 85%; display: inline-block;" onkeyup="$('#apititle').empty();" onkeydown="handleKeyDown(event)">
-               <button type="button" class="btn btn-primary" onclick="delayedGetList()" style=" width:14%; height: 45px;  display: inline-block;">검색</button>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">책 제목을 입력해주세요.</h5>
             </div>
-            <br>
+            <div class="modal-body">
+                <div>
+                    <input type="text" class="form-control" id="search-textbox" name="title"
+                           style="width: 85%; display: inline-block;" onkeyup="$('#apititle').empty();"
+                           onkeydown="handleKeyDown(event)">
+                    <button type="button" class="btn btn-primary" onclick="delayedGetList()"
+                            style=" width:14%; height: 45px;  display: inline-block;">검색
+                    </button>
+                </div>
+                <br>
 
-            <div id="apititle">
+                <div id="apititle">
 
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </div>
 <!-- Wrapper END -->
 <!-- Footer -->
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 <!-- Footer END -->
 <!-- color-customizer -->
 <!-- color-customizer END -->
@@ -158,43 +178,44 @@
 <script src="${path}/resources/js/custom.js"></script>
 
 <script>
-   function openModal() {
-      $('#myModal').modal('show');
-   }
+    function openModal() {
+        $('#myModal').modal('show');
+    }
 
-   function openValue(element) {
-      var rowData = $(element).find("td");
+    function openValue(element) {
+        var rowData = $(element).find("td");
 
-      var aimg = rowData.eq(0).data("img");
-      var aptitle = rowData.eq(1).data("title");
-      var aauthor = rowData.eq(2).data("author");
-      var aprice = rowData.eq(3).data("price");
-      var acont = rowData.eq(4).data("content");
+        var aimg = rowData.eq(0).data("img");
+        var aptitle = rowData.eq(1).data("title");
+        var aauthor = rowData.eq(2).data("author");
+        var aprice = rowData.eq(3).data("price");
+        var acont = rowData.eq(4).data("content");
 
 
-      $("#book_title").val(aptitle);
-      $("#author").val(aauthor);
-      $("#img").val(aimg);
-      $("#cost").val(aprice);
-      $("#cont").val(acont);
-   }
-   function handleKeyDown(event) {
-      if (event.code === 'Enter' || event.keyCode === 13) {
-         // 전달해야하는 파라미터가 있다면, 변수에 할당해줌.
-         const searchQuery = document.getElementById('search-textbox').value;
+        $("#book_title").val(aptitle);
+        $("#author").val(aauthor);
+        $("#img").val(aimg);
+        $("#cost").val(aprice);
+        $("#cont").val(acont);
+    }
 
-         // 버튼 클릭 이벤트를 호출함.
-         delayedGetList();
-      }
-   }
+    function handleKeyDown(event) {
+        if (event.code === 'Enter' || event.keyCode === 13) {
+            // 전달해야하는 파라미터가 있다면, 변수에 할당해줌.
+            const searchQuery = document.getElementById('search-textbox').value;
+
+            // 버튼 클릭 이벤트를 호출함.
+            delayedGetList();
+        }
+    }
 </script>
 </body>
 </c:if>
 
 <c:if test="${!sessionScope.UserId.equals('admin')}">
-   <script>
-      alert("관리자만 이용이 가능합니다");
-      history.back();
-   </script>
+    <script>
+        alert("관리자만 이용이 가능합니다.");
+        history.back();
+    </script>
 </c:if>
 </html>

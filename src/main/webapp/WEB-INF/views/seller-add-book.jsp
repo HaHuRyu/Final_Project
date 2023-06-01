@@ -78,7 +78,6 @@
       </div>
    </div>
 </div>
-</div>
 
 <!-- modal -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">
