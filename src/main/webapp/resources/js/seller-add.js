@@ -9,7 +9,7 @@ $(function () {
     var delayTimer;
 
     delayedGetList = function () {
-        //$("#apititle").remove();
+        $('#apititle').empty();
         clearTimeout(delayTimer);
         delayTimer = setTimeout(function () {
             getList();
@@ -70,6 +70,7 @@ $(function () {
 
                         if (isbnWithoutSpace.length === 23) {
                             var request = aladinApiCall(isbn); // Promise 객체 반환
+
                             requests.push(request);
                         }
                     }
@@ -77,15 +78,16 @@ $(function () {
                     Promise.all(requests).then(function (results) {
                         let table = "";
 
-                        console.log("linklnegth >>> " + results.length);
-                        console.log("datadocuments >>> " + data.documents.length);
                         for (var i = 0; i < results.length; i++) {
+
                             var cr = results[i];
+                            if(cr == null){
+                                cr = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+                            }
                             var title = data.documents[i].title;
                             var cont = data.documents[i].contents.substring(0,50)
 
-                            console.log("title >>> " + title);
-                            table += "<table onclick='openValue(this)'>";
+                            table += "<table onclick='openValue(this)' style='cursor: pointer;' data-dismiss='modal'>";
                             table += "<tr>"
                             table += "<td rowspan='5' style='width: 15%; height: 30%;' data-img='" + cr + "'><img src='"+cr+"' style='width:100%; height:100%;'></td>";
                             table += "</tr>"
@@ -104,7 +106,6 @@ $(function () {
                             table += "</table>";
                             table += "<br><br>";
 
-                            console.log("link >>> " + cr);
                         }
                         $("#apititle").prepend(table);
                     });

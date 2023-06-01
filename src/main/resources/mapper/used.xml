@@ -33,6 +33,40 @@
 	    ]]>
     </select>
 
+    <select id="searchcount" parameterType="Map" resultType="int">
+        select count(*) from final.seller
+
+        <if test="field == 'title'">
+            where seller_title
+        </if>
+
+        <if test="field == 'author'">
+            where seller_author
+        </if>
+
+        LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <select id="searchlist" parameterType="PageDTO" resultType="UsedDTO">
+        SELECT *
+        FROM (
+        SELECT b.*, ROW_NUMBER() OVER(ORDER BY seller_no DESC) rnum
+        FROM seller b
+        <choose>
+            <when test="field == 'title'">
+                WHERE seller_title LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <when test="field == 'author'">
+                WHERE seller_author LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+        </choose>
+
+        <![CDATA[
+	    	) AS seller
+            WHERE seller.rnum >= #{startNo} AND seller.rnum <= #{endNo};
+	    ]]>
+    </select>
+
 
     <insert id="selleradd" parameterType="UsedDTO">
         INSERT INTO final.seller(user_no, seller_title, seller_author, seller_cont, seller_file, book_cost, seller_price, seller_date)

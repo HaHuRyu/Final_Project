@@ -21,7 +21,10 @@ public interface UsedDAO {
     public void sellorder(Map map);
 
     public void usedDelete(int no);
-
     public int getUsedCount();
+
+    public int getSearchUsedCount(Map map);
+
+    public List<UsedDTO> searchUsedList(PageDTO dto);
 
 }

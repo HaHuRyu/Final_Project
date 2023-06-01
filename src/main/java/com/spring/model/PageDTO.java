@@ -15,6 +15,9 @@ public class PageDTO {
     private int allPage;
     private int block = 3;
 
+    private String field;
+
+    private String keyword;
     public PageDTO() {  }
 
     public PageDTO(int page, int rowsize, int totalRecord) {
@@ -46,5 +49,16 @@ public class PageDTO {
         }
 
     }  // 인자 생성자
+
+    public PageDTO(int page, int rowsize,
+                   int totalRecord, String field, String keyword) {
+
+        this(page, rowsize, totalRecord);
+
+        this.field = field;
+
+        this.keyword = keyword;
+
+    }
 
 }
