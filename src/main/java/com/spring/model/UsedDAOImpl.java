@@ -54,5 +54,15 @@ public class UsedDAOImpl implements UsedDAO{
         return this.sqlSession.selectOne("count");
     }
 
+    @Override
+    public int getSearchUsedCount(Map map) {
+        return this.sqlSession.selectOne("searchcount", map);
+    }
+
+    @Override
+    public List<UsedDTO> searchUsedList(PageDTO dto) {
+        return this.sqlSession.selectList("searchlist", dto);
+    }
+
 
 }

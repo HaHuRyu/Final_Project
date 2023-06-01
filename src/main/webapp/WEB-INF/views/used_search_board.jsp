@@ -71,7 +71,7 @@
             <div class="iq-card">
                <div class="iq-card-body">
                   <div class="row">
-                     <c:set var="list" value="${List}"/>
+                     <c:set var="list" value="${searchPageList}"/>
                      <c:forEach items="#{list}" var="dto" varStatus="loop">
                         <div class="col-sm-6 col-md-4 col-lg-3">
                            <div class="iq-card iq-card-block iq-card-stretch iq-card-height search-bookcontent">
