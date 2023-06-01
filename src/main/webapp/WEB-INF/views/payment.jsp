@@ -539,7 +539,9 @@
     </div>
   </div>
   <!-- TOP Nav Bar END -->
-  <!-- Page Content  -->
+
+
+  <!-- 포인트 충전  -->
   <div id="content-page" class="content-page">
     <div class="container-fluid checkout-content">
       <div class="row">
@@ -549,7 +551,7 @@
               <div class="iq-card">
                 <div class="iq-card-header d-flex justify-content-between iq-border-bottom mb-0">
                   <div class="iq-header-title">
-                    <h4 class="card-title">Shopping Cart</h4>
+                    <h4 class="card-title">포인트 충전</h4>
                   </div>
                 </div>
                 <div class="iq-card-body">
@@ -594,62 +596,8 @@
                   </div>
                   <hr>
                   <div class="add-card">
-                    <a href="#"><span><i class="ri-add-box-line mr-2 font-size-18"></i>Add Gift Card</span></a>
+                    <a href="<%=request.getContextPath() %>/profile.go"><span><i class="ri-add-box-line mr-2 font-size-18"></i>내 정보 페이지</span></a>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="iq-card">
-                <div class="iq-card-body">
-                  <p>Options</p>
-                  <div class="d-flex justify-content-between">
-                    <span>Coupons</span>
-                    <span><a href="#"><strong>미보유</strong></a></span>
-                  </div>
-                  <hr>
-                  <p><b>Price Details</b></p>
-                  <c:set var="totalPrice" value="0" />
-                  <c:forEach var="book" items="${bookList}">
-                    <div class="d-flex justify-content-between mb-1">
-                      <span>${book.book_title} &nbsp; ${book.book_basketAmount}권</span>
-                      <span>${book.book_basketPrice}원</span>
-                    </div>
-
-                    <c:set var="totalPrice" value="${totalPrice + book.book_basketPrice}" />
-                  </c:forEach>
-
-
-                  <hr>
-                  <div class="d-flex justify-content-between">
-                    <span class="text-dark"><strong>Total</strong></span>
-                    <span class="text-dark"><strong>${totalPrice}원</strong></span>
-                  </div>
-                  <a id="place-order" class="btn btn-primary d-block mt-3 next">Place order</a>
-                </div>
-              </div>
-              <div class="iq-card ">
-                <div class="card-body iq-card-body p-0 iq-checkout-policy">
-                  <ul class="p-0 m-0">
-                    <li class="d-flex align-items-center">
-                      <div class="iq-checkout-icon">
-                        <i class="ri-checkbox-line"></i>
-                      </div>
-                      <h6>Security policy (Safe and Secure Payment.)</h6>
-                    </li>
-                    <li class="d-flex align-items-center">
-                      <div class="iq-checkout-icon">
-                        <i class="ri-truck-line"></i>
-                      </div>
-                      <h6>Delivery policy (Home Delivery.)</h6>
-                    </li>
-                    <li class="d-flex align-items-center">
-                      <div class="iq-checkout-icon">
-                        <i class="ri-arrow-go-back-line"></i>
-                      </div>
-                      <h6>Return policy (Easy Retyrn.)</h6>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

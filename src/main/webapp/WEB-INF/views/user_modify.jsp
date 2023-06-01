@@ -573,7 +573,7 @@
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_password">비밀번호:</label>
-                          <input class="form-control" id="user_password" name="pwd" value="${dto.user_pwd}">
+                          <input class="form-control" id="user_password" name="password" value="${dto.user_pwd}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_nickname">닉네임:</label>
@@ -597,7 +597,10 @@
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="img">프로필:</label>
-                          <input type="file" class="btn btn-outline-success" id="img" name="image">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="img" name="image">
+                            <label class="custom-file-label btn btn-outline-success" for="img">Choose file</label>
+                          </div>
                         </div>
                         <div class="form-group col-sm-6">
                           <label>관심분야1</label>
@@ -663,181 +666,14 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Change Password</h4>
-                    </div>
-                  </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="cpass">Current Password:</label>
-                        <a href="javascripe:void();" class="float-right">Forgot Password</a>
-                        <input type="Password" class="form-control" id="cpass" value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="npass">New Password:</label>
-                        <input type="Password" class="form-control" id="npass" value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="vpass">Verify Password:</label>
-                        <input type="Password" class="form-control" id="vpass" value="">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="emailandsms" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Email and SMS</h4>
-                    </div>
-                  </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group row align-items-center">
-                        <label class="col-8 col-md-3" for="emailnotification">Email Notification:</label>
-                        <div class="col-4 col-md-9 custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="emailnotification" checked="">
-                          <label class="custom-control-label" for="emailnotification"></label>
-                        </div>
-                      </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-8 col-md-3" for="smsnotification">SMS Notification:</label>
-                        <div class="col-4 col-md-9 custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
-                          <label class="custom-control-label" for="smsnotification"></label>
-                        </div>
-                      </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-md-3" for="npass">When To Email</label>
-                        <div class="col-md-9">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email01">
-                            <label class="custom-control-label" for="email01">You have new notifications.</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email02">
-                            <label class="custom-control-label" for="email02">You're sent a direct message</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email03" checked="">
-                            <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-md-3" for="npass">When To Escalate Emails</label>
-                        <div class="col-md-9">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email04">
-                            <label class="custom-control-label" for="email04"> Upon new order.</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email05">
-                            <label class="custom-control-label" for="email05"> New membership approval</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="email06" checked="">
-                            <label class="custom-control-label" for="email06"> Member registration</label>
-                          </div>
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="manage-contact" role="tabpanel">
-                <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                      <h4 class="card-title">Manage Contact</h4>
-                    </div>
-                  </div>
-                  <div class="iq-card-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="cno">Contact Number:</label>
-                        <input type="text" class="form-control" id="cno" value="001 2536 123 458">
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" value="Barryjone@demo.com">
-                      </div>
-                      <div class="form-group">
-                        <label for="url">Url:</label>
-                        <input type="text" class="form-control" id="url" value="https://getbootstrap.com">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button type="reset" class="btn iq-bg-danger">Cancel</button>
-                    </form>
-                  </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Wrapper END -->
-<!-- Footer -->
-<footer class="iq-footer">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6">
-        <ul class="list-inline mb-0">
-          <li class="list-inline-item"><a href="privacy-policy.jsp">Privacy Policy</a></li>
-          <li class="list-inline-item"><a href="terms-of-service.jsp">Terms of Use</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-6 text-right">
-        Copyright 2020 <a href="#">Booksto</a> All Rights Reserved.
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- Footer END -->
-<!-- color-customizer -->
-<div class="iq-colorbox color-fix">
-  <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-  <div class="clearfix color-picker">
-    <h3 class="iq-font-black">Booksto Awesome Color</h3>
-    <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-    <ul class="iq-colorselect clearfix">
-      <li class="color-1 iq-colormark" data-style="color-1"></li>
-      <li class="color-2" data-style="iq-color-2"></li>
-      <li class="color-3" data-style="iq-color-3"></li>
-      <li class="color-4" data-style="iq-color-4"></li>
-      <li class="color-5" data-style="iq-color-5"></li>
-      <li class="color-6" data-style="iq-color-6"></li>
-      <li class="color-7" data-style="iq-color-7"></li>
-      <li class="color-8" data-style="iq-color-8"></li>
-      <li class="color-9" data-style="iq-color-9"></li>
-      <li class="color-10" data-style="iq-color-10"></li>
-      <li class="color-11" data-style="iq-color-11"></li>
-      <li class="color-12" data-style="iq-color-12"></li>
-      <li class="color-13" data-style="iq-color-13"></li>
-      <li class="color-14" data-style="iq-color-14"></li>
-      <li class="color-15" data-style="iq-color-15"></li>
-      <li class="color-16" data-style="iq-color-16"></li>
-      <li class="color-17" data-style="iq-color-17"></li>
-      <li class="color-18" data-style="iq-color-18"></li>
-      <li class="color-19" data-style="iq-color-19"></li>
-      <li class="color-20" data-style="iq-color-20"></li>
-    </ul>
-    <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-  </div>
-</div>
-<!-- color-customizer END -->
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="${path}/resources/js/jquery.min.js"></script>
