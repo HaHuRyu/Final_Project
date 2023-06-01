@@ -19,6 +19,7 @@
    <link rel="stylesheet" href="${path}/resources/css/style.css">
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+   <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <body>
 <%@include file="header.jsp"%>
@@ -112,64 +113,66 @@
                </div>
             </div>
          </div>
+      </div>
+   </div>
+</div>
+<!-- Wrapper END -->
+<%@include file="footer.jsp"%>
 
-         <!-- Wrapper END -->
-         <%@include file="footer.jsp"%>
-
-         <!-- color-customizer END -->
-         <!-- Optional JavaScript -->
-         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-         <script src="${path}/resources/js/jquery.min.js"></script>
-         <script src="${path}/resources/js/popper.min.js"></script>
-         <script src="${path}/resources/js/bootstrap.min.js"></script>
-         <!-- Appear JavaScript -->
-         <script src="${path}/resources/js/jquery.appear.js"></script>
-         <!-- Countdown JavaScript -->
-         <script src="${path}/resources/js/countdown.min.js"></script>
-         <!-- Counterup JavaScript -->
-         <script src="${path}/resources/js/waypoints.min.js"></script>
-         <script src="${path}/resources/js/jquery.counterup.min.js"></script>
-         <!-- Wow JavaScript -->
-         <script src="${path}/resources/js/wow.min.js"></script>
-         <!-- Apexcharts JavaScript -->
-         <script src="${path}/resources/js/apexcharts.js"></script>
-         <!-- Slick JavaScript -->
-         <script src="${path}/resources/js/slick.min.js"></script>
-         <!-- Select2 JavaScript -->
-         <script src="${path}/resources/js/select2.min.js"></script>
-         <!-- Owl Carousel JavaScript -->
-         <script src="${path}/resources/js/owl.carousel.min.js"></script>
-         <!-- Magnific Popup JavaScript -->
-         <script src="${path}/resources/js/jquery.magnific-popup.min.js"></script>
-         <!-- Smooth Scrollbar JavaScript -->
-         <script src="${path}/resources/js/smooth-scrollbar.js"></script>
-         <!-- lottie JavaScript -->
-         <script src="${path}/resources/js/lottie.js"></script>
-         <!-- am core JavaScript -->
-         <script src="${path}/resources/js/core.js"></script>
-         <!-- am charts JavaScript -->
-         <script src="${path}/resources/js/charts.js"></script>
-         <!-- am animated JavaScript -->
-         <script src="${path}/resources/js/animated.js"></script>
-         <!-- am kelly JavaScript -->
-         <script src="${path}/resources/js/kelly.js"></script>
-         <!-- am maps JavaScript -->
-         <script src="${path}/resources/js/maps.js"></script>
-         <!-- am worldLow JavaScript -->
-         <script src="${path}/resources/js/worldLow.js"></script>
-         <!-- Raphael-min JavaScript -->
-         <script src="${path}/resources/js/raphael-min.js"></script>
-         <!-- Morris JavaScript -->
-         <script src="${path}/resources/js/morris.js"></script>
-         <!-- Morris min JavaScript -->
-         <script src="${path}/resources/js/morris.min.js"></script>
-         <!-- Flatpicker Js -->
-         <script src="${path}/resources/js/flatpickr.js"></script>
-         <!-- Style Customizer -->
-         <script src="${path}/resources/js/style-customizer.js"></script>
-         <!-- Chart Custom JavaScript -->
-         <script src="${path}/resources/js/chart-custom.js"></script>
-         <!-- Custom JavaScript -->
-         <script src="${path}/resources/js/custom.js"></script>
+<!-- color-customizer END -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="${path}/resources/js/jquery.min.js"></script>
+<script src="${path}/resources/js/popper.min.js"></script>
+<script src="${path}/resources/js/bootstrap.min.js"></script>
+<!-- Appear JavaScript -->
+<script src="${path}/resources/js/jquery.appear.js"></script>
+<!-- Countdown JavaScript -->
+<script src="${path}/resources/js/countdown.min.js"></script>
+<!-- Counterup JavaScript -->
+<script src="${path}/resources/js/waypoints.min.js"></script>
+<script src="${path}/resources/js/jquery.counterup.min.js"></script>
+<!-- Wow JavaScript -->
+<script src="${path}/resources/js/wow.min.js"></script>
+<!-- Apexcharts JavaScript -->
+<script src="${path}/resources/js/apexcharts.js"></script>
+<!-- Slick JavaScript -->
+<script src="${path}/resources/js/slick.min.js"></script>
+<!-- Select2 JavaScript -->
+<script src="${path}/resources/js/select2.min.js"></script>
+<!-- Owl Carousel JavaScript -->
+<script src="${path}/resources/js/owl.carousel.min.js"></script>
+<!-- Magnific Popup JavaScript -->
+<script src="${path}/resources/js/jquery.magnific-popup.min.js"></script>
+<!-- Smooth Scrollbar JavaScript -->
+<script src="${path}/resources/js/smooth-scrollbar.js"></script>
+<!-- lottie JavaScript -->
+<script src="${path}/resources/js/lottie.js"></script>
+<!-- am core JavaScript -->
+<script src="${path}/resources/js/core.js"></script>
+<!-- am charts JavaScript -->
+<script src="${path}/resources/js/charts.js"></script>
+<!-- am animated JavaScript -->
+<script src="${path}/resources/js/animated.js"></script>
+<!-- am kelly JavaScript -->
+<script src="${path}/resources/js/kelly.js"></script>
+<!-- am maps JavaScript -->
+<script src="${path}/resources/js/maps.js"></script>
+<!-- am worldLow JavaScript -->
+<script src="${path}/resources/js/worldLow.js"></script>
+<!-- Raphael-min JavaScript -->
+<script src="${path}/resources/js/raphael-min.js"></script>
+<!-- Morris JavaScript -->
+<script src="${path}/resources/js/morris.js"></script>
+<!-- Morris min JavaScript -->
+<script src="${path}/resources/js/morris.min.js"></script>
+<!-- Flatpicker Js -->
+<script src="${path}/resources/js/flatpickr.js"></script>
+<!-- Style Customizer -->
+<script src="${path}/resources/js/style-customizer.js"></script>
+<!-- Chart Custom JavaScript -->
+<script src="${path}/resources/js/chart-custom.js"></script>
+<!-- Custom JavaScript -->
+<script src="${path}/resources/js/custom.js"></script>
 </body>
 </html>

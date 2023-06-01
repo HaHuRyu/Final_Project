@@ -1,4 +1,4 @@
-f<%@ page import="com.spring.model.UserDAO" %>
+<%@ page import="com.spring.model.UserDAO" %>
 <%@ page import="com.spring.model.UserDTO" %>
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
 <%@ page import="com.spring.model.UserDAOImpl" %>
@@ -6,6 +6,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 
@@ -32,8 +33,20 @@ f<%@ page import="com.spring.model.UserDAO" %>
         <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
-                    <li class="active"><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
-                    <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
+                    <li><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
+                    <li>
+
+                        <a href="#category" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
+                                class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>Category Page</span><i
+                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <c:forEach items="${sessionScope.categoryy}" var="dto">
+                            <li><a href="search.go?query=${dto.category}"><i class="ri-dashboard-line"></i>${dto.category}</a></li>
+                            </c:forEach>
+                        </ul>
+
+                    </li>
+                    <c:if test="${sessionScope.UserId.equals('admin')}">
                     <li>
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
@@ -46,6 +59,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
                             <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
                         </ul>
                     </li>
+                    </c:if>
                     <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i
@@ -59,15 +73,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
                         </ul>
                     </li>
                     <!-- 게시판 -->
-                    <li>
-                        <a href="#board" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Board</span><i
-                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="board" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="user_gall.go"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
-                            <li><a href="#"><i class="ri-list-check-2"></i>Qna 게시판</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="user_gall.go"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
 
                 </ul>
             </nav>
@@ -85,7 +91,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
                         <a href="home.jsp" class="header-logo">
                             <img src="${path}/resources/images/logo.png" class="img-fluid rounded-normal" alt="">
                             <div class="logo-title">
-                                <span class="text-primary text-uppercase">파이널</span>
+                                <span class="text-primary text-uppercase">Booksto</span>
                             </div>
                         </a>
                     </div>
@@ -97,8 +103,8 @@ f<%@ page import="com.spring.model.UserDAO" %>
                 </div>
                 <div class="iq-search-bar">
                     <form action="<%=request.getContextPath()%>/search.go" class="searchbox">
-                        <input type="text" class="text search-input" placeholder="Search Here...">
-                        <a class="search-link" href="#" onclick="this.closest('form').submit(); return false;"><i class="ri-search-line"></i></a>
+                        <input type="text" class="text search-input" placeholder="검색어를 입력해주세요." name="query">
+                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                     </form>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -138,7 +144,8 @@ f<%@ page import="com.spring.model.UserDAO" %>
                                             <div class="media align-items-center">
                                                 <div class="">
                                                     <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'">
+                                                         src="${path}/resources/images/user_profile_image/${chat.other_img}"
+                                                         onerror="this.src='${path}/resources/images/user_profile_image/profile.png'">
                                                 </div>
                                                 <div class="media-body ml-3">
                                                     <h6 class="mb-0 ">${chat.other_nickName}</h6>
@@ -220,9 +227,8 @@ f<%@ page import="com.spring.model.UserDAO" %>
                         <li class="line-height pt-3">
                             <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
-                                <!-- 이미지 수정 예정 -->
-
-                                <img src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'" class="img-fluid rounded-circle mr-3"
+                                <%String UserImg = (String)session.getAttribute("UserImg"); %>
+                                <img src="${path}/resources/images/user_profile_image/<%=java.net.URLEncoder.encode(UserImg,"UTF-8")%>" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
                                       alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
@@ -235,7 +241,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 ">
                                         <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white line-height">Hello Barry Tech</h5>
+                                            <h5 class="mb-0 text-white line-height">Hello ${sessionScope.UserName}</h5>
                                             <span class="text-white font-size-12">Available</span>
                                         </div>
                                         <a href="<%=request.getContextPath()%>/profile.go" class="iq-sub-card iq-bg-primary-hover">
