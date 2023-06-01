@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="WishDAO">
+    <select id="wishFindByUserNo" parameterType="int" resultType="WishDTO">
+        select * from final.dibs where user_no = #{value}
+   </select>
+
+    <delete id="wishDelete" parameterType="WishDTO">
+        delete from final.dibs where user_no = #{user_no} and book_no = #{book_no}
+    </delete>
+
+    <insert id="wishInsert" parameterType="WishDTO">
+        <selectKey resultType="int" keyProperty="dibs_no" order="BEFORE">
+            select count(*) from final.dibs
+        </selectKey>
+        insert into final.dibs (dibs_no ,user_no, book_no) values (#{dibs_no}+1,#{user_no}, #{book_no})
+    </insert>
+
+    <update id="wishUpdateSequence" parameterType="WishDTO">
+        update final.dibs set dibs_no = dibs_no - 1 where dibs_no > #{dibs_no}
+    </update>
+
+    <select id="wishFindByBookNo" parameterType="WishDTO" resultType="WishDTO">
+        select * from final.dibs where user_no = #{user_no} and book_no = #{book_no}
+    </select>
+
+</mapper>

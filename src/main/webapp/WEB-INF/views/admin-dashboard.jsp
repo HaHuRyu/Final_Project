@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -75,7 +77,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -546,8 +548,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-primary"><i class="ri-user-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">5000</span></h2>
-                                 <h5 class="">Users</h5>
+                                 <h2 class="mb-0"><span class="counter">${user_count}</span></h2>
+                                 <h5 class="">총 회원 수</h5>
                               </div>
                            </div>
                         </div>
@@ -559,8 +561,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-danger"><i class="ri-book-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">4.8</span>k</h2>
-                                 <h5 class="">Books</h5>
+                                 <h2 class="mb-0"><span class="counter">${book_count}</span></h2>
+                                 <h5 class="">총 도서 수</h5>
                               </div>
                            </div>
                         </div>
@@ -572,8 +574,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-warning"><i class="ri-shopping-cart-2-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">1.2</span>k</h2>
-                                 <h5 class="">Sale</h5>
+                                 <h2 class="mb-0"><span class="counter"> <fmt:formatNumber value="${order_sale}" pattern="#,###"/></span>원</h2>
+                                 <h5 class="">판매액</h5>
                               </div>
                            </div>
                         </div>
@@ -585,8 +587,8 @@
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-info"><i class="ri-radar-line"></i></div>
                               <div class="text-left ml-3">                                 
-                                 <h2 class="mb-0"><span class="counter">690</span></h2>
-                                 <h5 class="">Orders</h5>
+                                 <h2 class="mb-0"><span class="counter">${order_count}</span></h2>
+                                 <h5 class="">주문수</h5>
                               </div>
                            </div>
                         </div>
@@ -596,7 +598,7 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Daily Sales</h4>
+                              <h4 class="card-title mb-0">하루당 매출</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
@@ -604,44 +606,45 @@
                         </div>
                      </div>
                   </div>
+
                   <div class="col-md-4">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Summary</h4>
+                              <h4 class="card-title mb-0">매출 요약</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
                            <ul class="list-inline p-0 mb-0">
                               <li>
                                  <div class="iq-details mb-2">
-                                    <span class="title">Income</span>
-                                    <div class="percentage float-right text-primary">95 <span>%</span></div>
+                                    <span class="title">총매출</span>
+                                    <div class="percentage float-right text-primary"><fmt:formatNumber value="${percentSale}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-primary">
-                                          <span class="bg-primary" data-percent="90"></span>
+                                          <span class="bg-primary" data-percent="<fmt:formatNumber value="${percentSale}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div>                                       
                               </li>
                               <li>
                                  <div class="iq-details mb-2">
-                                    <span class="title">Profit</span>
-                                    <div class="percentage float-right text-warning">72 <span>%</span></div>
+                                    <span class="title">순수익</span>
+                                    <div class="percentage float-right text-warning"><fmt:formatNumber value="${percentSale * 0.7}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-warning">
-                                          <span class="bg-warning" data-percent="75"></span>
+                                          <span class="bg-warning" data-percent="<fmt:formatNumber value="${percentSale * 0.7}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div>
                               </li>
                               <li>
                                 <div class="iq-details mb-2">
-                                    <span class="title">Expenses</span>
-                                    <div class="percentage float-right text-info">75 <span>%</span></div>
+                                    <span class="title">경비</span>
+                                    <div class="percentage float-right text-info"><fmt:formatNumber value="${percentSale * 0.3}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-info">
-                                          <span class="bg-info" data-percent="65"></span>
+                                          <span class="bg-info" data-percent="<fmt:formatNumber value="${percentSale * 0.3}" maxFractionDigits="1" type="number"/>"></span>
                                        </div>
                                     </div>
                                  </div> 
@@ -653,16 +656,16 @@
                   <div class="col-md-4">
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                            <div class="iq-card-body">
-                              <h4 class="text-uppercase text-black mb-0">Session(Now)</h4>
+                              <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                               <div class="d-flex justify-content-between align-items-center">
-                                 <div class="font-size-80 text-black">12</div>
+                                 <div class="font-size-80 text-black"><span id="counter">${total_session}</span></div>
                                  <div class="text-left">
-                                    <p class="m-0 text-uppercase font-size-12">1 Hours Ago</p>
-                                    <div class="mb-1 text-black">1500<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>3.25%</span></div>
-                                    <p class="m-0 text-uppercase font-size-12">1 Day Ago</p>
-                                    <div class="mb-1 text-black">1890<span class="text-success"><i class="ri-arrow-down-s-fill"></i>1.00%</span></div>
-                                    <p class="m-0 text-uppercase font-size-12">1 Week Ago</p>
-                                    <div class="text-black">1260<span class="text-danger"><i class="ri-arrow-down-s-fill"></i>9.87%</span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="mb-1 text-black"><span class="text-danger"></span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="mb-1 text-black"><span class="text-success"></span></div>
+                                    <p class="m-0 text-uppercase font-size-12"></p>
+                                    <div class="text-black"><span class="text-danger"></span></div>
                                  </div>
                               </div>
                               <div id="wave-chart-7"></div>
@@ -673,7 +676,7 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Open Invoices</h4>
+                              <h4 class="card-title">주문 내역</h4>
                            </div>
                            <div class="iq-card-header-toolbar d-flex align-items-center">
                               <div class="dropdown">
@@ -695,56 +698,25 @@
                               <table class="table mb-0 table-borderless">
                                  <thead>
                                     <tr>
-                                       <th scope="col">Client</th>
-                                       <th scope="col">Date</th>
-                                       <th scope="col">Invoice</th>
-                                       <th scope="col">Amount</th>
-                                       <th scope="col">atatus</th>
-                                       <th scope="col">Action</th>
+                                       <th scope="col">주문자명</th>
+                                       <th scope="col">주문날짜</th>
+                                       <th scope="col">주문번호</th>
+                                       <th scope="col">주문금액</th>
+                                       <th scope="col">상태</th>
 
                                     </tr>
                                  </thead>
                                  <tbody>
+                                    <c:forEach var="orderListDTO" items="${allList}">
                                     <tr>
-                                       <td>Ira Membrit</td>
-                                       <td>18/10/2019</td>
-                                       <td>20156</td>
-                                       <td>$1500</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Copy</td>
+                                       <td>${orderListDTO.user_name}</td>
+                                       <td>${fn:substring(orderListDTO.order_date, 0, 10)}</td>
+                                       <td>${orderListDTO.order_set}</td>
+                                       <td><fmt:formatNumber value="${orderListDTO.total_order_price}" groupingUsed="true" />원 </td>
+                                       <td><div class="badge badge-pill badge-success">결제완료</div></td>
                                     </tr>
-                                    <tr>
-                                       <td>Pete Sariya</td>
-                                       <td>26/10/2019</td>
-                                       <td>7859</td>
-                                       <td>$2000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Send Email</td>
-                                    </tr>
-                                    <tr>
-                                       <td>Cliff Hanger</td>
-                                       <td>18/11/2019</td>
-                                       <td>6396</td>
-                                       <td>$2500</td>
-                                       <td><div class="badge badge-pill badge-danger">Past Due</div></td>
-                                       <td>Before Due</td>
-                                    </tr>
-                                    <tr>
-                                       <td>Terry Aki</td>
-                                       <td>14/12/2019</td>
-                                       <td>7854</td>
-                                       <td>$5000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Copy</td>
-                                    </tr>
-                                    <tr>
-                                       <td>Anna Mull</td>
-                                       <td>24/12/2019</td>
-                                       <td>568569</td>
-                                       <td>$10000</td>
-                                       <td><div class="badge badge-pill badge-success">Paid</div></td>
-                                       <td>Send Email</td>
-                                    </tr>
+                                    </c:forEach>
+
                                  </tbody>
                               </table>
                            </div>
@@ -773,40 +745,8 @@
          </div>
       </footer>
       <!-- Footer END -->
-      <!-- color-customizer -->
-      <div class="iq-colorbox color-fix">
-         <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-         <div id="right-sidebar-scrollbar" class="iq-colorbox-inner">
-            <div class="clearfix color-picker">
-               <h3 class="iq-font-black">Booksto Awesome Color</h3>
-               <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-               <ul class="iq-colorselect clearfix">
-                  <li class="color-1 iq-colormark" data-style="color-1"></li>
-                  <li class="color-2" data-style="iq-color-2"></li>
-                  <li class="color-3" data-style="iq-color-3"></li>
-                  <li class="color-4" data-style="iq-color-4"></li>
-                  <li class="color-5" data-style="iq-color-5"></li>
-                  <li class="color-6" data-style="iq-color-6"></li>
-                  <li class="color-7" data-style="iq-color-7"></li>
-                  <li class="color-8" data-style="iq-color-8"></li>
-                  <li class="color-9" data-style="iq-color-9"></li>
-                  <li class="color-10" data-style="iq-color-10"></li>
-                  <li class="color-11" data-style="iq-color-11"></li>
-                  <li class="color-12" data-style="iq-color-12"></li>
-                  <li class="color-13" data-style="iq-color-13"></li>
-                  <li class="color-14" data-style="iq-color-14"></li>
-                  <li class="color-15" data-style="iq-color-15"></li>
-                  <li class="color-16" data-style="iq-color-16"></li>
-                  <li class="color-17" data-style="iq-color-17"></li>
-                  <li class="color-18" data-style="iq-color-18"></li>
-                  <li class="color-19" data-style="iq-color-19"></li>
-                  <li class="color-20" data-style="iq-color-20"></li>
-               </ul>
-               <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-            </div>
-         </div>
-      </div>
-      <!-- color-customizer END -->
+
+
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="${path}/resources/js/jquery.min.js"></script>
@@ -861,5 +801,66 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+
+      <script>
+         if (jQuery('#iq-sale-chart').length) {
+            var options = {
+               series: [{
+                  name: '총매출',
+                  data: [${daily_sales.get('Monday')}, ${daily_sales.get('Tuesday')}, ${daily_sales.get('Wendsday')}, ${daily_sales.get('Thursday')}, ${daily_sales.get('Friday')}, ${daily_sales.get('Saturday')}, ${daily_sales.get('Sunday')}]
+               }],
+               chart: {
+                  type: 'bar'
+               },
+               colors: ['#0dd6b8'],
+               plotOptions: {
+                  bar: {
+                     horizontal: false,
+                     columnWidth: '45%',
+                     endingShape: 'rounded'
+                  },
+               },
+               dataLabels: {
+                  enabled: false
+               },
+               stroke: {
+                  show: true,
+                  width: 2,
+                  colors: ['transparent']
+               },
+               xaxis: {
+                  categories: ['월', '화', '수', '목', '금', '토', '일'],
+               },
+               yaxis: {
+                  title: {
+                     text: ''
+                  },
+                  labels: {
+                     offsetX: -20,
+                     offsetY: 0
+                  },
+               },
+               grid: {
+                  padding: {
+                     left: -5,
+                     right: 0
+                  }
+               },
+               fill: {
+                  opacity: 1
+               },
+               tooltip: {
+                  y: {
+                     formatter: function (val) {
+                        return "&#8361;" + val + ""
+                     }
+                  }
+               }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#iq-sale-chart"), options);
+            chart.render();
+         }
+      </script>
    </body>
 </html>

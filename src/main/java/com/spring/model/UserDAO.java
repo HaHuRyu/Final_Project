@@ -1,19 +1,31 @@
 package com.spring.model;
 
+
+import java.util.List;
+import java.util.Map;
+
 public interface UserDAO {
 
-    public void save(UserDTO user);
+    public List<UserDTO> findAll();
+
+    public int allCount();
+
+    public int save(UserDTO user);
 
     public UserDTO findByUsername(String username);
 
     public UserDTO findByUserId(String userid);
+
     public UserDTO findByEmail(String email);
 
     public UserDTO findByConfirmationToken(String confirmationToken);
 
-    public void update(UserDTO user);
+    public int update(UserDTO user);
 
-    public void delete(UserDAO user);
+    public int delete(int user);
+
+    public void sequence(int no);
+
 
     public void deleteByUsername(String username);
 
@@ -30,4 +42,13 @@ public interface UserDAO {
     public boolean existsByConfirmationToken(String confirmationToken);
 
     public long count();
+
+
+    public void minusPayment(Map<String, Integer> map);
+
+    int plusPayment(Map<String, Integer> map);
+    
+    int totalSession();
+
+    UserDTO findByUserNo(int user_no);
 }

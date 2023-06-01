@@ -316,8 +316,7 @@ Index Of Script
           speed: 300,
           centerMode: true,
           centerPadding: false,
-          variableWidth: true ,
-          infinite: true,
+          variableWidth: true,
           focusOnSelect: true,
           autoplay: false,
           slidesToShow: 7,
@@ -647,12 +646,19 @@ Index Of Script
         jQuery(document).ready(function(){
             jQuery('#place-order').click(function(){
                 jQuery('#cart').removeClass('show');
+                jQuery('#address').removeClass('show');
+                jQuery('#payment').addClass('show');
+                jQuery('#price-details').addClass('show');
+            });
+
+           /* jQuery('#place-order').click(function(){
+                jQuery('#cart').removeClass('show');
                 jQuery('#address').addClass('show');
             });
             jQuery('#deliver-address').click(function(){
                 jQuery('#address').removeClass('show');
                 jQuery('#payment').addClass('show');
-            });
+            });*/
         });
 
          /*---------------------------------------------------------------------
@@ -667,28 +673,7 @@ Index Of Script
         Button 
         -----------------------------------------------------------------------*/
 
-        jQuery('.qty-btn').on('click',function(){
-          var id = jQuery(this).attr('id');
 
-          var val = parseInt(jQuery('#quantity').val());
-
-          if(id == 'btn-minus')
-          {
-            if(val != 0)
-            {
-              jQuery('#quantity').val(val-1);
-            }
-            else
-            {
-              jQuery('#quantity').val(0);
-            }
-
-          }
-          else
-          {
-            jQuery('#quantity').val(val+1);
-          }
-        });
 
 
         

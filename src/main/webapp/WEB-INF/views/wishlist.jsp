@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
@@ -75,7 +76,7 @@
                            <li><a href="profile.jsp"><i class="las la-id-card-alt"></i>User Profile</a></li>
                            <li><a href="profile-edit.jsp"><i class="las la-edit"></i>User Edit</a></li>
                            <li><a href="add-user.jsp"><i class="las la-plus-circle"></i>User Add</a></li>
-                           <li><a href="user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
+                           <li><a href="admin-user-list.jsp"><i class="las la-th-list"></i>User List</a></li>
                         </ul>
                      </li>
                      <li>
@@ -549,26 +550,27 @@
                         </div>
                         <div class="iq-card-body">
                            <ul class="list-inline p-0 m-0">
-                              <li class="checkout-product">
+                              <c:forEach var="book" items="${bookList}">
+                                 <li class="checkout-product">
                                  <div class="row align-items-center">
                                     <div class="col-sm-3 col-lg-2">
                                        <div class="row align-items-center">
                                           <div class="col-sm-3">
-                                             <a href="javascript:void();" class="badge badge-danger"><i class="ri-close-fill"></i></a>
+                                             <a href="<%=request.getContextPath()%>/wish_delete.go?bookNo=${book.book_no}" class="badge badge-danger"><i class="ri-close-fill"></i></a>
                                           </div>
                                           <div class="col-sm-9">
                                              <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/01.jpg" alt=""></a>
+                                             <a href="<%=request.getContextPath()%>/book_content.go?book_no=${book.book_no}"><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt=""></a>
                                              </span>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-sm-3 col-lg-4">
                                        <div class="checkout-product-details">
-                                          <h5>The Raze night book</h5>
+                                          <h5>${book.book_title}</h5>
                                           <p class="text-success">In stock</p>
                                           <div class="price">
-                                             <h5>$180.00</h5>
+                                             <h5><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -577,110 +579,25 @@
                                           <div class="col-sm-8">
                                              <div class="row align-items-center mt-2">
                                                 <div class="col-sm-7 col-lg-6">
+                                                   <!--
                                                    <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
                                                    <input type="text" id="quantity" value="0">
                                                    <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
+                                                   -->
                                                 </div>
                                                 <div class="col-sm-5 col-lg-6">
-                                                   <span class="product-price">$180.00</span>
+                                                   <span class="product-price"><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</span>
                                                 </div>
                                              </div>
                                           </div>
                                           <div class="col-sm-4">
-                                             <a href="#"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
+                                             <a href="<%=request.getContextPath()%>/wish_move-basket.go?bookNo=${book.book_no}"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
                               </li>
-                              <li class="checkout-product">
-                                 <div class="row align-items-center">
-                                    <div class="col-sm-3 col-lg-2">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-3">
-                                             <a href="javascript:void();" class="badge badge-danger"><i class="ri-close-fill"></i></a>
-                                          </div>
-                                          <div class="col-sm-9">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/02.jpg" alt=""></a>
-                                             </span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-sm-3 col-lg-4">
-                                       <div class="checkout-product-details">
-                                          <h5>Harsh Reality book</h5>
-                                          <p class="text-success">In stock</p>
-                                          <div class="price">
-                                             <h5>$250.00</h5>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-6">
-                                       <div class="row">
-                                          <div class="col-sm-8">
-                                             <div class="row align-items-center mt-2">
-                                                <div class="col-sm-7 col-lg-6">
-                                                   <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                   <input type="text" id="quantity" value="0">
-                                                   <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                </div>
-                                                <div class="col-sm-5 col-lg-6">
-                                                   <span class="product-price">$250.00</span>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <a href="#"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li class="checkout-product">
-                                 <div class="row align-items-center">
-                                    <div class="col-sm-3 col-lg-2">
-                                       <div class="row align-items-center">
-                                          <div class="col-sm-3">
-                                             <a href="javascript:void();" class="badge badge-danger"><i class="ri-close-fill"></i></a>
-                                          </div>
-                                          <div class="col-sm-9">
-                                             <span class="checkout-product-img">
-                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/checkout/03.jpg" alt=""></a>
-                                             </span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-sm-3 col-lg-4">
-                                       <div class="checkout-product-details">
-                                          <h5>The House in the Fog</h5>
-                                          <p class="text-success">In stock</p>
-                                          <div class="price">
-                                             <h5>$399.00</h5>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-6">
-                                       <div class="row">
-                                          <div class="col-sm-8">
-                                             <div class="row align-items-center mt-2">
-                                                <div class="col-sm-7 col-lg-6">
-                                                   <button type="button" class="fa fa-minus qty-btn" id="btn-minus"></button>
-                                                   <input type="text" id="quantity" value="0">
-                                                   <button type="button" class="fa fa-plus qty-btn" id="btn-plus"></button>
-                                                </div>
-                                                <div class="col-sm-5 col-lg-6">
-                                                   <span class="product-price">$399.00</span>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-sm-4">
-                                             <a href="#"><button type="submit" class="btn btn-primary view-more">Add To Cart</button></a>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
+                              </c:forEach>
                            </ul>
                         </div>
                      </div>
