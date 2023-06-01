@@ -6,6 +6,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 
@@ -32,8 +33,22 @@
         <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
-                    <li class="active"><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
-                    <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
+                    <li><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
+                    <li>
+
+                        <a href="#category" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
+                                class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>Category Page</span><i
+                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
+                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
+                            <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
+                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
+                            <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
+                        </ul>
+
+                    </li>
+                    <c:if test="${sessionScope.UserId.equals('admin')}">
                     <li>
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
@@ -46,6 +61,7 @@
                             <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
                         </ul>
                     </li>
+                    </c:if>
                     <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i
@@ -59,15 +75,7 @@
                         </ul>
                     </li>
                     <!-- 게시판 -->
-                    <li>
-                        <a href="#board" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Board</span><i
-                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="board" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <li><a href="user_gall.go"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
-                            <li><a href="#"><i class="ri-list-check-2"></i>Qna 게시판</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="user_gall.go"><i class="ri-dashboard-line"></i>중고거래 게시판</a></li>
 
                 </ul>
             </nav>
@@ -220,9 +228,9 @@
                         <li class="line-height pt-3">
                             <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
-                                <!-- 이미지 수정 예정 -->
 
-                                <img src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'" class="img-fluid rounded-circle mr-3"
+                                <c:set var="encodedFileName" value="${fn:replace(sessionScope.UserImg,' ','%20')}" />
+                                <img src="${path}/resources/images/user_profile_image/${encodedFileName}" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
                                       alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
@@ -235,7 +243,7 @@
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 ">
                                         <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white line-height">Hello Barry Tech</h5>
+                                            <h5 class="mb-0 text-white line-height">Hello ${sessionScope.UserName}</h5>
                                             <span class="text-white font-size-12">Available</span>
                                         </div>
                                         <a href="<%=request.getContextPath()%>/profile.go" class="iq-sub-card iq-bg-primary-hover">

@@ -4,6 +4,8 @@ package com.spring.book;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.HashMap;
@@ -98,6 +100,12 @@ public class UserController {
         BookDTO bookDTO = bookDAO.book_cont(199);
         model.addAttribute("bookDTO",bookDTO);
 
+        if(session.getAttribute("UserImg") != null){
+            System.out.println("img =" + session.getAttribute("UserImg").toString());
+            System.out.println("name = " + session.getAttribute("UserName").toString());
+            System.out.println("한글이 깨질까요?");
+        }
+
         return "home";
     }
 
@@ -145,17 +153,17 @@ public class UserController {
 
                     session.setAttribute("UserNo", dto.getUser_no());
                     session.setAttribute("UserId", id);
-                    session.setAttribute("UserMoney", dto.getUser_money());
-                    session.setAttribute("UserName", dto.getUser_name());
-                    session.setAttribute("UserNick", dto.getUser_nickname());
-                    session.setAttribute("UserAppr", dto.getUser_approve());
-                    session.setAttribute("UserEmail", dto.getUser_email());
-                    session.setAttribute("UserPhone", dto.getUser_phone());
-                    session.setAttribute("UserAddr", dto.getUser_addr());
-                    session.setAttribute("UserBirth", dto.getUser_birth());
-                    session.setAttribute("UserJob", dto.getUser_job());
-                    session.setAttribute("UserIntro", dto.getUser_intro());
-                    session.setAttribute("UserImg", dto.getUser_img());
+                    session.setAttribute("UserMoney",dto.getUser_money());
+                    session.setAttribute("UserName",dto.getUser_name());
+                    session.setAttribute("UserNick",dto.getUser_nickname());
+                    session.setAttribute("UserAppr",dto.getUser_approve());
+                    session.setAttribute("UserEmail",dto.getUser_email());
+                    session.setAttribute("UserPhone",dto.getUser_phone());
+                    session.setAttribute("UserAddr",dto.getUser_addr());
+                    session.setAttribute("UserBirth",dto.getUser_birth());
+                    session.setAttribute("UserJob",dto.getUser_job());
+                    session.setAttribute("UserIntro",dto.getUser_intro());
+                    session.setAttribute("UserImg",dto.getUser_img());
 
 
                     session.setAttribute("BasketList", basketService.basketList(dto.getUser_no()));
@@ -327,7 +335,7 @@ public class UserController {
         int usernumber = Integer.parseInt(Request.getParameter("number"));
         String useremail = Request.getParameter("email");
         String id = Request.getParameter("id");
-        String pwd = Request.getParameter("password");
+        String pwd = Request.getParameter("pwd");
         String usernickname = Request.getParameter("nickname");
         String userphone = Request.getParameter("phone");
         String userjob = Request.getParameter("job");
