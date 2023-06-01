@@ -31,7 +31,7 @@ public class UsedController {
 
     public UserDAO udao;
 
-    private final int rowsize = 4;
+    private final int rowsize = 16;
 
     private int totalRecord = 0;
 

@@ -131,14 +131,23 @@
                   <c:forEach begin="${paging.startBlock }"
                              end="${paging.endBlock }" var="i">
 
+                     <c:if test="${i == paging.page - 1}">
+                        <li class="page-item"><a class="page-link" href="user_gall.go?page=${i }">${i }</a></li>
+                     </c:if>
+
                      <c:if test="${i == paging.page }">
                         <li class="page-item"><a class="page-link" href="user_gall.go?page=${i }">${i }</a></li>
                      </c:if>
 
-                     <c:if test="${i != paging.page }">
+                     <c:if test="${i == paging.page + 1 }">
                         <li class="page-item"><a class="page-link" href="user_gall.go?page=${i }">${i }</a></li>
                      </c:if>
                   </c:forEach>
+
+                  <script>
+                     console.log("dsadsa >>>"+${paging.allPage});
+
+                  </script>
 
                   <c:if test="${paging.endBlock < paging.allPage }">
                      <li class="page-item"><a class="page-link" href="user_gall.go?page=${paging.allPage }">마지막으로</a></li>
