@@ -59,15 +59,34 @@ public class BookController {
 
 
     // 도서 등록
-    @RequestMapping("book_insert.go")
+    @RequestMapping("admin_add_book.go")
     public String book_insert() {
         return "admin-add-book";
     }
 
-    @RequestMapping("book_insert_ok.go")
-    public String book_insert_ok() {
+    @RequestMapping("admin-add_book_ok.go")
+    public String book_insert_ok(BookDTO dto, HttpServletResponse response,@RequestParam("seller_file") String file) throws IOException {
 
-        return "home";
+        response.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+
+        int check = this.dao.book_insert(dto);
+
+
+        if(check > 0) {
+            out.println("<script>");
+            out.println("alert('책 등록이 완료 되었습니다.')");
+            out.println("location.href='user_gall.go'");
+            out.println("</script>");
+        } else {
+            out.println("<script>");
+            out.println("alert('책 등록에 실패 하였습니다')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
+
+        return "redirect:/book_list.go";
     }
 
     // 도서 삭제
@@ -274,6 +293,8 @@ public class BookController {
                 .addAttribute("query", query);
         return "search-list";
     }
+
+
 
 
 }

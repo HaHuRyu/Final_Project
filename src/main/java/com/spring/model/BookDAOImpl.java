@@ -35,8 +35,8 @@ public class BookDAOImpl implements BookDAO{
     }
 
     @Override
-    public void book_insert(BookDTO book) {
-
+    public int book_insert(BookDTO book) {
+        return this.sqlSession.insert("book_insert", book);
     }
 
     @Override

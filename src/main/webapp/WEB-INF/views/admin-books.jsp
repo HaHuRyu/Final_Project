@@ -648,7 +648,7 @@
                             <h4 class="card-title">도서 목록</h4>
                         </div>
                         <div class="iq-card-header-toolbar d-flex align-items-center">
-                            <a href="admin-add-book.jsp" class="btn btn-primary">책 등록하기</a>
+                            <a href="admin_add_book.go" class="btn btn-primary">책 등록하기</a>
                         </div>
                     </div>
                     <div class="iq-card-body">

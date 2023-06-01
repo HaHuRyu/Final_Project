@@ -11,7 +11,7 @@ public interface BookDAO {
 
     public BookDTO book_cont(int no);
 
-    public void book_insert(BookDTO book);
+    public int book_insert(BookDTO book);
 
     public int book_modify(BookDTO book);
 
