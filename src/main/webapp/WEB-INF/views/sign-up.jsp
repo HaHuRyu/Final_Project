@@ -32,18 +32,11 @@
       <link rel="stylesheet" href="${path}/resources/css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+
+      <link rel="stylesheet" href="${path}/resources/css/font.css">
    </head>
    <div>
    <%@ include file="header.jsp" %>
-      <!-- loader Start -->
-      <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div>
-      <!-- loader END -->
-
-
-
 
 
 
@@ -75,10 +68,11 @@
                                           <div class="input-group">
                                               <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Id">
                                               <input type="button" value="중복확인" class="btn btn-primary input-group-append" id="idcheck_btn">
-                                              <br>
-                                              <span id="idcheck"></span>
                                           </div>
+                                          <br>
+                                          <span id="idcheck"></span>
                                       </div>
+
                                       <div class="form-group col-sm-6">
                                           <label for="user_pwd">비밀번호:</label>
                                           <input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="영문 대소문자와 숫자를 포함해주세요">
@@ -245,32 +239,35 @@
                     }
 
                     //닉네임 중복 여부 확인
-                    $.ajax({
-                        type : "post",
-                        url : "user.join.chk.go",
-                        data : {
-                            paramId : userId
-                        },
-                        datatype : "json",
-                        success : function(data) {
-                            if (data == -1) { //DB에 아이디 존재하는 경우(중복)
-                                let warningTxt = '<font color="red">중복 아이디 입니다.</font>';
-                                $("#idcheck").text(""); //span 테그 영역 초기화.
-                                $("#idcheck").show();
-                                $("#idcheck").append(warningTxt);
-                                $("#member_id").val('').focus();//span 테그 영역 초기화.
-                                idchk = false;
-                            } else {
-                                let warningTxt = '<font color="green">사용가능한 아이디입니다.</font>';
-                                $("#idcheck").text(""); //span 테그 영역 초기화.
-                                $("#idcheck").show();
-                                $("#idcheck").append(warningTxt);
-                                idchk = true;
-                            }
-                        },
-                        error : function(data) {
-                            alert("통신오류");
-                        }
+                    $(document).ready(function() {
+                        $("#idcheck_btn").click(function() {
+                            var userId = $("#user_id").val();
+
+                            $.ajax({
+                                type: "post",
+                                url: "user.join.chk.go",
+                                data: {
+                                    paramId: userId
+                                },
+                                dataType: "json",
+                                success: function(data) {
+                                    if (data.result == true) { // 아이디가 중복되는 경우
+                                        let warningTxt = '<font color="red">중복 아이디입니다.</font>';
+                                        $("#idcheck").html(warningTxt);
+                                        $("#idcheck").show();
+                                        idchk = false;
+                                    } else { // 아이디가 중복되지 않는 경우
+                                        let warningTxt = '<font color="green">사용 가능한 아이디입니다.</font>';
+                                        $("#idcheck").html(warningTxt);
+                                        $("#idcheck").show();
+                                        idchk = true;
+                                    }
+                                },
+                                error: function(data) {
+                                    alert("통신 오류");
+                                }
+                            });
+                        });
                     });
 
                 });
