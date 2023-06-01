@@ -144,8 +144,7 @@
                                             <div class="media align-items-center">
                                                 <div class="">
                                                     <img class="avatar-40 rounded"
-                                                         src="${path}/resources/images/user_profile_image/${chat.other_img}"
-                                                         onerror="this.src='${path}/resources/images/user_profile_image/profile.png'">
+                                                         src="${path}/resources/images/user_profile_image/${chat.other_img}"  onerror="this.src='${path}/resources/images/user_profile_image/profile.png'">
                                                 </div>
                                                 <div class="media-body ml-3">
                                                     <h6 class="mb-0 ">${chat.other_nickName}</h6>
@@ -227,8 +226,8 @@
                         <li class="line-height pt-3">
                             <a href="#"
                                class="search-toggle iq-waves-effect d-flex align-items-center">
-                                <%String UserImg = (String)session.getAttribute("UserImg"); %>
-                                <img src="${path}/resources/images/user_profile_image/<%=java.net.URLEncoder.encode(UserImg,"UTF-8")%>" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
+
+                                <img src="${path}/resources/images/user_profile_image/${sessionScope.UserImg}" onerror="this.src='${path}/resources/images/user_profile_image/profile.png'"  class="img-fluid rounded-circle mr-3"
                                       alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
