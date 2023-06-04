@@ -76,15 +76,11 @@ public class UserController {
             model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
 
-<<<<<<< HEAD
+
         BookDTO bookDTO = bookDAO.book_cont(199);
-<<<<<<< HEAD
+
         model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
-=======
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
-=======
-        model.addAttribute("bookDTO",bookDTO);
->>>>>>> parent of 3447f28 (Merge remote-tracking branch 'origin/LJH' into 건희-병합)
+
 
         return "home";
     }
@@ -105,12 +101,10 @@ public class UserController {
             model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
         }
 
-<<<<<<< HEAD
         BookDTO bookDTO = bookDAO.book_cont(199);
         model.addAttribute("bookDTO",bookDTO);
 
-=======
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
+
         return "home";
     }
 
