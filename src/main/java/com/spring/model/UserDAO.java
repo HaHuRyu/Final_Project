@@ -16,15 +16,22 @@ public interface UserDAO {
 
     public UserDTO findByUserId(String userid);
 
+    public String idCheck(String userid);
+
     public UserDTO findByEmail(String email);
 
     public UserDTO findByConfirmationToken(String confirmationToken);
 
     public int update(UserDTO user);
 
+    public int updatePwd(UserDTO user);
+
     public int delete(int user);
 
     public void sequence(int no);
+
+
+
 
 
     public void deleteByUsername(String username);
@@ -44,7 +51,7 @@ public interface UserDAO {
     public long count();
 
 
-    public void minusPayment(Map<String, Integer> map);
+    public void minusPayment(Map<String,Integer> map);
 
     int plusPayment(Map<String, Integer> map);
     

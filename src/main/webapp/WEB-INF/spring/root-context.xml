@@ -13,7 +13,8 @@
 	                외부의 프로퍼티 파일에 저장된 정보를 스프링 설정 파일에서
 	                사용할 수 있게 하는 태그 -->
 
-	<context:property-placeholder location="classpath:config/*.properties" />
+	<context:property-placeholder
+			location="classpath:config/*.properties" />
 
 	<!-- 2. DataSource 정보 설정 -->
 	<bean name="dataSource"
