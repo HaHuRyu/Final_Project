@@ -59,7 +59,7 @@
                                                             </c:if>
                                                         </a>
                                                         <div class="view-book">
-                                                            <a href="book_content.go?book_no=${bookDTO.book_no}" class="btn btn-sm btn-white">View
+                                                            <a href="book-page.jsp" class="btn btn-sm btn-white">View
                                                                 Book</a>
                                                         </div>
                                                     </div>
