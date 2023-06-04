@@ -217,7 +217,7 @@
         </div>
         <form class="new-message-form" method="post" action="<%=request.getContextPath()%>/newChat.go?receiveNo=${receiveNo}">
             <input class="message-input" type="text" placeholder="메시지 입력..." name="message">
-            <button class="send-button" onclick="return validateForm()">전송</button>
+            <button class="send-button">전송</button>
         </form>
     </div>
 </div>
@@ -228,13 +228,6 @@
 
     const messagesContainer = document.querySelector(".messages-container");
     messagesContainer.scrollTop = messagesContainer.scrollHeight; // 최근 메세지가 보이도록 스크롤 이동
-
-    function validateForm() {
-        var messageInput = document.querySelector('.message-input');
-        if (messageInput.value.trim() === '') {
-            return false; // 폼 전송을 중지합니다.
-        }
-    }
 </script>
 
 

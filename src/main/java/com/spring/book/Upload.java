@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 public class Upload {
 
 	String imgDir = null;
-	String saveFileName = null;
 
 	public boolean fileUpload(MultipartHttpServletRequest mRequest) {
 		
@@ -69,11 +68,15 @@ public class Upload {
 			}
 			
 			// 실제 파일을 만들어 보자.
+<<<<<<< HEAD
 			saveFileName = originalFileName;
 			if(containsKoreanCharacters(saveFileName)) {
 				saveFileName = convertToEnglish(saveFileName);
 			}
 
+=======
+			String saveFileName = originalFileName;
+>>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 			
 			if(!saveFileName.equals("")) {
 				saveFileName = 
@@ -104,7 +107,7 @@ public class Upload {
 	}
 
 	public String getImg(){
-		return this.saveFileName;
+		return this.imgDir;
 	}
 
 	public String convertToEnglish(String saveFileName) {

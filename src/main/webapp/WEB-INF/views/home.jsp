@@ -6,25 +6,23 @@
 <!DOCTYPE html>
 <html>
 
-
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
-      <!-- Favicon -->
-      <link rel="shortcut icon" href="${path}/resources/images/favicon.ico" />
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
-      <!-- Typography CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/typography.css">
-      <!-- Style CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/style.css">
-      <!-- Responsive CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/responsive.css">
-      <link rel="stylesheet" href="${path}/resources/css/font.css">
-   </head>
-   <body>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${path}/resources/images/favicon.ico"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+</head>
+<body>
 
 <div class="wrapper">
     <!-- Sidebar  -->
@@ -648,16 +646,11 @@
                                                                 class="ri-heart-fill text-danger"></i></a>
                                                     </div>
                                                 </div>
-                                             </div>
-                                             <div class="price d-flex align-items-center">
-
-                                                <h6><b><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</b></h6>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                              </c:forEach>
-                           </ul>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </c:if>
@@ -700,42 +693,61 @@
                                              <i class="fa fa-star"></i>
                                              <i class="fa fa-star"></i>
                                              </span>
-                                          </div>
-                                       </div>
-                                       <div class="price d-flex align-items-center">
-                                          <h6><b><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</b></h6>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                              </c:forEach>
-                           </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price d-flex align-items-center">
+                                                        <h6><b><fmt:formatNumber value="${book.book_price}"
+                                                                                 pattern="#,###"/>&#8361;</b></h6>
+                                                    </div>
+                                                    <div class="iq-product-action">
+                                                        <a href="javascript:void();"><i
+                                                                class="ri-shopping-cart-2-fill text-primary"></i></a>
+                                                        <a href="javascript:void();" class="ml-2"><i
+                                                                class="ri-heart-fill text-danger"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </c:if>
                 <div class="col-lg-6">
                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between mb-0">
-                           <div class="iq-header-title">
-                              <h4 class="card-title">주간 베스트책</h4>
-                           </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle p-0 text-body" id="dropdownMenuButton2" data-toggle="dropdown">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Featured Books</h4>
+                            </div>
+                            <div class="iq-card-header-toolbar d-flex align-items-center">
+                                <div class="dropdown">
+                                 <span class="dropdown-toggle p-0 text-body" id="dropdownMenuButton2"
+                                       data-toggle="dropdown">
                                  This Week<i class="ri-arrow-down-s-fill"></i>
                                  </span>
-                              </div>
-                           </div>
+                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
+                                         aria-labelledby="dropdownMenuButton2">
+                                        <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-pencil-fill mr-2"></i>Edit</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-printer-fill mr-2"></i>Print</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-file-download-fill mr-2"></i>Download</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <div class="row align-items-center">
-                              <div class="col-sm-5 pr-0">
-                                 <a href="${path}/book_content.go?book_no=${bookDTO.book_no}"><img class="img-fluid rounded w-100" src="${path}/resources/images/browse-books/${bookDTO.book_image}" alt=""></a>
-                              </div>
-                              <div class="col-sm-7 mt-3 mt-sm-0">
-                                 <h4 class="mb-2">${bookDTO.book_title}</h4>
-                                 <p class="mb-2">Author: ${bookDTO.book_author}</p>
-                                 <div class="mb-2 d-block">
+                            <div class="row align-items-center">
+                                <div class="col-sm-5 pr-0">
+                                    <a href="javascript:void();"><img class="img-fluid rounded w-100"
+                                                                      src="${path}/resources/images/page-img/featured-book.png"
+                                                                      alt=""></a>
+                                </div>
+                                <div class="col-sm-7 mt-3 mt-sm-0">
+                                    <h4 class="mb-2">Casey Christie night book into find...</h4>
+                                    <p class="mb-2">Author: Gheg origin</p>
+                                    <div class="mb-2 d-block">
                                     <span class="font-size-12 text-warning">
                                        <i class="fa fa-star"></i>
                                        <i class="fa fa-star"></i>
@@ -743,10 +755,11 @@
                                        <i class="fa fa-star"></i>
                                        <i class="fa fa-star"></i>
                                     </span>
-                                 </div>
-                                 <span class="text-dark mb-3 d-block">${bookDTO.book_intro}</span>
-                              </div>
-                           </div>
+                                    </div>
+                                    <span class="text-dark mb-3 d-block">Lorem Ipsum is simply dummy test in find a of the printing and typeset ing industry into end.</span>
+                                    <button type="submit" class="btn btn-primary learn-more">Learn More</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -921,10 +934,120 @@
                                 </li>
                             </ul>
                         </div>
-                     </div>
-                  </div>
-
-               </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">
+                            <div class="iq-header-title">
+                                <h4 class="card-title mb-0">Favorite Reads</h4>
+                            </div>
+                            <div class="iq-card-header-toolbar d-flex align-items-center">
+                                <a href="category.jsp" class="btn btn-sm btn-primary view-more">View More</a>
+                            </div>
+                        </div>
+                        <div class="iq-card-body favorites-contens">
+                            <ul id="favorites-slider" class="list-inline p-0 mb-0 row">
+                                <li class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-5 p-0 position-relative">
+                                            <a href="javascript:void();">
+                                                <img src="${path}/resources/images/favorite/01.jpg"
+                                                     class="img-fluid rounded w-100" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-7">
+                                            <h5 class="mb-2">Every Book is a new Wonderful Travel..</h5>
+                                            <p class="mb-2">Author : Pedro Araez</p>
+                                            <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
+                                                <span>Reading</span>
+                                                <span class="mr-4">78%</span>
+                                            </div>
+                                            <div class="iq-progress-bar-linear d-inline-block w-100">
+                                                <div class="iq-progress-bar iq-bg-primary">
+                                                    <span class="bg-primary" data-percent="78"></span>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-5 p-0 position-relative">
+                                            <a href="javascript:void();">
+                                                <img src="${path}/resources/images/favorite/02.jpg"
+                                                     class="img-fluid rounded w-100" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-7">
+                                            <h5 class="mb-2">Casey Christie night book into find...</h5>
+                                            <p class="mb-2">Author : Michael klock</p>
+                                            <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
+                                                <span>Reading</span>
+                                                <span class="mr-4">78%</span>
+                                            </div>
+                                            <div class="iq-progress-bar-linear d-inline-block w-100">
+                                                <div class="iq-progress-bar iq-bg-danger">
+                                                    <span class="bg-danger" data-percent="78"></span>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-5 p-0 position-relative">
+                                            <a href="javascript:void();">
+                                                <img src="${path}/resources/images/favorite/03.jpg"
+                                                     class="img-fluid rounded w-100" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-7">
+                                            <h5 class="mb-2">The Secret to English Busy People..</h5>
+                                            <p class="mb-2">Author : Daniel Ace</p>
+                                            <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
+                                                <span>Reading</span>
+                                                <span class="mr-4">78%</span>
+                                            </div>
+                                            <div class="iq-progress-bar-linear d-inline-block w-100">
+                                                <div class="iq-progress-bar iq-bg-info">
+                                                    <span class="bg-info" data-percent="78"></span>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-5 p-0 position-relative">
+                                            <a href="javascript:void();">
+                                                <img src="${path}/resources/images/favorite/04.jpg"
+                                                     class="img-fluid rounded w-100" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-7">
+                                            <h5 class="mb-2">The adventures of Robins books...</h5>
+                                            <p class="mb-2">Author : Luka Afton</p>
+                                            <div class="d-flex justify-content-between align-items-center text-dark font-size-13">
+                                                <span>Reading</span>
+                                                <span class="mr-4">78%</span>
+                                            </div>
+                                            <div class="iq-progress-bar-linear d-inline-block w-100">
+                                                <div class="iq-progress-bar iq-bg-success">
+                                                    <span class="bg-success" data-percent="78"></span>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="text-dark">Read Now<i class="ri-arrow-right-s-line"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

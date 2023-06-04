@@ -560,7 +560,7 @@
                                           </div>
                                           <div class="col-sm-9">
                                              <span class="checkout-product-img">
-                                             <a href="<%=request.getContextPath()%>/book_content.go?book_no=${book.book_no}"><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt=""></a>
+                                             <a href="javascript:void();"><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book.book_image}" alt=""></a>
                                              </span>
                                           </div>
                                        </div>

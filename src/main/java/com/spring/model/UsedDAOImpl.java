@@ -3,9 +3,9 @@ package com.spring.model;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class UsedDAOImpl implements UsedDAO{
@@ -14,19 +14,21 @@ public class UsedDAOImpl implements UsedDAO{
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public List<UsedDTO> usedList(PageDTO dto) {
-        return this.sqlSession.selectList("all", dto);
+    public List<UsedDTO> usedList() {
+        return this.sqlSession.selectList("all");
     }
 
     @Override
     public int usedInsert(UsedDTO dto) {
-        return this.sqlSession.insert("selleradd", dto);
+        return this.sqlSession.insert("add", dto);
 
     }
+
     @Override
     public UsedDTO usedBookPage(int no){
         return this.sqlSession.selectOne("pick", no);
     }
+<<<<<<< HEAD
 
     @Override
     public int usedBookPay(Map<String, Integer> map) {
@@ -65,4 +67,6 @@ public class UsedDAOImpl implements UsedDAO{
     }
 
 
+=======
+>>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 }

@@ -83,8 +83,11 @@ public class UserController {
             model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
         }
 
+<<<<<<< HEAD
         BookDTO bookDTO = bookDAO.book_cont(199);
         model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
+=======
+>>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 
         return "home";
     }
@@ -107,6 +110,7 @@ public class UserController {
             model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
         }
 
+<<<<<<< HEAD
         BookDTO bookDTO = bookDAO.book_cont(199);
         model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
 
@@ -114,6 +118,8 @@ public class UserController {
             System.out.println("img =" + session.getAttribute("UserImg").toString());
         }
 
+=======
+>>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
         return "home";
     }
 

@@ -1,19 +1,18 @@
 package com.spring.model;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 
 import java.util.List;
-import java.util.Map;
 
 public interface UsedDAO {
 
-    public List<UsedDTO> usedList(PageDTO dto);
+    public List<UsedDTO> usedList();
 
     public int usedInsert(UsedDTO dto);
 
     public UsedDTO usedBookPage(int no);
 
+<<<<<<< HEAD
     public int usedBookPay(Map<String, Integer> map);
 
     public void usedinputPay(Map map);
@@ -27,4 +26,6 @@ public interface UsedDAO {
 
     public List<UsedDTO> searchUsedList(PageDTO dto);
 
+=======
+>>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 }
