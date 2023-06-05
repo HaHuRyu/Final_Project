@@ -52,7 +52,6 @@
                     </div>
                   </div>
                   <div class="iq-card-body">
-
                     <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/modify.ok.go">
                       <div class="form-group row align-items-center">
                         <div class="col-md-12">
@@ -61,39 +60,39 @@
                       <div class=" row align-items-center">
                         <div class="form-group col-sm-6">
                           <label for="user_name">이름:</label>
-                          <input class="form-control" name="name" id="user_name" value="${user.user_name}" readonly>
+                          <input class="form-control" name="name" id="user_name" value="${dto.user_name}" readonly>
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_email">이메일:</label>
-                          <input class="form-control" id="user_email" name="email" value="${user.user_email}">
+                          <input class="form-control" id="user_email" name="email" value="${dto.user_email}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_id">아이디:</label>
-                          <input class="form-control" id="user_id" name="id" value="${user.user_id}">
+                          <input class="form-control" id="user_id" name="id" value="${dto.user_id}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_password">비밀번호:</label>
-                          <input class="form-control" id="user_password" name="password" value="${user.user_pwd}">
+                          <input class="form-control" id="user_password" name="password" value="${dto.user_pwd}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_nickname">닉네임:</label>
-                          <input class="form-control" id="user_nickname" name="nickname" value="${user.user_nickname}">
+                          <input class="form-control" id="user_nickname" name="nickname" value="${dto.user_nickname}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_phone">전화번호:</label>
-                          <input class="form-control" id="user_phone" name="phone" value="${user.user_phone}">
+                          <input class="form-control" id="user_phone" name="phone" value="${dto.user_phone}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_job">직업:</label>
-                          <input class="form-control" id="user_job" name="job" value="${user.user_job}">
+                          <input class="form-control" id="user_job" name="job" value="${dto.user_job}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_addr">주소:</label>
-                          <input class="form-control" id="user_addr" name="addr" value="${user.user_addr}">
+                          <input class="form-control" id="user_addr" name="addr" value="${dto.user_addr}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_intro">소개글:</label>
-                          <textarea class="form-control" id="user_intro" name="intro" >${user.user_intro}</textarea>
+                          <textarea class="form-control" id="user_intro" name="intro" >${dto.user_intro}</textarea>
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="img">프로필:</label>
