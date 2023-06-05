@@ -124,7 +124,7 @@
                                              </div>
                                              <div class="price d-flex align-items-center">
 
-                                                <h6><b><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</b></h6>
+                                                <h6><b>&#8361;<fmt:formatNumber value="${Book_cont.book_price}" pattern="#,###" /></b></h6>
                                              </div>
                                           </div>
                                        </div>
@@ -173,7 +173,7 @@
                                           </div>
                                        </div>
                                        <div class="price d-flex align-items-center">
-                                          <h6><b><fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</b></h6>
+                                          <h6><b>&#8361;<fmt:formatNumber value="${Book_cont.book_price}" pattern="#,###" /></b></h6>
                                        </div>
                                     </div>
                                  </div>

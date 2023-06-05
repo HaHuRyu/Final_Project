@@ -33,11 +33,11 @@
         <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
-                    <li><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
+                    <li><a href="home.go"><i class="las la-house-damage"></i>홈페이지</a></li>
                     <li>
 
                         <a href="#category" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>Category Page</span><i
+                                class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>카테고리</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <c:forEach items="${sessionScope.categoryy}" var="dto">
@@ -49,27 +49,26 @@
                     <c:if test="${sessionScope.UserId.equals('admin')}">
                     <li>
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i
+                                class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>관리자</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <li><a href="admin_dashboard.go"><i class="ri-dashboard-line"></i>대시보드</a></li>
-                            <li><a href="admin-category.jsp"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
-                            <li><a href="admin-author.jsp"><i class="ri-file-user-line"></i>Author</a></li>
-                            <li><a href="<%=request.getContextPath()%>/book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
+                            <li><a href="category_list.go"><i class="ri-list-check-2"></i>카테고리 목록</a></li>
+                            <li><a href="book_list.go"><i class="ri-book-2-line"></i>도서 목록</a></li>
                             <li><a href="user_list.go"><i class="las la-th-list"></i>회원 관리</a></li>
                         </ul>
                     </li>
                     </c:if>
                     <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
-                                class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>User</span><i
+                                class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>내 정보 관리</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
-                            <li><a href="<%=request.getContextPath()%>/profile.go"><i class="las la-id-card-alt"></i>유저 정보</a></li>
+                            <li><a href="<%=request.getContextPath()%>/profile.go"><i class="las la-id-card-alt"></i>프로필</a></li>
                             <li><a href="<%=request.getContextPath() %>/user_modify.go"><i class="las la-edit"></i>회원정보 관리</a></li>
                             <li><a href="<%=request.getContextPath()%>/order.go"><i class="ri-heart-line"></i>주문 내역</a></li>
-                            <li><a href="<%=request.getContextPath()%>/basket.go"><i class="ri-checkbox-multiple-blank-line"></i>Checkout</a></li>
-                            <li><a href="<%=request.getContextPath()%>/wish.go"><i class="ri-heart-line"></i>wishlist</a></li>
+                            <li><a href="<%=request.getContextPath()%>/basket.go"><i class="ri-checkbox-multiple-blank-line"></i>장바구니</a></li>
+                            <li><a href="<%=request.getContextPath()%>/wish.go"><i class="ri-heart-line"></i>위시리스트</a></li>
                         </ul>
                     </li>
                     <!-- 게시판 -->
@@ -135,7 +134,7 @@
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 ">
                                         <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">All Messages<small
+                                            <h5 class="mb-0 text-white">모든 메세지<small
                                                     class="badge  badge-light float-right pt-1">${sessionScope.chatList.size()}</small></h5>
                                         </div>
 
@@ -191,7 +190,7 @@
                                                     </div>
                                                     <div class="media-body ml-3">
                                                         <h6 class="mb-0 ">${BookDTO.book_title}</h6>
-                                                        <p class="mb-0"><fmt:formatNumber value="${BookDTO.book_price}" pattern="#,###" />&#8361;</p>
+                                                        <p class="mb-0">&#8361;<fmt:formatNumber value="${BookDTO.book_price}" pattern="#,###" /></p>
                                                     </div>
 
                                                     <div class="float-right font-size-24 text-danger">
@@ -216,7 +215,7 @@
 
                                 <div class="caption">
                                     <br>
-                                    <h6 class="mb-1 line-height">Sing in</h6>
+                                    <h6 class="mb-1 line-height">로그인</h6>
                                     <p class="mb-0 text-primary"></p>
                                 </div>
                             </a>
@@ -231,7 +230,7 @@
                                       alt="">
                                 <div class="caption">
                                     <h6 class="mb-1 line-height"><%=session.getAttribute("UserName")%></h6>
-                                    <p class="mb-0 text-primary"><fmt:formatNumber value="${sessionScope.UserMoney}" pattern="#,###" />&#8361;</p>
+                                    <p class="mb-0 text-primary">&#8361;<fmt:formatNumber value="${sessionScope.UserMoney}" pattern="#,###" /></p>
 
                                 </div>
                             </a>
@@ -240,8 +239,7 @@
                                 <div class="iq-card shadow-none m-0">
                                     <div class="iq-card-body p-0 ">
                                         <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white line-height">Hello ${sessionScope.UserName}</h5>
-                                            <span class="text-white font-size-12">Available</span>
+                                            <h5 class="mb-0 text-white line-height">${sessionScope.UserName} 님</h5>
                                         </div>
                                         <a href="<%=request.getContextPath()%>/profile.go" class="iq-sub-card iq-bg-primary-hover">
                                             <div class="media align-items-center">
@@ -249,8 +247,8 @@
                                                     <i class="ri-file-user-line"></i>
                                                 </div>
                                                 <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">My Profile</h6>
-                                                    <p class="mb-0 font-size-12">View personal profile details.</p>
+                                                    <h6 class="mb-0 ">내 프로필</h6>
+                                                    <p class="mb-0 font-size-12">나의 프로필 확인하기.</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -260,14 +258,13 @@
                                                     <i class="ri-profile-line"></i>
                                                 </div>
                                                 <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Edit Profile</h6>
-                                                    <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                                    <h6 class="mb-0 ">내 정보 관리</h6>
+                                                    <p class="mb-0 font-size-12">내 정보 수정하기.</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <div class="d-inline-block w-100 text-center p-3">
-                                            <a class="bg-primary iq-sign-btn" href="<%=request.getContextPath()%>/logout.go" role="button">Sign
-                                                out<i class="ri-login-box-line ml-2"></i></a>
+                                            <a class="bg-primary iq-sign-btn" href="<%=request.getContextPath()%>/logout.go" role="button">로그아웃<i class="ri-login-box-line ml-2"></i></a>
                                         </div>
                                     </div>
                                 </div>

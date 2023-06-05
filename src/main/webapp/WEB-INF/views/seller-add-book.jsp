@@ -21,6 +21,7 @@
    <link rel="stylesheet" href="${path}/resources/css/style.css">
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+      <link rel="stylesheet" href="${path}/resources/css/font.css">
 </head>
 <body>
 <c:if test="${sessionScope.UserNo != null}">
@@ -61,6 +62,7 @@
       <link rel="stylesheet" href="${path}/resources/css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+      <link rel="stylesheet" href="${path}/resources/css/font.css">
    </head>
    <body>
          <%@include file="header.jsp"%>

@@ -20,6 +20,7 @@
       <link rel="stylesheet" href="${path}/resources/css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+      <link rel="stylesheet" href="${path}/resources/css/font.css">
    </head>
    <body class="sidebar-main-active right-column-fixed">
       <!-- loader Start -->
@@ -616,9 +617,9 @@
                                        <c:forEach var="book" items="${bookdto}">
                                           <tr>
                                              <td> ${book.book_title}</td>
-                                             <td> <fmt:formatNumber value="${book.book_price}" pattern="#,###" />&#8361;</td>
+                                             <td> &#8361;<fmt:formatNumber value="${Book_cont.book_price}" pattern="#,###" /></td>
                                              <td> ${book.book_basketAmount}</td>
-                                             <td> <fmt:formatNumber value="${book.book_basketAmount * book.book_price}" pattern="#,###" />&#8361;</td>
+                                             <td> &#8361;<fmt:formatNumber value="${book.book_basketAmount * book.book_price}" pattern="#,###" /></td>
                                           </tr>
                                        </c:forEach>
                                        </tbody>
