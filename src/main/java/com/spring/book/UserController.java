@@ -35,6 +35,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class UserController {
 
+    @Autowired
+    WishDAO wishDAO;
 
     @Autowired
     BasketService basketService;
@@ -61,9 +63,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model, HttpSession session) {
+    public String home(Locale locale, Model model,HttpSession session) {
 
-        if (session.getAttribute("UserCate1") != null) {
+        List<CategoryDTO> Clist = bookDAO.category_list();
+        session.setAttribute("categoryy", Clist);
+
+        if(session.getAttribute("UserCate1") != null){
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
             int cate2 = Integer.parseInt(session.getAttribute("UserCate2").toString());
 
@@ -72,15 +77,12 @@ public class UserController {
             CategoryDTO categoryDTO1 = bookDAO.category_one(cate1);
             CategoryDTO categoryDTO2 = bookDAO.category_one(cate2);
 
-            model.addAttribute("catelist1", list).addAttribute("catelist2", list2);
-            model.addAttribute("categoryDTO1", categoryDTO1).addAttribute("categoryDTO2", categoryDTO2);
+            model.addAttribute("catelist1", list).addAttribute("catelist2",list2);
+            model.addAttribute("categoryDTO1",categoryDTO1).addAttribute("categoryDTO2",categoryDTO2);
         }
 
-
         BookDTO bookDTO = bookDAO.book_cont(199);
-
-        model.addAttribute("bookDTO",bookDTO);
-
+        model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
 
         return "home";
     }
@@ -450,8 +452,23 @@ public class UserController {
             out.close();
             return null;
         } else {
-            userDAO.findByUserId((String) session.getAttribute("UserId"));
-            model.addAttribute("dto", userDAO.findByUserId((String) session.getAttribute("UserId")));
+            UserDTO udto = userDAO.findByUserId((String) session.getAttribute("UserId"));
+            List<OrderDTO> olist = orderDAO.getList(udto.getUser_no());
+            List<BookDTO> bookDTOList1 = bookDAO.booklist_cate(Integer.parseInt(udto.getCategory_no()));
+            List<BookDTO> bookDTOList2 = bookDAO.booklist_cate(Integer.parseInt(udto.getCategory_no2()));
+            List<WishDTO> wlist = wishDAO.findByuserNo(udto.getUser_no());
+            List<BookDTO> wishlist = new ArrayList<BookDTO>();
+            List<BookDTO> orderlist = new ArrayList<BookDTO>();
+            for(WishDTO wishDTO : wlist ){
+                wishlist.add(bookDAO.book_cont(wishDTO.getBook_no()));
+            }
+            for(OrderDTO orderDTO : olist){
+                orderlist.add(bookDAO.book_cont(orderDTO.getBook_no()));
+            }
+
+
+            model.addAttribute("dto", userDAO.findByUserId((String) session.getAttribute("UserId"))).addAttribute("olist", orderlist)
+                    .addAttribute("bookDTOList1", bookDTOList1).addAttribute("bookDTOList2", bookDTOList2).addAttribute("wlist", wishlist);
             return "profile";
         }
 
