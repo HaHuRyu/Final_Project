@@ -1,8 +1,6 @@
 package com.spring.book;
 
-import com.spring.model.UsedDAO;
-import com.spring.model.UsedDTO;
-import com.spring.model.UserDTO;
+import com.spring.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -12,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,15 +26,12 @@ public class UsedController {
     @Autowired
     public UsedDAO dao;
 
-<<<<<<< HEAD
     public UserDAO udao;
 
     private final int rowsize = 16;
 
     private int totalRecord = 0;
 
-=======
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
     @RequestMapping("user_gall.go")
     public String usedList(Model model){
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class UsedDAOImpl implements UsedDAO{
@@ -28,7 +29,6 @@ public class UsedDAOImpl implements UsedDAO{
     public UsedDTO usedBookPage(int no){
         return this.sqlSession.selectOne("pick", no);
     }
-<<<<<<< HEAD
 
     @Override
     public int usedBookPay(Map<String, Integer> map) {
@@ -67,6 +67,4 @@ public class UsedDAOImpl implements UsedDAO{
     }
 
 
-=======
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 }

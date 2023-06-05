@@ -36,8 +36,6 @@ f<%@ page import="com.spring.model.UserDAO" %>
         <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <li><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
                     <li>
 
@@ -52,7 +50,6 @@ f<%@ page import="com.spring.model.UserDAO" %>
 
                     </li>
                     <c:if test="${sessionScope.UserId.equals('admin')}">
-=======
                     <li class="active active-menu">
                         <a href="#dashboard" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span
                                 class="ripple rippleEffect"></span><i
@@ -67,11 +64,7 @@ f<%@ page import="com.spring.model.UserDAO" %>
                             <li><a href="<%=request.getContextPath()%>/wish.go"><i class="ri-heart-line"></i>wishlist</a></li>
                         </ul>
                     </li>
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
-=======
-                    <li class="active"><a href="home.go"><i class="las la-house-damage"></i>Home Page</a></li>
-                    <li><a href="category.jsp"><i class="ri-function-line"></i>Category Page</a></li>
->>>>>>> parent of 3447f28 (Merge remote-tracking branch 'origin/LJH' into 건희-병합)
+                    </c:if>
                     <li>
                         <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span
                                 class="ripple rippleEffect"></span><i class="ri-admin-line"></i><span>Admin</span><i

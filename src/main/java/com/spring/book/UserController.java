@@ -79,7 +79,7 @@ public class UserController {
 
         BookDTO bookDTO = bookDAO.book_cont(199);
 
-        model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
+        model.addAttribute("bookDTO",bookDTO);
 
 
         return "home";
