@@ -70,7 +70,7 @@
                           <label for="user_id">아이디:</label>
                           <input class="form-control" id="user_id" name="id" value="${dto.user_id}">
                         </div>
-                        <div class="form-group col-sm-6">
+                         <div class="form-group col-sm-6">
                           <label for="user_password">비밀번호:</label>
                           <input class="form-control" id="user_password" name="password" value="${dto.user_pwd}">
                         </div>
