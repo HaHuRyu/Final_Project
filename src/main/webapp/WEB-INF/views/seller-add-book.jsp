@@ -4,7 +4,6 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html lang="en">
-<<<<<<< HEAD
 <head>
    <!-- Required meta tags -->
    <meta charset="utf-8">
@@ -45,47 +44,7 @@
                         <label>책 제목:</label>
                         <input type="text" class="form-control" name="seller_title" id="book_title" onclick="openModal()" autocomplete="off" readonly>
                      </div>
-=======
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
-      <!-- Favicon -->
-      <link rel="shortcut icon" href="${path}/resources/images/favicon.ico" />
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
-      <link rel="stylesheet" href="${path}/resources/css/dataTables.bootstrap4.min.css">
-      <!-- Typography CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/typography.css">
-      <!-- Style CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/style.css">
-      <!-- Responsive CSS -->
-      <link rel="stylesheet" href="${path}/resources/css/responsive.css">
-      <link rel="stylesheet" href="${path}/resources/css/font.css">
-   </head>
-   <body>
-         <%@include file="header.jsp"%>
-         <!-- TOP Nav Bar END -->
-         <!-- Page Content  -->
-         <div id="content-page" class="content-page">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-sm-12">
-                     <div class="iq-card">
-                        <div class="iq-card-header d-flex justify-content-between">
-                           <div class="iq-header-title">
-                              <h4 class="card-title">Add Books</h4>
-                           </div>
-                        </div>
-                        <div class="iq-card-body">
-                           <form method="post" action="book_add.go">
-                              <div class="form-group">
-                                 <input type="hidden" name="user_no" value="1">
-                                 <label>책 제목:</label>
-                                 <input type="text" class="form-control" name="seller_title" id="book_title" onclick="openModal()" autocomplete="off">
-                              </div>
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
+
 
                               <div class="form-group">
                                  <label>책 저자:</label>
@@ -117,11 +76,8 @@
             </div>
          </div>
       </div>
-<<<<<<< HEAD
    </div>
 </div>
-=======
->>>>>>> parent of a3a120a (Merge remote-tracking branch 'origin/LJH_Back' into GM_bak)
 
       <!-- modal -->
       <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal"  aria-hidden="true">

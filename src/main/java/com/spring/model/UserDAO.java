@@ -12,7 +12,7 @@ public interface UserDAO {
 
     public int save(UserDTO user);
 
-    public UserDTO findByUsername(String username);
+    public UserDTO findByName_Email(UserDTO dto);
 
     public UserDTO findByUserId(String userid);
 

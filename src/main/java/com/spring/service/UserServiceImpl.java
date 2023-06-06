@@ -39,20 +39,28 @@ public class UserServiceImpl implements UserService{
 
 
         // 보내는 사람 EMail, 제목, 내용
-        String fromEmail = "Book@book.book";
-        String fromName = "현대책방";
+        String fromEmail = "ReadPlus@book.book";
+        String fromName = "ReadPlus";
         String subject = "";
         String msg = "";
 
         if(Temp.equals("findPwd")) {
-            subject = "[책방] 임시 비밀번호 안내";
+            subject = "[ReadPlus] 임시 비밀번호 안내";
             msg += "<h1>임시 비밀번호 안내</h1><br><br>";
             msg += "<p>안녕하세요,</p><br>";
-            msg += String.format("<p>임시 비밀번호: <b>%s</b></p>", Temp) + "<br>";
+            msg += String.format("<p>임시 비밀번호 : <b>%s</b></p>", dto.getUser_pwd()) + "<br>";
             msg += "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p><br>";
             msg += "<p>감사합니다.</p><br>";
-            msg += "<p>[책방]</p>";
+            msg += "<p>[ReadPlus]</p>";
 
+        } else if(Temp.equals("findId")) {
+            subject = "[ReadPlus] 아이디 찾기 안내";
+            msg += "<h1>임시 비밀번호 안내</h1><br><br>";
+            msg += "<p>안녕하세요,</p><br>";
+            msg += String.format("<p>아이디 : <b>%s</b></p>", dto.getUser_id()) + "<br>";
+            msg += "<p>위 임시 비밀번호를 사용하여 로그인하신 후, 마이 페이지에서 새로운 비밀번호를 설정해주시기 바랍니다.</p><br>";
+            msg += "<p>감사합니다.</p><br>";
+            msg += "<p>[ReadPlus]</p>";
         }
 
         // 받는 사람 E-Mail 주소
@@ -85,36 +93,21 @@ public class UserServiceImpl implements UserService{
         
         response.setContentType("text/html;charset=utf-8");
 
-        UserDTO dto1 = userDAO.findByUserId(dto.getUser_id());
         PrintWriter out = response.getWriter();
 
-        // 가입된 아이디가 없으면
-        if (userDAO.idCheck(dto.getUser_id()) == null) {
-            out.print("등록되지 않은 아이디입니다.");
-            out.close();
-        }
+        UserDTO foundDTO = userDAO.findByName_Email(dto);
 
-        // 가입된 이메일이 아니면
-        else if (!dto.getUser_email().equals(dto1.getUser_email())) {
-            out.print("등록되지 않은 이메일입니다.");
+        // 가입된 이름과 이메일이 일치하지 않으면
+        if (foundDTO == null) {
+            out.print("등록되지 않은 아이디 혹은 이메일 입니다.");
             out.close();
 
         } else {
-            // 임시 비밀번호 생성
-            StringBuilder pw = new StringBuilder();
-            for (int i = 0; i < 12; i++) {
-                pw.append((char) ((Math.random() * 26) + 97));
-            }
 
-            dto.setUser_pwd(pw.toString());
+            // 아이디 확인 메일 발송
+            sendEmail(foundDTO, "findId");
 
-            // 비밀번호 변경
-            userDAO.updatePwd(dto);
-
-            // 비밀번호 변경 메일 발송
-            sendEmail(dto, "findPwd");
-
-            out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+            out.print("이메일로 회원님의 아이디를 발송하였습니다.");
 
             out.close();
         }

@@ -31,9 +31,10 @@ public class UserDAOImpl implements UserDAO {
        return this.sqlSession.insert("add" , user);
     }
 
+
     @Override
-    public UserDTO findByUsername(String username) {
-        return null;
+    public UserDTO findByName_Email(UserDTO dto) {
+        return this.sqlSession.selectOne("findByName_Email", dto);
     }
 
     @Override

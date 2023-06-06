@@ -41,7 +41,7 @@
                                 <form action="#" class="mt-4 form-text">
                                     <div class="form-group">
                                         <label for="user_name">이름</label>
-                                        <input type="text" class="form-control mb-0" id="user_name" name="user_name" placeholder="ID">
+                                        <input type="text" class="form-control mb-0" id="user_name" name="user_name" placeholder="Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="user_email">이메일</label>
@@ -112,13 +112,13 @@
       <script>
           $(function(){
               $("#findBtn").click(function(){
-            console.log(  $("#user_id").val());
+            console.log($("#user_name").val());
 
                   $.ajax({
                       url : "find_id_ok.go",
                       type : "POST",
                       data : {
-                          user_id : $("#user_name").val(),
+                          user_name : $("#user_name").val(),
                           user_email : $("#user_email").val()
                       },
                       success : function(result) {
