@@ -339,7 +339,7 @@ public class UserController {
         int usernumber = Integer.parseInt(Request.getParameter("number"));
         String useremail = Request.getParameter("email");
         String id = Request.getParameter("id");
-        String pwd = Request.getParameter("password");
+        String pwd = Request.getParameter("pwd");
         String usernickname = Request.getParameter("nickname");
         String userphone = Request.getParameter("phone");
         String userjob = Request.getParameter("job");
