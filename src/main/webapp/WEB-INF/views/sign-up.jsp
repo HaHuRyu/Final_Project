@@ -83,7 +83,10 @@
                                       </div>
                                       <div class="form-group col-sm-6">
                                           <label for="img">프로필:</label>
-                                          <input type="file" class="btn btn-outline-success" id="img" name="img">
+                                          <div class="custom-file">
+                                              <input type="file" class="custom-file-input" id="img" name="img">
+                                              <label class="custom-file-label btn btn-outline-success" for="img">프로필 선택</label>
+                                          </div>
                                       </div>
                                       <div class="form-group col-sm-6">
                                       <label>관심분야1</label>
