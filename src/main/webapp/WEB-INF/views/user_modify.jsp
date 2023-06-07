@@ -27,7 +27,7 @@
 <!-- loader END -->
 
 <%@ include file="header.jsp" %>
- 
+
 
   <!-- 회원정보 수정  -->
   <div id="content-page" class="content-page">
@@ -92,7 +92,7 @@
                           <input type="file" class="btn btn-outline-success" id="img" name="image">
                         </div>
                         <div class="form-group col-sm-6">
-                          <label>관심분야1</label>
+                          <label>관심분야 1</label>
                           <select name="cate1" class="form-control" id="exampleFormControlSelect4">
                             <option value="0">소설</option>
                             <option value="100">요리</option>
@@ -107,7 +107,7 @@
                           </select>
                         </div>
                         <div class="form-group col-sm-6">
-                          <label>관심분야2</label>
+                          <label>관심분야 2</label>
                           <select name="cate2" class="form-control" id="exampleFormControlSelect5">
                             <option value="0">소설</option>
                             <option value="100">요리</option>
@@ -298,38 +298,7 @@
   </div>
 </footer>
 <!-- Footer END -->
-<!-- color-customizer -->
-<div class="iq-colorbox color-fix">
-  <div class="buy-button"> <a class="color-full" href="#"><i class="fa fa-spinner fa-spin"></i></a> </div>
-  <div class="clearfix color-picker">
-    <h3 class="iq-font-black">Booksto Awesome Color</h3>
-    <p>This color combo available inside whole template. You can change on your wish, Even you can create your own with limitless possibilities! </p>
-    <ul class="iq-colorselect clearfix">
-      <li class="color-1 iq-colormark" data-style="color-1"></li>
-      <li class="color-2" data-style="iq-color-2"></li>
-      <li class="color-3" data-style="iq-color-3"></li>
-      <li class="color-4" data-style="iq-color-4"></li>
-      <li class="color-5" data-style="iq-color-5"></li>
-      <li class="color-6" data-style="iq-color-6"></li>
-      <li class="color-7" data-style="iq-color-7"></li>
-      <li class="color-8" data-style="iq-color-8"></li>
-      <li class="color-9" data-style="iq-color-9"></li>
-      <li class="color-10" data-style="iq-color-10"></li>
-      <li class="color-11" data-style="iq-color-11"></li>
-      <li class="color-12" data-style="iq-color-12"></li>
-      <li class="color-13" data-style="iq-color-13"></li>
-      <li class="color-14" data-style="iq-color-14"></li>
-      <li class="color-15" data-style="iq-color-15"></li>
-      <li class="color-16" data-style="iq-color-16"></li>
-      <li class="color-17" data-style="iq-color-17"></li>
-      <li class="color-18" data-style="iq-color-18"></li>
-      <li class="color-19" data-style="iq-color-19"></li>
-      <li class="color-20" data-style="iq-color-20"></li>
-    </ul>
-    <a target="_blank" class="btn btn-primary d-block mt-3" href="">Purchase Now</a>
-  </div>
-</div>
-<!-- color-customizer END -->
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="${path}/resources/js/jquery.min.js"></script>

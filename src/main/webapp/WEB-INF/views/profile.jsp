@@ -70,7 +70,7 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">Personal Details</h4>
+                              <h4 class="card-title mb-0">회원 정보</h4>
                            </div>
                         </div> 
                         <div class="iq-card-body">
@@ -78,7 +78,7 @@
                               <li>
                                  <div class="row align-items-center justify-content-between mb-3">
                                     <div class="col-sm-6">
-                                       <h6>Nicename</h6>
+                                       <h6>닉네임</h6>
                                     </div>
                                     <div class="col-sm-6">
                                        <p class="mb-0"><%=session.getAttribute("UserNick")%></p>
@@ -88,7 +88,7 @@
                               <li>
                                  <div class="row align-items-center justify-content-between mb-3">
                                     <div class="col-sm-6">
-                                       <h6>Birthday</h6>                                       
+                                       <h6>가입일</h6>
                                     </div>
                                     <div class="col-sm-6">
                                        <p class="mb-0">${sessionScope.UserBirth.substring(0,10)}</p>
@@ -98,7 +98,7 @@
                               <li>
                                  <div class="row align-items-center justify-content-between mb-3">
                                     <div class="col-sm-6">
-                                       <h6>Address</h6>                                       
+                                       <h6>주소</h6>
                                     </div>
                                     <div class="col-sm-6">
                                        <p class="mb-0"><%=session.getAttribute("UserAddr")%></p>
@@ -108,7 +108,7 @@
                               <li>
                                  <div class="row align-items-center justify-content-between mb-3">
                                     <div class="col-sm-6">
-                                       <h6>Phone</h6>                                       
+                                       <h6>연락처</h6>
                                     </div>
                                     <div class="col-sm-6">
                                        <p class="mb-0"><%=session.getAttribute("UserPhone")%></p>
@@ -118,7 +118,7 @@
                               <li>
                                  <div class="row align-items-center justify-content-between mb-3">
                                     <div class="col-sm-6">
-                                       <h6>Email</h6>                                       
+                                       <h6>이메일</h6>
                                     </div>
                                     <div class="col-sm-6">
                                        <p class="mb-0"><%=session.getAttribute("UserEmail")%></p>
@@ -151,7 +151,7 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0"> Money</h4>
+                              <h4 class="card-title mb-0"> 잔고</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
