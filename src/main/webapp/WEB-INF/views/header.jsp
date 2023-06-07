@@ -41,7 +41,7 @@
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <c:forEach items="${sessionScope.categoryy}" var="dto">
-                            <li><a href="search.go?query=${dto.category}"><i class="ri-dashboard-line"></i>${dto.category}</a></li>
+                            <li><a href="search.go?query=${dto.category}"><i class="ri-arrow-right-s-fill"></i>${dto.category}</a></li>
                             </c:forEach>
                         </ul>
 
