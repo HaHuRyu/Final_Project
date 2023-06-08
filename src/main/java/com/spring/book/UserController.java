@@ -595,5 +595,36 @@ public class UserController {
 
         return "admin-user-list";
     }
+
+    @RequestMapping("user.join.chk.go")
+    public void nickname(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        String id = request.getParameter("paramId");
+
+        int result = 0;
+
+
+        if (this.userDAO.findByUserId(id) == null) {
+            System.out.println("Action 내부) 사용 가능한 아이디입니다.");
+            result = 1;
+            out.println(result + "");
+        } else {
+            UserDTO dto = this.userDAO.findByUserId(id);
+
+            if (id.equals(dto.getUser_id())) {
+                System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
+                result = -1;
+                out.println(result + "");
+            }else {
+                System.out.println("Action 내부) 사용 가능한 아이디입니다.");
+                result = 1;
+                out.println(result + "");
+            }
+        }
+
+    }
 }
 
