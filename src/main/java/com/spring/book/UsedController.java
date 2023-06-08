@@ -8,18 +8,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.*;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
 
 @Controller
 public class UsedController {
@@ -33,11 +36,29 @@ public class UsedController {
     private int totalRecord = 0;
 
     @RequestMapping("user_gall.go")
-    public String usedList(Model model){
+    public String usedList(Model model, HttpServletRequest request){
 
-        List<UsedDTO> list = dao.usedList();
+        int page;
 
-        model.addAttribute("List", list);
+        if(request.getParameter("page") != null) {
+            page =
+                    Integer.parseInt(request.getParameter("page"));
+        }else {
+            page = 1;
+        }
+
+        // DB 상의 전체 게시물의 수를 확인하는 메서드 호출
+        totalRecord = this.dao.getUsedCount();
+
+        PageDTO dto =
+                new PageDTO(page, rowsize, totalRecord);
+
+        // 페이지에 해당하는 게시물을 가져오는 메서드 호출
+        List<UsedDTO> list = this.dao.usedList(dto);
+
+        model.addAttribute("List", list).
+                addAttribute("Paging", dto);
+
 
         return "used_board";
     }
@@ -96,7 +117,7 @@ public class UsedController {
     }
 
     @RequestMapping("book_add.go")
-    public void bookAdd(UsedDTO dto, HttpServletResponse response) throws IOException {
+    public void bookAdd(UsedDTO dto, HttpServletResponse response,@RequestParam("seller_file")String file) throws IOException {
 
         response.setContentType("text/html; charset=UTF-8");
 
@@ -127,10 +148,13 @@ public class UsedController {
         System.out.println("dto.getSeller_no >>> "+ dto.getSeller_no());
 
         model.addAttribute("Dto",dto);
+        model.addAttribute("No", no);
 
         return "seller-book-page";
 
     }
+
+
 
 
 

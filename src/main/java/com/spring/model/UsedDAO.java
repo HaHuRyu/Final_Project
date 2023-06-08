@@ -1,13 +1,14 @@
 package com.spring.model;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Map;
 
 public interface UsedDAO {
 
-    public List<UsedDTO> usedList();
+    public List<UsedDTO> usedList(PageDTO dto);
 
     public int usedInsert(UsedDTO dto);
 

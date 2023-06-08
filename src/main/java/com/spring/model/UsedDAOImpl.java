@@ -3,7 +3,6 @@ package com.spring.model;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Map;
@@ -15,16 +14,15 @@ public class UsedDAOImpl implements UsedDAO{
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public List<UsedDTO> usedList() {
-        return this.sqlSession.selectList("all");
+    public List<UsedDTO> usedList(PageDTO dto) {
+        return this.sqlSession.selectList("all", dto);
     }
 
     @Override
     public int usedInsert(UsedDTO dto) {
-        return this.sqlSession.insert("add", dto);
+        return this.sqlSession.insert("selleradd", dto);
 
     }
-
     @Override
     public UsedDTO usedBookPage(int no){
         return this.sqlSession.selectOne("pick", no);
