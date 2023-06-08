@@ -53,39 +53,39 @@
                       <div class=" row align-items-center">
                         <div class="form-group col-sm-6">
                           <label for="user_name">이름:</label>
-                          <input class="form-control" name="name" id="user_name" value="${dto.user_name}" readonly>
+                          <input class="form-control" name="name" id="user_name" value="${user.user_name}" readonly>
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_email">이메일:</label>
-                          <input class="form-control" id="user_email" name="email" value="${dto.user_email}">
+                          <input class="form-control" id="user_email" name="email" value="${user.user_email}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_id">아이디:</label>
-                          <input class="form-control" id="user_id" name="id" value="${dto.user_id}">
+                          <input class="form-control" id="user_id" name="id" value="${user.user_id}">
                         </div>
                          <div class="form-group col-sm-6">
                           <label for="user_password">비밀번호:</label>
-                          <input class="form-control" id="user_password" name="pwd" value="${dto.user_pwd}">
+                          <input class="form-control" id="user_password" name="pwd" value="${user.user_pwd}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_nickname">닉네임:</label>
-                          <input class="form-control" id="user_nickname" name="nickname" value="${dto.user_nickname}">
+                          <input class="form-control" id="user_nickname" name="nickname" value="${user.user_nickname}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_phone">전화번호:</label>
-                          <input class="form-control" id="user_phone" name="phone" value="${dto.user_phone}">
+                          <input class="form-control" id="user_phone" name="phone" value="${user.user_phone}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_job">직업:</label>
-                          <input class="form-control" id="user_job" name="job" value="${dto.user_job}">
+                          <input class="form-control" id="user_job" name="job" value="${user.user_job}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_addr">주소:</label>
-                          <input class="form-control" id="user_addr" name="addr" value="${dto.user_addr}">
+                          <input class="form-control" id="user_addr" name="addr" value="${user.user_addr}">
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="user_intro">소개글:</label>
-                          <textarea class="form-control" id="user_intro" name="intro" >${dto.user_intro}</textarea>
+                          <textarea class="form-control" id="user_intro" name="intro" >${user.user_intro}</textarea>
                         </div>
                         <div class="form-group col-sm-6">
                           <label for="img">프로필:</label>
@@ -97,31 +97,17 @@
                         <div class="form-group col-sm-6">
                           <label>관심분야 1</label>
                           <select name="cate1" class="form-control" id="exampleFormControlSelect4">
-                            <option value="0">소설</option>
-                            <option value="100">요리</option>
-                            <option value="200">경제</option>
-                            <option value="300">정치/사회</option>
-                            <option value="400">자기개발</option>
-                            <option value="500">컴퓨터/IT</option>
-                            <option value="600">잡지</option>
-                            <option value="700">참고서</option>
-                            <option value="800">여행</option>
-                            <option value="900">만화</option>
+                            <c:forEach items="${Cate_List}" var="cate">
+                              <option value="${cate.category_no}">${cate.category}</option>
+                            </c:forEach>
                           </select>
                         </div>
                         <div class="form-group col-sm-6">
                           <label>관심분야 2</label>
                           <select name="cate2" class="form-control" id="exampleFormControlSelect5">
-                            <option value="0">소설</option>
-                            <option value="100">요리</option>
-                            <option value="200">경제</option>
-                            <option value="300">정치/사회</option>
-                            <option value="400">자기개발</option>
-                            <option value="500">컴퓨터/IT</option>
-                            <option value="600">잡지</option>
-                            <option value="700">참고서</option>
-                            <option value="800">여행</option>
-                            <option value="900">만화</option>
+                            <c:forEach items="${Cate_List}" var="cate">
+                              <option value="${cate.category_no}">${cate.category}</option>
+                            </c:forEach>
                           </select>
                           <script>
                             // 중복 선택 방지
@@ -145,13 +131,13 @@
                         </div>
                         <input type="hidden" name="money" value="0">
                         <input type="hidden" name="approve" value="0">
-                        <input type="hidden" name="number" value="${dto.user_no}">
-                        <input type="hidden" name="birth" value="${dto.user_birth}">
+                        <input type="hidden" name="number" value="${user.user_no}">
+                        <input type="hidden" name="birth" value="${user.user_birth}">
                       <button type="submit" class="btn btn-primary mr-2">정보수정</button>
                       <button type="reset" class="btn btn-primary mr-2">다시작성</button>
                         <input type="button" value="회원탈퇴" class="btn iq-bg-danger"
                                onclick="if(confirm('정말로 탈퇴하시겠습니까?')) {
-                                       location.href='user.delete.go?user_no=${dto.user_no}'
+                                       location.href='user.delete.go?user_no=${user.user_no}'
                                        }else { return; }">
                       </div>
                     </form>

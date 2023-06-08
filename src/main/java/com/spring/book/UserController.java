@@ -65,8 +65,7 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model,HttpSession session) {
 
-        List<CategoryDTO> Clist = bookDAO.category_list();
-        session.setAttribute("categoryy", Clist);
+
 
         if(session.getAttribute("UserCate1") != null){
             int cate1 = Integer.parseInt(session.getAttribute("UserCate1").toString());
@@ -82,7 +81,7 @@ public class UserController {
         }
 
         BookDTO bookDTO = bookDAO.book_cont(199);
-        model.addAttribute("bookDTO",bookDTO).addAttribute("Clist",Clist);
+        model.addAttribute("bookDTO",bookDTO);
 
         return "home";
     }

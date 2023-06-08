@@ -96,7 +96,7 @@
                                       <div class="form-group col-sm-6">
                                       <label>관심분야1</label>
                                       <select name="category1" class="form-control" id="exampleFormControlSelect4">
-                                          <c:forEach items="${category}" var="cate">
+                                          <c:forEach items="${Cate_List}" var="cate">
                                               <option value="${cate.category_no}">${cate.category}</option>
                                           </c:forEach>
                                       </select>
@@ -104,7 +104,7 @@
                                       <div class="form-group col-sm-6">
                                           <label>관심분야2</label>
                                           <select name="category2" class="form-control" id="exampleFormControlSelect5">
-                                              <c:forEach items="${category}" var="cate">
+                                              <c:forEach items="${Cate_List}" var="cate">
                                                   <option value="${cate.category_no}">${cate.category}</option>
                                               </c:forEach>
                                           </select>
