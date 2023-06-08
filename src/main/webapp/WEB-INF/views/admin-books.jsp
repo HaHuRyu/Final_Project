@@ -68,7 +68,7 @@
                                         <td>${book_dto.book_no}</td>
                                         <td><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book_dto.book_image}" alt=""></td>
                                         <td>${book_dto.book_title}</td>
-                                        <td>${book_dto.category_no}</td>
+                                        <td>${book_dto.category_name}</td>
                                         <td>${book_dto.book_author}</td>
                                         <td>
                                             <p class="mb-0">${book_dto.book_intro}</p>

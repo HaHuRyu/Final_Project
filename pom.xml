@@ -15,6 +15,19 @@
 	</properties>
 	<dependencies>
 
+		<!--aspectj-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.6</version>
+		</dependency>
+
+		<!--AOP-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 
 		<!-- 메일 api -->
 		<dependency>

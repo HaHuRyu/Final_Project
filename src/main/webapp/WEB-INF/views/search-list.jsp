@@ -79,7 +79,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="price d-flex align-items-center">
-                                                            <span class="pr-1 old-price">${bookDTO.book_amount}</span>
+                                                            <span class="pr-1 price">${bookDTO.book_price} 원</span>
 
                                                         </div>
                                                         <div class="iq-product-action">

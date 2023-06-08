@@ -43,11 +43,11 @@
                      </div>
                   </div>
                   <div class="navbar-breadcrumb">
-                     <h5 class="mb-0">User List</h5>
+                     <h5 class="mb-0">회원 관리</h5>
                      <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                           <li class="breadcrumb-item"><a href="home.jsp">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">User List</li>
+                           <li class="breadcrumb-item"><a href="home.go">홈</a></li>
+                           <li class="breadcrumb-item active" aria-current="page">회원 관리</li>
                         </ul>
                      </nav>
                   </div>

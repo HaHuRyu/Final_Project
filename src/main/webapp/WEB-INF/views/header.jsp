@@ -40,7 +40,10 @@
                                 class="ripple rippleEffect"></span><i class="ri-function-line"></i><span>카테고리</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                            <c:forEach items="${sessionScope.categoryy}" var="dto">
+                            <%--<c:forEach items="${sessionScope.categoryy}" var="dto">
+                            <li><a href="search.go?query=${dto.category}"><i class="ri-arrow-right-s-fill"></i>${dto.category}</a></li>
+                            </c:forEach>--%>
+                            <c:forEach items="${Cate_List}" var="dto">
                             <li><a href="search.go?query=${dto.category}"><i class="ri-arrow-right-s-fill"></i>${dto.category}</a></li>
                             </c:forEach>
                         </ul>
