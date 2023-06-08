@@ -20,81 +20,84 @@
     <link rel="stylesheet" href="${path}/resources/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="${path}/resources/css/responsive.css">
-      <link rel="stylesheet" href="${path}/resources/css/font.css">
+    <link rel="stylesheet" href="${path}/resources/css/font.css">
     <link rel="stylesheet" href="${path}/resources/css/font.css">
 
 </head>
 <body>
 <div class="wrapper">
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
 
-<!-- Page Content  -->
-<div id="content-page" class="content-page">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="iq-card">
-                    <div class="iq-card-header d-flex justify-content-between">
-                        <div class="iq-header-title">
-                            <h4 class="card-title">도서 목록</h4>
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">도서 목록</h4>
+                            </div>
+                            <div class="iq-card-header-toolbar d-flex align-items-center">
+                                <a href="admin_add_book.go" class="btn btn-primary">책 등록하기</a>
+                            </div>
                         </div>
-                        <div class="iq-card-header-toolbar d-flex align-items-center">
-                            <a href="admin_add_book.go" class="btn btn-primary">책 등록하기</a>
-                        </div>
-                    </div>
-                    <div class="iq-card-body">
-                        <div class="table-responsive">
-                            <table class="data-tables table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th style="width: 3%;">No</th>
-                                    <th style="width: 12%;">표지</th>
-                                    <th style="width: 15%;">제목</th>
-                                    <th style="width: 15%;">카테고리</th>
-                                    <th style="width: 15%;">저자</th>
-                                    <th style="width: 18%;">줄거리</th>
-                                    <th style="width: 7%;">수량</th>
-                                    <th style="width: 7%;">가격</th>
-                                    <th style="width: 15%;">수정/삭제</th>
-                                </tr>
-                                </thead>
-                                <c:set var="Book_list" value="${BookList}"/>
-
-
-                                <tbody>
-                                <c:forEach items="${Book_list}" var="book_dto">
-
+                        <div class="iq-card-body">
+                            <div class="table-responsive">
+                                <table class="data-tables table table-striped table-bordered" style="width:100%">
+                                    <thead>
                                     <tr>
-                                        <td>${book_dto.book_no}</td>
-                                        <td><img class="img-fluid rounded" src="${path}/resources/images/browse-books/${book_dto.book_image}" alt=""></td>
-                                        <td>${book_dto.book_title}</td>
-                                        <td>${book_dto.category_name}</td>
-                                        <td>${book_dto.book_author}</td>
-                                        <td>
-                                            <p class="mb-0">${book_dto.book_intro}</p>
-                                        </td>
-                                        <td>${book_dto.book_amount}</td>
-                                        <td>${book_dto.book_price}</td>
-                                        <td>
-                                            <div class="flex align-items-center list-user-action">
-                                                <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                   title="" data-original-title="Delete" href="<%=request.getContextPath()%>/book_delete.go?book_no=${book_dto.book_no}"><i
-                                                        class="ri-delete-bin-line"></i></a>
-                                            </div>
-                                        </td>
+                                        <th style="width: 3%;">No</th>
+                                        <th style="width: 12%;">표지</th>
+                                        <th style="width: 15%;">제목</th>
+                                        <th style="width: 15%;">카테고리</th>
+                                        <th style="width: 15%;">저자</th>
+                                        <th style="width: 18%;">줄거리</th>
+                                        <th style="width: 7%;">수량</th>
+                                        <th style="width: 7%;">가격</th>
+                                        <th style="width: 15%;">수정/삭제</th>
                                     </tr>
-                                </c:forEach>
+                                    </thead>
+                                    <c:set var="Book_list" value="${BookList}"/>
 
 
-                                </tbody>
-                            </table>
+                                    <tbody>
+                                    <c:forEach items="${Book_list}" var="book_dto">
+
+                                        <tr>
+                                            <td>${book_dto.book_no}</td>
+                                            <td><img class="img-fluid rounded"
+                                                     src="${path}/resources/images/browse-books/${book_dto.book_image}"
+                                                     alt=""></td>
+                                            <td>${book_dto.book_title}</td>
+                                            <td>${book_dto.category_name}</td>
+                                            <td>${book_dto.book_author}</td>
+                                            <td>
+                                                <p class="mb-0">${book_dto.book_intro}</p>
+                                            </td>
+                                            <td>${book_dto.book_amount}</td>
+                                            <td>${book_dto.book_price}</td>
+                                            <td>
+                                                <div class="flex align-items-center list-user-action">
+                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top"
+                                                       title="" data-original-title="Delete"
+                                                       href="<%=request.getContextPath()%>/book_delete.go?book_no=${book_dto.book_no}"><i
+                                                            class="ri-delete-bin-line"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Wrapper END -->
 
