@@ -55,7 +55,12 @@
                                       </div>
                                       <div class="form-group col-sm-6">
                                           <label for="user_id">아이디:</label>
-                                          <input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID">
+                                          <div class="input-group">
+                                              <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Id">
+                                              <input type="button" value="중복확인" class="btn btn-primary input-group-append" id="idcheck_btn">
+                                          </div>
+                                          <br>
+                                          <span id="idcheck"></span>
                                       </div>
                                       <div class="form-group col-sm-6">
                                           <label for="user_pwd">비밀번호:</label>
@@ -130,7 +135,7 @@
                                       <input type="hidden" name="user_number" value="5">
                                       <input type="hidden" name="user_birth" value="2023/05/17">
                                   </div>
-                                  <button type="submit" class="btn btn-primary mr-2">회원가입</button>
+                                  <button type="submit" class="btn btn-primary mr-2" onclick="return checkAll()">회원가입</button>
                                   <button type="reset" class="btn iq-bg-danger">다시작성</button>
                               </form>
                           </div>
@@ -329,4 +334,149 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
+<script type="text/javascript">
+    let idchk = false;
+    $(function() {
+
+        let userId = "";
+        let idchk = false;
+        $("#idcheck_btn")
+            .click(
+                function() { //회원가입 페이지에서 아이디 중복체크라는 버튼에 마우스가 올라갔을 때 호출되는 무명함수.
+                    $("#idcheck").hide(); //span테그 영역을 숨겨라.
+                    let userId = $("#user_id").val(); //member_id의 value값을 뽑아와라.
+
+                    if ($.trim($("#user_id").val()).length < 4) {
+
+                        let warningTxt = '<font color="red">아이디는 4자 이상이어야 합니다.</font>';
+                        $("#idcheck").text(""); //span 테그 영역 초기화.
+                        $("#idcheck").show();
+                        $("#idcheck").append(warningTxt);
+                        $("#user_id").val('').focus();//span 테그 영역 초기화.
+                        return false;
+
+                    }
+
+                    if ($.trim($("#user_id").val()).length > 16) {
+
+                        let warningTxt = '<font color="red">아이디는 16자 이하이어야 합니다.</font>';
+                        $("#idcheck").text(""); //span 테그 영역 초기화.
+                        $("#idcheck").show();
+                        $("#idcheck").append(warningTxt);
+                        $("#member_id").val('').focus();//span 테그 영역 초기화.
+                        return false;
+
+                    }
+
+                    //닉네임 중복 여부 확인
+                    $(document).ready(function() {
+                        $("#idcheck_btn").click(function() {
+                            var userId = $("#user_id").val();
+
+                            $.ajax({
+                                type: "post",
+                                url: "user.join.chk.go",
+                                data: {
+                                    paramId: userId
+                                },
+                                dataType: "json",
+                                success: function(data) {
+                                    if (data.result == true) { // 아이디가 중복되는 경우
+                                        let warningTxt = '<font color="red">중복 아이디입니다.</font>';
+                                        $("#idcheck").html(warningTxt);
+                                        $("#idcheck").show();
+                                        idchk = false;
+                                    } else { // 아이디가 중복되지 않는 경우
+                                        let warningTxt = '<font color="green">사용 가능한 아이디입니다.</font>';
+                                        $("#idcheck").html(warningTxt);
+                                        $("#idcheck").show();
+                                        idchk = true;
+                                    }
+                                },
+                                error: function(data) {
+                                    alert("통신 오류");
+                                }
+                            });
+                        });
+                    });
+
+                });
+    });
+
+    function checkAll() {
+        // 이름 필드 유효성 검사
+        var userName = document.getElementById('user_name').value;
+        if (userName === '') {
+            alert('이름을 입력해주세요.');
+            return false;
+        }
+
+        // 이메일 필드 유효성 검사
+        var userEmail = document.getElementById('user_email').value;
+        if (userEmail === '') {
+            alert('이메일을 입력해주세요.');
+            return false;
+        }
+
+        // 아이디 필드 유효성 검사
+        var userId = document.getElementById('user_id').value;
+        if (userId === '') {
+            alert('아이디를 입력해주세요.');
+            return false;
+        }
+
+        // 비밀번호 필드 유효성 검사
+        var userPwd = document.getElementById('user_pwd').value;
+        if (userPwd === '') {
+            alert('비밀번호를 입력해주세요.');
+            return false;
+        }
+
+        // 닉네임 필드 유효성 검사
+        var userNickname = document.getElementById('user_nickname').value;
+        if (userNickname === '') {
+            alert('닉네임을 입력해주세요.');
+            return false;
+        }
+
+        // 연락처 필드 유효성 검사
+        var userPhone = document.getElementById('user_phone').value;
+        if (userPhone === '') {
+            alert('연락처를 입력해주세요.');
+            return false;
+        }
+
+        // 직업 필드 유효성 검사
+        var userJob = document.getElementById('user_job').value;
+        if (userJob === '') {
+            alert('직업을 입력해주세요.');
+            return false;
+        }
+
+        // 주소 필드 유효성 검사
+        var userAddr = document.getElementById('user_addr').value;
+        if (userAddr === '') {
+            alert('주소를 입력해주세요.');
+            return false;
+        }
+
+        // 소개글 필드 유효성 검사
+        var userIntro = document.getElementById('user_intro').value;
+        if (userIntro === '') {
+            alert('소개글을 입력해주세요.');
+            return false;
+        }
+
+        // 프로필 필드 유효성 검사
+        var profileImg = document.getElementById('img').value;
+        if (profileImg === '') {
+            alert('프로필 이미지를 선택해주세요.');
+            return false;
+        }
+
+        return true;
+    }
+
+
+</script>
 <%@ include file="footer.jsp"%>
