@@ -607,8 +607,10 @@ public class UserController {
         int result = 0;
 
 
+
         if (this.userDAO.findByUserId(id) == null) {
             System.out.println("Action 내부) 사용 가능한 아이디입니다.");
+            System.out.println("id 값 넘어오는지 확인 >>" + id);
             result = 1;
             out.println(result + "");
         } else {
@@ -616,6 +618,7 @@ public class UserController {
 
             if (id.equals(dto.getUser_id())) {
                 System.out.println("Action 내부) 이미 존재하는 아이디입니다.");
+                System.out.println("id 값 넘어오는지 확인 >>" + id);
                 result = -1;
                 out.println(result + "");
             }else {

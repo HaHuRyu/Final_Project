@@ -381,7 +381,8 @@
                                 },
                                 dataType: "json",
                                 success: function(data) {
-                                    if (data.result == true) { // 아이디가 중복되는 경우
+                                    console.log("값 잘 넘어오냐?" + data);
+                                    if (data == -1) { // 아이디가 중복되는 경우
                                         let warningTxt = '<font color="red">중복 아이디입니다.</font>';
                                         $("#idcheck").html(warningTxt);
                                         $("#idcheck").show();
