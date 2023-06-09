@@ -28,323 +28,7 @@
    <%@ include file="header.jsp" %>
 
    <!-- TOP Nav Bar END --> <!-- 여기 까지 모든 jsp 파일이 동일해야함 -->
-         <div class="iq-top-navbar">
-            <div class="iq-navbar-custom">
-               <nav class="navbar navbar-expand-lg navbar-light p-0">
-                  <div class="iq-menu-bt d-flex align-items-center">
-                     <div class="wrapper-menu">
-                        <div class="main-circle"><i class="las la-bars"></i></div>
-                     </div>
-                     <div class="iq-navbar-logo d-flex justify-content-between">
-                        <a href="home.jsp" class="header-logo">
-                           <img src="${path}/resources/images/logo.png" class="img-fluid rounded-normal" alt="">
-                           <div class="logo-title">
-                              <span class="text-primary text-uppercase">Booksto</span>
-                           </div>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="navbar-breadcrumb">
-                     <h5 class="mb-0">Dashbord</h5>
-                     <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                           <li class="breadcrumb-item"><a href="home.jsp">Admin</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">Dashbord</li>
-                        </ul>
-                     </nav>
-                  </div>
-                  <div class="iq-search-bar">
-                     <form action="#" class="searchbox">
-                        <input type="text" class="text search-input" placeholder="Search Here...">
-                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                     </form>
-                  </div>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
-                  <i class="ri-menu-3-line"></i>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                     <ul class="navbar-nav ml-auto navbar-list">
-                        <li class="nav-item nav-icon search-content">
-                           <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                              <i class="ri-search-line"></i>
-                           </a>
-                           <form action="#" class="search-box p-0">
-                              <input type="text" class="text search-input" placeholder="Type here to search...">
-                              <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                           </form>
-                        </li>
-                        <li class="nav-item nav-icon">
-                           <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                           <i class="ri-notification-2-line"></i>
-                           <span class="bg-primary dots"></span>
-                           </a>
-                           <div class="iq-sub-dropdown">
-                              <div class="iq-card shadow-none m-0">
-                                 <div class="iq-card-body p-0">
-                                    <div class="bg-primary p-3">
-                                       <h5 class="mb-0 text-white">All Notifications<small class="badge  badge-light float-right pt-1">4</small></h5>
-                                    </div>
-                                    <a href="#" class="iq-sub-card" >
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/01.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Emma Watson Barry</h6>
-                                             <small class="float-right font-size-12">Just Now</small>
-                                             <p class="mb-0">95 MB</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/02.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">New customer is join</h6>
-                                             <small class="float-right font-size-12">5 days ago</small>
-                                             <p class="mb-0">Cyst Barry</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/03.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Two customer is left</h6>
-                                             <small class="float-right font-size-12">2 days ago</small>
-                                             <p class="mb-0">Cyst Barry</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card" >
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/04.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">New Mail from Fenny</h6>
-                                             <small class="float-right font-size-12">3 days ago</small>
-                                             <p class="mb-0">Cyst Barry</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="nav-item nav-icon dropdown">
-                           <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                           <i class="ri-mail-line"></i>
-                           <span class="bg-primary dots"></span>
-                           </a>
-                           <div class="iq-sub-dropdown">
-                              <div class="iq-card shadow-none m-0">
-                                 <div class="iq-card-body p-0 ">
-                                    <div class="bg-primary p-3">
-                                       <h5 class="mb-0 text-white">All Messages<small class="badge  badge-light float-right pt-1">5</small></h5>
-                                    </div>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/01.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Barry Emma Watson</h6>
-                                             <small class="float-left font-size-12">13 Jun</small>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/02.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Lorem Ipsum Watson</h6>
-                                             <small class="float-left font-size-12">20 Apr</small>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/03.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Why do we use it?</h6>
-                                             <small class="float-left font-size-12">30 Jun</small>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/04.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Variations Passages</h6>
-                                             <small class="float-left font-size-12">12 Sep</small>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="avatar-40 rounded" src="${path}/resources/images/user/05.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Lorem Ipsum generators</h6>
-                                             <small class="float-left font-size-12">5 Dec</small>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="nav-item nav-icon dropdown">
-                           <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
-                           <i class="ri-shopping-cart-2-line"></i>
-                           <span class="badge badge-danger count-cart rounded-circle">4</span>
-                           </a>
-                           <div class="iq-sub-dropdown">
-                              <div class="iq-card shadow-none m-0">
-                                 <div class="iq-card-body p-0 toggle-cart-info">
-                                    <div class="bg-primary p-3">
-                                       <h5 class="mb-0 text-white">All Carts<small class="badge  badge-light float-right pt-1">4</small></h5>
-                                    </div>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="rounded" src="${path}/resources/images/cart/01.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Night People book</h6>
-                                             <p class="mb-0">$32</p>
-                                          </div>
-                                          <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="rounded" src="${path}/resources/images/cart/02.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">The Sin Eater Book</h6>
-                                             <p class="mb-0">$40</p>
-                                          </div>
-                                          <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="rounded" src="${path}/resources/images/cart/03.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">the Orange Tree</h6>
-                                             <p class="mb-0">$30</p>
-                                          </div>
-                                          <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                       </div>
-                                    </a>
-                                    <a href="#" class="iq-sub-card">
-                                       <div class="media align-items-center">
-                                          <div class="">
-                                             <img class="rounded" src="${path}/resources/images/cart/04.jpg" alt="">
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Harsh Reality book</h6>
-                                             <p class="mb-0">$25</p>
-                                          </div>
-                                          <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                       </div>
-                                    </a>
-                                    <div class="d-flex align-items-center text-center p-3">
-                                       <a class="btn btn-primary mr-2 iq-sign-btn" href="#" role="button">View Cart</a>
-                                       <a class="btn btn-primary iq-sign-btn" href="#" role="button">Shop now</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="line-height pt-3">
-                           <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                              <img src="${path}/resources/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
-                              <div class="caption">
-                                 <h6 class="mb-1 line-height">Barry Tech</h6>
-                                 <p class="mb-0 text-primary">$20.32</p>
-                              </div>
-                           </a>
-                           <div class="iq-sub-dropdown iq-user-dropdown">
-                              <div class="iq-card shadow-none m-0">
-                                 <div class="iq-card-body p-0 ">
-                                    <div class="bg-primary p-3">
-                                       <h5 class="mb-0 text-white line-height">Hello Barry Tech</h5>
-                                       <span class="text-white font-size-12">Available</span>
-                                    </div>
-                                    <a href="profile.jsp" class="iq-sub-card iq-bg-primary-hover">
-                                       <div class="media align-items-center">
-                                          <div class="rounded iq-card-icon iq-bg-primary">
-                                             <i class="ri-file-user-line"></i>
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">My Profile</h6>
-                                             <p class="mb-0 font-size-12">View personal profile details.</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="profile-edit.jsp" class="iq-sub-card iq-bg-primary-hover">
-                                       <div class="media align-items-center">
-                                          <div class="rounded iq-card-icon iq-bg-primary">
-                                             <i class="ri-profile-line"></i>
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Edit Profile</h6>
-                                             <p class="mb-0 font-size-12">Modify your personal details.</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="account-setting.jsp" class="iq-sub-card iq-bg-primary-hover">
-                                       <div class="media align-items-center">
-                                          <div class="rounded iq-card-icon iq-bg-primary">
-                                             <i class="ri-account-box-line"></i>
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Account settings</h6>
-                                             <p class="mb-0 font-size-12">Manage your account parameters.</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <a href="privacy-setting.jsp" class="iq-sub-card iq-bg-primary-hover">
-                                       <div class="media align-items-center">
-                                          <div class="rounded iq-card-icon iq-bg-primary">
-                                             <i class="ri-lock-line"></i>
-                                          </div>
-                                          <div class="media-body ml-3">
-                                             <h6 class="mb-0 ">Privacy Settings</h6>
-                                             <p class="mb-0 font-size-12">Control your privacy parameters.</p>
-                                          </div>
-                                       </div>
-                                    </a>
-                                    <div class="d-inline-block w-100 text-center p-3">
-                                       <a class="bg-primary iq-sign-btn" href="sign-in.jsp" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
-               </nav>
-            </div>
-         </div>
-         <!-- TOP Nav Bar END -->
+
          <!-- Page Content  -->
          <div id="content-page" class="content-page">
             <div class="container-fluid">
@@ -380,9 +64,9 @@
                         <div class="iq-card-body">
                            <div class="d-flex align-items-center">
                               <div class="rounded-circle iq-card-icon bg-warning"><i class="ri-shopping-cart-2-line"></i></div>
-                              <div class="text-left ml-3">                                 
+                              <div class="text-left ml-3">
                                  <h2 class="mb-0"><span class="counter"> <fmt:formatNumber value="${order_sale}" pattern="#,###"/></span>원</h2>
-                                 <h5 class="">판매액</h5>
+                                 <h5 class="">이번달 판매액</h5>
                               </div>
                            </div>
                         </div>
@@ -395,7 +79,7 @@
                               <div class="rounded-circle iq-card-icon bg-info"><i class="ri-radar-line"></i></div>
                               <div class="text-left ml-3">                                 
                                  <h2 class="mb-0"><span class="counter">${order_count}</span></h2>
-                                 <h5 class="">주문수</h5>
+                                 <h5 class="">이번달 주문수</h5>
                               </div>
                            </div>
                         </div>
@@ -418,14 +102,14 @@
                      <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                         <div class="iq-card-header d-flex justify-content-between align-items-center">
                            <div class="iq-header-title">
-                              <h4 class="card-title mb-0">매출 요약</h4>
+                              <h4 class="card-title mb-0">한달 매출 요약</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
                            <ul class="list-inline p-0 mb-0">
                               <li>
                                  <div class="iq-details mb-2">
-                                    <span class="title">총매출</span>
+                                    <span class="title">총 매출</span>
                                     <div class="percentage float-right text-primary"><fmt:formatNumber value="${percentSale}" maxFractionDigits="1" type="number"/> <span>%</span></div>
                                     <div class="iq-progress-bar-linear d-inline-block w-100">
                                        <div class="iq-progress-bar iq-bg-primary">
@@ -615,7 +299,15 @@
             var options = {
                series: [{
                   name: '총매출',
-                  data: [null,${daily_sales.get('Monday')}, ${daily_sales.get('Tuesday')}, ${daily_sales.get('Wendsday')}, ${daily_sales.get('Thursday')}, ${daily_sales.get('Friday')}, ${daily_sales.get('Saturday')}, ${daily_sales.get('Sunday')},null]
+                  data: [
+                     ${daily_sales.get('Monday') == null ? 0 : daily_sales.get('Monday')},
+                     ${daily_sales.get('Tuesday') == null ? 0 : daily_sales.get('Tuesday')},
+                     ${daily_sales.get('Wendsday') == null ? 0 : daily_sales.get('Wendsday')},
+                     ${daily_sales.get('Thursday') == null ? 0 : daily_sales.get('Thursday')},
+                     ${daily_sales.get('Friday') == null ? 0 : daily_sales.get('Friday')},
+                     ${daily_sales.get('Saturday') == null ? 0 : daily_sales.get('Saturday')},
+                     ${daily_sales.get('Sunday') == null ? 0 : daily_sales.get('Sunday')}
+                  ]
                }],
                chart: {
                   type: 'bar'
@@ -625,21 +317,22 @@
                plotOptions: {
                   bar: {
                      horizontal: false,
-                     columnWidth: '45%',
-                     endingShape: 'rounded'
-                  },
+                     columnWidth: '60%',
+                     endingShape: 'rounded',
+                     groupPadding: 0.1 // 값을 높일수록 간격이 증가합니다 기본값은 0.2입니다.
+                  }
                },
                dataLabels: {
                   enabled: false
                },
                stroke: {
-                  show: true,
-                  width: 2,
+                  show: false,
+                  width: 1,
                   colors: ['transparent']
                },
                xaxis: {
                   type: "category", //유형을 카테고리로 설정
-                  categories: ['','월', '화', '수', '목', '금', '토', '일',''],
+                  categories: ['월', '화', '수', '목', '금', '토', '일'],
                   tickPlacement: 'on', // 틱 레이블이 틱 사이에 표시되도록 구성
                },
                yaxis: {
