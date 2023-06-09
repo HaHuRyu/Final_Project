@@ -253,6 +253,7 @@ public class BookController {
         // 총 매출
         int order_sale = this.orderDAO.totalSales();
 
+        // 일주일 요일별 매출
         Map<String, Map<String, Object>> daily_salesMap = this.orderDAO.dailysales();
         Map<String, Object> daily_sales = new HashMap<>();
 
@@ -262,12 +263,12 @@ public class BookController {
 
             String day = (String) valueMap.get("dayName");
             BigDecimal countBigDecimal = (BigDecimal) valueMap.get("sale_count");
-            Long count = (countBigDecimal != null) ? countBigDecimal.longValue() : null;
+            Long count = (countBigDecimal != null) ? countBigDecimal.longValue() : 1;
             daily_sales.put(day, count);
 
         }
         
-        //일별 매출 불러오기
+        //총 주문 내역
         List<OrderListDTO> allList = this.orderDAO.allList();
         
         //한달 매출 300만원 기준 현재까지의 달성 퍼센트

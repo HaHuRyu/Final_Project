@@ -23,7 +23,10 @@
     </select>
 
     <select id="allCount" resultType="int">
-        SELECT COUNT(DISTINCT order_date) FROM final.order
+        SELECT COUNT(DISTINCT order_set)
+        FROM final.order
+        WHERE order_date >= DATE_FORMAT(NOW() ,'%Y-%m-01') AND order_date &lt; DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 1 MONTH) ,'%Y-%m-01');
+
     </select>
     
     <select id="totalSales" resultType="int">
