@@ -32,7 +32,7 @@
                 <div class="col-lg-12">
                     <div class="iq-card-transparent mb-0">
                         <div class="d-block text-center">
-                            <h2 class="mb-3">Search by Book Name</h2>
+                            <h2 class="mb-3">검색하실 책을 입력해주세요</h2>
                             <div class="w-100 iq-search-filter">
 
                                 <form method="post" action="used_board_search.go">
@@ -103,10 +103,7 @@
                                                             <h6><b>${dto.seller_price}원</b></h6>
                                                         </div>
                                                         <div class="iq-product-action">
-                                                            <a href="javascript:void();"><i
-                                                                    class="ri-shopping-cart-2-fill text-primary"></i></a>
-                                                            <a href="javascript:void();" class="ml-2"><i
-                                                                    class="ri-heart-fill text-danger"></i></a>
+
                                                         </div>
                                                     </div>
                                                 </div>

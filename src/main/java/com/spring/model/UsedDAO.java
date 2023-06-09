@@ -27,4 +27,6 @@ public interface UsedDAO {
 
     public List<UsedDTO> searchUsedList(PageDTO dto);
 
+    public int sellerBookDelete(int seller_no);
+
 }

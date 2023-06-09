@@ -23,6 +23,7 @@
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
       <link rel="stylesheet" href="${path}/resources/css/font.css">
    </head>
+
    <body>
    <%@ include file="header.jsp" %>
 
@@ -609,16 +610,18 @@
       <script src="${path}/resources/js/custom.js"></script>
 
       <script>
+
          if (jQuery('#iq-sale-chart').length) {
             var options = {
                series: [{
                   name: '총매출',
-                  data: [${daily_sales.get('Monday')}, ${daily_sales.get('Tuesday')}, ${daily_sales.get('Wendsday')}, ${daily_sales.get('Thursday')}, ${daily_sales.get('Friday')}, ${daily_sales.get('Saturday')}, ${daily_sales.get('Sunday')}]
+                  data: [null,${daily_sales.get('Monday')}, ${daily_sales.get('Tuesday')}, ${daily_sales.get('Wendsday')}, ${daily_sales.get('Thursday')}, ${daily_sales.get('Friday')}, ${daily_sales.get('Saturday')}, ${daily_sales.get('Sunday')},null]
                }],
                chart: {
                   type: 'bar'
                },
                colors: ['#0dd6b8'],
+
                plotOptions: {
                   bar: {
                      horizontal: false,
@@ -635,7 +638,9 @@
                   colors: ['transparent']
                },
                xaxis: {
-                  categories: ['월', '화', '수', '목', '금', '토', '일'],
+                  type: "category", //유형을 카테고리로 설정
+                  categories: ['','월', '화', '수', '목', '금', '토', '일',''],
+                  tickPlacement: 'on', // 틱 레이블이 틱 사이에 표시되도록 구성
                },
                yaxis: {
                   title: {
@@ -668,5 +673,6 @@
             chart.render();
          }
       </script>
+
    </body>
 </html>

@@ -93,7 +93,6 @@ public class UsedController {
 
         totalRecord = this.dao.getSearchUsedCount(map);
 
-        System.out.println("검색 게시물 수 >>> " + totalRecord);
 
         PageDTO pdto =
                 new PageDTO(page, rowsize, totalRecord, field, keyword);
@@ -145,8 +144,6 @@ public class UsedController {
 
         UsedDTO dto = this.dao.usedBookPage(no);
 
-        System.out.println("dto.getSeller_no >>> "+ dto.getSeller_no());
-
         model.addAttribute("Dto",dto);
         model.addAttribute("No", no);
 
@@ -154,6 +151,32 @@ public class UsedController {
 
     }
 
+
+    @RequestMapping("seller_delete.go")
+    public void sellerBookDelete(@RequestParam("seller_no") int seller_no, HttpServletResponse response) throws IOException {
+
+        response.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter out = response.getWriter();
+
+        int check = this.dao.sellerBookDelete(seller_no);
+
+
+
+        if(check > 0){
+            out.println("<script>");
+            out.println("alert('상품이 삭제 되었습니다.')");
+            out.println("location.href='user_gall.go'");
+            out.println("</script>");
+        } else {
+            out.println("<script>");
+            out.println("alert('상품 삭제에 실패 하였습니다')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
+
+
+    }
 
 
 

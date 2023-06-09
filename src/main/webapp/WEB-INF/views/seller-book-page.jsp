@@ -78,7 +78,10 @@
                                                 <a href="javascript:void(0);" onclick="openNewWindow()" class="btn btn-primary view-more mr-2">판매자와 채팅</a>
                                             </c:if>
                                             <c:if test="${dto.user_no == sessionScope.UserNo}">
-                                                <a href="#" class="btn btn-primary view-more mr-2">수정하기</a>
+                                                <form action="seller_delete.go" method="post">
+                                                    <input type="hidden" name="seller_no" value="${dto.seller_no}">
+                                                    <input type="submit" value="삭제하기" class="btn btn-danger"/>
+                                                </form>
                                             </c:if>
 
                                             <c:if test="${dto.user_no != sessionScope.UserNo}">

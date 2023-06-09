@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <form method="post" action="book_add.go">
+                        <form onsubmit="return checkSellerPrice()" method="post" action="book_add.go">
                             <div class="form-group">
                                 <input type="hidden" name="user_no" value="${sessionScope.UserNo}">
                                 <label>책 제목:</label>
@@ -195,6 +195,15 @@
             // 버튼 클릭 이벤트를 호출함.
             delayedGetList();
         }
+    }
+
+    function checkSellerPrice() {
+        var sellerPrice = document.getElementById("price").value;
+        if (sellerPrice == "") {
+            alert("판매자 중고가를 입력해주세요.");
+            return false;
+        }
+        return true;
     }
 </script>
 </body>

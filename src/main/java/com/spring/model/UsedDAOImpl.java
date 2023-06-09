@@ -64,5 +64,10 @@ public class UsedDAOImpl implements UsedDAO{
         return this.sqlSession.selectList("searchlist", dto);
     }
 
+    @Override
+    public int sellerBookDelete(int seller_no) {
+       return this.sqlSession.delete("deleteBook", seller_no);
+    }
+
 
 }

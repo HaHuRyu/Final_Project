@@ -91,7 +91,7 @@
         WHERE seller_no = #{sell_no};
     </insert>
 
-    <delete id="sellerdelete" parameterType="int">
+    <delete id="deleteBook" parameterType="int">
         delete from final.seller where seller_no = #{no}
     </delete>
 </mapper>
