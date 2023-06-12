@@ -22,6 +22,7 @@
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="${path}/resources/css/responsive.css">
       <link rel="stylesheet" href="${path}/resources/css/font.css">
+
    </head>
    <body>
 
@@ -417,4 +418,5 @@
          <!-- Custom JavaScript -->
          <script src="${path}/resources/js/custom.js"></script>
          <script src="${path}/resources/js/ajax.js"></script>
+
          <%@ include file="footer.jsp"%>

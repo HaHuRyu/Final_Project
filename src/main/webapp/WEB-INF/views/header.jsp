@@ -7,10 +7,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CD91C1TTFN"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-
+    gtag('config', 'G-CD91C1TTFN');
+</script>
 
 <div class="wrapper">
+
     <!-- Sidebar  -->
 
     <!-- 상단 a태그에 aria-expanded="true" 설정, li 태그에 class="active active-menu" 추가, 내부 li에 class="active" 추가-->
