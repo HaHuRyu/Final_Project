@@ -160,7 +160,7 @@
             <div class="col-md-4">
                 <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                     <div class="iq-card-body">
-                        <h4 class="text-uppercase text-black mb-0">현재 접속 인원${total_session} :::: </h4>
+                        <h4 class="text-uppercase text-black mb-0">현재 접속 인원</h4>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="pb-5 pt-4 text-black"><span id="counter"><script id="_wau57m">var _wau = _wau || []; _wau.push(["dynamic", "wwa5mh17lj", "57m", "a4c2f4ffffff", "big"]);</script></span></div>
                             <div class="text-left">
