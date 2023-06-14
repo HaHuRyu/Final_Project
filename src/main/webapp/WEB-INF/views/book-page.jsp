@@ -34,7 +34,7 @@
                      <div class="col-sm-12">
                         <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                            <div class="iq-card-header d-flex justify-content-between align-items-center">
-                              <h4 class="card-title mb-0">Books Description</h4>
+                              <h4 class="card-title mb-0">도서 상세정보</h4>
                            </div>
                            <div class="iq-card-body pb-0">
                               <div class="description-contens align-items-top row">
@@ -72,16 +72,16 @@
                                              </span>
                                           </div>
                                           <span class="text-dark mb-4 pb-4 iq-border-bottom d-block">${Book_cont.book_intro}</span>
-                                          <div class="text-primary mb-4">Author: <span class="text-body">${Book_cont.book_author}</span></div>
+                                          <div class="text-primary mb-4">작가: <span class="text-body">${Book_cont.book_author}</span></div>
                                           <div class="mb-4 d-flex align-items-center">
-                                             <a href="<%=request.getContextPath()%>/basket_insert.go?bookNo=${Book_cont.book_no}" class="btn btn-primary view-more mr-2">Add To Cart</a>
-                                             <a href="book-pdf.jsp" class="btn btn-primary view-more mr-2">Read Sample</a>
+                                             <a href="<%=request.getContextPath()%>/basket_insert.go?bookNo=${Book_cont.book_no}" class="btn btn-primary view-more mr-2">장바구니 담기</a>
+
                                           </div>
                                           <div class="mb-3">
-                                             <a href="<%=request.getContextPath()%>/wish_add.go?bookNo=${Book_cont.book_no}" class="text-body text-center"><span class="avatar-30 rounded-circle bg-primary d-inline-block mr-2"><i class="ri-heart-fill"></i></span><span>Add to Wishlist</span></a>
+                                             <a href="<%=request.getContextPath()%>/wish_add.go?bookNo=${Book_cont.book_no}" class="text-body text-center"><span class="avatar-30 rounded-circle bg-primary d-inline-block mr-2"><i class="ri-heart-fill"></i></span><span>위시리스트 추가</span></a>
                                           </div>
                                           <div class="iq-social d-flex align-items-center">
-                                             <h5 class="mr-2">Share:</h5>
+                                             <h5 class="mr-2">공유:</h5>
                                              <ul class="list-inline d-flex p-0 mb-0 align-items-center">
                                                 <li>
                                                    <a href="#" class="avatar-40 rounded-circle bg-primary mr-2 facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -108,10 +108,10 @@
                         <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                            <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">
                               <div class="iq-header-title">
-                                 <h4 class="card-title mb-0">Similar Books</h4>
+                                 <h4 class="card-title mb-0">비슷한 장르</h4>
                               </div>
                               <div class="iq-card-header-toolbar d-flex align-items-center">
-                                 <a href="category.jsp" class="btn btn-sm btn-primary view-more">View More</a>
+                                 <a href="search.go?query=${Book_cont.category_name}" class="btn btn-sm btn-primary view-more">더보기</a>
                               </div>
                            </div>
                            <div class="iq-card-body single-similar-contens">

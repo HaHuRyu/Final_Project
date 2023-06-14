@@ -24,7 +24,7 @@
     <!-- 상단 a태그에 aria-expanded="true" 설정, li 태그에 class="active active-menu" 추가, 내부 li에 class="active" 추가-->
     <div class="iq-sidebar">
         <div class="iq-sidebar-logo d-flex justify-content-between">
-            <a href="<%=request.getContextPath()%>/" class="header-logo">
+            <a href="home.go" class="header-logo">
                 <img src="${path}/resources/images/logo.png" class="img-fluid rounded-normal" alt="">
                 <div class="logo-title">
                     <span class="text-primary text-uppercase">ReadPlus</span>

@@ -38,7 +38,7 @@
 
     <!-- 도서 상세 조회 -->
     <select id="book_cont" resultType="BookDto" parameterType="int">
-        SELECT b.*, c.category
+        SELECT b.*, c.category as category_name
         FROM book b
         JOIN category c ON b.category_no = c.category_no
         WHERE book_no = #{no}
