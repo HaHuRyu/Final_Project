@@ -231,5 +231,6 @@
 </script>
 
 
+<script async src="//waust.at/d.js"></script>
 </body>
 </html>

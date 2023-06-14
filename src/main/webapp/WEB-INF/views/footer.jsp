@@ -16,7 +16,8 @@
       </div>
     </footer>
 
-  </body>
+  <script async src="//waust.at/d.js"></script>
+</body>
 </html>
 <!-- Footer END -->
 

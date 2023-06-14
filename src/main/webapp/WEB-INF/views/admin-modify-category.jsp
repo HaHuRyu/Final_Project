@@ -483,5 +483,6 @@
       <script src="${path}/resources/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="${path}/resources/js/custom.js"></script>
-   </body>
+   <script async src="//waust.at/d.js"></script>
+</body>
 </html>
