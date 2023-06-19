@@ -19,4 +19,4 @@ buildNumber.properties
 /target/
 *.class
 /.metadata/
-/src/main/resources/config/
+Final_Project/src/main/resources/config
