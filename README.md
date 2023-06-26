@@ -2,11 +2,10 @@
 
 <div align="center" dir="auto">
 <p dir="auto"><img src="https://user-images.githubusercontent.com/115006836/248720960-a99d3dfe-ad33-4182-9d34-4b683a96ffe3.PNG" width="30%" alt="buok" style="max-width: 30%;"></a></p>
-    <p dir="auto"><b>당신의 책 앨범, 독서의 새로운 시작!</b></p>
-    <p dir="auto">알라딘이라는 사이트에는 일반 사용자가 책을 중고로 팔 수 있는 온라인 중고장터가 있습니다.</p>
-<p dir="auto">현존하는 서점 사이트들은 편집장, 전문가들이 추천하는 페이지는 있지만</p>
-<p dir="auto">일반 사람들이 자신의 취향을 공유할 수 있는 공간은 없었습니다.</p>
-    <p dir="auto">이에 아쉬움을 느껴 <b>책 앨범 커뮤니티</b>를 포함한 서점 웹 사이트를 만들었습니다.</p>
+    <p dir="auto"><b>당신의 책 새로운 나눔!</b></p>
+    <p dir="auto">현존하는 서점 사이트에는 일반 사용자가 책을 중고로 팔 수 있는 온라인 중고장터가 있습니다.</p>
+<p dir="auto">온라인 중고장터 사이트들은 중고책 판매가 어려웠지만,</p>
+    <p dir="auto">이에 아쉬움을 느껴 좀 더 쉽게 중고 책을 판매할 수 있는 서점 웹 사이트를 만들었습니다.</p>
 </div>
 <hr>
 
