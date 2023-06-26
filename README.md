@@ -1,6 +1,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgami03%2Fnew_semi_project&count_bg=%233D81C8&title_bg=%23EDE4B9&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
+<img src="[https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white](https://user-images.githubusercontent.com/115006836/248641550-1d8ada39-ae98-4232-93af-6cf489872bdf.png)">
 <h2 align=center>READ PLUS</h2>
 📌 프로젝트 개요
 <bn>
