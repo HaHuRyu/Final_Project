@@ -1,29 +1,54 @@
+<h2 align="center">Read PLUS</h2>
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgami03%2Fnew_semi_project&count_bg=%233D81C8&title_bg=%23EDE4B9&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
-<img src="[https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white](https://user-images.githubusercontent.com/115006836/248641550-1d8ada39-ae98-4232-93af-6cf489872bdf.png)">
-<h2 align=center>READ PLUS</h2>
-📌 프로젝트 개요
-<bn>
-국내 여행지 중 제주도는 가장 사랑받는 여행지 입니다.보통 제주도로 여행을 떠날 때에는 동서남북으로 나누어 여행 계획을 짜게 되는데,​ 이러한 일정들을 손쉽고 편리하게 정할 수 있도록 여행 일정을 관리하는 프로젝트를 구상하게 되었습니다.​
-<br>JEJUTREE는 사용자들에게 제주도 여행 일정을 계획하는 데 필요한 정보를 제공하여 여행객들이 더 효 율적으로 여행을 즐길 수 있도록 도와줍니다.
+<div align="center" dir="auto">
+<p dir="auto"><img src="https://user-images.githubusercontent.com/115006836/248720960-a99d3dfe-ad33-4182-9d34-4b683a96ffe3.PNG" width="30%" alt="buok" style="max-width: 30%;"></a></p>
+    <p dir="auto"><b>당신의 책 앨범, 독서의 새로운 시작!</b></p>
+    <p dir="auto">벅스라는 음원 사이트에는 <b>뮤직 PD 앨범 제도</b>가 있습니다.</p>
+<p dir="auto">개인이 선호하는 음악 리스트를 만들어 대중에게 소개하는 방식입니다.</p>
+<p dir="auto">현존하는 서점 사이트들은 편집장, 전문가들이 추천하는 페이지는 있지만</p>
+<p dir="auto">일반 사람들이 자신의 취향을 공유할 수 있는 공간은 없었습니다.</p>
+    <p dir="auto">이에 아쉬움을 느껴 <b>책 앨범 커뮤니티</b>를 포함한 서점 웹 사이트를 만들었습니다.</p>
+</div>
+<hr>
 
 # 🚀 기술 스택
- <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white">
 
+<h3>Back-end</h3>
+<b><img src="https://img.shields.io/badge/Java-FF5722?style=for-the-badge&logo=Java&logoColor=white"/> 
+            <img src="https://img.shields.io/badge/Spring-339933?style=for-the-badge&logo=Spring&logoColor=white"/>
+            <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"/>
+            <img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"/>
+</b>
 
-# 📆 프로젝트 기간 & 팀원 
-2023 05/8 ~ 6/15 1개월
-<br>
-석하림(조장)
-<br>
-황규한(조원)
-<br>
-홍재영(조원)
-<br>
-도수경(조원)
-<br>
-김정빈(조원)
+<h3>Front-end</h3>
+<b>
+ <img src="https://img.shields.io/badge/JavaScript-FFC107?style=for-the-badge&logo=JavaScript&logoColor=white"/>
+            <img src="https://img.shields.io/badge/Ajax-3178C6?style=for-the-badge&logo=Ajax&logoColor=white"/> 
+            <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+            <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+            <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+            <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"/>
+</b>
+
+<h3>Tools</h3>
+<b>
+ <img src="https://img.shields.io/badge/windows-System-0078D4?style=for-the-badge&logo=windows11&logoColor=0078D4"/>
+            <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"/>
+            <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white"/>
+</b>
+
+<h3>API Docs</h3>
+<b>
+ <img src="https://img.shields.io/badge/Kakao-API-FFCD00?style=for-the-badge&logo=kakao&logoColor=FFCD00"/>
+ <img src="https://img.shields.io/badge/Aladin-API-FF3399?style=for-the-badge&logo=Aladin&logoColor=FF3399"/>
+</b>
+
+<h3>.etc</h3>
+ <b>
+  <img src="https://img.shields.io/badge/Erd-2C39BD?style=for-the-badge&logo=icloud&logoColor=white"/>
+  <img src="https://img.shields.io/badge/StarUML-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white"/>
+ </b>
+
 
 # 📑 요구사항 정의서
 ![image](https://github.com/harim-000/JEJU_TREE/assets/81612425/720dcf4f-dade-42d4-907e-192337d2c70a)
@@ -54,4 +79,26 @@ TMAP API 👉  https://tmapapi.sktelecom.com
 Kakao developers API 👉 https://developers.kakao.com/ 
  <br>
 Weather API 👉 https://openweathermap.org/api
+
+
+# 📆 프로젝트 기간 & 팀원 
+2023 05/8 ~ 6/15 1개월
+<h1>팀원 
+    <g-emoji class="g-emoji" alias="women_wrestling" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f93c-2640.png">🤼‍♀️</g-emoji>
+</h1>
+
+<table>
+    <tr>
+        <td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/gami03"><img src="https://avatars.githubusercontent.com/u/128332485?v=4" width="400px" alt="gami03" style="max-width: 100%;"></a></td>
+        <td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/CCTTBG"><img src="https://avatars.githubusercontent.com/u/126045264?v=4" width="400px" alt="CCTTBG" style="max-width: 100%;"></a></td>
+        <td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/Jiyeong2"><img src="https://avatars.githubusercontent.com/u/114003859?v=4" width="400px" alt="Jiyeong2" style="max-width: 100%;"></a></td>
+        <td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/OkayDonkey"><img src="https://avatars.githubusercontent.com/u/122771632?v=4" width="400px" alt="OkayDonkey" style="max-width: 100%;"></a></td>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/gami03">윤보감</a></td>
+        <td align="center"><a href="https://github.com/CCTTBG">이상우</a></td>
+        <td align="center"><a href="https://github.com/Jiyeong2">전지영</a></td>
+        <td align="center"><a href="https://github.com/OkayDonkey">김동현</a></td>
+    </tr>
+</table>
 
