@@ -48,9 +48,10 @@
  </b>
 
 
-# 📚 개요 및 기능구현
+# 📚 개요 및 기능구현<br>
+ <a target="_blank" rel="noopener noreferrer nofollow" href="https://garrulous-stetson-1d8.notion.site/4a442ed43747465ca788dbe5f1ab0d27?v=19b24cef8a9a4a2cbe820b6e527d6372&pvs=4">개요 및 기능구현(Notion)</a>
+<br>
 
- 
 # 💡 ERD Diagram<br>
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/115006836/248747609-55e72da5-15fe-43fb-ba16-6a97fd90e787.PNG"><img src="https://user-images.githubusercontent.com/115006836/248747609-55e72da5-15fe-43fb-ba16-6a97fd90e787.PNG" width="100%" style="max-width: 100%;"></a>
 
