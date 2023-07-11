@@ -49,7 +49,7 @@
 
 
 # 📚 개요 및 기능구현<br>
- <a target="_blank" rel="noopener noreferrer nofollow" href="https://garrulous-stetson-1d8.notion.site/4a442ed43747465ca788dbe5f1ab0d27?v=19b24cef8a9a4a2cbe820b6e527d6372&pvs=4">개요 및 기능구현(Notion)</a>
+ <a target="_blank" rel="noopener noreferrer nofollow" href="https://leejunghui.notion.site/4a442ed43747465ca788dbe5f1ab0d27?v=19b24cef8a9a4a2cbe820b6e527d6372&pvs=4">개요 및 기능구현(Notion)</a>
 <br>
 
 # 💡 ERD Diagram<br>
